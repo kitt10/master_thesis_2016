@@ -14,6 +14,7 @@
 """
 
 import argparse
+import json
 import subprocess
 import os
 from signal import SIGTERM
@@ -46,10 +47,12 @@ args = parser.parse_args()
 
 
 if __name__ == '__main__':
-    terrain_types = ('concrete', 'mud', 'ice', 'sand', 'gravel', 'grass', 'swamp', 'rock', 'tiles', 'snow', 'rubber',
-                     'carpet', 'wood', 'plastic', 'foam')
-    noise_params = {'no_noise': ('nn_', 0.0), 'noise_5p': ('n5p_', 0.05), 'noise_10p': ('n10p_', 0.1),
-                    'noise_20p': ('n20p_', 0.2)}
+
+    with open('../cache/params/terrain_types.json') as f:
+        terrain_types = json.load(f)
+
+    with open('../cache/params/noise_types.json') as f:
+        noise_params = json.load(f)
 
     noise_type, (noise_prefix, noise_param) = args.noise, noise_params[args.noise]
     gait = args.gait
@@ -57,7 +60,7 @@ if __name__ == '__main__':
     n_timesteps = args.n_timesteps
     sim_noise = args.sim_noise
     terrains_i = sorted(args.terrains)
-    terrains_to_use = [terrain_types[i-1] for i in terrains_i]
+    terrains_to_use = [terrain_types[str(i)] for i in terrains_i]
 
     os.chdir('../../simulation/mbulinai22015-gorobots_edu-fork/practices/amosii')
 
