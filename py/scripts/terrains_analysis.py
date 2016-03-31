@@ -52,15 +52,17 @@ if __name__ == '__main__':
     terrains_to_use = [terrains[str(i)] for i in sorted(args.terrains)]
 
     ''' Terrains Parameters '''
-    plt.matshow([[norm(env[terrain][quality], quality) for quality in qualities] for terrain in terrains_to_use],
+    plt.matshow([[norm(env[terrain][quality], quality) for terrain in terrains_to_use] for quality in qualities],
                 vmin=0.0, vmax=1.0)
-    plt.xticks(range(len(qualities)), qualities, rotation=45)
-    plt.yticks(range(len(terrains_to_use)), terrains_to_use)
+    plt.xticks(range(len(terrains_to_use)), terrains_to_use, rotation=45)
+    plt.yticks(range(len(qualities)), qualities)
     plt.colorbar()
     plt.suptitle('Chosen Terrains Parameters')
-    for q_i, quality in enumerate(qualities):
-        for t_i, terrain in enumerate(terrains_to_use):
-            plt.text(q_i, t_i, norm(env[terrain][quality], quality), va='center', ha='center')
+    for t_i, terrain in enumerate(terrains_to_use):
+        for q_i, quality in enumerate(qualities):
+            plt.text(t_i, q_i, norm(env[terrain][quality], quality), va='center', ha='center')
+    #plt.savefig('../../results/png/terrains_parameters.png')
+    #plt.savefig('../../results/eps/terrains_parameters.eps')
     plt.show()
 
     ''' Terrains Variability '''
@@ -78,7 +80,7 @@ if __name__ == '__main__':
     plt.xticks(range(len(terrains_to_use)), terrains_to_use, rotation=45)
     plt.yticks(range(len(terrains_to_use)), terrains_to_use)
     plt.colorbar()
-    plt.suptitle('Terrains Variability')
+    plt.suptitle('Terrains Variability (normed distances to each other)')
     for t1_i, terrain1 in enumerate(terrains_to_use):
         for t2_i, terrain2 in enumerate(terrains_to_use):
             plt.text(t1_i, t2_i, round(distances[terrain1][terrain2], 2), va='center', ha='center')
