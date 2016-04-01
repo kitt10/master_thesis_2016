@@ -14,45 +14,34 @@
 """
 
 import argparse
-import json
 import subprocess
 import os
 from signal import SIGTERM
 from time import sleep
 from shutil import copyfile
+from functions import load_params
 
-__author__ = 'Martin Bulin'
-__copyright__ = 'Copyright 2016, Master Thesis'
-__credits__ = ['Martin Bulin', 'Tomas Kulvicius', 'Poramate Manoonpong']
-__license__ = 'GPL'
-__version__ = '1.0'
-__maintainer__ = 'Martin Bulin'
-__email__ = 'bulinmartin@gmail.com'
-__status__ = 'Development'
 
-parser = argparse.ArgumentParser(description='Runs the Amos II simulation a saves sensor data as .txt.')
-parser.add_argument('-nj', '--n_jobs', type=int, default=100,
-                    help='Number of simulation runs')
-parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
-                    help='Terrains to be generated (integers)')
-parser.add_argument('-n', '--noise', type=str, default='no_noise', choices=['no_noise', 'noise_10p'],
-                    help='Terrain noise type')
-parser.add_argument('-nt', '--n_timesteps', type=int, default=100,
-                    help='Number of simulation steps')
-parser.add_argument('-g', '--gait', type=str, default='tripod',
-                    help='Amos II gait')
-parser.add_argument('-sn', '--sim_noise', type=float, default=0.0,
-                    help='Amos II simulation noise')
-args = parser.parse_args()
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Runs the Amos II simulation a saves sensor data as .txt.')
+    parser.add_argument('-nj', '--n_jobs', type=int, default=100,
+                        help='Number of simulation runs')
+    parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
+                        help='Terrains to be generated (integers)')
+    parser.add_argument('-n', '--noise', type=str, default='no_noise', choices=noise_params.keys(),
+                        help='Terrain noise type')
+    parser.add_argument('-nt', '--n_timesteps', type=int, default=100,
+                        help='Number of simulation steps')
+    parser.add_argument('-g', '--gait', type=str, default='tripod', choices=['tripod'],
+                        help='Amos II gait')
+    parser.add_argument('-sn', '--sim_noise', type=float, default=0.0,
+                        help='Amos II simulation noise')
+    return parser.parse_args()
 
 
 if __name__ == '__main__':
-
-    with open('../cache/params/terrain_types.json') as f:
-        terrain_types = json.load(f)
-
-    with open('../cache/params/noise_types.json') as f:
-        noise_params = json.load(f)
+    terrain_types, noise_params = load_params('terrain_types', 'noise_types')
+    args = parse_arguments()
 
     noise_type, (noise_prefix, noise_param) = args.noise, noise_params[args.noise]
     gait = args.gait

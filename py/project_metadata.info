@@ -1,0 +1,8 @@
+__author__ = 'Martin Bulin'
+__copyright__ = 'Copyright 2016, Master Thesis'
+__credits__ = ['Martin Bulin', 'Tomas Kulvicius', 'Poramate Manoonpong']
+__license__ = 'GPL'
+__version__ = '1.0'
+__maintainer__ = 'Martin Bulin'
+__email__ = 'bulinmartin@gmail.com'
+__status__ = 'Development'

@@ -15,35 +15,23 @@ import argparse
 import json
 from glob import glob
 from os import path, remove
+from functions import load_params
 
-__author__ = 'Martin Bulin'
-__copyright__ = 'Copyright 2016, Master Thesis'
-__credits__ = ['Martin Bulin', 'Tomas Kulvicius', 'Poramate Manoonpong']
-__license__ = 'GPL'
-__version__ = '1.0'
-__maintainer__ = 'Martin Bulin'
-__email__ = 'bulinmartin@gmail.com'
-__status__ = 'Development'
 
-parser = argparse.ArgumentParser(description='Checks generated .txt files.')
-parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
-                    help='Terrains to be checked (integers)')
-parser.add_argument('-n', '--noises', type=str, nargs='+',
-                    default=['no_noise', 'noise_5p', 'noise_10p', 'noise_20p'],
-                    choices=['no_noise', 'noise_5p', 'noise_10p', 'noise_20p'],
-                    help='Terrain noises to be checked')
-parser.add_argument('-sl', '--sample_len', type=int, default=95,
-                    help='Minimum sample length.')
-args = parser.parse_args()
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Checks generated .txt files.')
+    parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
+                        help='Terrains to be checked (integers)')
+    parser.add_argument('-n', '--noises', type=str, nargs='+', default=noise_params.keys(), choices=noise_params.keys(),
+                        help='Terrain noises to be checked')
+    parser.add_argument('-sl', '--sample_len', type=int, default=95,
+                        help='Minimum sample length.')
+    return parser.parse_args()
 
 
 if __name__ == '__main__':
-
-    with open('../cache/params/terrain_types.json') as f:
-        terrain_types = json.load(f)
-
-    with open('../cache/params/noise_types.json') as f:
-        noise_params = json.load(f)
+    terrain_types, noise_params = load_params('terrain_types', 'noise_types')
+    args = parse_arguments()
 
     noises_to_check = args.noises
     terrains_to_check = [terrain_types[str(i)] for i in sorted(args.terrains)]

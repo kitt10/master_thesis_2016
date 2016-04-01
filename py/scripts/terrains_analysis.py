@@ -12,47 +12,25 @@
 """
 
 import argparse
-import json
 import matplotlib.pyplot as plt
-
-__author__ = 'Martin Bulin'
-__copyright__ = 'Copyright 2016, Master Thesis'
-__credits__ = ['Martin Bulin', 'Tomas Kulvicius', 'Poramate Manoonpong']
-__license__ = 'GPL'
-__version__ = '1.0'
-__maintainer__ = 'Martin Bulin'
-__email__ = 'bulinmartin@gmail.com'
-__status__ = 'Development'
+from functions import load_params, norm
 
 
-parser = argparse.ArgumentParser(description='Plots chosen terrains parameters and makes a simple analysis.')
-parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
-                    help='Terrains to be plotted (integers)')
-args = parser.parse_args()
-
-
-def norm(value, q):
-    return value/ranges[q][1]
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Plots chosen terrains parameters and makes a simple analysis.')
+    parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
+                        help='Terrains to be plotted (integers)')
+    return parser.parse_args()
 
 
 if __name__ == '__main__':
-
-    with open('../cache/params/terrain_types.json') as f:
-        terrains = json.load(f)
-
-    with open('../cache/params/terrain_qualities.json') as f:
-        qualities = json.load(f)
-
-    with open('../cache/params/qualities_ranges.json') as f:
-        ranges = json.load(f)
-
-    with open('../cache/params/env.json') as f:
-        env = json.load(f)
+    terrains, qualities, ranges, env = load_params('terrain_types', 'terrain_qualities', 'qualities_ranges', 'env')
+    args = parse_arguments()
 
     terrains_to_use = [terrains[str(i)] for i in sorted(args.terrains)]
 
     ''' Terrains Parameters '''
-    plt.matshow([[norm(env[terrain][quality], quality) for terrain in terrains_to_use] for quality in qualities],
+    plt.matshow([[norm(env[terrain][quality], ranges[quality][1]) for terrain in terrains_to_use] for quality in qualities],
                 vmin=0.0, vmax=1.0)
     plt.xticks(range(len(terrains_to_use)), terrains_to_use, rotation=45)
     plt.yticks(range(len(qualities)), qualities)
@@ -60,7 +38,7 @@ if __name__ == '__main__':
     plt.suptitle('Chosen Terrains Parameters')
     for t_i, terrain in enumerate(terrains_to_use):
         for q_i, quality in enumerate(qualities):
-            plt.text(t_i, q_i, norm(env[terrain][quality], quality), va='center', ha='center')
+            plt.text(t_i, q_i, norm(env[terrain][quality], ranges[quality][1]), va='center', ha='center')
     #plt.savefig('../../results/png/terrains_parameters.png')
     #plt.savefig('../../results/eps/terrains_parameters.eps')
     plt.show()
@@ -72,7 +50,8 @@ if __name__ == '__main__':
         for terrain2 in terrains_to_use:
             distances[terrain1][terrain2] = 0.0
             for quality in qualities:
-                distances[terrain1][terrain2] += abs(norm(env[terrain1][quality], quality)-norm(env[terrain2][quality], quality))
+                distances[terrain1][terrain2] += \
+                    abs(norm(env[terrain1][quality], ranges[quality][1])-norm(env[terrain2][quality], ranges[quality][1]))
             #print terrain1, terrain2, distances[terrain1][terrain2]
 
     plt.matshow([[distances[terrain1][terrain2] for terrain2 in terrains_to_use] for terrain1 in terrains_to_use],
