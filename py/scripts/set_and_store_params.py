@@ -59,12 +59,47 @@ if __name__ == '__main__':
     with open('../cache/params/env.json', 'w') as f:
         json.dump(env, f)
 
-    noise_types = {'no_noise': ('nn_', 0.0), 'noise_5p': ('n5p_', 0.05), 'noise_10p': ('n10p_', 0.1),
-                   'noise_20p': ('n20p_', 0.2)}
+    noise_types = ('no_noise', 'noise_5p', 'noise_10p', 'noise_20p')
     with open('../cache/params/noise_types.json', 'w') as f:
         json.dump(noise_types, f)
+
+    noise_params = {'no_noise': ('nn_', 0.0),
+                    'noise_5p': ('n5p_', 0.05),
+                    'noise_10p': ('n10p_', 0.1),
+                    'noise_20p': ('n20p_', 0.2)
+                    }
+    with open('../cache/params/noise_params.json', 'w') as f:
+        json.dump(noise_params, f)
 
     sensors = ('atr_f', 'atr_m', 'atr_h', 'atl_f', 'atl_m', 'atl_h', 'acr_f', 'acr_m', 'acr_h', 'acl_f', 'acl_m', 'acl_h',
                'afr_f', 'afr_m', 'afr_h', 'afl_f', 'afl_m', 'afl_h', 'fr_f', 'fr_m', 'fr_h', 'fl_f', 'fl_m', 'fl_h')
     with open('../cache/params/sensors.json', 'w') as f:
         json.dump(sensors, f)
+
+    sensors_ranges = {'atr_f': (-1.5, 1.5),
+                      'atr_m': (-1.5, 1.5),
+                      'atr_h': (-1.5, 1.5),
+                      'atl_f': (-1.5, 1.5),
+                      'atl_m': (-1.5, 1.5),
+                      'atl_h': (-1.5, 1.5),
+                      'acr_f': (-1.5, 1.5),
+                      'acr_m': (-1.5, 1.5),
+                      'acr_h': (-1.5, 1.5),
+                      'acl_f': (-1.5, 1.5),
+                      'acl_m': (-1.5, 1.5),
+                      'acl_h': (-1.5, 1.5),
+                      'afr_f': (-1.5, 1.5),
+                      'afr_m': (-1.5, 1.5),
+                      'afr_h': (-1.5, 1.5),
+                      'afl_f': (-1.5, 1.5),
+                      'afl_m': (-1.5, 1.5),
+                      'afl_h': (-1.5, 1.5),
+                      'fr_f': (0.0, 1.0),
+                      'fr_m': (0.0, 1.0),
+                      'fr_h': (0.0, 1.0),
+                      'fl_f': (0.0, 1.0),
+                      'fl_m': (0.0, 1.0),
+                      'fl_h': (0.0, 1.0)
+                      }
+    with open('../cache/params/sensors_ranges.json', 'w') as f:
+        json.dump(sensors_ranges, f)

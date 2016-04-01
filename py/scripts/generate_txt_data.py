@@ -28,7 +28,7 @@ def parse_arguments():
                         help='Number of simulation runs')
     parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
                         help='Terrains to be generated (integers)')
-    parser.add_argument('-n', '--noise', type=str, default='no_noise', choices=noise_params.keys(),
+    parser.add_argument('-n', '--noise', type=str, default='no_noise', choices=noise_types,
                         help='Terrain noise type')
     parser.add_argument('-nt', '--n_timesteps', type=int, default=100,
                         help='Number of simulation steps')
@@ -40,7 +40,7 @@ def parse_arguments():
 
 
 if __name__ == '__main__':
-    terrain_types, noise_params = load_params('terrain_types', 'noise_types')
+    terrain_types, noise_types, noise_params = load_params('terrain_types', 'noise_types', 'noise_params')
     args = parse_arguments()
 
     noise_type, (noise_prefix, noise_param) = args.noise, noise_params[args.noise]

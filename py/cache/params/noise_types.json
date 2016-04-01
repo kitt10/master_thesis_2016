@@ -1,1 +1,1 @@
-{"noise_20p": ["n20p_", 0.2], "noise_5p": ["n5p_", 0.05], "no_noise": ["nn_", 0.0], "noise_10p": ["n10p_", 0.1]}
+["no_noise", "noise_5p", "noise_10p", "noise_20p"]

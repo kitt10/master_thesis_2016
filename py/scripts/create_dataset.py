@@ -15,19 +15,25 @@
 
 import argparse
 from sys import stderr
-from functions import load_params, f_range_gen
+from glob import glob
+from os import path
+from numpy.random import normal
+from functions import load_params, f_range_gen, norm_signal
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Creates a .pkl dataset from cleaned .txt data.')
     parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
                         help='Terrains to be involved (integers)')
-    parser.add_argument('-tn', '--terrain_noise', type=str, nargs='+', default=noise_types, choices=noise_types,
+    parser.add_argument('-tn', '--terrain_noise', type=str, default='no_noise', choices=noise_types,
                         help='Terrain noise to be used')
     parser.add_argument('-sn', '--signal_noise', type=float,
                         default=0.0, choices=list(f_range_gen(start=0.0, stop=0.1, step=0.005)),
                         help='Signal noise standard deviation (percentage)')
-    parser.add_argument('-s', '--sensors', type=str, nargs='+', default=all_sensors, choices=all_sensors)
+    parser.add_argument('-s', '--sensors', type=str, nargs='+', default=all_sensors, choices=all_sensors,
+                        help='Sensors to be used for classification')
+    parser.add_argument('-sl', '--sample_len', type=int, default=80,
+                        help='Length of one sample (simulation timesteps)')
     parser.add_argument('-ds', '--data_split', type=float, nargs=3, default=[0.8, 0.1, 0.1],
                         choices=list(f_range_gen(start=0.0, stop=1.0, step=0.01)),
                         help='Training : Validation : Testing data split')
@@ -40,6 +46,69 @@ def parse_arguments():
     else:
         return args_tmp
 
+
+def prepare_signal(signal, sen):
+    """
+    :param signal: raw signal
+    :param sen: sensor used to measure this signal
+    :return: normalized signal with a signal noise
+    """
+
+    ''' First, normalize the signal '''
+    normed_signal = norm_signal(signal=signal, the_min=sensors_ranges[sen][0], the_max=sensors_ranges[sen][1])
+
+    ''' Adding signal noise of defined std '''
+    noised_signal = add_signal_noise(signal=normed_signal)
+    return noised_signal
+
+
+def add_signal_noise(signal):
+    """
+    :param signal: normed clean signal
+    :return: noised signal (Gaussian noise of zero mean and defined std)
+    """
+    global signal_noise_std
+    signal_noise_std = 1e-10 if signal_noise_std <= 0 else signal_noise_std
+    noise = normal(loc=0, scale=signal_noise_std, size=len(signal))
+    return [x+n for x, n in zip(signal, noise)]
+
+
 if __name__ == '__main__':
-    terrain_types, all_sensors, noise_types = load_params('terrain_types', 'sensors', 'noise_types')
+    terrain_types, all_sensors, sensors_ranges, noise_types, noise_params = \
+        load_params('terrain_types', 'sensors', 'sensors_ranges', 'noise_types', 'noise_params')
     args = parse_arguments()
+
+    terrains_to_use = [terrain_types[str(i)] for i in sorted(args.terrains)]
+    sensors_to_use = args.sensors
+    terrain_noise = args.terrain_noise
+    signal_noise_std = args.signal_noise
+    sample_len = args.sample_len
+
+    ''' Reading .txt files to a dict called data '''
+    print '\n\n ## Reading .txt data files...'
+    data = dict()
+    for terrain in terrains_to_use:
+        data[terrain] = dict()
+        data[terrain]['data_str'] = list()
+        for sensor in sensors_to_use:
+            data[terrain][sensor] = list()
+        txt_samples = glob(path.join('../../data/'+terrain_noise+'/'+noise_params[terrain_noise][0]+terrain, '*.txt'))
+        for i_sample, path_and_filename in enumerate(sorted(txt_samples)):
+            with open(path_and_filename, 'r') as data_file:
+                data[terrain]['data_str'].append(data_file.read())
+            for i_sensor, sensor in enumerate(sensors_to_use):
+                data[terrain][sensor].append([0.0])
+                for line in data[terrain]['data_str'][-1].split('\n')[:95]:
+                    values = line.split(';')
+                    data[terrain][sensor][i_sample].append(float(values[i_sensor+1]))
+        print 'Data for', terrain, 'added ('+str(len(data[terrain][sensors_to_use[0]]))+' samples).'
+
+    ''' Cutting samples, normalizing and adding a signal noise '''
+    print '\n\n ## Cutting samples, normalizing and adding a signal noise...'
+    samples = dict()
+    for terrain in terrains_to_use:
+        samples[terrain] = [[] for i in range(len(data[terrain][sensors_to_use[0]]))]
+        for sensor in sensors_to_use:
+            for i_sample, sample_terrain in enumerate(data[terrain][sensor]):
+                samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:sample_len+10], sen=sensor)
+        print 'Samples of', terrain, 'cut, normalized and noised.'

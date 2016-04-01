@@ -25,3 +25,7 @@ def f_range_gen(start, stop, step):
 
 def norm(value, the_max):
     return value/the_max
+
+
+def norm_signal(signal, the_min, the_max):
+    return [min(max(float((x-the_min))/(the_max-the_min), 0), 1) for x in signal]
