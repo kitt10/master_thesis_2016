@@ -18,6 +18,8 @@ from sys import stderr
 from glob import glob
 from os import path
 from numpy.random import normal
+from shelve import open as open_shelve
+from time import gmtime, strftime
 from functions import load_params, f_range_gen, norm_signal
 
 
@@ -37,6 +39,8 @@ def parse_arguments():
     parser.add_argument('-ds', '--data_split', type=float, nargs=3, default=[0.8, 0.1, 0.1],
                         choices=list(f_range_gen(start=0.0, stop=1.0, step=0.01)),
                         help='Training : Validation : Testing data split')
+    parser.add_argument('-dn', '--destination_name', type=str, default=strftime('dataset_%Y_%m_%d_%H_%M_%S', gmtime()),
+                        help='Length of one sample (simulation timesteps)')
     args_tmp = parser.parse_args()
 
     ''' Check args '''
@@ -83,6 +87,8 @@ if __name__ == '__main__':
     terrain_noise = args.terrain_noise
     signal_noise_std = args.signal_noise
     sample_len = args.sample_len
+    data_split = args.data_split
+    destination_name = '../cache/datasets/amos_terrains_sim/'+args.destination_name+'.ds'
 
     ''' Reading .txt files to a dict called data '''
     print '\n\n ## Reading .txt data files...'
@@ -112,3 +118,39 @@ if __name__ == '__main__':
             for i_sample, sample_terrain in enumerate(data[terrain][sensor]):
                 samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:sample_len+10], sen=sensor)
         print 'Samples of', terrain, 'cut, normalized and noised.'
+
+    ''' Splitting data '''
+    print '\n\n ## Splitting data...'
+    x = {'training': list(), 'validation': list(), 'testing': list()}
+    y = {'training': list(), 'validation': list(), 'testing': list()}
+    for terrain in terrains_to_use:
+        bounds = (len(samples[terrain])*data_split[0], len(samples[terrain])*(data_split[0]+data_split[1]))
+        for i_sample, sample in enumerate(samples[terrain]):
+            if i_sample < bounds[0]:
+                x['training'].append(sample)
+                y['training'].append(terrain)
+            elif bounds[0] <= i_sample < bounds[1]:
+                x['validation'].append(sample)
+                y['validation'].append(terrain)
+            else:
+                x['testing'].append(sample)
+                y['testing'].append(terrain)
+
+    print 'Got dataset:', len(x['training']), ':', len(x['validation']), ':', len(x['testing'])
+
+    ''' Saving dataset '''
+    print '\n\n ## Saving dataset as', destination_name
+
+    dataset = open_shelve(destination_name, 'c')
+    dataset['x'] = x
+    dataset['y'] = y
+    dataset['terrains'] = terrains_to_use
+    dataset['terrain_noise'] = terrain_noise
+    dataset['signal_noise_std'] = signal_noise_std
+    dataset['sensors'] = sensors_to_use
+    dataset['sample_len'] = sample_len
+    dataset['data_split'] = data_split
+    dataset['size'] = (len(x['training']), len(x['validation']), len(x['testing']))
+    dataset.close()
+
+    print 'Dataset dumped.'
