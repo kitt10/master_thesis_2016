@@ -10,6 +10,7 @@
 
 import numpy as np
 from random import shuffle
+from time import time
 from nn_function import sigmoid, sigmoid_prime
 
 
@@ -20,7 +21,7 @@ class ANNLearning(object):
         self.name = learning_name
         self.net = net
 
-    def learn(self, *args):
+    def train(self, *args):
         raise NotImplementedError('Learning process not defined.')
 
 
@@ -35,23 +36,33 @@ class BackPropagation(ANNLearning):
         self.train_rate = None
         self.val_rate = None
 
-    def learn(self, training_data):
+    def train(self, training_data, validation_data=None):
 
         if self.verbose:
-            print '\n\n ## Learning started.'
-            print 'Epoch\t\ŧ\ŧOn Training Data\t\ŧ\tOnValidation Data'
+            print '\n\n ## Learning started...'
+            print ' Epoch\tOn Training Data\tOn Validation Data\tEpoch Time'
+            print '--------------------------------------------------------------------'
         for i_epoch in xrange(1, self.n_iter+1):
             shuffle(training_data)
             mini_batches = [training_data[k:k+self.batch_size] for k in xrange(0, len(training_data), self.batch_size)]
 
+            t0 = time()
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch)
+            epoch_time = time()-t0
 
-            self.train_rate = self.program.dataset.evaluate(net=self.net, on_data='training')
-            self.val_rate = self.program.dataset.evaluate(net=self.net, on_data='validation')
+            self.train_rate = self.evaluate(data=training_data)
+            if validation_data:
+                self.val_rate = self.evaluate(data=validation_data)
 
             if self.verbose:
-                print str(i_epoch)+'\t\ŧ\ŧ'+str(self.train_rate)+'\t\ŧ\t'+str(self.val_rate)
+                print ' '+str(i_epoch)+'\t \t'+str(format(self.train_rate, '.4f'))+'\t \t \t'+str(format(self.val_rate, '.4f'))+\
+                      '\t \t'+str(format(epoch_time, '.4f'))+' s'
+
+    def evaluate(self, data):
+        test_results = [(np.argmax(self.net.feed_forward_fast(x)), np.argmax(y)) for (x, y) in data]
+        correctly_classified = sum(int(x == y) for (x, y) in test_results)
+        return float(correctly_classified) / len(data)
 
     def update_mini_batch(self, mini_batch):
         nabla_b = [np.zeros(b.shape) for b in self.net.biases]
@@ -82,7 +93,7 @@ class BackPropagation(ANNLearning):
         nabla_b[-1] = delta
         nabla_w[-1] = np.dot(delta, activations[-2].transpose())
 
-        for l in xrange(2, len(self.net.n_neurons)):
+        for l in xrange(2, len(self.net.structure)):
             z = zs[-l]
             sp = sigmoid_prime(z)
             delta = np.dot(self.net.weights[-l+1].transpose(), delta) * sp

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    scripts.sknn_train
+    scripts.kitt_train
     ~~~~~~~~~~~~~~~~~~
 
-    This script trains a classifier provided by sknn library.
+    This script trains a neural net developed by kitt :-).
 
     @arg dataset            : folder + name of the dataset file
     @arg structure          : number of layers and neurons of the net
@@ -17,9 +17,9 @@ import argparse
 import numpy as np
 from shelve import open as open_shelve
 from time import gmtime, strftime
-from sknn.platform import gpu32
-from sknn.mlp import Classifier, Layer
 from sklearn.metrics import classification_report
+from kitt_nn.nn_structure.kitt_net import NeuralNet
+from kitt_nn.nn_tool.nn_learning import BackPropagation
 
 
 def parse_arguments():
@@ -40,16 +40,22 @@ if __name__ == '__main__':
 
     args = parse_arguments()
     dataset_dir = '../cache/datasets/'+args.dataset+'.ds'
-    layers = [Layer('Rectifier', units=n_neurons) for n_neurons in args.structure]+[Layer('Softmax')]
     learning_rate = args.learning_rate
     n_iter = args.n_iter
-    destination_name = '../cache/trained/sknn_'+args.destination_name+'.net'
-
-    ''' Creating the neural net classifier '''
-    nn_classifier = Classifier(layers=layers, learning_rate=learning_rate, n_iter=n_iter, verbose=True)
+    destination_name = '../cache/trained/kitt_'+args.destination_name+'.net'
 
     ''' Loading dataset and training '''
     dataset = open_shelve(dataset_dir, 'r')
+
+    net_structure = [len(dataset['x']['training'][0])]+args.structure+[len(np.unique(dataset['y']['training']))]
+    net = NeuralNet(program=None, name=str(net_structure), structure=net_structure)
+    net.learning = BackPropagation(program=None, net=net, learning_rate=learning_rate, n_iter=n_iter)
+
+    net.fit(X=dataset['x']['training'], y=dataset['y']['training'],
+            X_val=dataset['x']['validation'], y_val=dataset['y']['validation'])
+    dataset.close()
+    exit()
+
     nn_classifier.fit(np.array(dataset['x']['training']), np.array(dataset['y']['training']))
 
     print 'NN classification report on validation data:\n%s\n' % \

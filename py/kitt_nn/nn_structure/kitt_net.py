@@ -11,6 +11,7 @@
 import numpy as np
 from kitt_neuron import *
 from kitt_synapse import *
+from kitt_nn.nn_tool.nn_function import output_layer
 
 
 class NeuralNet(object):
@@ -36,6 +37,10 @@ class NeuralNet(object):
         # Create units and connect net
         self.create_neurons()
         self.connect_net_fully_ff()
+
+        # Learning algorithm
+        self.learning = None
+        self.labels = None
 
     def create_neurons(self):
         # Input neurons
@@ -152,5 +157,17 @@ class NeuralNet(object):
 
         return net_copy
 
+    def fit(self, X, y, X_val=None, y_val=None):
+        self.labels = sorted(np.unique(y).tolist())
+        training_results = [output_layer(position=self.labels.index(y_i), n_neurons=len(self.labels)) for y_i in y]
+        training_data = zip([np.reshape(x_i, (len(x_i), 1)) for x_i in X], training_results)
+        if X_val and y_val:
+            validation_results = [output_layer(position=self.labels.index(y_i), n_neurons=len(self.labels)) for y_i in y_val]
+            validation_data = zip([np.reshape(x_i, (len(x_i), 1)) for x_i in X_val], validation_results)
+        else:
+            validation_data = None
+
+        self.learning.train(training_data=training_data, validation_data=validation_data)
+
     def predict(self, x):
-        return self.feed_forward_fast(a=x)
+        return self.labels[np.argmax(self.feed_forward_fast(a=x))]
