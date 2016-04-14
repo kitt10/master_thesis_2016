@@ -19,7 +19,9 @@ from shelve import open as open_shelve
 from time import gmtime, strftime
 from sknn.platform import gpu32
 from sknn.mlp import Classifier, Layer
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from termcolor import colored
+from kitt_nn.nn_tool.nn_function import print_cm
 
 
 def parse_arguments():
@@ -46,20 +48,38 @@ if __name__ == '__main__':
     destination_name = '../cache/trained/sknn_'+args.destination_name+'.net'
 
     ''' Creating the neural net classifier '''
-    nn_classifier = Classifier(layers=layers, learning_rate=learning_rate, n_iter=n_iter, verbose=True)
+    nn_classifier = Classifier(layers=layers, learning_rate=learning_rate, n_iter=n_iter, n_stable=50, verbose=True)
 
     ''' Loading dataset and training '''
+    print '\n\n ## Loading dataset...'
     dataset = open_shelve(dataset_dir, 'r')
+
+    print '\n\n ## Fitting the training data...'
     nn_classifier.fit(np.array(dataset['x']['training']), np.array(dataset['y']['training']))
 
-    print 'NN classification report on validation data:\n%s\n' % \
-          classification_report(np.array(dataset['y']['validation']),
-                                nn_classifier.predict(np.array(dataset['x']['validation'])))
+    ''' Getting results on testing set '''
+    print '\n\n ## Testing...'
+    y_pred = nn_classifier.predict(np.array(dataset['x']['testing']))
+    labels = nn_classifier.classes_[0].tolist()
+
+    c_accuracy = accuracy_score(y_true=np.array(dataset['y']['testing']), y_pred=y_pred)
+    c_report = classification_report(np.array(dataset['y']['testing']), y_pred)
+    cm = confusion_matrix(y_true=np.array(dataset['y']['testing']), y_pred=y_pred, labels=labels)
+    cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    print '\n # SKNN net accuracy score on testing data:', colored(str(c_accuracy), 'green')
+    print '\n # SKNN net classification report on testing data:\n', colored(str(c_report), 'cyan')
+    print '\n # SKNN net confusion matrix on testing data:\n'
+    print_cm(cm=cm, labels=labels)
+    print '\n'
+    print_cm(cm=cm_normalized, labels=labels, normed=True)
     dataset.close()
 
     ''' Saving trained classifier '''
+    print '\n\n ## Saving trained classifier...'
     clf = open_shelve(destination_name, 'c')
     clf['classifier'] = nn_classifier
     clf['dataset'] = args.dataset
     clf['training_params'] = (args.structure, learning_rate, n_iter)
+    clf['skills'] = (c_accuracy, c_report, cm)
     clf.close()
+    print '\n ## SKNN net dumped as', destination_name

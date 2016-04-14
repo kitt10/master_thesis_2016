@@ -34,9 +34,9 @@ if __name__ == '__main__':
     print '\n\n ## Classification : training parameters:', clf['training_params']
     clf.close()
 
-    dataset = open_shelve('../cache/datasets/amos_terrains_sim/'+dataset_dir+'.ds', 'c')
+    dataset = open_shelve('../cache/datasets/'+dataset_dir+'.ds', 'c')
     ''' Classifying '''
-    print 'NN classification report on validation data:\n%s\n' % \
+    print 'NN classification report on testing data:\n%s\n' % \
           classification_report(np.array(dataset['y']['testing']),
                                 nn_classifier.predict(np.array(dataset['x']['testing'])))
     dataset.close()
