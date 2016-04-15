@@ -12,6 +12,7 @@ import numpy as np
 from random import shuffle
 from time import time
 from nn_function import sigmoid, sigmoid_prime
+from termcolor import colored
 
 
 class ANNLearning(object):
@@ -27,19 +28,24 @@ class ANNLearning(object):
 
 class BackPropagation(ANNLearning):
 
-    def __init__(self, program, net, learning_rate=0.005, n_iter=100, batch_size=10, verbose=True):
+    def __init__(self, program, net, learning_rate=0.03, n_iter=100, n_stable=10, batch_size=10, verbose=True):
         ANNLearning.__init__(self, program, net, learning_name='BackPropagation')
         self.learning_rate = learning_rate
         self.n_iter = n_iter
+        self.n_stable = n_stable
         self.batch_size = batch_size
         self.verbose = verbose
         self.train_rate = None
+        self.train_error = None
+        self.min_train_error = 1.0
         self.val_rate = None
+        self.val_error = None
+        self.min_val_error = 1.0
 
     def train(self, training_data, validation_data=None):
 
         if self.verbose:
-            print '\n\n ## Learning started...'
+            print '\n\n ## The training has started...'
             print ' Epoch\tOn Training Data\tOn Validation Data\tEpoch Time'
             print '--------------------------------------------------------------------'
         for i_epoch in xrange(1, self.n_iter+1):
@@ -51,18 +57,73 @@ class BackPropagation(ANNLearning):
                 self.update_mini_batch(mini_batch)
             epoch_time = time()-t0
 
-            self.train_rate = self.evaluate(data=training_data)
+            self.train_rate, self.train_error = self.evaluate(data=training_data)
             if validation_data:
-                self.val_rate = self.evaluate(data=validation_data)
+                self.val_rate, self.val_error = self.evaluate(data=validation_data)
 
             if self.verbose:
-                print ' '+str(i_epoch)+'\t \t'+str(format(self.train_rate, '.4f'))+'\t \t \t'+str(format(self.val_rate, '.4f'))+\
-                      '\t \t'+str(format(epoch_time, '.4f'))+' s'
+                line = ' '+str(i_epoch)+'\t'+colored(str(format(self.train_rate, '.2f')), 'green')
+                if self.train_error < self.min_train_error:
+                    self.min_train_error = self.train_error
+                    col = 'red'
+                else:
+                    col = 'magenta'
+                line += '/'+colored(str(format(self.train_error, '.4f')), col)
+                line += colored('\t \t'+str(format(self.val_rate, '.2f')), 'green')
+                if self.val_error < self.min_val_error:
+                    self.min_val_error = self.val_error
+                    col = 'red'
+                else:
+                    col = 'magenta'
+                line += '/'+colored(str(format(self.val_error, '.4f')), col)
+                line += '\t \t'+colored(str(format(epoch_time, '.4f'))+' s', 'cyan')
+                print line
+
+    def try_to_train(self, training_data, validation_data, req_acc):
+        err_history = list()
+        err_min = 1.0
+
+        for epoch in xrange(1, self.n_iter+1):
+            net_structure = list()
+            for layer in self.net.neuronsLP.values():
+                net_structure.append(sum([not neuron.dead for neuron in layer]))
+            shuffle(training_data)
+            batches = [training_data[k:k + self.batch_size] for k in xrange(0, len(training_data), self.batch_size)]
+
+            for mini_batch in batches:
+                self.update_mini_batch(mini_batch)
+
+            res = self.evaluate(data=validation_data)
+            err_history.append(res[1])
+            if err_history[-1] < err_min:
+                col = 'red'
+                err_min = err_history[-1]
+            else:
+                col = 'magenta'
+            print ' # '+str(epoch).zfill(4)+' -> ',
+            print colored(format(res[0], '.3f'), 'green')+'/'+colored(format(res[1], '.6f'), col),
+            print ' in net: '+str(net_structure)+' with '+str(len(self.net.synapsesG))+' synapses'
+
+            if res[0] >= req_acc:
+                return True
+            else:
+                try:
+                    for i in range(2, self.n_stable+1):
+                        if err_history[-1] < err_history[-i]:
+                            break
+                    else:
+                        return False
+                except IndexError:
+                    pass
 
     def evaluate(self, data):
-        test_results = [(np.argmax(self.net.feed_forward_fast(x)), np.argmax(y)) for (x, y) in data]
-        correctly_classified = sum(int(x == y) for (x, y) in test_results)
-        return float(correctly_classified) / len(data)
+        test_results = [(self.net.labels[np.argmax(self.net.feed_forward_fast(a=x))], self.net.labels[np.argmax(y)]) for (x, y) in data]
+        correctly_classified = sum([int(x == y) for (x, y) in test_results])
+        err_sum = 0.0
+        for x, y in data:
+            cl_e = [abs(cl_x[0]-cl_y[0]) for (cl_x, cl_y) in zip(self.net.feed_forward_fast(x), y)]
+            err_sum += float(sum(cl_e))/len(data[0][1])
+        return float(correctly_classified) / len(data), float(err_sum) / len(data)
 
     def update_mini_batch(self, mini_batch):
         nabla_b = [np.zeros(b.shape) for b in self.net.biases]

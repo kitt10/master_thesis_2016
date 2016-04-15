@@ -137,7 +137,7 @@ class NeuralNet(object):
             print '\n\n', synapse.id, synapse.weight
 
     def copy(self):
-        net_copy = NeuralNet(program=self.program, name=self.name + '_copy', structure=self.n_neurons[:])
+        net_copy = NeuralNet(program=self.program, name=self.name + '_copy', structure=self.structure[:])
 
         net_copy.weights = list()
         for arr in self.weights:
@@ -155,19 +155,34 @@ class NeuralNet(object):
             if synapse.weight == 0:
                 synapse.remove_self()
 
+        net_copy.labels = self.labels
+
         return net_copy
 
+    def prepare_data(self, samples, targets):
+        labels = sorted(np.unique(targets).tolist())
+        results = [output_layer(position=labels.index(y_i), n_neurons=len(labels)) for y_i in targets]
+        data = zip([np.reshape(x_i, (len(x_i), 1)) for x_i in samples], results)
+        return data, labels
+
     def fit(self, X, y, X_val=None, y_val=None):
-        self.labels = sorted(np.unique(y).tolist())
-        training_results = [output_layer(position=self.labels.index(y_i), n_neurons=len(self.labels)) for y_i in y]
-        training_data = zip([np.reshape(x_i, (len(x_i), 1)) for x_i in X], training_results)
+        training_data, self.labels = self.prepare_data(X, y)
         if X_val and y_val:
-            validation_results = [output_layer(position=self.labels.index(y_i), n_neurons=len(self.labels)) for y_i in y_val]
-            validation_data = zip([np.reshape(x_i, (len(x_i), 1)) for x_i in X_val], validation_results)
+            validation_data, _lab = self.prepare_data(X_val, y_val)
         else:
             validation_data = None
 
         self.learning.train(training_data=training_data, validation_data=validation_data)
 
-    def predict(self, x):
-        return self.labels[np.argmax(self.feed_forward_fast(a=x))]
+    def try_to_fit(self, X, y, X_val, y_val, req_acc):
+        training_data, self.labels = self.prepare_data(X, y)
+        if X_val and y_val:
+            validation_data, _lab = self.prepare_data(X_val, y_val)
+        else:
+            validation_data = None
+
+        return self.learning.try_to_train(training_data=training_data, validation_data=validation_data, req_acc=req_acc)
+
+    def predict(self, samples):
+        samples = [np.reshape(x_i, (len(x_i), 1)) for x_i in samples]
+        return np.array([self.labels[np.argmax(self.feed_forward_fast(a=x))] for x in samples])
