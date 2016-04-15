@@ -29,15 +29,18 @@ if __name__ == '__main__':
                      9: 'tiles', 10: 'snow', 11: 'rubber', 12: 'carpet', 13: 'wood', 14: 'plastic', 15: 'foam'}
     with open('../cache/params/terrain_types.json', 'w') as f:
         json.dump(terrain_types, f)
+    print ' ## terrain_types.json updated.'
 
     terrain_qualities = ('roughness', 'slipperiness', 'hardness', 'elasticity', 'height')
     with open('../cache/params/terrain_qualities.json', 'w') as f:
         json.dump(terrain_qualities, f)
+    print ' ## terrain_qualities.json updated.'
 
     qualities_ranges = {'roughness': (0.0, 10.0), 'slipperiness': (0.0, 100.0), 'hardness': (0.0, 100.0),
                         'elasticity': (0.0, 2.0), 'height': (0.0, 0.1)}
     with open('../cache/params/qualities_ranges.json', 'w') as f:
         json.dump(qualities_ranges, f)
+    print ' ## qualities_ranges.json updated.'
 
     env = {
         'concrete':  {'roughness': 10.0, 'slipperiness': 0.0, 'hardness': 100.0, 'elasticity': 0.0, 'height': 0.0, 'color': '#9C9FA6'},
@@ -58,23 +61,29 @@ if __name__ == '__main__':
     }
     with open('../cache/params/env.json', 'w') as f:
         json.dump(env, f)
+    print ' ## env.json updated.'
 
-    noise_types = ('no_noise', 'noise_5p', 'noise_10p', 'noise_20p')
+    noise_types = ('no_noise', 'noise_1p', 'noise_3p', 'noise_5p', 'noise_10p', 'noise_20p')
     with open('../cache/params/noise_types.json', 'w') as f:
         json.dump(noise_types, f)
+    print ' ## noise_types.json updated.'
 
     noise_params = {'no_noise': ('nn_', 0.0),
+                    'noise_1p': ('n1p_', 0.01),
+                    'noise_3p': ('n3p_', 0.03),
                     'noise_5p': ('n5p_', 0.05),
                     'noise_10p': ('n10p_', 0.1),
                     'noise_20p': ('n20p_', 0.2)
                     }
     with open('../cache/params/noise_params.json', 'w') as f:
         json.dump(noise_params, f)
+    print ' ## noise_params.json updated.'
 
     sensors = ('atr_f', 'atr_m', 'atr_h', 'atl_f', 'atl_m', 'atl_h', 'acr_f', 'acr_m', 'acr_h', 'acl_f', 'acl_m', 'acl_h',
                'afr_f', 'afr_m', 'afr_h', 'afl_f', 'afl_m', 'afl_h', 'fr_f', 'fr_m', 'fr_h', 'fl_f', 'fl_m', 'fl_h')
     with open('../cache/params/sensors.json', 'w') as f:
         json.dump(sensors, f)
+    print ' ## sensors.json updated.'
 
     sensors_ranges = {'atr_f': (-1.5, 1.5),
                       'atr_m': (-1.5, 1.5),
@@ -103,3 +112,4 @@ if __name__ == '__main__':
                       }
     with open('../cache/params/sensors_ranges.json', 'w') as f:
         json.dump(sensors_ranges, f)
+    print ' ## sensors_ranges.json updated.'
