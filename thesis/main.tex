@@ -1,0 +1,27 @@
+% ------------------------------------------------------------------------------------------------------
+\input{tex/preamble}
+\input{tex/thesis_info}
+% ------------------------------------------------------------------------------------------------------
+\begin{document}
+% ------------------------------------------------------------------------------------------------------
+\input{tex/title_page}
+\input{tex/declaration_page}
+\input{tex/quotation_page}
+\input{tex/abstract}
+\input{tex/acknowledgements_page}
+\input{tex/lists}
+%\input{tex/dedication_page} 
+% ------------------------------------------------------------------------------------------------------
+\mainmatter 							% Begin numeric (1,2,3...) page numbering
+\pagestyle{thesis} 						% Return the page headers back to the "thesis" style
+\include{tex/introduction}
+\include{tex/ch1_chtitle}
+\include{tex/conclussion}
+% ------------------------------------------------------------------------------------------------------
+\input{tex/bibliography}
+% ------------------------------------------------------------------------------------------------------
+\appendix 								% Cue to tell LaTeX that the following "chapters" are Appendices
+\include{tex/appendix_a}
+% ------------------------------------------------------------------------------------------------------
+\end{document}  
+% ------------------------------------------------------------------------------------------------------

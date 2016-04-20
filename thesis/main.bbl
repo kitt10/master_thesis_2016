@@ -1,0 +1,226 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{article:laser}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Kesper}{K.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Grinke}{G.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hesse}{H.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Worgotter}{W.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Manoonpong}{M.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KP+1}
+  \strng{fullhash}{KPGEHFWFMP1}
+  \field{labelalpha}{Kes+12}
+  \field{labelyear}{2012}
+  \field{sortinit}{2}
+  \field{pages}{419\bibrangedash 426}
+  \field{title}{Obstacle-Gap Detection and Terrain Classification of Walking
+  Robots based on a 2D Laser Range Finder}
+  \verb{url}
+  \verb http://manoonpong.com/paper/2013/CLAWAR2013_Kesper.pdf
+  \endverb
+  \field{journaltitle}{Nature-inspired Mobile Robotics}
+  \field{year}{2012}
+\endentry
+
+\entry{article:visual}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Zenker}{Z.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Aksoy}{A.}%
+     {E.~E.}{E.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldschmidth}{G.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Worgotter}{W.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Manoonpong}{M.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZS+1}
+  \strng{fullhash}{ZSAEEGDWFMP1}
+  \field{labelalpha}{Zen+13}
+  \field{labelyear}{2013}
+  \field{sortinit}{2}
+  \field{abstract}{%
+  Legged robots need to be able to classify and recognize different terrains to
+  adapt their gait accordingly. Recent works in terrain classification use
+  different types of sensors (like stereovision, 3D laser range, and tactile
+  sensors) and their combination. However, such sensor systems require more
+  computing power, produce extra load to legged robots, and/or might be
+  difficult to install on a small size legged robot. In this work, we present
+  an online terrain classification system. It uses only a monocular camera with
+  a feature-based terrain classification algorithm which is robust to changes
+  in illumination and view points. For this algorithm, we extract local
+  features of terrains using either Scale Invariant Feature Transform (SIFT) or
+  Speed Up Robust Feature (SURF). We encode the features using the Bag of Words
+  (BoW) technique, and then classify the words using Support Vector Machines
+  (SVMs) with a radial basis function kernel. We compare this feature-based
+  approach with a color-based approach on the Caltech-256 benchmark as well as
+  eight different terrain image sets (grass, gravel, pavement, sand, asphalt,
+  floor, mud, and fine gravel). For terrain images, we observe up to 90%
+  accuracy with the feature-based approach. Finally, this online terrain
+  classification system is successfully applied to our small hexapod robot AMOS
+  II. The output of the system providing terrain information is used as an
+  input to its neural locomotion control to trigger an energy-efficient gait
+  while traversing different terrains.%
+  }
+  \field{number}{12}
+  \field{pages}{577\bibrangedash 584}
+  \field{title}{Visual terrain classification for selecting energy efficient
+  gaits of a hexapod robot}
+  \verb{url}
+  \verb http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6584154&tag=
+  \verb 1
+  \endverb
+  \field{journaltitle}{International Conference on Advanced Intelligent
+  Mechatronics}
+  \field{month}{07}
+  \field{year}{2013}
+\endentry
+
+\entry{article:motorsignals}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Xiong}{X.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Worgotter}{W.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Manoonpong}{M.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Agonist and antagonist muscle model, Legged locomotion, Biological
+  inspired locomotion, Hexapod robot}
+  \strng{namehash}{XXWFMP1}
+  \strng{fullhash}{XXWFMP1}
+  \field{labelalpha}{XWM14}
+  \field{labelyear}{2014}
+  \field{sortinit}{2}
+  \field{abstract}{%
+  The neuromechanical control principles of animal locomotion provide good
+  insights for the development of bio-inspired legged robots for walking on
+  challenging surfaces. Based on such principles, we devel- oped a
+  neuromechanical controller consisting of a modular neural network (MNN) and
+  of virtual agonist– antagonist muscle mechanisms (VAAMs). The controller
+  allows for variable compliant leg motions of a hexapod robot, thereby leading
+  to energy-efficient walking on different surfaces. Without any pas- sive
+  mechanisms or torque and position feedback at each joint, the variable
+  compliant leg motions are achieved by only changing the stiffness parameters
+  of the VAAMs. In addition, six surfaces can be also classified by observing
+  the motor signals generated by the controller. The performance of the
+  controller is tested on a physical hexapod robot. Experimental results show
+  that it can effectively walk on six different surfaces with the specific
+  resistances between 9.1 and 25.0, and also classify them with high accuracy.%
+  }
+  \field{number}{7}
+  \field{pages}{1777\bibrangedash 1790}
+  \field{title}{Neuromechanical control for hexapedal robot walking on
+  challenging surfaces and surface classification}
+  \verb{url}
+  \verb www.elsevier.com/locate/robot
+  \endverb
+  \field{journaltitle}{Robotics and Autonomous Systems}
+  \field{month}{08}
+  \field{year}{2014}
+\endentry
+
+\entry{Xconference}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Bulin}{B.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BM1}
+  \strng{fullhash}{BM1}
+  \field{labelalpha}{Bul16}
+  \field{labelyear}{2016}
+  \field{sortinit}{2}
+  \field{booktitle}{Book title}
+  \field{title}{Title}
+  \field{year}{2016}
+\endentry
+
+\entry{DUMMY:1}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Doe}{D.}%
+     {John}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Dummy Publisher}%
+  }
+  \strng{namehash}{DJ1}
+  \strng{fullhash}{DJ1}
+  \field{labelalpha}{Doe00}
+  \field{labelyear}{2100}
+  \field{sortinit}{2}
+  \field{title}{The Book without Title}
+  \field{year}{2100}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
