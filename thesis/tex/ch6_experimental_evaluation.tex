@@ -3,4 +3,41 @@
 
 The account of the research should be presented in a manner suitable for the field. It should be complete, systematic, and sufficiently detailed to enable a reader to understand how the data were gathered and how to apply similar methods in another study. Notation and formatting must be consistent throughout the thesis, including units of measure, abbreviations, and the numbering scheme for tables, figures, footnotes, and citations. One or more chapters may consist of material published (or submitted for publication) elsewhere. See “Including Published Material in a Thesis or Dissertation” for details.
 
+evaluation (tables and figures) of classification:
+\begin{itemize}
+\item various terrain noise standard deviation values
+\item various signal noise standard deviation values
+\item various sensors on network input (only foot, only angle...)
+\item various timesteps used as one sample (-> time needed for detection)
+\item various number of detected terrains as outputs
+\item various network structures
+\item various training parameters (epochs, learning rate, batch size...)
+\end{itemize}
+
+
+evaluation of neural nets as a classifier:
+\begin{itemize}
+\item comparison to other classifiers on the same data, classifiers are ready provided by sknn library
+\end{itemize}
+
+evaluation of proprioception sensing against other methods (visual, haptic, laser...):
+\begin{itemize}
+\item comparison to the results from the literature
+\end{itemize}
+
+evaluation of the pruning algorithm:
+\begin{itemize}
+\item various starting structures, ends up with the same minimal-optimal structure?
+\item various noise types, same minimal structure?
+\item speed comparisons of the fully-connected vs. pruned structure
+\item further analysis:
+ \begin{itemize}
+ \item which sensors are redundant/crucial
+ \item which sensors are important for which terrain
+ \item comments on the minimal structure and benefits of having it
+ \end{itemize}
+\end{itemize}
+10-15 pages (many figures, tables)
+
 \section{Discussion}
+2-3 pages, maybe together with the figures and tables

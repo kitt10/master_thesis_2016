@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  21 APR 2016 14:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  21 APR 2016 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1235,7 +1235,7 @@ Package csquotes Info: ... found 'babel' package.
 (./tex/introduction.aux) (./tex/ch1_state_of_the_art.aux)
 (./tex/ch2_master_thesis_goals.aux) (./tex/ch4_neural_net_pruning_algorithm.aux
 ) (./tex/ch5_terrain_classification.aux) (./tex/ch6_experimental_evaluation.aux
-) (./tex/conclussion.aux) (./tex/appendix_a.aux))
+) (./tex/conclussion.aux) (./tex/app_code_documentation.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -1527,21 +1527,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
 1: section
 [4
 
-] (./main.toc)
-\tf@toc=\write5
-\openout5 = `main.toc'.
-
-
+] (./main.toc
 1: section
 [5
 
-] (./main.lof)
+])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [6] (./main.lof)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
 
 1: section
-[6
+[7
 
 ] (./main.lot)
 \tf@lot=\write7
@@ -1549,7 +1549,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
 )
 1: section
-[7
+[8
 
 ]
 1: section
@@ -1590,42 +1590,39 @@ Chapter 3.
 
  (./tex/ch4_neural_net_pruning_algorithm.tex
 Chapter 4.
-)
 1: section
 [4
 
 
 
-]
+]) [5]
 \openout2 = `tex/ch5_terrain_classification.aux'.
 
  (./tex/ch5_terrain_classification.tex
 Chapter 5.
-)
-1: section
-[5
-
-
-
-]
-\openout2 = `tex/ch6_experimental_evaluation.aux'.
-
- (./tex/ch6_experimental_evaluation.tex
-Chapter 6.
-)
 1: section
 [6
 
 
 
-]
+]) [7]
+\openout2 = `tex/ch6_experimental_evaluation.aux'.
+
+ (./tex/ch6_experimental_evaluation.tex
+Chapter 6.
+1: section
+[8
+
+
+
+]) [9]
 \openout2 = `tex/conclussion.aux'.
 
  (./tex/conclussion.tex
 Chapter 7.
 )
 1: section
-[7
+[10
 
 
 
@@ -1658,22 +1655,22 @@ n/10.95 http : / / ieeexplore . ieee . org / xpl / articleDetails .
  []
 
 1: section
-[8
+[11
 
 
-]) [9]
-\openout2 = `tex/appendix_a.aux'.
+]) [12]
+\openout2 = `tex/app_code_documentation.aux'.
 
- (./tex/appendix_a.tex
+ (./tex/app_code_documentation.tex
 Appendix A.
 )
-Overfull \hbox (1.30719pt too wide) in paragraph at lines 12--28
+Overfull \hbox (1.30719pt too wide) in paragraph at lines 10--28
 []\T1/lmr/m/n/10.95 Additional de-tails of method-ol-ogy and/or data Di-a-grams
  of spe-cial-ized equip-
  []
 
 1: section
-[10
+[13
 
 
 ]
@@ -1682,23 +1679,23 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
  (./main.aux (./tex/introduction.aux) (./tex/ch1_state_of_the_art.aux)
 (./tex/ch2_master_thesis_goals.aux) (./tex/ch4_neural_net_pruning_algorithm.aux
 ) (./tex/ch5_terrain_classification.aux) (./tex/ch6_experimental_evaluation.aux
-) (./tex/conclussion.aux) (./tex/appendix_a.aux))
+) (./tex/conclussion.aux) (./tex/app_code_documentation.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7CD7020A1736B40763F126727DC52F99;5196.
+(rerunfilecheck)             Checksum: DFAEB32EC104260BD57A49608AE5497A;5997.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28706 strings out of 493304
- 590114 string characters out of 6139872
- 701136 words of memory out of 5000000
- 31674 multiletter control sequences out of 15000+600000
+ 28720 strings out of 493304
+ 590415 string characters out of 6139872
+ 701162 words of memory out of 5000000
+ 31679 multiletter control sequences out of 15000+600000
  82143 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 52i,18n,76p,10423b,1700s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,19n,76p,10423b,2267s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/publi
@@ -1707,10 +1704,10 @@ texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/
 fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (18 pages, 266979 bytes).
+Output written on main.pdf (22 pages, 278289 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 326 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 367 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 297 words of extra memory for PDF output out of 10000 (max. 10000000)
 
