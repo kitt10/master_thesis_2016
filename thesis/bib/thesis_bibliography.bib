@@ -1,4 +1,4 @@
-@article{article:visual,
+@article{article:01:visual,
 	Abstract = {Legged robots need to be able to classify and recognize different terrains to adapt their gait accordingly. Recent works in terrain classification use different types of sensors (like stereovision, 3D laser range, and tactile sensors) and their combination. However, such sensor systems require more computing power, produce extra load to legged robots, and/or might be difficult to install on a small size legged robot. In this work, we present an online terrain classification system. It uses only a monocular camera with a feature-based terrain classification algorithm which is robust to changes in illumination and view points. For this algorithm, we extract local features of terrains using either Scale Invariant Feature Transform (SIFT) or Speed Up Robust Feature (SURF). We encode the features using the Bag of Words (BoW) technique, and then classify the words using Support Vector Machines (SVMs) with a radial basis function kernel. We compare this feature-based approach with a color-based approach on the Caltech-256 benchmark as well as eight different terrain image sets (grass, gravel, pavement, sand, asphalt, floor, mud, and fine gravel). For terrain images, we observe up to 90% accuracy with the feature-based approach. Finally, this online terrain classification system is successfully applied to our small hexapod robot AMOS II. The output of the system providing terrain information is used as an input to its neural locomotion control to trigger an energy-efficient gait while traversing different terrains.},
 	Author = {S. Zenker and E. E. Aksoy and D. Goldschmidth and F. Worgotter and P. Manoonpong},
 	Journal = {International Conference on Advanced Intelligent Mechatronics},
@@ -10,7 +10,17 @@
 	Url = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6584154&tag=1},
 	Year = {2013}}
 
-@article{article:laser,
+@article{article:02:laser,
+    Abstract = {This paper utilizes a 2D laser range finder (LRF) to determine the behavior of a
+walking robot. The LRF provides information for 1) obstacle/gap detection as
+well as 2) terrain classification. The obstacle/gap detection is based on an edge
+detection with increased robustness and accuracy due to customized pre and
+post processing. Its output is used to drive obstacle/gap avoidance behavior or
+climbing behavior, depending on the height of obstacles or the depth of gaps.
+The terrain classification employs terrain roughness to select a proper gait with
+respect to the current terrain. As a result, the combination of these methods
+enables the robot to decide if obstacles and gaps can be climbed up/down or
+have to be avoided while at the same time a terrain specific gait can be chosen.},
 	Author = {P. Kesper and E. Grinke and F. Hesse and F. Worgotter and P. Manoonpong},
 	Journal = {Nature-inspired Mobile Robotics},
 	Numpages = {7},
@@ -19,7 +29,7 @@
 	Url = {http://manoonpong.com/paper/2013/CLAWAR2013_Kesper.pdf},
 	Year = {2012}}
 
-@article{article:motorsignals,
+@article{article:03:motorsignals,
 	Abstract = {The neuromechanical control principles of animal locomotion provide good insights for the development
 of bio-inspired legged robots for walking on challenging surfaces. Based on such principles, we devel-
 oped a neuromechanical controller consisting of a modular neural network (MNN) and of virtual agonist–
@@ -41,17 +51,91 @@ surfaces with the specific resistances between 9.1 and 25.0, and also classify t
 	Url = {www.elsevier.com/locate/robot},
 	Year = {2014}}
 	
-@BOOK{DUMMY:1,
-AUTHOR="John Doe",
-TITLE="The Book without Title",
-PUBLISHER="Dummy Publisher",
-YEAR="2100",
-}
+@article{article:04:onlinelearning,
+	Abstract = {Safe teleoperation during critical missions, such as urban search and rescue, and bomb disposal, requires careful velocity control when different types of terrain are found in the scenario. This can particularly be challenging when mission time is limited and the operator's field of view affected. This paper presents a method for online adapting robot velocities according to the terrain classification results combined from vision- and laser-based classifiers. The vision-based classifier is self-supervised and adapts itself according to the vibration sensing and the pose estimation of the robot. The image patches where the vibration data are gathered are used to train the vision-based classifier. The Support Vector Machine is used for the laser-based classifier to train and classify the data. The final prediction result is produced by using the Naive Bayes Classifier to fuse the vision- and laser-based classifiers. The system is robust to illumination variations, and can be improved online given feedback from the operator.},
+	Author = {W. Mou and A. Kleiner},
+	Journal = {Safety Security and Rescue Robotics},
+    Keywords = {HRI, SVM, Self-supervised Learning, Terrain Classification},
+	Month = {7},
+	Number = {26},
+	Numpages = {7},
+	Pages = {1--7},
+	Title = {Online learning terrain classification for adaptive velocity control},
+	Url = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5981563},
+	Year = {2010}}
+	
+@phdthesis{thesis:05:proprioception,
+	Author = {E. Coyle},
+	Numpages = {102},
+	Title = {Fundamentals and Methods of Terrain Classification Using Proprioceptive Sensors},
+	Year = {2010},
+	School = {Florida State University Tallahassee}}
+	
+@article{article:06:haptic,
+	Abstract = {In this paper, we are presenting a method to estimate terrain properties (such as small-scale geometry or surface friction) to improve the assessment of stability and the guiding of foot placement of legged robots in rough terrain. Haptic feedback, expressed through joint motor currents and ground contact force measurements that arises when prescribing a predefined motion was collected for a variety of ground samples (four different shapes and four different surface properties). Features were extracted from this data and used for training and classification by a multiclass AdaBoost machine learning algorithm. In a single leg testbed, the algorithm could correctly classify about 94% of the terrain shapes, and about 73% of the surface samples.},
+	Author = {M. A. Hoepflinger and C. D. Remy and M. Hutter and L. Spinello and R. Siegwart},
+	Journal = {Robotics and Automation (ICRA), IEEE International Conference},
+	Month = {5},
+	Number = {3},
+	Numpages = {6},
+	Pages = {2828--2833},
+	Title = {Haptic terrain classification for legged robots},
+	Url = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=5509309},
+	Year = {2010}}
+	
+@phdthesis{thesis:07:proprioception,
+	Author = {Mohammed Nour Abdel Gwad Ahmed},
+	Numpages = {173},
+	Title = {An Intelligent Architecture for Legged Robot Terrain Classification Using Proprioceptive and Exteroceptive Data},
+	Year = {2015},
+	Month = {6},
+	School = {University of Bremen}}
+	
+@article{article:08:rhex,
+	Abstract = {Terrain identification is a key enabling ability for generating terrain adaptive behaviors that assist both robot planning and motor control. This paper considers running legged robots from the RHex family, which the military plans to use in the field to assist troops in reconnaissance tasks. Important terrain adaptive behaviors include the selection of gaits, modulation of leg stiffness, and alteration of steering control laws that minimize slippage, maximize speed and/or reduce energy consumption. These terrain adaptive behaviors can be enabled by a terrain identification methodology that combines proprioceptive sensors already available in RHex-type robots. The proposed classification approach is based on the characteristic frequency signatures of data from leg observers, which combine current sensing with a dynamic model of the leg motion. The paper analyzes the classification accuracy obtained using both a single leg and groups of legs (through a voting scheme) on different terrains such as vinyl, asphalt, grass, and pebbles. Additionally, it presents a terrain classifier that works across various gait speeds and in fact almost as good as an overly specialized classifier.},
+	Author = {C. Ordonez and J. Shill and A. Johnson and J. Clark and E. Collins},
+	Keywords = {Leged robots, terrain identification},
+	Journal = {Unmanned Systems Technology XV},
+	Month = {5},
+	Number = {17},
+	Numpages = {6},
+	Title = {Terrain identification for RHex-type robots},
+	Url = {http://proceedings.spiedigitallibrary.org/proceeding.aspx?articleid=1689675},
+	Year = {2013}}
+	
+@article{article:09:roughterrain,
+	Abstract = {Minimally actuated millirobotic crawlers navigate unreliably over uneven terrain–even when designed with inherent stability–mostly because of manufacturing variabilities and a lack of good models for ground interaction. In this paper, we investigate the performance of a legged robot as it
+traverses three distinct rough terrains: tile, carpet, and gravel. Furthermore, we present an accurate, robust, low-lag, and efficient algorithm for terrain classification that uses vibration data from the on-board inertial measurement unit and motor control data from back-EMF sensing and magnetic encoders.},
+	Author = {F. L. G. Bermudez and R. C. Julian and D. W. Haldane and P. Abbeel and R. S. Fearing},
+	Journal = {IEEE/RSJ International Conference on Intelligent Robots and Systems},
+	Month = {12},
+	Number = {7},
+	Numpages = {7},
+	Title = {Performance analysis and terrain classification for a legged robot over rough terrain},
+	Url = {http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6386243},
+	Year = {2012}}
 
-@conference{Xconference,
-    author    = "Martin Bulin",
-    title     = "Title",
-    booktitle = "Book title",
-    year      = "2016",
-}
-
+@article{article:10:pruningalgs,
+	Abstract = {A rule of thumb for obtaining good generalization in systems trained by examples is that one should use the smallest system that will fit the data. Unfortunately, it usually is not obvious what size is best; a system that is too small will not be able to learn the data while one that is just big enough may learn very slowly and be very sensitive to initial conditions and learning parameters. This paper is a survey of neural network pruning algorithms. The approach taken by the methods described here is to train a network that is larger than necessary and then remove the parts that are not needed.},
+	Author = {R. Reed},
+	Journal = {IEEE Transactions on Neural Networks  (Volume:4 ,  Issue: 5)},
+	Month = {9},
+	Numpages = {7},
+	Pages = {740--747},
+	Title = {Pruning Algorithms - A Survey},
+	Url = {http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=248452},
+	Year = {1993}}
+	
+@book{book:11:scorpion,
+	Author = {D. Spenneberg and F. Kirchner},
+	Publisher = {ISBN 978-3-902613-16-5},
+	Title = {The Bio-Inspired SCORPION Robot: Design, Control and Lessons Learned, Climbing and Walking Robots: towards New Applications},
+	Year = {2007}}
+	
+@phdthesis{thesis:12:gaitcontrol,
+	Author = {Dominik Belter},
+	Numpages = {176},
+	Title = {Gait control of the six-legged robot on a rough terrain using computational intelligence learning and optimization methods},
+	Year = {2011},
+	Month = {11},
+	School = {Poznan University of Technology}}
