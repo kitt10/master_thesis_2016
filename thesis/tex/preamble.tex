@@ -68,3 +68,19 @@ hidelinks,
 	bottom=1.5cm, 			% Bottom margin
 	%showframe,				% show how the type block is set on the page
 }
+
+% --------------------------------------
+% Kitt added packages
+% --------------------------------------
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.95}
+
+\usepackage{courier}
+
+\usepackage{listings}
+\lstset{frame=single, basicstyle=\footnotesize\ttfamily, backgroundcolor=\color{lightgray}}
+\renewcommand{\lstlistingname}{Part of Code}
+\renewcommand{\lstlistlistingname}{List of Algorithms and Code Parts}
+
+\usepackage{cleveref}
+\crefname{listing}{part of code}{parts of code}

@@ -1,0 +1,86 @@
+\chapter{Terrain Classification for AMOS II}
+\label{chapter:05:terrain_classification}
+
+The account of the research should be presented in a manner suitable for the field. It should be complete, systematic, and sufficiently detailed to enable a reader to understand how the data were gathered and how to apply similar methods in another study. Notation and formatting must be consistent throughout the thesis, including units of measure, abbreviations, and the numbering scheme for tables, figures, footnotes, and citations. One or more chapters may consist of material published (or submitted for publication) elsewhere. See “Including Published Material in a Thesis or Dissertation” for details.
+
+chapter intro
+1/2 page
+
+\section{Experimental Environment Specification}
+target machine description
+
+3-5 pages
+
+\subsection{Hexapod Robot AMOS II}
+hardware, hexapod info
+
+\subsection{LPZ Robots Simulation}
+simulation info
+
+\section{Virtual Terrains Determination}
+Since the research is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.
+
+Luckily, the \textbf{LpzRobots} AMOS II simulation supports some terrain settings. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
+
+\begin{lstlisting}[language=C++, caption={Setting a terrain ground in main.cpp}, label=code:terrain_ground]
+Substance roughterrainSubstance(terrain_roughness, terrain_slip,
+                       terrain_hardness, terrain_elasticity);
+oodeHandle.substance = roughterrainSubstance;
+TerrainGround* terrainground = new TerrainGround(oodeHandle, 
+                       osgHandle.changeColor(terrain_color),
+                       "rough1.ppm", "", 20, 25, terrain_height);
+\end{lstlisting}
+
+As \cref{code:terrain_ground} shows, the terrain substance is defined by four parameters: \textbf{roughness}, \textbf{slipperiness}, \textbf{hardness} and \textbf{elasticity}.
+
+Besides the substance handle, the \textit{TerrainGround} constructor takes a few more arguments.
+
+\begin{description}
+\item["rough1.ppm"] : an image in the .ppm format, a lowest common denominator color image file format \citep{misc:ppm}, a terrain segmentation is defined by this image
+\item[terrain\_color] : simulation ground color
+\item[20] : walking area x-size 
+\item[25] : walking area y-size
+\item[terrain\_height] : maximum terrain height
+\end{description}
+
+\subsection*{Terrain qualities}
+All parameters connected with the simulation ground have been listed. Some of them are then picked up and being called \textit{terrain qualities}, as they define a terrain type.
+
+It has been decided to keep the \textit{.ppm} image fixed and so \textit{rough1.ppm} is used for every terrain type. Also the walking area size is set to \textit{20x25}, which is big enough. The color is variable for different terrain types, however, besides the simulation graphics it does not have any effect on results. That gives us
+
+
+Number of identifiable virtual terrain types is the first parameter to be determined. 
+
+
+2 pages
+
+\section{Net Input Fixation}
+Determination of sensors to be used and its transformation into a feature vector
+
+2-3 pages
+
+\section{Data Acquisition}
+Description of how the data has been acquired from the simulation and saved as .txt, adding terrain noise
+
+2 pages
+\subsection{Terrain Noise}
+
+\section{Data Processing}
+Cleaning the data (deleting incomplete ones), adding signal noise, transformation into datasets, splitting into training-validation-testing sets
+
+2-3 pages
+\subsection{Signal Noise}
+
+\section{Training and Classification}
+
+Neural net training with several parameters and comparison with training with scikit-neuralnetwork library
+
+2-3 pages
+
+\subsection{Scikit-neuralnetwork library}
+brief description of the library and its usage 1/2 pages
+
+\section{Overall process summary}
+diagram of the overall work
+
+1 page

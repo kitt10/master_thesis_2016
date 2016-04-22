@@ -549,6 +549,14 @@
   \field{year}{2015}
 \endentry
 
+\entry{misc:ppm}{misc}{}
+  \field{labelalpha}{Mis}
+  \field{sortinit}{9}
+  \field{howpublished}{\url{http://netpbm.sourceforge.net/doc/ppm.html}}
+  \field{note}{Updated: 02 November 2013}
+  \field{title}{PPM Format Specification}
+\endentry
+
 \lossort
 \endlossort
 

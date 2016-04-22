@@ -2,13 +2,13 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: biblatex.bst
-A level-1 auxiliary file: tex/introduction.aux
-A level-1 auxiliary file: tex/ch1_state_of_the_art.aux
-A level-1 auxiliary file: tex/ch2_master_thesis_goals.aux
-A level-1 auxiliary file: tex/ch4_neural_net_pruning_algorithm.aux
-A level-1 auxiliary file: tex/ch5_terrain_classification.aux
-A level-1 auxiliary file: tex/ch6_experimental_evaluation.aux
-A level-1 auxiliary file: tex/conclussion.aux
+A level-1 auxiliary file: tex/ch_introduction.aux
+A level-1 auxiliary file: tex/ch_state_of_the_art.aux
+A level-1 auxiliary file: tex/ch_master_thesis_objectives.aux
+A level-1 auxiliary file: tex/ch_neural_network_implementation.aux
+A level-1 auxiliary file: tex/ch_terrain_classification.aux
+A level-1 auxiliary file: tex/ch_experimental_evaluation.aux
+A level-1 auxiliary file: tex/ch_conclussion.aux
 A level-1 auxiliary file: tex/app_code_documentation.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -26,44 +26,44 @@ Database file #2: bib/thesis_bibliography.bib
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 13 entries,
+You've used 14 entries,
             6047 wiz_defined-function locations,
-            1221 strings with 18899 characters,
-and the built_in function-call counts, 46703 in all, are:
-= -- 1772
-> -- 1578
-< -- 619
-+ -- 523
-- -- 544
-* -- 3791
-:= -- 2891
+            1225 strings with 19011 characters,
+and the built_in function-call counts, 48428 in all, are:
+= -- 1817
+> -- 1579
+< -- 641
++ -- 524
+- -- 545
+* -- 3876
+:= -- 2928
 add.period$ -- 0
-call.type$ -- 13
-change.case$ -- 269
+call.type$ -- 14
+change.case$ -- 279
 chr.to.int$ -- 120
-cite$ -- 24
-duplicate$ -- 5259
-empty$ -- 4861
+cite$ -- 28
+duplicate$ -- 5497
+empty$ -- 5140
 format.name$ -- 953
-if$ -- 10488
+if$ -- 10914
 int.to.chr$ -- 0
-int.to.str$ -- 28
+int.to.str$ -- 29
 missing$ -- 0
-newline$ -- 443
+newline$ -- 451
 num.names$ -- 661
-pop$ -- 4050
+pop$ -- 4378
 preamble$ -- 1
-purify$ -- 297
+purify$ -- 302
 quote$ -- 0
-skip$ -- 2556
+skip$ -- 2634
 stack$ -- 0
-substring$ -- 1316
-swap$ -- 1930
-text.length$ -- 453
-text.prefix$ -- 21
+substring$ -- 1331
+swap$ -- 2003
+text.length$ -- 471
+text.prefix$ -- 22
 top$ -- 1
-type$ -- 479
+type$ -- 517
 warning$ -- 0
-while$ -- 333
+while$ -- 336
 width$ -- 0
-write$ -- 429
+write$ -- 436
