@@ -23,18 +23,18 @@
 \contentsline {section}{\numberline {5.1}Experimental Environment Specification}{6}{section.28}
 \contentsline {subsection}{\numberline {5.1.1}Hexapod Robot AMOS II}{6}{subsection.29}
 \contentsline {subsection}{\numberline {5.1.2}LPZ Robots Simulation}{6}{subsection.30}
-\contentsline {section}{\numberline {5.2}Virtual Terrains Determination}{6}{section.31}
-\contentsline {section}{\numberline {5.3}Net Input Fixation}{7}{section.40}
-\contentsline {section}{\numberline {5.4}Data Acquisition}{8}{section.41}
-\contentsline {subsection}{\numberline {5.4.1}Terrain Noise}{8}{subsection.42}
-\contentsline {section}{\numberline {5.5}Data Processing}{8}{section.43}
-\contentsline {subsection}{\numberline {5.5.1}Signal Noise}{8}{subsection.44}
-\contentsline {section}{\numberline {5.6}Training and Classification}{8}{section.45}
-\contentsline {subsection}{\numberline {5.6.1}Scikit-neuralnetwork library}{8}{subsection.46}
-\contentsline {section}{\numberline {5.7}Overall process summary}{8}{section.47}
-\contentsline {chapter}{\numberline {6}Experimental Evaluation}{9}{chapter.48}
-\contentsline {section}{\numberline {6.1}Discussion}{10}{section.49}
-\contentsline {chapter}{\numberline {7}Conclussion}{11}{chapter.50}
-\contentsline {section}{\numberline {7.1}Future Work}{11}{section.51}
-\contentsline {chapter}{Bibliography}{12}{chapter*.52}
-\contentsline {chapter}{\numberline {A}Code Documentation}{14}{appendix.53}
+\contentsline {section}{\numberline {5.2}Virtual Terrain types}{6}{section.31}
+\contentsline {section}{\numberline {5.3}Net Input Fixation}{9}{section.47}
+\contentsline {section}{\numberline {5.4}Data Acquisition}{9}{section.48}
+\contentsline {subsection}{\numberline {5.4.1}Terrain Noise}{10}{subsection.49}
+\contentsline {section}{\numberline {5.5}Data Processing}{10}{section.50}
+\contentsline {subsection}{\numberline {5.5.1}Signal Noise}{10}{subsection.51}
+\contentsline {section}{\numberline {5.6}Training and Classification}{10}{section.52}
+\contentsline {subsection}{\numberline {5.6.1}Scikit-neuralnetwork library}{10}{subsection.53}
+\contentsline {section}{\numberline {5.7}Overall process summary}{10}{section.54}
+\contentsline {chapter}{\numberline {6}Experimental Evaluation}{11}{chapter.55}
+\contentsline {section}{\numberline {6.1}Discussion}{12}{section.56}
+\contentsline {chapter}{\numberline {7}Conclussion}{13}{chapter.57}
+\contentsline {section}{\numberline {7.1}Future Work}{13}{section.58}
+\contentsline {chapter}{Bibliography}{14}{chapter*.59}
+\contentsline {chapter}{\numberline {A}Code Documentation}{16}{appendix.60}

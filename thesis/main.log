@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  22 APR 2016 14:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  25 APR 2016 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1229,6 +1229,13 @@ Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+\everycr=\toks22
+\minrowclearance=\skip70
+)
+\rownum=\count356
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
 Package xcolor Info: Model `RGB' extended on input line 1353.
@@ -1243,23 +1250,23 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count356
+\lst@mode=\count357
 \lst@gtempboxa=\box52
-\lst@token=\toks22
-\lst@length=\count357
+\lst@token=\toks23
+\lst@length=\count358
 \lst@currlwidth=\dimen185
-\lst@column=\count358
-\lst@pos=\count359
+\lst@column=\count359
+\lst@pos=\count360
 \lst@lostspace=\dimen186
 \lst@width=\dimen187
-\lst@newlines=\count360
-\lst@lineno=\count361
+\lst@newlines=\count361
+\lst@lineno=\count362
 \lst@maxwidth=\dimen188
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-\c@lstnumber=\count362
-\lst@skipnumbers=\count363
+\c@lstnumber=\count363
+\lst@skipnumbers=\count364
 \lst@framebox=\box53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -1293,6 +1300,91 @@ LaTeX Info: Redefining \Cpagerefrange on input line 2230.
 LaTeX Info: Redefining \labelcref on input line 2230.
 LaTeX Info: Redefining \labelcpageref on input line 2230.
 Package cleveref Info: `listings' support loaded on input line 2950.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count365
+\float@exts=\toks24
+\float@box=\box54
+\@float@everytoks=\toks25
+\@floatcapt=\box55
+)
+Package scrhack Info: loading float hack on input line 89.
+
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/float.hak
+File: float.hak 2013/12/19 v3.12 KOMA-Script package (hacking package float)
+Package scrhack Info: redefining \newfloat on input line 161.
+Package scrhack Info: redefining \listof on input line 161.
+Package scrhack Info: undefining \float@addtolists on input line 161.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))))
+(/usr/share/texlive/texmf-dist/tex/latex/commath/commath.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip71
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen189
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count366
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count367
+\leftroot@=\count368
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count369
+\DOTSCASE@=\count370
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box56
+\strutbox@=\box57
+\big@size=\dimen190
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count371
+\c@MaxMatrixCols=\count372
+\dotsspace@=\muskip17
+\c@parentequation=\count373
+\dspbrk@lvl=\count374
+\tag@help=\toks26
+\row@=\count375
+\column@=\count376
+\maxfields@=\count377
+\andhelp@=\toks27
+\eqnshift@=\dimen191
+\alignsep@=\dimen192
+\tagshift@=\dimen193
+\tagwidth@=\dimen194
+\totwidth@=\dimen195
+\lineht@=\dimen196
+\@envbody=\toks28
+\multlinegap=\skip72
+\multlinetaggap=\skip73
+\mathdisplay@stack=\toks29
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 ))
 (./tex/thesis_info.tex)
 Package biblatex Info: Trying to load language 'english'...
@@ -1416,33 +1508,20 @@ fg
 File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 ) (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count364
-\scratchdimen=\dimen189
-\scratchbox=\box54
-\nofMPsegments=\count365
-\nofMParguments=\count366
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count367
-\MPscratchDim=\dimen190
-\MPnumerator=\count368
-\makeMPintoPDFobject=\count369
-\everyMPtoPDFconversion=\toks24
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+\scratchcounter=\count378
+\scratchdimen=\dimen197
+\scratchbox=\box58
+\nofMPsegments=\count379
+\nofMParguments=\count380
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count381
+\MPscratchDim=\dimen198
+\MPnumerator=\count382
+\makeMPintoPDFobject=\count383
+\everyMPtoPDFconversion=\toks31
 )
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1504,7 +1583,7 @@ Package biblatex Info: ... file 'main.bbl' found.
 (./main.bbl)
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
-\AtBeginShipoutBox=\box55
+\AtBeginShipoutBox=\box59
 Package hyperref Info: Link coloring OFF on input line 5.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1512,7 +1591,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count370
+\c@section@level=\count384
 )
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
@@ -1522,9 +1601,9 @@ LaTeX Info: Redefining \nameref on input line 5.
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-\c@lstlisting=\count371
+\c@lstlisting=\count385
 Package scrhack Info: undefining \float@addtolists on input line 5.
-\c__siunitx_mathsf_int=\count372
+\c__siunitx_mathsf_int=\count386
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 5.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1555,7 +1634,7 @@ LaTeX Font Info:    Try loading font information for OT1+lmss on input line 5.
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\c__siunitx_mathtt_int=\count373
+\c__siunitx_mathtt_int=\count387
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 5.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
@@ -1717,30 +1796,66 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 29.
-Package cleveref Info: loaded `english' language definitions on input line 65.
- [7])
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 52.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 52.
+Package cleveref Info: loaded `english' language definitions on input line 71.
+ [7]
+Overfull \hbox (6.92163pt too wide) in paragraph at lines 77--95
+ [][] 
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 113.
+
+[8]
+Package epstopdf Info: Source file: <img/terrains_variability.eps>
+(epstopdf)                    date: 2016-04-25 16:21:48
+(epstopdf)                    size: 971013 bytes
+(epstopdf)             Output file: <img/terrains_variability-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-04-25 16:22:16
+(epstopdf)                    size: 29492 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/terrains_variability-e
+ps-converted-to.pdf img/terrains_variability.eps>
+(epstopdf)             \includegraphics on input line 118.
+Package epstopdf Info: Output file is already uptodate.
+
+<img/terrains_variability-eps-converted-to.pdf, id=341, 394.47375pt x 406.51875
+pt>
+File: img/terrains_variability-eps-converted-to.pdf Graphic file (type pdf)
+ <use img/terrains_variability-eps-converted-to.pdf>
+Package pdftex.def Info: img/terrains_variability-eps-converted-to.pdf used on 
+input line 118.
+(pdftex.def)             Requested size: 361.34995pt x 372.3828pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 119.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 119.
+Package cleveref Info: loaded `english' language definitions on input line 133.
+
+ [9 <./img/terrains_variability-eps-converted-to.pdf>])
 Package cleveref Info: loaded `english' language definitions on input line 21.
- [8]
+ [10]
 \openout2 = `tex/ch_experimental_evaluation.aux'.
 
-
-(./tex/ch_experimental_evaluation.tex
+ (./tex/ch_experimental_evaluation.tex
 Chapter 6.
 1: section
-[9
+[11
 
 
 
 ])
 Package cleveref Info: loaded `english' language definitions on input line 22.
- [10]
+ [12]
 \openout2 = `tex/ch_conclussion.aux'.
 
  (./tex/ch_conclussion.tex
 Chapter 7.
 )
 1: section
-[11
+[13
 
 
 
@@ -1757,12 +1872,12 @@ ding .
  []
 
 1: section
-[12
+[14
 
 
 ])
 Package cleveref Info: loaded `english' language definitions on input line 28.
- [13]
+ [15]
 \openout2 = `tex/app_code_documentation.aux'.
 
  (./tex/app_code_documentation.tex
@@ -1774,7 +1889,7 @@ Overfull \hbox (1.30719pt too wide) in paragraph at lines 10--28
  []
 
 1: section
-[14
+[16
 
 
 ]
@@ -1790,33 +1905,39 @@ Package cleveref Info: loaded `english' language definitions on input line 25.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C63BEDF31193C1FB9FF040E5ECB32E59;5998.
+(rerunfilecheck)             Checksum: 390D6332B26C4AC0BD18FA8BA2E9E0AD;5953.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32655 strings out of 493304
- 656668 string characters out of 6139872
- 787201 words of memory out of 5000000
- 35554 multiletter control sequences out of 15000+600000
- 92469 words of font info for 59 fonts, out of 8000000 for 9000
+ 33405 strings out of 493304
+ 665782 string characters out of 6139872
+ 804375 words of memory out of 5000000
+ 36254 multiletter control sequences out of 15000+600000
+ 124976 words of font info for 81 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 55i,20n,76p,10423b,2544s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
-fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
-}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (24 pages, 279127 bytes).
+ 56i,20n,83p,10423b,2548s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/en
+c/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/sh
+are/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier
+/ucrr8a.pfb>
+Output written on main.pdf (26 pages, 389513 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 396 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 297 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 550 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
+ 100 named destinations out of 1000 (max. 500000)
+ 302 words of extra memory for PDF output out of 10000 (max. 10000000)
 
