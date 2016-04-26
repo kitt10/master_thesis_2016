@@ -1,10 +1,39 @@
-\chapter{Terrain Classification for AMOS II}
-\label{chapter:05:terrain_classification}
+\chapter{Terrain Classification for AMOS II} \label{chapter:05:terrain_classification}
+Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a specified length. The lenght of feature vectors usually determines an input of chosen classifier and number of classes sets an output.
 
-The account of the research should be presented in a manner suitable for the field. It should be complete, systematic, and sufficiently detailed to enable a reader to understand how the data were gathered and how to apply similar methods in another study. Notation and formatting must be consistent throughout the thesis, including units of measure, abbreviations, and the numbering scheme for tables, figures, footnotes, and citations. One or more chapters may consist of material published (or submitted for publication) elsewhere. See “Including Published Material in a Thesis or Dissertation” for details.
+Out of a wide range of classification methods, a feedforward neural network approach (see \cref{chapter:04:neural_net_implementation}) is chosen. The classification problem is connected to AMOS II, an open-source multi sensori-motor robotic platform. The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data.
 
-chapter intro
-1/2 page
+\section{Overall process summary}
+The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented. To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
+
+Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type for a sufficiently long period of time and data from all proprioceptive sensors is saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
+
+Having a clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. It is indicated on \cref{img:terrain_classification_process}, that several datesets and several classifiers are generated during the process. These packages may differ in following parameters.
+
+\textit{Dataset parameters:}
+\begin{itemize}
+\item terrain types included
+\item sensors on input
+\item samples length (number of simulation timesteps)
+\item terrain noise
+\item signal noise
+\item number of samples
+\end{itemize}
+
+\textit{Trained net parameters:}
+\begin{itemize}
+\item neural network structure
+\item accuracy on training/validation/testing sets 
+\end{itemize}
+
+An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in section X. Classification performance of developed tools are compared to a \textit{Scikit-learn} network classification library sknn [].
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{terrain_classification_process}
+  \caption{Terrain classification process - overall diagram.}
+  \label{img:terrain_classification_process}
+\end{figure}
 
 \section{Experimental Environment Specification}
 target machine description
@@ -12,10 +41,16 @@ target machine description
 3-5 pages
 
 \subsection{Hexapod Robot AMOS II}
-hardware, hexapod info
 
-\subsection{LPZ Robots Simulation}
-simulation info
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=343px]{amosii}
+  \caption{AMOS II.}
+  \label{img:amosii}
+\end{figure}
+
+\subsection{LPZ Robots Simulation} \label{ssec:lpzrobots_sim}
+It is a part of a simulation software called \textit{LpzRobots} provided by the University of Leipzig \citep{misc:lpzrobots} under GPL license.
 
 \section{Virtual Terrain types}
 Since the verification is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.
@@ -44,7 +79,7 @@ Besides the substance handle, the \textit{TerrainGround} constructor takes six m
 \item[terrain\_height] : maximum terrain height
 \end{description}
 
-\subsection*{Terrain qualities}
+\subsection*{Terrain qualities} \label{ssec:terrain_qualities}
 Out of the listed ground parameters, some of them are picked up and being called \textit{terrain qualities}, as they define a specific terrain type.
 
 It has been decided not to change the \textit{.ppm} image for various terrains and so \textit{rough1.ppm} is fixed. Also the walking area is set to (big enough) final size of \textit{20x25}. The color is variable, however, besides the simulation graphics it does not have any effect on results. 
@@ -65,14 +100,14 @@ height       & 0.0       & 0.1
 \end{tabular}
 \end{table}
 
-\subsection*{Terrains parameters determination}
+\subsection*{Terrains parameters determination} \label{ssec:terrain_parameters}
 To determine a terrain type, one has to come up with the five parameters from \cref{tab:terrain_qualities}.
 
-First, number of identifiable virtual terrain types needs to be determined. For purposes of this thesis, it has been decided to create \textbf{14 terrain types}. Their parameters (showed in \cref{tab:terrains_parameters} and ) have been set up intuitively, based on the AMOS II simulated behaviour.
+First, number of identifiable virtual terrain types needs to be determined. For purposes of this thesis, it has been decided to create \textbf{14 terrain types}. Their parameters (showed in \cref{tab:terrains_parameters}) have been set up intuitively, based on the AMOS II simulated behaviour. With respect to the qualities ranges from \cref{tab:terrain_qualities}, the values have been normed to (0, 1).
 
 \begin{table}[H]
 \centering
-\caption{Virtual terrain types parameters. With respect to the qualities ranges from \cref{tab:terrain_qualities}, the values have been normed to (0, 1).}
+\caption{Virtual terrain types parameters.}
 \label{tab:terrains_parameters}
 \begin{tabular}{|l|l|c|c|c|c|c|}
 \hline
@@ -96,7 +131,7 @@ First, number of identifiable virtual terrain types needs to be determined. For 
 
 Colors linked to the terrains in \cref{tab:terrains_parameters} are used in the simulation as well as in the figures in Results section.
 
-\subsection*{Analysis of chosen parameters}
+\subsection*{Analysis of chosen parameters} \label{ssec:terrains_analysis}
 In general, proper data preparation is an important part of classification tasks, hence a brief analysis is presented.
 
 The goal is to imitate real terrains authentically as possible and at the same time to generate such terrains, that are clearly distinguishable from each other. The more two terrains differ the better classification results are expected.
@@ -116,7 +151,7 @@ The following figure (\ref{fig:terrains_parameters}) shows the variability (simi
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{terrains_variability.eps}
-  \caption{Variability of generated terrain types. $ SF=0.0 $ : equal terrains, $ SF=5.0 $ : very different terrains}
+  \caption{Variability of generated terrain types.}
   \label{fig:terrains_parameters}
 \end{figure}
 
@@ -146,8 +181,5 @@ Neural net training with several parameters and comparison with training with sc
 
 \subsection{Scikit-neuralnetwork library}
 brief description of the library and its usage 1/2 pages
-
-\section{Overall process summary}
-diagram of the overall work
 
 1 page

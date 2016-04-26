@@ -551,10 +551,20 @@
 
 \entry{misc:ppm}{misc}{}
   \field{labelalpha}{Mis}
+  \field{extraalpha}{1}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://netpbm.sourceforge.net/doc/ppm.html}}
   \field{note}{Updated: 02 November 2013}
   \field{title}{PPM Format Specification}
+\endentry
+
+\entry{misc:lpzrobots}{misc}{}
+  \field{labelalpha}{Mis}
+  \field{extraalpha}{2}
+  \field{sortinit}{9}
+  \field{howpublished}{\url{http://robot.informatik.uni-leipzig.de/software/}}
+  \field{note}{last modified: 06. July 2015}
+  \field{title}{Research Network for Self-Organization of Robot Behavior}
 \endentry
 
 \lossort
