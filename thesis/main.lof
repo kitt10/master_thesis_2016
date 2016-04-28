@@ -9,7 +9,10 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{7}{figure.caption.29}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{8}{figure.caption.32}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{9}{figure.caption.33}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Variability of generated terrain types.\relax }}{13}{figure.caption.52}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{11}{figure.caption.36}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Structure of the two repositories (LPZRobots and GoRobots). \citep {misc:lpzrobots}\relax }}{11}{figure.caption.37}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Simulation alternative for AMOS II.\relax }}{12}{figure.caption.38}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Variability of generated terrain types.\relax }}{15}{figure.caption.55}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

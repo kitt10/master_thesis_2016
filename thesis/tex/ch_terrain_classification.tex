@@ -107,11 +107,52 @@ Regarding robots actuators, the servo motors can produce variably compliant moti
 For purposes of this thesis, it is enough to know that it is possible to generate various gaits using the joints actuators and robots neural locomotion control. The gait controller used for this research is described in \cref{ssec:tripod_gait_controller}.
 
 \subsection{LPZ Robots Simulation} \label{ssec:lpzrobots_sim}
-It is a part of a simulation software called \textit{LpzRobots} provided by the University of Leipzig \citep{misc:lpzrobots} under GPL license.
+The \textit{lpzrobots} project, developed by a research group at the University of Leipzig \citep{misc:lpzrobots} under GPL license, contains many subprojects. For purposes of this thesis, the most important ones are:
+
+\begin{description}
+\item[selforg] : homeokinetic controllers implementation framework
+\item[ode\_robots] : a 3D physically correct robot simulator
+\end{description}
+
+The project is implemented in \textit{C++} and needs an Unix system to be run. It consists of two main GIT repositories to be forked - lpzrobots and go\_robots. The overall software architecture is shown on \cref{img:lpzrobots_architecture}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{lpzrobots_architecture}
+  \caption{Software architecture for LPZRobots and GoRobots. \citep{misc:lpzrobots}}
+  \label{img:lpzrobots_architecture}
+\end{figure}
+
+To introduce the elements in \cref{img:lpzrobots_architecture}, \textit{ThisSim} is an inherited class of another class called \textit{Simulation} and is initialized everytime the simulation is launched. It integrates all elements together, controls the environment as well as the robot and sets up initial parameters.
+
+An instance of the \textit{Agent} class integrates all components of the agent (robot) by using the shown classes.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{lpzrobots_repos}
+  \caption{Structure of the two repositories (LPZRobots and GoRobots). \citep{misc:lpzrobots}}
+  \label{img:lpzrobots_repos}
+\end{figure}
+
+On \cref{img:lpzrobots_repos} the cooperation of the two repositories is illustrated. With reference to \cref{app:code_documentation}, one can call the \textit{main.cpp} file from \textit{root/simulation/mbulinai22015-gorobots\_edu-fork/practices/amosii} directory as the main simulation file for purposes of the thesis. It sets up the environment with initial parameters $ controlinterval = 10 $ and $ simstepsize = 0.01 $, which means the simulation sensitivity is \textit{10 steps} per second.
+
+It also sets the initial camera and robot position in the map. The robot position is chosen randomly and the reason for that is described in \cref{sec:data_acquisition}. The robot fixator, which is originally implemented for AMOS II is removed, so the robot starts walking right after the simulation is launched.
+
+The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this research it is fixed to zero however and only the terrain noise combined with a signal noise are used.
+
+The virtual vizualization of AMOS II is illustrated on \cref{img:amosii_sim}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{amosii_sim}
+  \caption{Simulation alternative for AMOS II.}
+  \label{img:amosii_sim}
+\end{figure}
 
 \subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
 
-\section{Virtual Terrain Types}
+
+\section{Virtual Terrain Types} \label{sec:virtual_terrain_types}
 Since the verification is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.
 
 Luckily, the \textbf{LpzRobots} AMOS II simulator supports some terrain settings. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
@@ -220,11 +261,11 @@ Determination of sensors to be used and its transformation into a feature vector
 
 2-3 pages
 
-\section{Data Acquisition}
+\section{Data Acquisition} \label{sec:data_acquisition}
 Description of how the data has been acquired from the simulation and saved as .txt, adding terrain noise
 
 2 pages
-\subsection{Terrain Noise}
+\subsection{Terrain Noise} \label{ssec:terrain_noise}
 
 \section{Data Processing}
 Cleaning the data (deleting incomplete ones), adding signal noise, transformation into datasets, splitting into training-validation-testing sets
