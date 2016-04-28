@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  26 APR 2016 15:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  28 APR 2016 12:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1272,7 +1272,7 @@ File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
-Package scrhack Info: loading listings hack on input line 81.
+Package scrhack Info: loading listings hack on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/listings.hak
 File: listings.hak 2013/12/19 v3.12 KOMA-Script package (hacking package listin
@@ -1309,7 +1309,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks25
 \@floatcapt=\box55
 )
-Package scrhack Info: loading float hack on input line 89.
+Package scrhack Info: loading float hack on input line 84.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/float.hak
 File: float.hak 2013/12/19 v3.12 KOMA-Script package (hacking package float)
@@ -1773,28 +1773,44 @@ Package cleveref Info: loaded `english' language definitions on input line 20.
 
  (./tex/ch_terrain_classification.tex
 Chapter 5.
+<img/terrain_classification_process.png, id=332, 534.99875pt x 595.22375pt>
+File: img/terrain_classification_process.png Graphic file (type png)
+
+<use img/terrain_classification_process.png>
+Package pdftex.def Info: img/terrain_classification_process.png used on input l
+ine 17.
+(pdftex.def)             Requested size: 361.34995pt x 402.04025pt.
+
 1: section
 [6
 
 
 
 ]
-<img/terrain_classification_process.png, id=306, 534.99875pt x 595.22375pt>
-File: img/terrain_classification_process.png Graphic file (type png)
-
-<use img/terrain_classification_process.png>
-Package pdftex.def Info: img/terrain_classification_process.png used on input l
-ine 33.
-(pdftex.def)             Requested size: 361.34995pt x 402.04025pt.
-Package cleveref Info: loaded `english' language definitions on input line 41.
- [7 <./img/terrain_classification_process.png>] <img/amosii.png, id=313, 344.28
-625pt x 315.1775pt>
+Package cleveref Info: loaded `english' language definitions on input line 39.
+ [7 <./img/terrain_classification_process.png>]
+<img/amosii.png, id=348, 344.28625pt x 315.1775pt>
 File: img/amosii.png Graphic file (type png)
-
-<use img/amosii.png>
+ <use img/amosii.png>
 Package pdftex.def Info: img/amosii.png used on input line 47.
 (pdftex.def)             Requested size: 344.2875pt x 315.18153pt.
+Package cleveref Info: loaded `english' language definitions on input line 55.
 
+[8 <./img/amosii.png (PNG copy)>]
+<img/amosii_leg.png, id=359, 167.87718pt x 173.89969pt>
+File: img/amosii_leg.png Graphic file (type png)
+
+<use img/amosii_leg.png>
+Package pdftex.def Info: img/amosii_leg.png used on input line 58.
+(pdftex.def)             Requested size: 225.84457pt x 233.94775pt.
+
+Overfull \hbox (0.91516pt too wide) in paragraph at lines 77--105
+ [][] 
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 106.
+
+[9 <./img/amosii_leg.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -1804,31 +1820,32 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
-Package cleveref Info: loaded `english' language definitions on input line 60.
- [8 <./img/amosii.png (PNG copy)>]
+Package cleveref Info: loaded `english' language definitions on input line 119.
+
+ [10]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 60.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 60.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+nput line 119.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 119.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 64.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 123.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 87.
+(Font)              <9> on input line 146.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 87.
-Package cleveref Info: loaded `english' language definitions on input line 106.
+(Font)              <5> on input line 146.
+Package cleveref Info: loaded `english' language definitions on input line 165.
 
-
-[9]
-Overfull \hbox (6.92163pt too wide) in paragraph at lines 112--130
+ [11]
+Overfull \hbox (6.92163pt too wide) in paragraph at lines 171--189
  [][] 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 148.
+Package cleveref Info: loaded `english' language definitions on input line 207.
 
-[10]
+[12]
 Package epstopdf Info: Source file: <img/terrains_variability.eps>
 (epstopdf)                    date: 2016-04-25 16:21:48
 (epstopdf)                    size: 971013 bytes
@@ -1838,40 +1855,40 @@ pdf>
 (epstopdf)                    size: 29492 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/terrains_variability-e
 ps-converted-to.pdf img/terrains_variability.eps>
-(epstopdf)             \includegraphics on input line 153.
+(epstopdf)             \includegraphics on input line 212.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/terrains_variability-eps-converted-to.pdf, id=363, 394.47375pt x 406.51875
+<img/terrains_variability-eps-converted-to.pdf, id=424, 394.47375pt x 406.51875
 pt>
 File: img/terrains_variability-eps-converted-to.pdf Graphic file (type pdf)
  <use img/terrains_variability-eps-converted-to.pdf>
 Package pdftex.def Info: img/terrains_variability-eps-converted-to.pdf used on 
-input line 153.
+input line 212.
 (pdftex.def)             Requested size: 361.34995pt x 372.3828pt.
-Package cleveref Info: loaded `english' language definitions on input line 173.
+Package cleveref Info: loaded `english' language definitions on input line 232.
 
- [11 <./img/terrains_variability-eps-converted-to.pdf>])
+ [13 <./img/terrains_variability-eps-converted-to.pdf>])
 Package cleveref Info: loaded `english' language definitions on input line 21.
- [12]
+ [14]
 \openout2 = `tex/ch_experimental_evaluation.aux'.
 
  (./tex/ch_experimental_evaluation.tex
 Chapter 6.
 1: section
-[13
+[15
 
 
 
 ])
 Package cleveref Info: loaded `english' language definitions on input line 22.
- [14]
+ [16]
 \openout2 = `tex/ch_conclussion.aux'.
 
  (./tex/ch_conclussion.tex
 Chapter 7.
 )
 1: section
-[15
+[17
 
 
 
@@ -1888,10 +1905,16 @@ ding .
  []
 
 1: section
-[16
+[18
 
 
 ]
+Overfull \hbox (12.86153pt too wide) in paragraph at lines 1--1
+[][]\T1/lmr/m/it/10.95 Open-source multi sensori-motor robotic plat-form AMOS I
+I\T1/lmr/m/n/10.95 . []$\T1/pcr/m/n/10.95 http :
+ []
+
+
 Overfull \hbox (6.80716pt too wide) in paragraph at lines 1--1
 [][]\T1/lmr/m/it/10.95 Research Net-work for Self-Organization of Robot Be-hav-
 ior\T1/lmr/m/n/10.95 . []$\T1/pcr/m/n/10.95 http :
@@ -1899,7 +1922,7 @@ ior\T1/lmr/m/n/10.95 . []$\T1/pcr/m/n/10.95 http :
 
 )
 Package cleveref Info: loaded `english' language definitions on input line 28.
- [17]
+ [19]
 \openout2 = `tex/app_code_documentation.aux'.
 
  (./tex/app_code_documentation.tex
@@ -1911,7 +1934,7 @@ Overfull \hbox (1.30719pt too wide) in paragraph at lines 10--28
  []
 
 1: section
-[18
+[20
 
 
 ]
@@ -1927,19 +1950,19 @@ Package cleveref Info: loaded `english' language definitions on input line 25.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EB1D98B1D8A0634DABA571603EC87192;5876.
+(rerunfilecheck)             Checksum: FCDA538C7B8610BFB048F6FF3ED245D0;6662.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33421 strings out of 493304
- 666337 string characters out of 6139872
- 804960 words of memory out of 5000000
- 36265 multiletter control sequences out of 15000+600000
- 111707 words of font info for 71 fonts, out of 8000000 for 9000
+ 33451 strings out of 493304
+ 666894 string characters out of 6139872
+ 806570 words of memory out of 5000000
+ 36288 multiletter control sequences out of 15000+600000
+ 115970 words of font info for 72 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,20n,79p,10423b,2548s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,20n,79p,10423b,2613s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/en
@@ -1956,10 +1979,10 @@ are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
 exmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier
 /ucrr8a.pfb>
-Output written on main.pdf (28 pages, 564114 bytes).
+Output written on main.pdf (30 pages, 646926 bytes).
 PDF statistics:
- 574 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
- 105 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 639 PDF objects out of 1000 (max. 8388607)
+ 538 compressed objects within 6 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -549,9 +549,17 @@
   \field{year}{2015}
 \endentry
 
-\entry{misc:ppm}{misc}{}
+\entry{misc:amosii}{misc}{}
   \field{labelalpha}{Mis}
   \field{extraalpha}{1}
+  \field{sortinit}{9}
+  \field{howpublished}{\url{http://manoonpong.com/AMOSII.html}}
+  \field{title}{Open-source multi sensori-motor robotic platform AMOS II}
+\endentry
+
+\entry{misc:ppm}{misc}{}
+  \field{labelalpha}{Mis}
+  \field{extraalpha}{2}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://netpbm.sourceforge.net/doc/ppm.html}}
   \field{note}{Updated: 02 November 2013}
@@ -560,7 +568,7 @@
 
 \entry{misc:lpzrobots}{misc}{}
   \field{labelalpha}{Mis}
-  \field{extraalpha}{2}
+  \field{extraalpha}{3}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://robot.informatik.uni-leipzig.de/software/}}
   \field{note}{last modified: 06. July 2015}

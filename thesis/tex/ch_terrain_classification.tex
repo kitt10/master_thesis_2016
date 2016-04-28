@@ -1,30 +1,14 @@
 \chapter{Terrain Classification for AMOS II} \label{chapter:05:terrain_classification}
-Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a specified length. The lenght of feature vectors usually determines an input of chosen classifier and number of classes sets an output.
+Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The lenght of feature vectors usually determines an input of chosen classifier and number of classes sets an output.
 
-Out of a wide range of classification methods, a feedforward neural network approach (see \cref{chapter:04:neural_net_implementation}) is chosen. The classification problem is connected to AMOS II, an open-source multi sensori-motor robotic platform. The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data.
+The classification problem in this thesis relates to AMOS II, an open-source multi sensori-motor robotic platform (see \cref{img:amosii}). The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data and as \cref{chapter:04:neural_net_implementation} reveals, feedforward neural networks are involved.
 
-\section{Overall process summary}
-The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented. To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
+\section{Overall Process Summary}
+The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
 
-Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type for a sufficiently long period of time and data from all proprioceptive sensors is saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
+Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type for a sufficiently long period of time and data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
 
-Having a clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. It is indicated on \cref{img:terrain_classification_process}, that several datesets and several classifiers are generated during the process. These packages may differ in following parameters.
-
-\textit{Dataset parameters:}
-\begin{itemize}
-\item terrain types included
-\item sensors on input
-\item samples length (number of simulation timesteps)
-\item terrain noise
-\item signal noise
-\item number of samples
-\end{itemize}
-
-\textit{Trained net parameters:}
-\begin{itemize}
-\item neural network structure
-\item accuracy on training/validation/testing sets 
-\end{itemize}
+Having a clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated on \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
 
 An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in section X. Classification performance of developed tools are compared to a \textit{Scikit-learn} network classification library sknn [].
 
@@ -35,24 +19,99 @@ An optimal neural network classifier is found. The optimal network is then prune
   \label{img:terrain_classification_process}
 \end{figure}
 
+The dataset packages may differ in these parameters:
+\begin{itemize}
+\item terrain types included (-> number of classes)
+\item sensors on input
+\item samples length (number of simulation timesteps)
+\item terrain noise and signal noise
+\item number of samples
+\end{itemize}
+
+The trained networks may differ in following parameters:
+\begin{itemize}
+\item neural network structure
+\item accuracy on training/validation/testing sets 
+\end{itemize}
+
 \section{Experimental Environment Specification}
-target machine description
+Naturally, the idea of the research is to implement an online terrain classifier on the real machine. Therefore the target robot is described in the following section (\ref{ssec:amosii}).
 
-3-5 pages
+Nevertheless, it is usually a good idea to base the reasearch on simulation data if a satisfactory simulator is available. In this case, \textit{LPZ Robots} \citep{misc:lpzrobots} is used (\cref{ssec:lpzrobots_sim}).
 
-\subsection{Hexapod Robot AMOS II}
+\subsection{Hexapod Robot AMOS II} \label{ssec:amosii}
+The \textit{AMOS II} abbreviation stands for Advanced Mobility Sensor Driven-Walking Device - version II. It is a biologically inspired hardware platform of size 30x40x20 cm and weight 5.8 Kg (see \cref{img:amosii}). It is mainly used to perform experiments with neural control, memory and learning on a device with many degrees of freedom and to study the coordination of it \citep{misc:amosii}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=343px]{amosii}
-  \caption{AMOS II.}
+  \caption{AMOS II. \citep{misc:amosii}}
   \label{img:amosii}
 \end{figure}
+
+In general, the robot serves as a hardware platform for neural perception-action systems experiments. The body parts are modeled on the basis of robot's biological inspiration - a cockroach.
+
+A wide range of sensors allows AMOS II to perform several autonomous behaviours. However, only the proprioceptive sensors are important for this research, therefore, we focus on angle sensors and foot contact sensors. All of them are located on robot's legs, so the leg structure is shown on \cref{img:amosii_leg}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=225px]{amosii_leg}
+  \caption{AMOS II. \citep{misc:amosii}}
+  \label{img:amosii_leg}
+\end{figure}
+
+As figures \ref{img:amosii} and \ref{img:amosii_leg} reveal, the robot has six foot contact sensors in total, one on each leg. Each of them returns a value from range $ [0.0, 1.0] $ depending on how strong the foot contact is - it is equal $ 1.0 $ if the robot stands on the leg with its full weight and it equals $ 0.0 $ when the leg is in the air.
+
+There are three joints on each of robots legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
+
+These joints are physically actuated by standard servo motors. Having the servos positions, angles of the joints are known and are also considered as propriceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textbf{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:lpzrobots_sim}), it is omitted in this research.
+
+In \cref{tab:proprioceptors} there are all the propriceptors, their shortcuts and original ranges listed. The ranges are based on the individual servos locations and are explicitly set up to avoid collisions. In \cref{sec:feature_vector_building} a normalization of these ranges is discussed.
+
+Regarding robots actuators, the servo motors can produce variably compliant motions as if each of them were driven by a pair of agonist and antagonist muscles (see \cite{misc:amosii} for details). 
+
+\begin{table}[H]
+\centering
+\caption{AMOS II - Proprioceptive sensors}
+\label{tab:proprioceptors}
+\begin{tabular}{|l|l|c|}
+\hline
+\textit{shortcut} & \multicolumn{1}{c|}{\textit{sensor description}} & \textit{original range} \\ \hline
+\textbf{ATRf}         & Angle sensor, Thoraco joint, Right front leg     &                         \\ \hline
+\textbf{ATRm}         & Angle sensor, Thoraco joint, Right middle leg    &                         \\ \hline
+\textbf{ATRh}         & Angle sensor, Thoraco joint, Right hind leg      &                         \\ \hline
+\textbf{ATLf}         & Angle sensor, Thoraco joint, Left front leg      &                         \\ \hline
+\textbf{ATLm}         & Angle sensor, Thoraco joint, Left middle leg     &                         \\ \hline
+\textbf{ATLh}         & Angle sensor, Thoraco joint, Left hind leg       &                         \\ \hline
+\textbf{ACRf}         & Angle sensor, Coxa joint, Right front leg        &                         \\ \hline
+\textbf{ACRm}         & Angle sensor, Coxa joint, Right middle leg       &                         \\ \hline
+\textbf{ACRh}         & Angle sensor, Coxa joint, Right hind leg         &                         \\ \hline
+\textbf{ACLf}         & Angle sensor, Coxa joint, Left front leg         &                         \\ \hline
+\textbf{ACLm}         & Angle sensor, Coxa joint, Left middle leg        &                         \\ \hline
+\textbf{ACLh}         & Angle sensor, Coxa joint, Left hind leg          &                         \\ \hline
+\textbf{AFRf}         & Angle sensor, Femur joint, Right front leg       &                         \\ \hline
+\textbf{AFRm}         & Angle sensor, Femur joint, Right middle leg      &                         \\ \hline
+\textbf{AFRh}         & Angle sensor, Femur joint, Right hind leg        &                         \\ \hline
+\textbf{AFLf}         & Angle sensor, Femur joint, Left front leg        &                         \\ \hline
+\textbf{AFLm}         & Angle sensor, Femur joint, Left middle leg       &                         \\ \hline
+\textbf{AFLh}         & Angle sensor, Femur joint, Left hind leg         &                         \\ \hline
+\textbf{FRf}          & Foot contact sensor, Right front leg             & {[}0.0, 1.0{]}          \\ \hline
+\textbf{FRm}          & Foot contact sensor, Right middle leg            & {[}0.0,1.0{]}           \\ \hline
+\textbf{FRh}          & Foot contact sensor, Right hind leg              & {[}0.0, 1.0{]}          \\ \hline
+\textbf{FLf}          & Foot contact sensor, Left front leg              & {[}0.0, 1.0{]}          \\ \hline
+\textbf{FLm}          & Foot contact sensor, Left middle leg             & {[}0.0, 1.0{]}          \\ \hline
+\textbf{FLh}          & Foot contact sensor, Left hind leg               & {[}0.0, 1.0{]}          \\ \hline
+\end{tabular}
+\end{table}
+
+For purposes of this thesis, it is enough to know that it is possible to generate various gaits using the joints actuators and robots neural locomotion control. The gait controller used for this research is described in \cref{ssec:tripod_gait_controller}.
 
 \subsection{LPZ Robots Simulation} \label{ssec:lpzrobots_sim}
 It is a part of a simulation software called \textit{LpzRobots} provided by the University of Leipzig \citep{misc:lpzrobots} under GPL license.
 
-\section{Virtual Terrain types}
+\subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
+
+\section{Virtual Terrain Types}
 Since the verification is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.
 
 Luckily, the \textbf{LpzRobots} AMOS II simulator supports some terrain settings. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
@@ -79,7 +138,7 @@ Besides the substance handle, the \textit{TerrainGround} constructor takes six m
 \item[terrain\_height] : maximum terrain height
 \end{description}
 
-\subsection*{Terrain qualities} \label{ssec:terrain_qualities}
+\subsection{Terrain Qualities} \label{ssec:terrain_qualities}
 Out of the listed ground parameters, some of them are picked up and being called \textit{terrain qualities}, as they define a specific terrain type.
 
 It has been decided not to change the \textit{.ppm} image for various terrains and so \textit{rough1.ppm} is fixed. Also the walking area is set to (big enough) final size of \textit{20x25}. The color is variable, however, besides the simulation graphics it does not have any effect on results. 
@@ -100,7 +159,7 @@ height       & 0.0       & 0.1
 \end{tabular}
 \end{table}
 
-\subsection*{Terrains parameters determination} \label{ssec:terrain_parameters}
+\subsection{Terrains Parameters Determination} \label{ssec:terrain_parameters}
 To determine a terrain type, one has to come up with the five parameters from \cref{tab:terrain_qualities}.
 
 First, number of identifiable virtual terrain types needs to be determined. For purposes of this thesis, it has been decided to create \textbf{14 terrain types}. Their parameters (showed in \cref{tab:terrains_parameters}) have been set up intuitively, based on the AMOS II simulated behaviour. With respect to the qualities ranges from \cref{tab:terrain_qualities}, the values have been normed to (0, 1).
@@ -131,7 +190,7 @@ First, number of identifiable virtual terrain types needs to be determined. For 
 
 Colors linked to the terrains in \cref{tab:terrains_parameters} are used in the simulation as well as in the figures in Results section.
 
-\subsection*{Analysis of chosen parameters} \label{ssec:terrains_analysis}
+\subsection{Analysis of Chosen Parameters} \label{ssec:terrains_analysis}
 In general, proper data preparation is an important part of classification tasks, hence a brief analysis is presented.
 
 The goal is to imitate real terrains authentically as possible and at the same time to generate such terrains, that are clearly distinguishable from each other. The more two terrains differ the better classification results are expected.
@@ -156,7 +215,7 @@ The following figure (\ref{fig:terrains_parameters}) shows the variability (simi
 \end{figure}
 
 
-\section{Net Input Fixation}
+\section{Feature Vector Building} \label{sec:feature_vector_building}
 Determination of sensors to be used and its transformation into a feature vector
 
 2-3 pages
