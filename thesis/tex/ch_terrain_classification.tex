@@ -6,7 +6,7 @@ The classification problem in this thesis relates to AMOS II, an open-source mul
 \section{Overall Process Summary}
 The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
 
-Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type for a sufficiently long period of time and data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
+Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
 
 Having a clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated on \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
 
@@ -60,7 +60,7 @@ A wide range of sensors allows AMOS II to perform several autonomous behaviours.
   \label{img:amosii_leg}
 \end{figure}
 
-As figures \ref{img:amosii} and \ref{img:amosii_leg} reveal, the robot has six foot contact sensors in total, one on each leg. Each of them returns a value from range $ [0.0, 1.0] $ depending on how strong the foot contact is - it is equal $ 1.0 $ if the robot stands on the leg with its full weight and it equals $ 0.0 $ when the leg is in the air.
+As figures \ref{img:amosii} and \ref{img:amosii_leg} reveal, the robot has \textbf{6 foot contact sensors} in total, one on each leg. Each of them returns a value from range $ [0.0, 1.0] $ depending on how strong the foot contact is - it is equal $ 1.0 $ if the robot stands on the leg with its full weight and it equals $ 0.0 $ when the leg is in the air.
 
 There are three joints on each of robots legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
 
@@ -138,7 +138,7 @@ On \cref{img:lpzrobots_repos} the cooperation of the two repositories is illustr
 
 It also sets the initial camera and robot position in the map. The robot position is chosen randomly and the reason for that is described in \cref{sec:data_acquisition}. The robot fixator, which is originally implemented for AMOS II is removed, so the robot starts walking right after the simulation is launched.
 
-The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this research it is fixed to zero however and only the terrain noise combined with a signal noise are used.
+The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this research it is fixed to zero though and only the terrain noise combined with a signal noise are used.
 
 The virtual vizualization of AMOS II is illustrated on \cref{img:amosii_sim}.
 
@@ -150,7 +150,67 @@ The virtual vizualization of AMOS II is illustrated on \cref{img:amosii_sim}.
 \end{figure}
 
 \subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
+The main motivation for terrain classification is to adjust current robot's gait accordingly and save some energy thereby. It is assumed that the robot is already walking, using some implemented gait, when it tries to classify the terrain. Hence, it is needed to make the simulation agent walk as well. The starting gait is decided to be the \textbf{tripod} gait.
 
+To generate a tripod gate, a central pattern generator (CPG) is used. \citep{unpub:ai3_lec3} It is implemented as a 2-neuron neural network right inside AMOS II (\cref{img:two_neuron_network}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{two_neuron_network}
+  \caption{2-neuron network oscillator. \citep{unpub:ai3_lec3}}
+  \label{img:two_neuron_network}
+\end{figure}
+
+To make it work in practise, \textit{tripod\_controller.h} is written. Its initial conditions and parameters are shown in \cref{code:tripod_init}.
+
+\begin{lstlisting}[language=C++, caption={Initialization in tripod\_controller.h}, label=code:tripod_init]
+aH1 = 0; aH2 = 0;            // activities
+bH1 = 0; bH2 = 0;            // biases
+oH1 = 0.001; oH2 = 0.001;    // outputs
+wH1H1 = 1.4; wH1H2 = 0.4;    // weights to H1
+wH2H2 = 1.4; wH2H1 = -0.4;   // weights to H2
+p1 = 0.35;                   // parameter for Thoraco joints
+p2 = 0.3;                    // parameter for Coxa joints
+\end{lstlisting}
+
+Then, during the simulation, in \textit{tripod\_controller.h} there is a function called \textit{step()} able to control robots joints in every single simulation step. In this function three important actions come about.
+
+\begin{enumerate}
+\item \textbf{The activation function}
+\begin{equation}
+a_i(t+1) = \displaystyle\sum_{j=1}^{n} w_{ij}o_j(t) + b_i, i = 1, ..., n
+\end{equation}
+
+In this case, the following happen:
+\begin{equation}
+\begin{split}
+a_{H_1} = w_{H_1,H_1} * o_{H_1} + w_{H_1,H_2} * o_{H_2} + b_{H_1} \\
+a_{H_2} = w_{H_2,H_2} * o_{H_2} + w_{H_2,H_1} * o_{H_1} + b_{H_2}
+\end{split}
+\end{equation}
+
+\item \textbf{The transfer function}
+\begin{equation}
+f(a_i) = tanh(a_i) = \frac{2}{1+e^{-2a_i}} - 1
+\end{equation}
+
+\begin{equation}
+\begin{split}
+o_{H_1} = tanh(a_{H_1}) \\
+o_{H_2} = tanh(a_{H_2})
+\end{split}
+\end{equation}
+
+\item \textbf{Joints settings}
+With the reference to previous equations and variables names, the actuators are set in the sense shown on \cref{img:tripod_illustration}. The \textit{femur} joints stay with zero. This settings generates a reliable tripod gait for AMOS II.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=250px]{tripod_illustration}
+  \caption{Tripod gait controller illustration.}
+  \label{img:tripod_illustration}
+\end{figure}
+\end{enumerate}
 
 \section{Virtual Terrain Types} \label{sec:virtual_terrain_types}
 Since the verification is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.

@@ -25,20 +25,20 @@
 \contentsline {subsection}{\numberline {5.2.1}Hexapod Robot AMOS II}{8}{subsection.31}
 \contentsline {subsection}{\numberline {5.2.2}LPZ Robots Simulation}{10}{subsection.35}
 \contentsline {subsection}{\numberline {5.2.3}Tripod Gait Controller}{12}{subsection.39}
-\contentsline {section}{\numberline {5.3}Virtual Terrain Types}{12}{section.40}
-\contentsline {subsection}{\numberline {5.3.1}Terrain Qualities}{13}{subsection.48}
-\contentsline {subsection}{\numberline {5.3.2}Terrains Parameters Determination}{13}{subsection.51}
-\contentsline {subsection}{\numberline {5.3.3}Analysis of Chosen Parameters}{14}{subsection.53}
-\contentsline {section}{\numberline {5.4}Feature Vector Building}{15}{section.56}
-\contentsline {section}{\numberline {5.5}Data Acquisition}{15}{section.57}
-\contentsline {subsection}{\numberline {5.5.1}Terrain Noise}{16}{subsection.58}
-\contentsline {section}{\numberline {5.6}Data Processing}{16}{section.59}
-\contentsline {subsection}{\numberline {5.6.1}Signal Noise}{16}{subsection.60}
-\contentsline {section}{\numberline {5.7}Training and Classification}{16}{section.61}
-\contentsline {subsection}{\numberline {5.7.1}Scikit-neuralnetwork library}{16}{subsection.62}
-\contentsline {chapter}{\numberline {6}Experimental Evaluation}{17}{chapter.63}
-\contentsline {section}{\numberline {6.1}Discussion}{18}{section.64}
-\contentsline {chapter}{\numberline {7}Conclussion}{19}{chapter.65}
-\contentsline {section}{\numberline {7.1}Future Work}{19}{section.66}
-\contentsline {chapter}{Bibliography}{20}{chapter*.67}
-\contentsline {chapter}{\numberline {A}Code Documentation}{22}{appendix.68}
+\contentsline {section}{\numberline {5.3}Virtual Terrain Types}{14}{section.57}
+\contentsline {subsection}{\numberline {5.3.1}Terrain Qualities}{14}{subsection.65}
+\contentsline {subsection}{\numberline {5.3.2}Terrains Parameters Determination}{15}{subsection.68}
+\contentsline {subsection}{\numberline {5.3.3}Analysis of Chosen Parameters}{15}{subsection.70}
+\contentsline {section}{\numberline {5.4}Feature Vector Building}{16}{section.73}
+\contentsline {section}{\numberline {5.5}Data Acquisition}{17}{section.74}
+\contentsline {subsection}{\numberline {5.5.1}Terrain Noise}{17}{subsection.75}
+\contentsline {section}{\numberline {5.6}Data Processing}{17}{section.76}
+\contentsline {subsection}{\numberline {5.6.1}Signal Noise}{17}{subsection.77}
+\contentsline {section}{\numberline {5.7}Training and Classification}{17}{section.78}
+\contentsline {subsection}{\numberline {5.7.1}Scikit-neuralnetwork library}{17}{subsection.79}
+\contentsline {chapter}{\numberline {6}Experimental Evaluation}{18}{chapter.80}
+\contentsline {section}{\numberline {6.1}Discussion}{19}{section.81}
+\contentsline {chapter}{\numberline {7}Conclussion}{20}{chapter.82}
+\contentsline {section}{\numberline {7.1}Future Work}{20}{section.83}
+\contentsline {chapter}{Bibliography}{21}{chapter*.84}
+\contentsline {chapter}{\numberline {A}Code Documentation}{23}{appendix.85}

@@ -27,7 +27,6 @@
   \strng{namehash}{RR1}
   \strng{fullhash}{RR1}
   \field{labelalpha}{Ree93}
-  \field{labelyear}{1993}
   \field{sortinit}{1}
   \field{abstract}{%
   A rule of thumb for obtaining good generalization in systems trained by
@@ -70,7 +69,6 @@
   \strng{namehash}{SDKF1}
   \strng{fullhash}{SDKF1}
   \field{labelalpha}{SK07}
-  \field{labelyear}{2007}
   \field{sortinit}{2}
   \field{title}{The Bio-Inspired SCORPION Robot: Design, Control and Lessons
   Learned, Climbing and Walking Robots: towards New Applications}
@@ -88,7 +86,6 @@
   \strng{namehash}{CE1}
   \strng{fullhash}{CE1}
   \field{labelalpha}{Coy10}
-  \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{title}{Fundamentals and Methods of Terrain Classification Using
   Proprioceptive Sensors}
@@ -130,7 +127,6 @@
   \strng{namehash}{HMA+1}
   \strng{fullhash}{HMARCDHMSLSR1}
   \field{labelalpha}{Hoe+10}
-  \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{abstract}{%
   In this paper, we are presenting a method to estimate terrain properties
@@ -174,7 +170,6 @@
   \strng{namehash}{MWKA1}
   \strng{fullhash}{MWKA1}
   \field{labelalpha}{MK10}
-  \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{abstract}{%
   Safe teleoperation during critical missions, such as urban search and rescue,
@@ -215,7 +210,6 @@
   \strng{namehash}{BD1}
   \strng{fullhash}{BD1}
   \field{labelalpha}{Bel11}
-  \field{labelyear}{2011}
   \field{sortinit}{2}
   \field{title}{Gait control of the six-legged robot on a rough terrain using
   computational intelligence learning and optimization methods}
@@ -258,7 +252,6 @@
   \strng{namehash}{BFLG+1}
   \strng{fullhash}{BFLGJRCHDWAPFRS1}
   \field{labelalpha}{Ber+12}
-  \field{labelyear}{2012}
   \field{sortinit}{2}
   \field{abstract}{%
   Minimally actuated millirobotic crawlers navigate unreliably over uneven
@@ -314,7 +307,6 @@
   \strng{namehash}{KP+1}
   \strng{fullhash}{KPGEHFWFMP1}
   \field{labelalpha}{Kes+12}
-  \field{labelyear}{2012}
   \field{sortinit}{2}
   \field{abstract}{%
   This paper utilizes a 2D laser range finder (LRF) to determine the behavior
@@ -371,7 +363,6 @@
   \strng{namehash}{OC+1}
   \strng{fullhash}{OCSJJACJCE1}
   \field{labelalpha}{Ord+13}
-  \field{labelyear}{2013}
   \field{sortinit}{2}
   \field{abstract}{%
   Terrain identification is a key enabling ability for generating terrain
@@ -434,7 +425,6 @@
   \strng{namehash}{ZS+1}
   \strng{fullhash}{ZSAEEGDWFMP1}
   \field{labelalpha}{Zen+13}
-  \field{labelyear}{2013}
   \field{sortinit}{2}
   \field{abstract}{%
   Legged robots need to be able to classify and recognize different terrains to
@@ -496,7 +486,6 @@
   \strng{namehash}{XXWFMP1}
   \strng{fullhash}{XXWFMP1}
   \field{labelalpha}{XWM14}
-  \field{labelyear}{2014}
   \field{sortinit}{2}
   \field{abstract}{%
   The neuromechanical control principles of animal locomotion provide good
@@ -537,7 +526,6 @@
   \strng{namehash}{AMNAG1}
   \strng{fullhash}{AMNAG1}
   \field{labelalpha}{Ahm15}
-  \field{labelyear}{2015}
   \field{sortinit}{2}
   \field{title}{An Intelligent Architecture for Legged Robot Terrain
   Classification Using Proprioceptive and Exteroceptive Data}
@@ -547,6 +535,22 @@
   \field{type}{phdthesis}
   \field{month}{06}
   \field{year}{2015}
+\endentry
+
+\entry{unpub:ai3_lec3}{unpublished}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Manoonpong}{M.}%
+     {Poramate}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MP1}
+  \strng{fullhash}{MP1}
+  \field{labelalpha}{Man}
+  \field{sortinit}{9}
+  \field{note}{Lecutre 3 - page 133 - Tripod Gait}
+  \field{title}{Adaptive Embodied Locomotion Control Systems}
 \endentry
 
 \entry{misc:amosii}{misc}{}
