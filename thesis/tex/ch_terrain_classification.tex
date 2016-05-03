@@ -181,7 +181,7 @@ Then, during the simulation, in \textit{tripod\_controller.h} there is a functio
 a_i(t+1) = \displaystyle\sum_{j=1}^{n} w_{ij}o_j(t) + b_i, i = 1, ..., n
 \end{equation}
 
-In this case, the following happen:
+In this case, the following happens:
 \begin{equation}
 \begin{split}
 a_{H_1} = w_{H_1,H_1} * o_{H_1} + w_{H_1,H_2} * o_{H_2} + b_{H_1} \\
@@ -202,7 +202,7 @@ o_{H_2} = tanh(a_{H_2})
 \end{equation}
 
 \item \textbf{Joints settings}
-With the reference to previous equations and variables names, the actuators are set in the sense shown on \cref{img:tripod_illustration}. The \textit{femur} joints stay with zero. This settings generates a reliable tripod gait for AMOS II.
+With the reference to previous equations and variables names, the actuators are set in the sense shown on \cref{img:tripod_illustration}. The \textit{femur} joints (red ones) stay unchanged (set to zero). This settings generates a reliable tripod gait for AMOS II.
 
 \begin{figure}[H]
   \centering
@@ -315,20 +315,48 @@ The following figure (\ref{fig:terrains_parameters}) shows the variability (simi
   \label{fig:terrains_parameters}
 \end{figure}
 
-
-\section{Feature Vector Building} \label{sec:feature_vector_building}
-Determination of sensors to be used and its transformation into a feature vector
-
-2-3 pages
+Based on \cref{fig:terrains_parameters}, one can say that foam is very different to ice or, for instance, sand is quite similar to mud. The surfaces are virtually generated and their authenticity has not been verified. 
 
 \section{Data Acquisition} \label{sec:data_acquisition}
-Description of how the data has been acquired from the simulation and saved as .txt, adding terrain noise
+At this point the simulation is set up and ready to be launched. There are \textbf{14} virtually created terrain types (defined in \cref{sec:virtual_terrain_types}, \cref{tab:terrains_parameters}) and \textbf{24} robot's proprioceptive sensors (described in \cref{ssec:amosii}, \cref{tab:proprioceptors}).
 
-2 pages
+Predictably, the terrain types are assumed to be classification targets (classes). Therefore, some data needs to be generated for each of these classes. This data comes from the 24 proprioceptors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_building}), which is one of the most essential parts of the process.
+
+As it is later described in more detail, several sensors values in time need to be used to catch the robot's dynamics on various terrains. Therefore, to generate a single data example, the simulation must be run for a period of time. The optimal duration is not known yet, but besides this fact, one should start thinking how to generate a sufficient amount of samples for classification at this point.
+
+The very simple way might be to let the robot walk for a long period of time and then just to cut the signals coming from sensors into many samples, based on an estimated timestep. The hitch of this approach is in initial conditions - they would become the same for every sample, which is not correct.
+
+To keep the rightness, the simulator is launched several times in order to generate several samples for every terrain type. It has been decided to let the robot walk for \textbf{10} seconds each time. In combination with the simulation settings (see \cref{ssec:lpzrobots_sim}), this implies \textbf{100} values for every sensor and for every simulation run - which should be more than enough.
+
+For illustration, data from sensor \textit{ATRf} acquired when the robot was walking on a \textit{concrete} surface for approximately 10 seconds is shown on \cref{fig:data_example}. The \textit{no\_noise} indication in the figure legend is explained in \cref{ssec:terrain_noise}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{plot_sensor_atr_f_nn_concrete.eps}
+  \caption{Data example: ATRf, concrete, 10 seconds}
+  \label{fig:data_example}
+\end{figure}
+
+It is always recommended to store rough data before some processing, hence the simulator creates \textit{.txt} files of structure symbolized in \cref{txt:rough_data} (with the reference to sensors shortcuts in \cref{tab:proprioceptors}). 
+
+\begin{lstlisting}[language=XML, caption={Rough sensory data files structure}, label=txt:rough_data]
+timestep_001;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
+timestep_002;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
+...
+timestep_100;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
+\end{lstlisting}
+
+
+
 \subsection{Terrain Noise} \label{ssec:terrain_noise}
 
 \section{Data Processing}
 Cleaning the data (deleting incomplete ones), adding signal noise, transformation into datasets, splitting into training-validation-testing sets
+
+2-3 pages
+
+\section{Feature Vector Building} \label{sec:feature_vector_building}
+Determination of sensors to be used and its transformation into a feature vector
 
 2-3 pages
 \subsection{Signal Noise}

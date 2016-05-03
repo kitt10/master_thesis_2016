@@ -6,15 +6,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{7}{figure.caption.29}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{8}{figure.caption.32}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{9}{figure.caption.33}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{11}{figure.caption.36}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Structure of the two repositories (LPZRobots and GoRobots). \citep {misc:lpzrobots}\relax }}{11}{figure.caption.37}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Simulation alternative for AMOS II.\relax }}{12}{figure.caption.38}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces 2-neuron network oscillator. \citep {unpub:ai3_lec3}\relax }}{12}{figure.caption.40}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Tripod gait controller illustration.\relax }}{13}{figure.caption.56}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Variability of generated terrain types.\relax }}{16}{figure.caption.72}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{8}{figure.caption.30}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{9}{figure.caption.33}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{10}{figure.caption.34}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{12}{figure.caption.37}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Structure of the two repositories (LPZRobots and GoRobots). \citep {misc:lpzrobots}\relax }}{12}{figure.caption.38}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Simulation alternative for AMOS II.\relax }}{13}{figure.caption.39}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces 2-neuron network oscillator. \citep {unpub:ai3_lec3}\relax }}{13}{figure.caption.41}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Tripod gait controller illustration.\relax }}{14}{figure.caption.57}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Variability of generated terrain types.\relax }}{17}{figure.caption.73}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Data example: ATRf, concrete, 10 seconds\relax }}{18}{figure.caption.75}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

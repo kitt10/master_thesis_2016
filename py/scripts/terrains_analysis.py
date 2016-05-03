@@ -39,8 +39,8 @@ if __name__ == '__main__':
     for t_i, terrain in enumerate(terrains_to_use):
         for q_i, quality in enumerate(qualities):
             plt.text(t_i, q_i, norm(env[terrain][quality], ranges[quality][1]), va='center', ha='center')
-    #plt.savefig('../../results/png/terrains_parameters.png')
-    #plt.savefig('../../results/eps/terrains_parameters.eps')
+    plt.savefig('../../results/png/terrains_parameters.png', bbox_inches='tight')
+    plt.savefig('../../results/eps/terrains_parameters.eps', bbox_inches='tight')
     plt.show()
 
     ''' Terrains Variability '''
@@ -59,8 +59,11 @@ if __name__ == '__main__':
     plt.xticks(range(len(terrains_to_use)), terrains_to_use, rotation=45)
     plt.yticks(range(len(terrains_to_use)), terrains_to_use)
     plt.colorbar()
-    plt.suptitle('Terrains Variability (normed distances to each other)')
+    plt.suptitle('Terrains Mutual Similarity Factors', fontsize=15)
     for t1_i, terrain1 in enumerate(terrains_to_use):
         for t2_i, terrain2 in enumerate(terrains_to_use):
-            plt.text(t1_i, t2_i, round(distances[terrain1][terrain2], 2), va='center', ha='center')
+            plt.text(t1_i, t2_i, round(distances[terrain1][terrain2], 1), va='center', ha='center', fontsize=10)
+    plt.savefig('../../results/png/terrains_variability.png', bbox_inches='tight')
+    plt.savefig('../../results/eps/terrains_variability.eps', bbox_inches='tight')
+    plt.savefig('../../thesis/img/terrains_variability.eps', bbox_inches='tight')
     plt.show()

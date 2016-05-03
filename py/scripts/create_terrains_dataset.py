@@ -10,6 +10,7 @@
     @arg terrain_noise      : Terrain noise of data to be used.
     @arg signal_noise       : Standard deviation of a signal noise to be added to the data (percentage).
     @arg sensors            : Sensors to be used.
+    @sample_len             : Length of one sample
     @arg data_split         : Training : Validation : Testing ratio (two floats)
     @arg destination_name   : Name of the dataset filename
 """

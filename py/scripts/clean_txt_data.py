@@ -22,7 +22,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Checks generated .txt files.')
     parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
                         help='Terrains to be checked (integers)')
-    parser.add_argument('-n', '--noises', type=str, nargs='+', default=noise_params.keys(), choices=noise_params.keys(),
+    parser.add_argument('-n', '--noises', type=str, nargs='+', default=noise_types, choices=noise_types,
                         help='Terrain noises to be checked')
     parser.add_argument('-sl', '--sample_len', type=int, default=95,
                         help='Minimum sample length.')
@@ -30,7 +30,7 @@ def parse_arguments():
 
 
 if __name__ == '__main__':
-    terrain_types, noise_params = load_params('terrain_types', 'noise_types')
+    terrain_types, noise_types, noise_params = load_params('terrain_types', 'noise_types', 'noise_params')
     args = parse_arguments()
 
     noises_to_check = args.noises

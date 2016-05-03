@@ -30,7 +30,7 @@ def parse_arguments():
                         help='Dataset folder and filename to train on')
     parser.add_argument('-s', '--structure', type=int, default=[100], nargs='+',
                         help='Neural network structure')
-    parser.add_argument('-lr', '--learning_rate', type=float, default=0.005,
+    parser.add_argument('-lr', '--learning_rate', type=float, default=0.03,
                         help='Learning rate for backpropagation')
     parser.add_argument('-i', '--n_iter', type=int, default=500,
                         help='Number of iterations (epochs)')

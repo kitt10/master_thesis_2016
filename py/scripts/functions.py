@@ -7,6 +7,8 @@
 """
 
 import json
+from glob import glob
+from os import path
 
 
 def load_params(*params_names):
@@ -29,3 +31,28 @@ def norm(value, the_max):
 
 def norm_signal(signal, the_min, the_max):
     return [min(max(float((x-the_min))/(the_max-the_min), 0), 1) for x in signal]
+
+
+def read_data(noises, terrains, sensors):
+    noise_params = load_params('noise_params')[0]
+    data = dict()
+
+    for noise in noises:
+        data[noise] = dict()
+        for terrain in terrains:
+            data[noise][terrain] = dict()
+            data[noise][terrain]['data_str'] = list()
+            for sensor in sensors:
+                data[noise][terrain][sensor] = list()
+            txt_samples = glob(path.join('../../data/'+noise+'/'+noise_params[noise][0]+terrain, '*.txt'))
+            for i_sample, path_and_filename in enumerate(sorted(txt_samples)):
+                with open(path_and_filename, 'r') as data_file:
+                    data[noise][terrain]['data_str'].append(data_file.read())
+                for i_sensor, sensor in enumerate(sensors):
+                    data[noise][terrain][sensor].append([0.0])
+                    for line in data[noise][terrain]['data_str'][-1].split('\n')[:95]:
+                        values = line.split(';')
+                        data[noise][terrain][sensor][i_sample].append(float(values[i_sensor + 1]))
+            print 'Data for', noise, terrain, 'found (' + str(len(data[noise][terrain][sensors[0]])) + ' samples).'
+
+    return data

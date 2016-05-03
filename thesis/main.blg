@@ -6,8 +6,10 @@ A level-1 auxiliary file: tex/ch_introduction.aux
 A level-1 auxiliary file: tex/ch_state_of_the_art.aux
 A level-1 auxiliary file: tex/ch_master_thesis_objectives.aux
 A level-1 auxiliary file: tex/ch_neural_network_implementation.aux
+A level-1 auxiliary file: tex/ch_influence_of_network_structure.aux
 A level-1 auxiliary file: tex/ch_terrain_classification.aux
 A level-1 auxiliary file: tex/ch_experimental_evaluation.aux
+A level-1 auxiliary file: tex/ch_discussion.aux
 A level-1 auxiliary file: tex/ch_conclussion.aux
 A level-1 auxiliary file: tex/app_code_documentation.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -28,7 +30,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 17 entries,
             6047 wiz_defined-function locations,
-            1236 strings with 19380 characters,
+            1238 strings with 19442 characters,
 and the built_in function-call counts, 53537 in all, are:
 = -- 1966
 > -- 1663
