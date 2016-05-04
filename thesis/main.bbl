@@ -50,6 +50,27 @@
   \field{year}{1993}
 \endentry
 
+\entry{misc:wiki}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Wikipedia}{W.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{W1}
+  \strng{fullhash}{W1}
+  \field{labelalpha}{Wik04}
+  \field{sortinit}{2}
+  \field{note}{[Online; accessed 04-May-2016]}
+  \field{title}{Plagiarism --- {W}ikipedia{,} The Free Encyclopedia}
+  \verb{url}
+  \verb \url{http://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350
+  \verb }
+  \endverb
+  \field{year}{2004}
+\endentry
+
 \entry{book:11:scorpion}{book}{}
   \name{author}{2}{}{%
     {{}%

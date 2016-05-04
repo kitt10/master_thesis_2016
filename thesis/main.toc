@@ -30,16 +30,15 @@
 \contentsline {subsection}{\numberline {6.3.1}Terrain Qualities}{15}{subsection.66}
 \contentsline {subsection}{\numberline {6.3.2}Terrains Parameters Determination}{16}{subsection.69}
 \contentsline {subsection}{\numberline {6.3.3}Analysis of Chosen Parameters}{16}{subsection.71}
-\contentsline {section}{\numberline {6.4}Data Acquisition}{18}{section.74}
-\contentsline {section}{\numberline {6.5}Adding Noise}{19}{section.82}
-\contentsline {subsection}{\numberline {6.5.1}Terrain Noise}{19}{subsection.83}
-\contentsline {subsection}{\numberline {6.5.2}Signal Noise}{19}{subsection.84}
-\contentsline {section}{\numberline {6.6}Feature Vector Building}{19}{section.85}
-\contentsline {section}{\numberline {6.7}Datasets}{20}{section.86}
-\contentsline {section}{\numberline {6.8}Training and Classification}{20}{section.87}
-\contentsline {subsection}{\numberline {6.8.1}Scikit-neuralnetwork library}{20}{subsection.88}
-\contentsline {chapter}{\numberline {7}Experimental Evaluation}{21}{chapter.89}
-\contentsline {chapter}{\numberline {8}Discussion}{23}{chapter.90}
-\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{24}{chapter.91}
-\contentsline {chapter}{Bibliography}{25}{chapter*.92}
-\contentsline {chapter}{\numberline {A1}Code Documentation}{27}{appendix.93}
+\contentsline {subsection}{\numberline {6.3.4}Terrain Noise}{18}{subsection.74}
+\contentsline {section}{\numberline {6.4}Data Acquisition}{19}{section.89}
+\contentsline {section}{\numberline {6.5}Feature Vector Building}{21}{section.98}
+\contentsline {subsection}{\numberline {6.5.1}Signal Noise}{21}{subsection.99}
+\contentsline {section}{\numberline {6.6}Datasets}{21}{section.100}
+\contentsline {section}{\numberline {6.7}Training and Classification}{21}{section.101}
+\contentsline {subsection}{\numberline {6.7.1}Scikit-neuralnetwork library}{21}{subsection.102}
+\contentsline {chapter}{\numberline {7}Experimental Evaluation}{22}{chapter.103}
+\contentsline {chapter}{\numberline {8}Discussion}{24}{chapter.104}
+\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{25}{chapter.105}
+\contentsline {chapter}{Bibliography}{26}{chapter*.106}
+\contentsline {chapter}{\numberline {A1}Code Documentation}{28}{appendix.107}
