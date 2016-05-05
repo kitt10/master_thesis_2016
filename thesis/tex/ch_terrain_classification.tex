@@ -3,7 +3,7 @@ Classification, one of the most widely used areas of machine learning, has a bro
 
 The classification problem in this thesis relates to AMOS II, an open-source multi sensori-motor robotic platform (see \cref{img:amosii}). The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data and as \cref{chapter:04:neural_net_implementation} reveals, feedforward neural networks are involved.
 
-\section{Overall Process Summary}
+\section{Overall Process Summary} \label{sec:overall_process_summary}
 The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
 
 Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
@@ -419,10 +419,45 @@ Right after the data generation, a script called \textit{clean\_txt\_data.py} (\
 to create
 As \cref{img:data_dir_structure} reveals, there are \textbf{500} \textit{.txt} files for every \textit{noise/terrain} configuration. This allows creating datasets of 500 samples per class.
 
-\section{Feature Vector Building} \label{sec:feature_vector_building}
-Determination of sensors to be used and its transformation into a feature vector
+\section{Feature Vector Compilation} \label{sec:feature_vector_compilation}
+So far, the hexapod simulation has been introduced, virtual terrain types defined and the simulator has been run on these terrains and for various values of terrain noise power. All the data has been acquired from the simulation as \textit{.txt} files. Hence the simulation is not needed anymore and only the gathered data are used for the following processing.
 
-2-3 pages
+Classification tasks are generally based on datasets consisting of samples and corresponding targets. The samples need to be represented in a numerical way in order to be processed by a computer and its appropriate algorithms. In machine learning, this numerical representation of an object is called \textit{a feature vector}, an n-dimensional vector of numerical values. This section is devoted to building a feature vector out of the data gathered from proprioceptive sensors.
+
+This part of the process is crucial as the way of feature vector compilation can influence classification results a lot. Information loss or redundant structures are quite frequent mistakes here. Therefore, as the optimal structure is not known, several possibilities are tested again and therefore some new process parameters appear at this point (mentioned already in \cref{sec:overall_process_summary}).
+
+For this particular problem, the task is to form a feature vector out of content of one \textit{.txt} file (got in \cref{sec:data_acquisition}), as each of these files contains data for one sample (see \cref{img:feature_vector_forming}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{feature_vector_forming}
+  \caption{Forming a feature vector out of a data file.}
+  \label{img:feature_vector_forming}
+\end{figure}
+
+At this point, one may ask for the reason of using several timesteps for creating one sample. It is assumed that a proper terrain classification using proprioceptors at one moment in time is at least difficult, if not impossible. Therefore the idea is to let the robot walk for a while and take down the dynamics of the sensors. Of course, the more timesteps are used for one sample, the more time the classification takes. Because of these arguments the number of timesteps is left as a global process parameter and it is a subject for later discussion.
+
+Sensors to be used is another global parameter coming out of this section. The anticipation is that the feature vector becomes redundant using all of the 24 sensors, as many of them might behave similarly. However, for now all of them are used to show how the feature vector is built and it is also left for later discussion.
+
+Parameters for discussion coming out of feature vector compilation:
+\begin{itemize}
+\item number of timesteps used to build one feature vector (one sample)
+\item sensors involved in classification
+\end{itemize}
+
+Now, with reference to \cref{img:feature_vector_forming}, the question is how to transform the \textbf{2D} data from \textit{.txt} files into \textbf{1D} vectors. The idea is to fix the \textit{timesteps} parameter and arrange the columns of the matrix into one vector. This implies having data from all sensors one by one next to each other and forming one feature vector together. 
+
+On \cref{fig:sample_example} an example of this kind of forming is shown. For illustration there is just one terrain type (\textit{concrete}) involved. The number of timesteps is set to 10 and all 24 sensors are used, hence a feature vector of length 240 is gained. The corresponding sensors shortcuts (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sample_example.eps}
+  \caption{Example of feature vector building.}
+  \label{fig:sample_example}
+\end{figure}
+
+\subsection{Normalization} \label{ssec:normalization}
+It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the foot contact sensors, following approach is used to map the data. The bounds are defined by default sensors ranges (listed in \cref{tab:proprioceptors}).
 
 \subsection{Signal Noise} \label{ssec:signal_noise}
 
