@@ -457,9 +457,27 @@ On \cref{fig:sample_example} an example of this kind of forming is shown. For il
 \end{figure}
 
 \subsection{Normalization} \label{ssec:normalization}
-It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the foot contact sensors, following approach is used to map the data. The bounds are defined by default sensors ranges (listed in \cref{tab:proprioceptors}).
+It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the foot contact sensors, following approach is used to map the data. 
+
+\begin{lstlisting}[language=Python, caption={Data normalization}, label=code:data_normalization]
+def norm_signal(s, a_min, a_max):
+  l = [min(max(float((x-a_min))/(a_max-a_min), 0), 1) for x in s]   
+  return l
+\end{lstlisting}
+
+The bounds (\textit{a\_min} and \textit{a\_max} used in \cref{code:data_normalization}) are defined by default sensors ranges (listed in \cref{tab:proprioceptors}). Also a $ [0, 1] $ interval overflow checking is added and values are adjusted if needed. This is a cover for the case ranges from \cref{tab:proprioceptors} were not accurate. The following figure (\ref{fig:sample_example_normed}) shows a normed feature vector example. The influence of normalization on classification results is another subject for discussion.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sample_example_normed.eps}
+  \caption{Example of feature vector - normed.}
+  \label{fig:sample_example_normed}
+\end{figure}
 
 \subsection{Signal Noise} \label{ssec:signal_noise}
+In \cref{ssec:terrain_noise} a few general reasons for noising simulation data are disscused. In that case an additive Gaussian noise is used to make the terrains definitions (from \cref{tab:terrains_parameters}) more complex.
+
+For similar reasons also a signal noise is added to the data. In reality the mechanical sensors might shake, be influenced by environmental conditions or simply may not work as well as expected, while data coming from the simulated sensors are always deterministic.
 
 \section{Datasets}
 transformation into datasets, splitting into training-validation-testing sets

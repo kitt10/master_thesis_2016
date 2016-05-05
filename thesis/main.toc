@@ -34,12 +34,12 @@
 \contentsline {section}{\numberline {6.4}Data Acquisition}{19}{section.89}
 \contentsline {section}{\numberline {6.5}Feature Vector Compilation}{21}{section.98}
 \contentsline {subsection}{\numberline {6.5.1}Normalization}{23}{subsection.101}
-\contentsline {subsection}{\numberline {6.5.2}Signal Noise}{23}{subsection.102}
-\contentsline {section}{\numberline {6.6}Datasets}{23}{section.103}
-\contentsline {section}{\numberline {6.7}Training and Classification}{23}{section.104}
-\contentsline {subsection}{\numberline {6.7.1}Scikit-neuralnetwork library}{23}{subsection.105}
-\contentsline {chapter}{\numberline {7}Experimental Evaluation}{24}{chapter.106}
-\contentsline {chapter}{\numberline {8}Discussion}{26}{chapter.107}
-\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{27}{chapter.108}
-\contentsline {chapter}{Bibliography}{28}{chapter*.109}
-\contentsline {chapter}{\numberline {A1}Code Documentation}{30}{appendix.110}
+\contentsline {subsection}{\numberline {6.5.2}Signal Noise}{24}{subsection.107}
+\contentsline {section}{\numberline {6.6}Datasets}{24}{section.108}
+\contentsline {section}{\numberline {6.7}Training and Classification}{24}{section.109}
+\contentsline {subsection}{\numberline {6.7.1}Scikit-neuralnetwork library}{24}{subsection.110}
+\contentsline {chapter}{\numberline {7}Experimental Evaluation}{25}{chapter.111}
+\contentsline {chapter}{\numberline {8}Discussion}{27}{chapter.112}
+\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{28}{chapter.113}
+\contentsline {chapter}{Bibliography}{29}{chapter*.114}
+\contentsline {chapter}{\numberline {A1}Code Documentation}{31}{appendix.115}
