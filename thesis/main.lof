@@ -22,6 +22,12 @@
 \contentsline {figure}{\numberline {6.13}{\ignorespaces Forming a feature vector out of a data file.\relax }}{22}{figure.caption.99}
 \contentsline {figure}{\numberline {6.14}{\ignorespaces Example of feature vector building.\relax }}{23}{figure.caption.100}
 \contentsline {figure}{\numberline {6.15}{\ignorespaces Example of feature vector - normed.\relax }}{23}{figure.caption.106}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Three sets of data in a dataset.\relax }}{24}{figure.caption.113}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{25}{figure.caption.114}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{26}{figure.caption.116}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

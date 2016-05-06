@@ -17,9 +17,9 @@
 \contentsline {section}{\numberline {4.1}Structural Elements}{4}{section.20}
 \contentsline {section}{\numberline {4.2}Learning Algorithm}{4}{section.21}
 \contentsline {section}{\numberline {4.3}Graphical User Interface}{4}{section.22}
-\contentsline {chapter}{\numberline {5}Influence of Network Structure on Classification}{6}{chapter.23}
-\contentsline {section}{\numberline {5.1}Pruning Algorithm}{6}{section.24}
-\contentsline {subsection}{\numberline {5.1.1}General Validation}{6}{subsection.25}
+\contentsline {chapter}{\numberline {5}Network Pruning Algorithm}{6}{chapter.23}
+\contentsline {section}{\numberline {5.1}Testing Datasets}{6}{section.24}
+\contentsline {section}{\numberline {5.2}Minimal Structures Utilization}{6}{section.27}
 \contentsline {chapter}{\numberline {6}Terrain Classification for AMOS II}{7}{chapter.28}
 \contentsline {section}{\numberline {6.1}Overall Process Summary}{7}{section.29}
 \contentsline {section}{\numberline {6.2}Experimental Environment Specification}{9}{section.31}
@@ -32,14 +32,21 @@
 \contentsline {subsection}{\numberline {6.3.3}Analysis of Chosen Parameters}{16}{subsection.71}
 \contentsline {subsection}{\numberline {6.3.4}Terrain Noise}{18}{subsection.74}
 \contentsline {section}{\numberline {6.4}Data Acquisition}{19}{section.89}
-\contentsline {section}{\numberline {6.5}Feature Vector Compilation}{21}{section.98}
+\contentsline {section}{\numberline {6.5}Building a Feature Vector}{21}{section.98}
 \contentsline {subsection}{\numberline {6.5.1}Normalization}{23}{subsection.101}
 \contentsline {subsection}{\numberline {6.5.2}Signal Noise}{24}{subsection.107}
-\contentsline {section}{\numberline {6.6}Datasets}{24}{section.108}
-\contentsline {section}{\numberline {6.7}Training and Classification}{24}{section.109}
-\contentsline {subsection}{\numberline {6.7.1}Scikit-neuralnetwork library}{24}{subsection.110}
-\contentsline {chapter}{\numberline {7}Experimental Evaluation}{25}{chapter.111}
-\contentsline {chapter}{\numberline {8}Discussion}{27}{chapter.112}
-\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{28}{chapter.113}
-\contentsline {chapter}{Bibliography}{29}{chapter*.114}
-\contentsline {chapter}{\numberline {A1}Code Documentation}{31}{appendix.115}
+\contentsline {section}{\numberline {6.6}Datasets Creation}{24}{section.112}
+\contentsline {section}{\numberline {6.7}Training and Classification}{26}{section.115}
+\contentsline {subsection}{\numberline {6.7.1}Evaluation Methods}{27}{subsection.117}
+\contentsline {subsection}{\numberline {6.7.2}Net Pruning on Terrains Dataset}{27}{subsection.119}
+\contentsline {subsection}{\numberline {6.7.3}Scikit-learn Neural Network Library}{27}{subsection.120}
+\contentsline {subsection}{\numberline {6.7.4}Searching for Optimal Configuration (Grid Search)}{28}{subsection.128}
+\contentsline {subsection}{\numberline {6.7.5}Other classifiers}{28}{subsection.129}
+\contentsline {chapter}{\numberline {7}Results}{29}{chapter.130}
+\contentsline {chapter}{\numberline {8}Discussion}{31}{chapter.131}
+\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{32}{chapter.132}
+\contentsline {chapter}{Bibliography}{33}{chapter*.133}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{35}{appendix.134}
+\contentsline {chapter}{\numberline {A2}Code Documentation}{36}{appendix.135}
+\contentsline {chapter}{\numberline {A3}List of Datasets}{37}{appendix.136}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{38}{appendix.137}

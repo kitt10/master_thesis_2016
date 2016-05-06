@@ -1,16 +1,16 @@
 \chapter{Terrain Classification for AMOS II} \label{chapter:05:terrain_classification}
-Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The lenght of feature vectors usually determines an input of chosen classifier and number of classes sets an output.
+Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The length of feature vectors usually determines an input of a chosen classifier and the number of classes sets an output.
 
 The classification problem in this thesis relates to AMOS II, an open-source multi sensori-motor robotic platform (see \cref{img:amosii}). The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data and as \cref{chapter:04:neural_net_implementation} reveals, feedforward neural networks are involved.
 
 \section{Overall Process Summary} \label{sec:overall_process_summary}
 The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
 
-Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of additive (Guassian) terrain noise and is run for several values.
+Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and the data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of an additive (Guassian) terrain noise and is run for several values.
 
-Having a clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated on \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
+Having the clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
 
-An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in section X. Classification performance of developed tools are compared to a \textit{Scikit-learn} network classification library sknn [].
+An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{chapter:network_pruning_algorithm}. The classification performance of developed tools is compared to a \textit{Scikit-learn} network classification library sknn [].
 
 \begin{figure}[H]
   \centering
@@ -28,19 +28,19 @@ The dataset packages may differ in these parameters:
 \item number of samples
 \end{itemize}
 
-The trained networks may differ in following parameters:
+The trained networks may differ in the following parameters:
 \begin{itemize}
-\item neural network structure
-\item accuracy on training/validation/testing sets 
+\item dataset that the network has been tested on
+\item neural network structure, learning rate and number of epochs
 \end{itemize}
 
 \section{Experimental Environment Specification}
 Naturally, the idea of the research is to implement an online terrain classifier on the real machine. Therefore the target robot is described in the following section (\ref{ssec:amosii}).
 
-Nevertheless, it is usually a good idea to base the reasearch on simulation data if a satisfactory simulator is available. In this case, \textit{LPZ Robots} \citep{misc:lpzrobots} is used (\cref{ssec:lpzrobots_sim}).
+Nevertheless, it is usually a good idea to base the reasearch on some simulation data if a satisfactory simulator is available. In this case, \textit{LPZ Robots} \citep{misc:lpzrobots} is used (\cref{ssec:lpzrobots_sim}).
 
 \subsection{Hexapod Robot AMOS II} \label{ssec:amosii}
-The \textit{AMOS II} abbreviation stands for Advanced Mobility Sensor Driven-Walking Device - version II. It is a biologically inspired hardware platform of size 30x40x20 cm and weight 5.8 Kg (see \cref{img:amosii}). It is mainly used to perform experiments with neural control, memory and learning on a device with many degrees of freedom and to study the coordination of it \citep{misc:amosii}.
+The \textit{AMOS II} abbreviation stands for Advanced Mobility Sensor Driven-Walking Device - version II. It is a biologically inspired hardware platform of size 30x40x20 cm and weight 5.8 Kg (see \cref{img:amosii}). It is mainly used to perform experiments with neural control, memory and learning on a device with many degrees of freedom and to study its coordination \citep{misc:amosii}.
 
 \begin{figure}[H]
   \centering
@@ -51,7 +51,7 @@ The \textit{AMOS II} abbreviation stands for Advanced Mobility Sensor Driven-Wal
 
 In general, the robot serves as a hardware platform for neural perception-action systems experiments. The body parts are modeled on the basis of robot's biological inspiration - a cockroach.
 
-A wide range of sensors allows AMOS II to perform several autonomous behaviours. However, only the proprioceptive sensors are important for this research, therefore, we focus on angle sensors and foot contact sensors. All of them are located on robot's legs, so the leg structure is shown on \cref{img:amosii_leg}.
+A wide range of sensors allows AMOS II to perform several kinds of autonomous behaviour. However, only the proprioceptive sensors are important for this research, therefore, we focus on angle sensors and foot contact sensors. All of them are located on robot's legs, so the leg structure is shown in \cref{img:amosii_leg}.
 
 \begin{figure}[H]
   \centering
@@ -62,13 +62,13 @@ A wide range of sensors allows AMOS II to perform several autonomous behaviours.
 
 As figures \ref{img:amosii} and \ref{img:amosii_leg} reveal, the robot has \textbf{6 foot contact sensors} in total, one on each leg. Each of them returns a value from range $ [0.0, 1.0] $ depending on how strong the foot contact is - it is equal $ 1.0 $ if the robot stands on the leg with its full weight and it equals $ 0.0 $ when the leg is in the air.
 
-There are three joints on each of robots legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
+There are three joints on each of the robots legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
 
 These joints are physically actuated by standard servo motors. Having the servos positions, angles of the joints are known and are also considered as propriceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textbf{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:lpzrobots_sim}), it is omitted in this research.
 
-In \cref{tab:proprioceptors} there are all the propriceptors, their shortcuts and original ranges listed. The ranges are based on the individual servos locations and are explicitly set up to avoid collisions. In \cref{sec:feature_vector_building} a normalization of these ranges is discussed.
+In \cref{tab:proprioceptors} all the propriceptors, their shortcuts and original ranges are listed. The ranges are based on the individual servos locations and are explicitly set up to avoid collisions. In \cref{sec:feature_vector_building} a normalization of these ranges is discussed.
 
-Regarding robots actuators, the servo motors can produce variably compliant motions as if each of them were driven by a pair of agonist and antagonist muscles (see \cite{misc:amosii} for details). 
+Regarding robots actuators, the servo motors can produce variably compliant motions as if each of them was driven by a pair of agonist and antagonist muscles (see \cite{misc:amosii} for details). 
 
 \begin{table}[H]
 \centering
@@ -104,7 +104,7 @@ Regarding robots actuators, the servo motors can produce variably compliant moti
 \end{tabular}
 \end{table}
 
-For purposes of this thesis, it is enough to know that it is possible to generate various gaits using the joints actuators and robots neural locomotion control. The gait controller used for this research is described in \cref{ssec:tripod_gait_controller}.
+For purposes of this thesis, it is enough to know that it is possible to generate various gaits using the joints actuators and robot's neural locomotion control. The gait controller used for this research is described in \cref{ssec:tripod_gait_controller}.
 
 \subsection{LPZ Robots Simulation} \label{ssec:lpzrobots_sim}
 The \textit{lpzrobots} project, developed by a research group at the University of Leipzig \citep{misc:lpzrobots} under GPL license, contains many subprojects. For purposes of this thesis, the most important ones are:
@@ -114,7 +114,7 @@ The \textit{lpzrobots} project, developed by a research group at the University 
 \item[ode\_robots] : a 3D physically correct robot simulator
 \end{description}
 
-The project is implemented in \textit{C++} and needs an Unix system to be run. It consists of two main GIT repositories to be forked - lpzrobots and go\_robots. The overall software architecture is shown on \cref{img:lpzrobots_architecture}.
+The project is implemented in \textit{C++} and needs an Unix system to be run. It consists of two main GIT repositories to be forked - lpzrobots and go\_robots. The overall software architecture is shown in \cref{img:lpzrobots_architecture}.
 
 \begin{figure}[H]
   \centering
@@ -134,13 +134,13 @@ An instance of the \textit{Agent} class integrates all components of the agent (
   \label{img:lpzrobots_repos}
 \end{figure}
 
-On \cref{img:lpzrobots_repos} the cooperation of the two repositories is illustrated. With reference to \cref{app:code_documentation}, one can call the \textit{main.cpp} file from \textit{root/simulation/mbulinai22015-gorobots\_edu-fork/practices/amosii} directory as the main simulation file for purposes of the thesis. It sets up the environment with initial parameters $ controlinterval = 10 $ and $ simstepsize = 0.01 $, which means the simulation sensitivity is \textit{10 steps} per second.
+In \cref{img:lpzrobots_repos} the cooperation of the two repositories is illustrated. With reference to \cref{app:code_documentation}, one can call the \textit{main.cpp} file from \textit{root/simulation/mbulinai22015-gorobots\_edu-fork/practices/amosii} directory as the main simulation file for purposes of the thesis. It sets up the environment with initial parameters $ controlinterval = 10 $ and $ simstepsize = 0.01 $, which means the simulation sensitivity is \textit{10 steps} per second.
 
-It also sets the initial camera and robot position in the map. The robot position is chosen randomly and the reason for that is described in \cref{sec:data_acquisition}. The robot fixator, which is originally implemented for AMOS II is removed, so the robot starts walking right after the simulation is launched.
+It also sets the initial camera and a robot position in the map. The robot position is chosen randomly and the reason for that is described in \cref{sec:data_acquisition}. The robot fixator, which is originally implemented for AMOS II, is removed, so the robot starts walking right after the simulation is launched.
 
-The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this research it is fixed to zero though and only the terrain noise combined with a signal noise are used.
+The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this research it is fixed to zero though and only the terrain noise combined with a signal noise is used.
 
-The virtual vizualization of AMOS II is illustrated on \cref{img:amosii_sim}.
+The virtual vizualization of AMOS II is illustrated in \cref{img:amosii_sim}.
 
 \begin{figure}[H]
   \centering
@@ -150,9 +150,9 @@ The virtual vizualization of AMOS II is illustrated on \cref{img:amosii_sim}.
 \end{figure}
 
 \subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
-The main motivation for terrain classification is to adjust current robot's gait accordingly and save some energy thereby. It is assumed that the robot is already walking, using some implemented gait, when it tries to classify the terrain. Hence, it is needed to make the simulation agent walk as well. The starting gait is decided to be the \textbf{tripod} gait.
+The main motivation for the terrain classification is to adjust the current robot's gait accordingly and save some energy thereby. It is assumed that the robot is already walking, using an implemented gait, when it tries to classify the terrain. Hence, it is needed to make the simulation agent walk as well. The starting gait is decided to be the \textbf{tripod} gait.
 
-To generate a tripod gate, a central pattern generator (CPG) is used. \citep{unpub:ai3_lec3} It is implemented as a 2-neuron neural network right inside AMOS II (\cref{img:two_neuron_network}).
+To generate the tripod gait, a central pattern generator (CPG) is used. \citep{unpub:ai3_lec3} It is implemented as a 2-neuron neural network right inside AMOS II (\cref{img:two_neuron_network}).
 
 \begin{figure}[H]
   \centering
@@ -173,7 +173,7 @@ p1 = 0.35;                   // parameter for Thoraco joints
 p2 = 0.3;                    // parameter for Coxa joints
 \end{lstlisting}
 
-Then, during the simulation, in \textit{tripod\_controller.h} there is a function called \textit{step()} able to control robots joints in every single simulation step. In this function three important actions come about.
+Then, during the simulation, in \textit{tripod\_controller.h} there is a function called \textit{step()} able to control robot's joints in every single simulation step. In this function three important actions come about.
 
 \begin{enumerate}
 \item \textbf{The activation function}
@@ -202,7 +202,7 @@ o_{H_2} = tanh(a_{H_2})
 \end{equation}
 
 \item \textbf{Joints settings}
-With the reference to previous equations and variables names, the actuators are set in the sense shown on \cref{img:tripod_illustration}. The \textit{femur} joints (red ones) stay unchanged (set to zero). This settings generates a reliable tripod gait for AMOS II.
+With the reference to previous equations and variables names, the actuators are set in the sense shown in \cref{img:tripod_illustration}. The \textit{femur} joints (red ones) stay unchanged (set to zero). This setting generates a reliable tripod gait for AMOS II.
 
 \begin{figure}[H]
   \centering
@@ -215,7 +215,7 @@ With the reference to previous equations and variables names, the actuators are 
 \section{Virtual Terrain Types} \label{sec:virtual_terrain_types}
 Since the verification is based on the simulation only, the goal is to design an authentical virtual environment. For this purpose various terrain types need to be virtually imitated.
 
-Luckily, the \textbf{LpzRobots} AMOS II simulator supports some terrain settings. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
+Luckily, the \textbf{LpzRobots} AMOS II simulator supports some terrain setting. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
 
 \begin{lstlisting}[language=C++, caption={Setting a terrain ground in main.cpp}, label=code:terrain_ground]
 Substance roughterrainSubstance(terrain_roughness, terrain_slip,
@@ -242,9 +242,9 @@ Besides the substance handle, the \textit{TerrainGround} constructor takes six m
 \subsection{Terrain Qualities} \label{ssec:terrain_qualities}
 Out of the listed ground parameters, some of them are picked up and being called \textit{terrain qualities}, as they define a specific terrain type.
 
-It has been decided not to change the \textit{.ppm} image for various terrains and so \textit{rough1.ppm} is fixed. Also the walking area is set to (big enough) final size of \textit{20x25}. The color is variable, however, besides the simulation graphics it does not have any effect on results. 
+It has been decided not to change the \textit{.ppm} image for various terrains and so \textit{rough1.ppm} is fixed. Also the walking area is set to the (big enough) final size of \textit{20x25}. The color is variable, however, besides the simulation graphics it does not have an effect on results. 
 
-Therefore, a virtual terrain type is defined by five qualitites. Each of them is a float number from an empirically stated range \footnote{The upper range limits have been set up based on significant changes in robot behaviour for various parameter values.}. (\cref{tab:terrain_qualities}).
+Therefore, a virtual terrain type is defined by five qualitites. Each of them is a float number from an empirically stated range \footnote{The upper range limits have been set up based on significant changes in the robot behaviour for various parameter values.}. (\cref{tab:terrain_qualities}).
 
 \begin{table}[H]
 \centering
@@ -263,7 +263,7 @@ height       & 0.0       & 0.1
 \subsection{Terrains Parameters Determination} \label{ssec:terrain_parameters}
 To determine a terrain type, one has to come up with the five parameters from \cref{tab:terrain_qualities}.
 
-First, number of identifiable virtual terrain types needs to be determined. For purposes of this thesis, it has been decided to create \textbf{14 terrain types}. Their parameters (showed in \cref{tab:terrains_parameters}) have been set up intuitively, based on the AMOS II simulated behaviour. With respect to the qualities ranges from \cref{tab:terrain_qualities}, the values have been normed to (0, 1).
+At first, the number of identifiable virtual terrain types needs to be determined. For purposes of this thesis, it has been decided to create \textbf{14 terrain types}. Their parameters (shown in \cref{tab:terrains_parameters}) have been set up intuitively, based on the AMOS II simulated behaviour. With respect to the qualities ranges from \cref{tab:terrain_qualities}, the values have been normed to (0, 1).
 
 \begin{table}[H]
 \centering
@@ -294,7 +294,7 @@ Colors linked to the terrains in \cref{tab:terrains_parameters} are used in the 
 \subsection{Analysis of Chosen Parameters} \label{ssec:terrains_analysis}
 In general, proper data preparation is an important part of classification tasks, hence a brief analysis is presented.
 
-The goal is to imitate real terrains authentically as possible and at the same time to generate such terrains, that are clearly distinguishable from each other. The more two terrains differ the better classification results are expected.
+The goal is to imitate real terrains as authentically as possible and at the same time to generate such terrains, which are clearly distinguishable from each other. The more two terrains differ, the better classification results are expected.
 
 Having five terrain qualities calls for a 5-D space, which is difficult to illustrate or even imagine. Therefore, formula \ref{eq:similarity_factor} is used to compute a similarity factor of two terrain types (the five qualities are listed in \cref{tab:terrain_qualities} and \cref{tab:terrains_parameters}).
 
@@ -315,16 +315,16 @@ The following figure (\ref{fig:terrains_parameters}) shows the variability (simi
   \label{fig:terrains_parameters}
 \end{figure}
 
-Based on \cref{fig:terrains_parameters}, one can say that foam is very different to ice or, for instance, sand is quite similar to mud. The surfaces are virtually generated and their authenticity has not been verified. 
+Based on \cref{fig:terrains_parameters}, one can say that foam is very different from ice or, for instance, sand is quite similar to mud. The surfaces are virtually generated and their authenticity has not been verified. 
 
 \subsection{Terrain Noise} \label{ssec:terrain_noise}
-Generally, using simulation data for the very first research steps brings many benefits and it is usually the right way to start. However, the real world is always different to the simulated alternative and these disparities may influence the results significantly.
+Generally, using simulation data for the very first research steps brings many benefits and it is usually the right way to start. However, the real world is always different from the simulated alternative and these disparities may influence the results significantly.
 
-In this case, there are some virtually created terrain types based on five qualities (\cref{ssec:terrain_qualities}). These parameters have been set up basically by a guess, intuitively. Therefore, one should assume that the real terrains might be distinct from the virtual ones in some way.
+In this case, there are some virtually created terrain types based on five qualities (\cref{ssec:terrain_qualities}). These parameters have been set up basically by a guess, intuitively. Therefore, one should assume that the real terrains might be distinct from the virtual ones in some ways.
 
-Secondly, if there is a terrain defined as grass for instance, this definition can not be general on no account. There are many different types of grass and they differ from each other at least in the reffered qualities.
+Secondly, if there is a terrain defined as grass for instance, this definition cannot be general on no account. There are many types of grass and they differ from each other at least in the reffered qualities.
 
-Consequently, there are some lines of code added to \textit{main.cpp} (see \ref{app:code_documentation}) enabling to noise the parameters shown in \cref{tab:terrains_parameters}. The following box (\ref{code:terrain_noise}) shows how it is done. 
+Consequently, there are some lines of the code added to \textit{main.cpp} (see \ref{app:code_documentation}) enabling to noise the parameters shown in \cref{tab:terrains_parameters}. The following box (\ref{code:terrain_noise}) shows how it is done. 
 
 \begin{lstlisting}[language=C++, caption={Adding terrain noise in main.cpp}, label=code:terrain_noise]
 terrain_roughness += fRand(-10.0*std_vol, 10.0*std_vol);
@@ -349,22 +349,22 @@ The function generating the random number uses the \textit{normal (Gaussian) dis
 p(z) = \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{(z-\mu)^2}{2 \sigma^2}}
 \end{equation}
 
-In this case the mean $ \mu = 0 $ and the standard deviation $ \sigma $ is defined by a corresponding range percentage. As the values at any pair of times are identically distributed and statistically independent (and hence uncorrelated) \citep{misc:wiki}, a \textbf{white Gaussian noise} is being generated thereby. Additionally, there is some limits checking as the parameters can not take negative values.
+In this case the mean $ \mu = 0 $ and the standard deviation $ \sigma $ is defined by a corresponding range percentage. As the values at any pair of times are identically distributed and statistically independent (and hence uncorrelated) \citep{misc:wiki}, a \textbf{white Gaussian noise} is being generated thereby. Additionally, there is some limits checking as the parameters cannot take negative values.
 
 In this manner, the terrain types parameters from \cref{tab:terrains_parameters} can be noised, where the magnitude of noise influence is passed as a simulation argument.
 
 \section{Data Acquisition} \label{sec:data_acquisition}
 At this point the simulation is set up and ready to be launched. There are \textbf{14} virtually created terrain types (defined in \cref{sec:virtual_terrain_types}, \cref{tab:terrains_parameters}) and \textbf{24} robot's proprioceptive sensors (described in \cref{ssec:amosii}, \cref{tab:proprioceptors}) available.
 
-Predictably, the terrain types are assumed to be classification targets (classes). Therefore, some data needs to be generated for each of these classes. This data comes from the 24 proprioceptors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_building}), which is one of the most essential parts of the process.
+Predictably, the terrain types are assumed to be classification targets (classes). Therefore, some data needs to be generated for each of these classes. This data comes from the 24 proprioceptors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
 
-As it is later described in more detail, several sensors values in time need to be used to catch the robot's dynamics on various terrains. Therefore, to generate a single data example, the simulation must be run for a period of time. The optimal duration is not known yet, but besides this fact, one should start thinking how to generate a sufficient amount of samples for classification at this point.
+As it is later described in more detail, several sensors values in time need to be used to catch the robot's dynamics on various terrains. Therefore, to generate a single data example, the simulation must be run for a period of time. The optimal duration is not known yet, but besides this fact, one should start thinking of generating a sufficient amount of samples for classification at this point.
 
 The very simple way might be to let the robot walk for a long period of time and then just to cut the signals coming from sensors into many samples, based on an estimated timestep. The hitch of this approach is in initial conditions - they would become the same for every sample, which is not correct.
 
 To keep the rightness, the simulator is launched several times in order to generate several samples for every terrain type. It has been decided to let the robot walk for \textbf{10} seconds each time. In combination with the simulation settings (see \cref{ssec:lpzrobots_sim}), this implies \textbf{100} values for every sensor and for every simulation run - which should be more than enough.
 
-For illustration, data from sensor \textit{ATRf} acquired when the robot was walking on a \textit{concrete} surface for approximately 10 seconds is shown on \cref{fig:data_example}.
+For illustration, some data gathered from sensor \textit{ATRf} when the robot was walking on a \textit{concrete} surface for approximately 10 seconds is shown in \cref{fig:data_example}.
 
 \begin{figure}[H]
   \centering
@@ -373,7 +373,7 @@ For illustration, data from sensor \textit{ATRf} acquired when the robot was wal
   \label{fig:data_example}
 \end{figure}
 
-The \textit{no\_noise} indication in the figure legend reffers to \cref{ssec:terrain_noise}. An optimal starndard deviation value of the additive Gaussian noise is not known. Therefore data for several values of this parameter has been generated. The simulation has been gradually run for:
+The \textit{no\_noise} indication in the figure legend reffers to \cref{ssec:terrain_noise}. An optimal starndard deviation value of the additive Gaussian noise is not known. Therefore some data for several values of this parameter has been generated. The simulation has been gradually run for:
 
 \begin{itemize}
 \item $ \sigma_p = 0.0 $ (no noise)
@@ -397,7 +397,7 @@ timestep_100;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
 
 There is a \textit{.txt} file of this structure for every single simulation run in the \textit{root/data/} directory (see \cref{app:code_documentation}).
 
-All the data files are generated by a script called \textit{generate\_txt\_data.py} (\ref{app:code_documentation}). This script takes several arguments, like number of jobs (simulation runs), terrain types involved or the terrain noise \textit{std} ($ \sigma_p $). Then a loop based on these parameters starts, where the simulation is launched and stopped after ten seconds each iteration. This is performed by calling a bash command (since the simulation is \textit{.cpp} based) and then killing the called process from python. The corresponding \textit{.txt} file is saved after each iteration by the simulation and then copied by the python script to a corresponding folder in \textit{root/data/}.
+All the data files are generated by a script called \textit{generate\_txt\_data.py} (\ref{app:code_documentation}). This script takes several arguments, like the number of jobs (simulation runs), terrain types involved or the terrain noise \textit{std} ($ \sigma_p $). Then a loop based on these parameters starts, where the simulation is launched and stopped after ten seconds each iteration. This is performed by calling a bash command (since the simulation is \textit{.cpp} based) and then killing the called process from python. The corresponding \textit{.txt} file is saved after each iteration by the simulation and then copied by the python script to a corresponding folder in \textit{root/data/}.
 
 \begin{figure}[H]
   \centering
@@ -415,18 +415,16 @@ In this manner, \textit{.txt} files for all terrains and all mentioned $ \sigma_
   \label{img:data_dir_structure}
 \end{figure}
 
-Right after the data generation, a script called \textit{clean\_txt\_data.py} (\ref{app:code_documentation}) is used to check the created \textit{.txt} files. As it takes a long time to generate all the data, sometimes the simulation fails and the files are incomplete. Hence the script checks whether there are enough timesteps (at least more than 95) and also if the steps are not messed. Files that fail during the inspection are removed.
-to create
-As \cref{img:data_dir_structure} reveals, there are \textbf{500} \textit{.txt} files for every \textit{noise/terrain} configuration. This allows creating datasets of 500 samples per class.
+Right after the data generation, a script called \textit{clean\_txt\_data.py} (\ref{app:code_documentation}) is used to check the created \textit{.txt} files. As it takes a long time to generate all the data, sometimes the simulation fails and the files are incomplete. Hence the script checks whether there are enough timesteps (at least more than 95) and also if the steps are not messed. Files that fail during the inspection are removed. As \cref{img:data_dir_structure} reveals, there are \textbf{500} \textit{.txt} files for every \textit{noise/terrain} configuration. This allows creating datasets of 500 samples per class.
 
-\section{Feature Vector Compilation} \label{sec:feature_vector_compilation}
+\section{Building a Feature Vector} \label{sec:feature_vector_compilation}
 So far, the hexapod simulation has been introduced, virtual terrain types defined and the simulator has been run on these terrains and for various values of terrain noise power. All the data has been acquired from the simulation as \textit{.txt} files. Hence the simulation is not needed anymore and only the gathered data are used for the following processing.
 
 Classification tasks are generally based on datasets consisting of samples and corresponding targets. The samples need to be represented in a numerical way in order to be processed by a computer and its appropriate algorithms. In machine learning, this numerical representation of an object is called \textit{a feature vector}, an n-dimensional vector of numerical values. This section is devoted to building a feature vector out of the data gathered from proprioceptive sensors.
 
-This part of the process is crucial as the way of feature vector compilation can influence classification results a lot. Information loss or redundant structures are quite frequent mistakes here. Therefore, as the optimal structure is not known, several possibilities are tested again and therefore some new process parameters appear at this point (mentioned already in \cref{sec:overall_process_summary}).
+This part of the process is crucial as the way of feature vector compilation can influence classification results a lot. Information loss or redundant structures are quite frequent mistakes here. Therefore, as the optimal structure is not known, several possibilities are tested again and therefore some new global process parameters appear at this point (mentioned already in \cref{sec:overall_process_summary}).
 
-For this particular problem, the task is to form a feature vector out of content of one \textit{.txt} file (got in \cref{sec:data_acquisition}), as each of these files contains data for one sample (see \cref{img:feature_vector_forming}).
+For this particular problem, the task is to form one feature vector out of the content of one \textit{.txt} file (got in \cref{sec:data_acquisition}), as each of these files contains data for one sample (see \cref{img:feature_vector_forming}).
 
 \begin{figure}[H]
   \centering
@@ -437,9 +435,9 @@ For this particular problem, the task is to form a feature vector out of content
 
 At this point, one may ask for the reason of using several timesteps for creating one sample. It is assumed that a proper terrain classification using proprioceptors at one moment in time is at least difficult, if not impossible. Therefore the idea is to let the robot walk for a while and take down the dynamics of the sensors. Of course, the more timesteps are used for one sample, the more time the classification takes. Because of these arguments the number of timesteps is left as a global process parameter and it is a subject for later discussion.
 
-Sensors to be used is another global parameter coming out of this section. The anticipation is that the feature vector becomes redundant using all of the 24 sensors, as many of them might behave similarly. However, for now all of them are used to show how the feature vector is built and it is also left for later discussion.
+Sensors selection defines another global parameter coming out of this section. The anticipation is that the feature vector becomes redundant using all of the 24 sensors, as many of them might behave similarly. However, for now all of them are used to show how the feature vector is built and it is also left for later discussion.
 
-Parameters for discussion coming out of feature vector compilation:
+Parameters coming out of feature vector compilation and left for later discussion:
 \begin{itemize}
 \item number of timesteps used to build one feature vector (one sample)
 \item sensors involved in classification
@@ -447,7 +445,7 @@ Parameters for discussion coming out of feature vector compilation:
 
 Now, with reference to \cref{img:feature_vector_forming}, the question is how to transform the \textbf{2D} data from \textit{.txt} files into \textbf{1D} vectors. The idea is to fix the \textit{timesteps} parameter and arrange the columns of the matrix into one vector. This implies having data from all sensors one by one next to each other and forming one feature vector together. 
 
-On \cref{fig:sample_example} an example of this kind of forming is shown. For illustration there is just one terrain type (\textit{concrete}) involved. The number of timesteps is set to 10 and all 24 sensors are used, hence a feature vector of length 240 is gained. The corresponding sensors shortcuts (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
+In \cref{fig:sample_example} an example of this kind of forming is shown. For illustration there is just one terrain type (\textit{concrete}) involved. The number of timesteps is set to 40 and all 24 sensors are used, hence a feature vector of length 960 is gained. The corresponding sensors shortcuts (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
 
 \begin{figure}[H]
   \centering
@@ -457,7 +455,7 @@ On \cref{fig:sample_example} an example of this kind of forming is shown. For il
 \end{figure}
 
 \subsection{Normalization} \label{ssec:normalization}
-It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the foot contact sensors, following approach is used to map the data. 
+It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the angle sensors, the following approach is used to map the data. 
 
 \begin{lstlisting}[language=Python, caption={Data normalization}, label=code:data_normalization]
 def norm_signal(s, a_min, a_max):
@@ -465,7 +463,7 @@ def norm_signal(s, a_min, a_max):
   return l
 \end{lstlisting}
 
-The bounds (\textit{a\_min} and \textit{a\_max} used in \cref{code:data_normalization}) are defined by default sensors ranges (listed in \cref{tab:proprioceptors}). Also a $ [0, 1] $ interval overflow checking is added and values are adjusted if needed. This is a cover for the case ranges from \cref{tab:proprioceptors} were not accurate. The following figure (\ref{fig:sample_example_normed}) shows a normed feature vector example. The influence of normalization on classification results is another subject for discussion.
+The bounds (\textit{a\_min} and \textit{a\_max} used in \cref{code:data_normalization}) are defined by default sensors ranges (listed in \cref{tab:proprioceptors}). Also a $ [0, 1] $ interval overflow checking is added and values are adjusted if needed. This is a cover for the case ranges from \cref{tab:proprioceptors} were not accurate. The following figure (\ref{fig:sample_example_normed}) shows a normed feature vector example. The influence of normalization on classification results is another subject for the discussion.
 
 \begin{figure}[H]
   \centering
@@ -477,18 +475,112 @@ The bounds (\textit{a\_min} and \textit{a\_max} used in \cref{code:data_normaliz
 \subsection{Signal Noise} \label{ssec:signal_noise}
 In \cref{ssec:terrain_noise} a few general reasons for noising simulation data are disscused. In that case an additive Gaussian noise is used to make the terrains definitions (from \cref{tab:terrains_parameters}) more complex.
 
-For similar reasons also a signal noise is added to the data. In reality the mechanical sensors might shake, be influenced by environmental conditions or simply may not work as well as expected, while data coming from the simulated sensors are always deterministic.
+For similar reasons a signal noise is added to the sensory data. In reality the mechanical sensors might shake, be influenced by environmental conditions or simply may not work as well as expected, while the data coming from the simulated sensors are always deterministic.
 
-\section{Datasets}
-transformation into datasets, splitting into training-validation-testing sets
+Right after the data normalization, a white Gaussian noise is added to the normed feature vectors. This time it is performed in Python, using the \textit{random.normal()} function of \textit{numpy} library to get the \textit{normal distribution} with zero mean (\cref{code:adding_signal_noise}).
+
+\begin{lstlisting}[language=Python, caption={Adding signal noise in python}, label=code:adding_signal_noise]
+def add_signal_noise(signal):
+  noise = np.random.normal(loc=0, scale=STD, size=len(signal))
+  return [x+n for x, n in zip(signal, noise)]
+\end{lstlisting}
+
+Also in this case, it is difficult to estimate an optimal signal noise power (STD in \cref{code:adding_signal_noise}). Therefore it is left as another global process parameter and its influence is discussed in the results part. It is defined as a percentage of the $ [0.0, 1.0] $ interval and as the signals are normed in advance, there is no need for another processing of this parameter.
+
+\section{Datasets Creation} \label{sec:dataset_creation}
+Reffering to \cref{img:terrain_classification_process}, in this section the \textit{create\_terrains\_dataset.py} script is introduced. At this part of the process all the data files are ready and also the form of feature vectors is determined. The task is to transform all the data into so called datasets.
+
+There are usually three sets of data used for classification tasks - training, validation and testing data. These three sets must be disjunctive, meaning they cannot have a single element in common. All these three sets together form a dataset.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{three_sets}
+  \caption{Three sets of data in a dataset.}
+  \label{img:three_sets}
+\end{figure}
+
+Each set of data consists of samples and targets (classes). The samples are represented by normed feature vectors (\cref{sec:feature_vector_compilation}) - lists of numerical floating point values from $ [0.0, 1.0] $ interval. The targets, in this case, match the names of virtually created terrain types (listed in \cref{tab:terrains_parameters}). Every sample must be uniformly assigned to precisely one target.
+
+Once there are two ordered lists - a list of samples and a corresponding list of targets, these lists are split into the three sets shown in \cref{img:three_sets}. The script takes an argument called \textit{data\_split\_ratio} defining the proportions among the sets sizes. Defaultly the ratio is set to generate 80\% training, 10\% validation and 10\% of testing data.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{create_dataset}
+  \caption{\textit{create\_terrains\_dataset.py} : script workflow}
+  \label{img:create_dataset}
+\end{figure}
+
+The workflow happening inside the \textit{create\_terrains\_dataset.py} script is illustrated in \cref{img:create_dataset}. During the overall process description in previous sections, some global process parameters have been collected. These configurations are now passed as arguments to this script and therefore several datasets of various properties can be generated.
+
+The datasets files are saved in directory \textit{root/py/cache/datasets/amos\_terrains\_sim/} (see \ref{app:code_documentation}). Their structure is based on a powerful serializing and de-serializing Python algorithm implemented under a package called \textit{pickle (cPickle)}. On the same basis a package called \textit{shelve} is used to represent a dataset as a dictionary-link object. The files are saved with the \textit{.ds} suffix.
+
+The list of all generated datasets can be found in \cref{app:list_of_datasets}. These datasets and influence of individual parameters are evaluated in the results section (\cref{chapter:06:experimental_evaluation}).
 
 \section{Training and Classification}
+Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of data (training and validation) and then perform similarly on another "never seen" data (testing) - illustrated on \cref{img:three_sets}.
 
-Neural net training with several parameters and comparison with training with scikit-neuralnetwork library
+There are many classification methods differing in mathematical backgrounds and each of them has some pros and cons on various types of data. However, all of them have some general functionalities that suit some kind of convention. For instance, there are at least two functions that every classifier should be capable of:
 
-2-3 pages
+\begin{description}
+\item[fit()] : Fitting some data to a model. This function usually takes training samples and their targets as arguments. Additiionally, it can take some validation data and/or learning parameters. Then the model is trained.
+\item[predict()] : This function is then called when the model is already trained. It takes one or more samples of testing data and returns the predicted target(s).
+\end{description}
 
-\subsection{Scikit-neuralnetwork library}
-brief description of the library and its usage 1/2 pages
+This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chapter:04:neural_net_implementation}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in \cref{ssec:other_classifiers}).
 
-1 page
+In the overall process diagram (\cref{img:terrain_classification_process}) there are two scripts for training neural networks included. The first one \textit{kitt\_train.py} uses the implemented network library \textit{kitt\_nn} (\cref{chapter:04:neural_net_implementation}) and the script called \textit{sknn\_train.py} uses a public library \textit{Scikit-neuralnetwork}, which is described in \cref{ssec:sknn}. What is important is, that these two scripts use the same workflow, which is illustrated on \cref{img:train_and_test_network}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{train_and_test_network}
+  \caption{\textit{kitt\_train.py} and \textit{sknn\_train.py} : scripts workflow}
+  \label{img:train_and_test_network}
+\end{figure}
+
+The scripts take several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its settings parametrizes the classifier as well.
+
+Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this reasearch, only learning rate and number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
+
+Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
+
+\subsection{Evaluation Methods} \label{ssec:evaluation_methods}
+A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics [scikit-learn].
+
+\begin{description}
+\item[accuracy] : the set of labels predicted for a sample must exactly match the corresponding set of true labels
+\item[precision] : ability of the classifier not to label as positive a sample that is negative
+\item[recall] : the ability of the classifier to find all the positive samples
+\item[F1 score] is interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal. Formula:
+\begin{equation}
+F1 = \frac{2 * precision * recall}{precision + recall}
+\end{equation}
+\item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
+\end{description}
+
+\subsection{Net Pruning on Terrains Dataset} \label{ssec:pruned_net_on_terrains}
+As the overall process diagram (\cref{img:terrain_classification_process}) shows, the developed network pruning algorithm (\cref{chapter:network_pruning_algorithm}) is tested on the terrain datasets. The approach has been already described. 
+
+Evaluation in... \textbf{TODO:} describe the process here and reffer the results after they are gathered.
+
+
+\subsection{Scikit-learn Neural Network Library} \label{ssec:sknn}
+In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says [], this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.
+
+This step has been considered with the aim to test another implementation of the learning algorithm rather then to obtain better classification results. As the only learning parameters are \textit{net structure}, \textit{learning rate} and \textit{number of epochs}, some other default parameters of the tested network are shown in \cref{code:sknn_net}.
+
+\begin{lstlisting}[language=Python, caption={Sknn classifier specification []}, label=code:sknn_net]
+class sknn.mlp.Classifier(layers, warning=None, parameters=None, 
+random_state=None, learning_rule=u'sgd', learning_rate=0.01, 
+learning_momentum=0.9, normalize=None, regularize=None, 
+weight_decay=None, dropout_rate=None, batch_size=1, n_iter=None, 
+n_stable=10, f_stable=0.001,  valid_set=None, valid_size=0.0, 
+loss_type=None, callback=None, debug=False,  verbose=None)
+\end{lstlisting}
+
+\subsection{Searching for Optimal Configuration (Grid Search)} \label{ssec:grid_search}
+\textbf{TODO :} describe here how the best parameters have been found using GridSearch
+
+\subsection{Other classifiers} \label{ssec:other_classifiers}
+\textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part
+
+SVM, k-NN, RandomForest
