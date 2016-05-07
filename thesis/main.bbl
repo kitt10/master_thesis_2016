@@ -242,6 +242,100 @@
   \field{year}{2011}
 \endentry
 
+\entry{article:scikit-learn}{article}{}
+  \name{author}{16}{}{%
+    {{}%
+     {Pedregosa}{P.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Varoquaux}{V.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gramfort}{G.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Michel}{M.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Thirion}{T.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Grisel}{G.}%
+     {O.}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Blondel}{B.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Prettenhofer}{P.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weiss}{W.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dubourg}{D.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vanderplas}{V.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Passos}{P.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cournapeau}{C.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Brucher}{B.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Perrot}{P.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Duchesnay}{D.}%
+     {E.}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PF+1}
+  \strng{fullhash}{PFVGGAMVTBGOBMPPWRDVVJPACDBMPMDE1}
+  \field{labelalpha}{Ped+11}
+  \field{sortinit}{2}
+  \field{pages}{2825\bibrangedash 2830}
+  \field{title}{Scikit-learn: Machine Learning in {P}ython}
+  \field{volume}{12}
+  \field{journaltitle}{Journal of Machine Learning Research}
+  \field{year}{2011}
+\endentry
+
 \entry{article:09:roughterrain}{article}{}
   \name{author}{5}{}{%
     {{}%
@@ -555,6 +649,31 @@
   }
   \field{type}{phdthesis}
   \field{month}{06}
+  \field{year}{2015}
+\endentry
+
+\entry{misc:sknn}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Champandard}{C.}%
+     {Alex~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Samothrakis}{S.}%
+     {Spyridon}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CAJSS1}
+  \strng{fullhash}{CAJSS1}
+  \field{labelalpha}{CS15}
+  \field{sortinit}{2}
+  \field{note}{[Online; accessed 06-May-2016; nucl.ai Conference 2015]}
+  \field{title}{sknn: Deep Neural Networks without the Learning Cliff}
+  \verb{url}
+  \verb \url{http://scikit-neuralnetwork.readthedocs.io/en/latest/}
+  \endverb
   \field{year}{2015}
 \endentry
 

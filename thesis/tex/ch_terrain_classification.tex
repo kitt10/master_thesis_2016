@@ -10,7 +10,7 @@ Next, AMOS II (its simulation alternative) is forced to walk on every defined te
 
 Having the clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
 
-An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{chapter:network_pruning_algorithm}. The classification performance of developed tools is compared to a \textit{Scikit-learn} network classification library sknn [].
+An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{chapter:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
 
 \begin{figure}[H]
   \centering
@@ -517,18 +517,18 @@ The datasets files are saved in directory \textit{root/py/cache/datasets/amos\_t
 The list of all generated datasets can be found in \cref{app:list_of_datasets}. These datasets and influence of individual parameters are evaluated in the results section (\cref{chapter:06:experimental_evaluation}).
 
 \section{Training and Classification}
-Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of data (training and validation) and then perform similarly on another "never seen" data (testing) - illustrated on \cref{img:three_sets}.
+Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - illustrated in \cref{img:three_sets}.
 
-There are many classification methods differing in mathematical backgrounds and each of them has some pros and cons on various types of data. However, all of them have some general functionalities that suit some kind of convention. For instance, there are at least two functions that every classifier should be capable of:
+There are many classification methods differing in mathematical backgrounds and each of them has some pros and cons on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two functions that every classifier should be capable of:
 
 \begin{description}
-\item[fit()] : Fitting some data to a model. This function usually takes training samples and their targets as arguments. Additiionally, it can take some validation data and/or learning parameters. Then the model is trained.
-\item[predict()] : This function is then called when the model is already trained. It takes one or more samples of testing data and returns the predicted target(s).
+\item[fit()] : Fitting some data to a model. This function usually takes training samples and their targets as arguments. Additiionally, it can take some validation data and/or learning parameters. Then a model is trained.
+\item[predict()] : This function is then called when a model is already trained. It takes one or more samples of testing data and returns the predicted target(s).
 \end{description}
 
-This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chapter:04:neural_net_implementation}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in \cref{ssec:other_classifiers}).
+This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chapter:04:neural_net_implementation}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in sections \ref{ssec:sknn} and \ref{ssec:other_classifiers}).
 
-In the overall process diagram (\cref{img:terrain_classification_process}) there are two scripts for training neural networks included. The first one \textit{kitt\_train.py} uses the implemented network library \textit{kitt\_nn} (\cref{chapter:04:neural_net_implementation}) and the script called \textit{sknn\_train.py} uses a public library \textit{Scikit-neuralnetwork}, which is described in \cref{ssec:sknn}. What is important is, that these two scripts use the same workflow, which is illustrated on \cref{img:train_and_test_network}.
+In the overall process diagram (\cref{img:terrain_classification_process}) two scripts for training neural networks are included. The first one, \textit{kitt\_train.py}, uses the implemented network library \textit{kitt\_nn} (\cref{chapter:04:neural_net_implementation}) and the script called \textit{sknn\_train.py} uses a public library \textit{Scikit-neuralnetwork}, which is described in \cref{ssec:sknn}. It is important that these two scripts use the same workflow, which is illustrated in \cref{img:train_and_test_network}.
 
 \begin{figure}[H]
   \centering
@@ -537,14 +537,14 @@ In the overall process diagram (\cref{img:terrain_classification_process}) there
   \label{img:train_and_test_network}
 \end{figure}
 
-The scripts take several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its settings parametrizes the classifier as well.
+The scripts take several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
 
-Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this reasearch, only learning rate and number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
+Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this reasearch, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
 
 Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
 
 \subsection{Evaluation Methods} \label{ssec:evaluation_methods}
-A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics [scikit-learn].
+A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
 
 \begin{description}
 \item[accuracy] : the set of labels predicted for a sample must exactly match the corresponding set of true labels
@@ -557,18 +557,18 @@ F1 = \frac{2 * precision * recall}{precision + recall}
 \item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
 \end{description}
 
-\subsection{Net Pruning on Terrains Dataset} \label{ssec:pruned_net_on_terrains}
+\subsection{Terrain Classification using Pruned Nets} \label{ssec:pruned_net_on_terrains}
 As the overall process diagram (\cref{img:terrain_classification_process}) shows, the developed network pruning algorithm (\cref{chapter:network_pruning_algorithm}) is tested on the terrain datasets. The approach has been already described. 
 
 Evaluation in... \textbf{TODO:} describe the process here and reffer the results after they are gathered.
 
 
 \subsection{Scikit-learn Neural Network Library} \label{ssec:sknn}
-In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says [], this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.
+In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says \citep{misc:sknn}, this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.
 
-This step has been considered with the aim to test another implementation of the learning algorithm rather then to obtain better classification results. As the only learning parameters are \textit{net structure}, \textit{learning rate} and \textit{number of epochs}, some other default parameters of the tested network are shown in \cref{code:sknn_net}.
+This step has been considered with the aim to test another implementation of the learning algorithm rather than to obtain better classification results. As the only learning parameters are the \textit{net structure}, the \textit{learning rate} and the \textit{number of epochs}, some other default parameters of the tested network are shown in \cref{code:sknn_net}.
 
-\begin{lstlisting}[language=Python, caption={Sknn classifier specification []}, label=code:sknn_net]
+\begin{lstlisting}[language=Python, caption={Sknn classifier specification \citep{misc:sknn}}, label=code:sknn_net]
 class sknn.mlp.Classifier(layers, warning=None, parameters=None, 
 random_state=None, learning_rule=u'sgd', learning_rate=0.01, 
 learning_momentum=0.9, normalize=None, regularize=None, 
@@ -580,7 +580,7 @@ loss_type=None, callback=None, debug=False,  verbose=None)
 \subsection{Searching for Optimal Configuration (Grid Search)} \label{ssec:grid_search}
 \textbf{TODO :} describe here how the best parameters have been found using GridSearch
 
-\subsection{Other classifiers} \label{ssec:other_classifiers}
+\subsection{Other Classifiers} \label{ssec:other_classifiers}
 \textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part
 
 SVM, k-NN, RandomForest

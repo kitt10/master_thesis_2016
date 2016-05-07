@@ -38,15 +38,20 @@
 \contentsline {section}{\numberline {6.6}Datasets Creation}{24}{section.112}
 \contentsline {section}{\numberline {6.7}Training and Classification}{26}{section.115}
 \contentsline {subsection}{\numberline {6.7.1}Evaluation Methods}{27}{subsection.117}
-\contentsline {subsection}{\numberline {6.7.2}Net Pruning on Terrains Dataset}{27}{subsection.119}
+\contentsline {subsection}{\numberline {6.7.2}Terrain Classification using Pruned Nets}{27}{subsection.119}
 \contentsline {subsection}{\numberline {6.7.3}Scikit-learn Neural Network Library}{27}{subsection.120}
 \contentsline {subsection}{\numberline {6.7.4}Searching for Optimal Configuration (Grid Search)}{28}{subsection.128}
-\contentsline {subsection}{\numberline {6.7.5}Other classifiers}{28}{subsection.129}
-\contentsline {chapter}{\numberline {7}Results}{29}{chapter.130}
-\contentsline {chapter}{\numberline {8}Discussion}{31}{chapter.131}
-\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{32}{chapter.132}
-\contentsline {chapter}{Bibliography}{33}{chapter*.133}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{35}{appendix.134}
-\contentsline {chapter}{\numberline {A2}Code Documentation}{36}{appendix.135}
-\contentsline {chapter}{\numberline {A3}List of Datasets}{37}{appendix.136}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{38}{appendix.137}
+\contentsline {subsection}{\numberline {6.7.5}Other Classifiers}{28}{subsection.129}
+\contentsline {chapter}{\numberline {7}Experimental Evaluation}{29}{chapter.130}
+\contentsline {section}{\numberline {7.1}Network Implementation Results}{29}{section.131}
+\contentsline {section}{\numberline {7.2}Pruning Algorithm Results}{29}{section.132}
+\contentsline {section}{\numberline {7.3}Terrain Processing Results}{29}{section.133}
+\contentsline {subsection}{\numberline {7.3.1}Gathered Data}{29}{subsection.134}
+\contentsline {subsection}{\numberline {7.3.2}Classification results}{29}{subsection.139}
+\contentsline {chapter}{\numberline {8}Discussion}{31}{chapter.140}
+\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{32}{chapter.141}
+\contentsline {chapter}{Bibliography}{33}{chapter*.142}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{35}{appendix.143}
+\contentsline {chapter}{\numberline {A2}Code Documentation}{36}{appendix.144}
+\contentsline {chapter}{\numberline {A3}List of Datasets}{37}{appendix.145}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{38}{appendix.146}

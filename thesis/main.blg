@@ -8,7 +8,7 @@ A level-1 auxiliary file: tex/ch_master_thesis_objectives.aux
 A level-1 auxiliary file: tex/ch_neural_network_implementation.aux
 A level-1 auxiliary file: tex/ch_network_pruning_algorithm.aux
 A level-1 auxiliary file: tex/ch_terrain_classification.aux
-A level-1 auxiliary file: tex/ch_experimental_evaluation.aux
+A level-1 auxiliary file: tex/ch_results.aux
 A level-1 auxiliary file: tex/ch_discussion.aux
 A level-1 auxiliary file: tex/ch_conclussion.aux
 A level-1 auxiliary file: tex/app_working_dir_structure.aux
@@ -31,44 +31,44 @@ Database file #2: bib/thesis_bibliography.bib
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 18 entries,
+You've used 20 entries,
             6047 wiz_defined-function locations,
-            1247 strings with 19701 characters,
-and the built_in function-call counts, 56333 in all, are:
-= -- 2055
-> -- 1749
-< -- 767
-+ -- 558
-- -- 601
-* -- 4196
-:= -- 3230
+            1257 strings with 20276 characters,
+and the built_in function-call counts, 65146 in all, are:
+= -- 2324
+> -- 2075
+< -- 842
++ -- 679
+- -- 749
+* -- 5164
+:= -- 3808
 add.period$ -- 0
-call.type$ -- 18
-change.case$ -- 306
-chr.to.int$ -- 124
-cite$ -- 40
-duplicate$ -- 6546
-empty$ -- 6166
-format.name$ -- 1057
-if$ -- 12738
+call.type$ -- 20
+change.case$ -- 332
+chr.to.int$ -- 132
+cite$ -- 44
+duplicate$ -- 7606
+empty$ -- 7035
+format.name$ -- 1362
+if$ -- 14583
 int.to.chr$ -- 0
-int.to.str$ -- 37
+int.to.str$ -- 41
 missing$ -- 0
-newline$ -- 494
-num.names$ -- 751
-pop$ -- 5664
+newline$ -- 613
+num.names$ -- 841
+pop$ -- 6376
 preamble$ -- 1
-purify$ -- 318
+purify$ -- 361
 quote$ -- 0
-skip$ -- 3102
+skip$ -- 3547
 stack$ -- 0
-substring$ -- 1385
-swap$ -- 2297
-text.length$ -- 579
-text.prefix$ -- 28
+substring$ -- 1500
+swap$ -- 2665
+text.length$ -- 656
+text.prefix$ -- 31
 top$ -- 1
-type$ -- 669
+type$ -- 745
 warning$ -- 0
-while$ -- 381
+while$ -- 421
 width$ -- 0
-write$ -- 475
+write$ -- 592

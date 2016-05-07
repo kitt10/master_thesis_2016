@@ -22,7 +22,7 @@ from os import path
 from numpy.random import normal
 from shelve import open as open_shelve
 from time import gmtime, strftime
-from functions import load_params, f_range_gen, norm_signal
+from functions import load_params, f_range_gen, norm_signal, add_signal_noise
 
 
 def parse_arguments():
@@ -42,7 +42,7 @@ def parse_arguments():
                         choices=list(f_range_gen(start=0.0, stop=1.0, step=0.01)),
                         help='Training : Validation : Testing data split')
     parser.add_argument('-dn', '--destination_name', type=str, default=strftime('terrains_%Y_%m_%d_%H_%M_%S', gmtime()),
-                        help='Length of one sample (simulation timesteps)')
+                        help='File name of the dataset')
     args_tmp = parser.parse_args()
 
     ''' Check args '''
@@ -60,23 +60,14 @@ def prepare_signal(signal, sen):
     :return: normalized signal with a signal noise
     """
 
+    global signal_noise_std
+
     ''' First, normalize the signal '''
     normed_signal = norm_signal(signal=signal, the_min=sensors_ranges[sen][0], the_max=sensors_ranges[sen][1])
 
     ''' Adding signal noise of defined std '''
-    noised_signal = add_signal_noise(signal=normed_signal)
+    noised_signal = add_signal_noise(signal=normed_signal, std=signal_noise_std)
     return noised_signal
-
-
-def add_signal_noise(signal):
-    """
-    :param signal: normed clean signal
-    :return: noised signal (Gaussian noise of zero mean and defined std)
-    """
-    global signal_noise_std
-    signal_noise_std = 1e-10 if signal_noise_std <= 0 else signal_noise_std
-    noise = normal(loc=0, scale=signal_noise_std, size=len(signal))
-    return [x+n for x, n in zip(signal, noise)]
 
 
 if __name__ == '__main__':
