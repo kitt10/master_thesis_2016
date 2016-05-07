@@ -131,8 +131,8 @@ if __name__ == '__main__':
                 plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.07-(i%2)*0.07), color='#6C0505', horizontalalignment='center')
                 plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.2, 1), '-..', color='#6C0505')
         if save_figure:
-            plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'.png', bbox_inches='tight', pad_inches=0)
-            plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'.eps', bbox_inches='tight', pad_inches=0)
+            plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'.png', bbox_inches='tight', pad_inches=0.1)
+            plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'.eps', bbox_inches='tight', pad_inches=0.1)
         if show_figure:
             plt.show()
         plt.close()

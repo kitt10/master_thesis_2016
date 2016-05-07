@@ -25,6 +25,12 @@ def parse_arguments():
                         nargs='+', choices=range(1, 16), help='Terrains to be involved (integers)')
     parser.add_argument('-n', '--noises', type=str, nargs='+', default=noise_types, choices=noise_types,
                         help='Terrain noises to be involved')
+    parser.add_argument('-ns', '--n_samples', type=int, default=500, choices=range(501),
+                        help='Number of samples per terrain')
+    parser.add_argument('-saf', '--save_fig', type=bool, default=False,
+                        help='Whether to save the results')
+    parser.add_argument('-shf', '--show_fig', type=bool, default=False,
+                        help='Whether to show the figure')
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -35,8 +41,11 @@ if __name__ == '__main__':
     noises_to_use = args.noises
     terrains_to_use = [terrain_types[str(i)] for i in sorted(args.terrains)]
     sensors_to_use = args.sensors
+    n_samples = args.n_samples
+    save_figure = args.save_fig
+    show_figure = args.show_fig
 
-    data = read_data(noises=noises_to_use, terrains=terrains_to_use, sensors=sensors_to_use)
+    data = read_data(noises=noises_to_use, terrains=terrains_to_use, sensors=sensors_to_use, n_samples=n_samples)
 
     for sensor in sensors_to_use:
         for noise in noises_to_use:
@@ -53,9 +62,11 @@ if __name__ == '__main__':
             plt.grid()
             plt.ylim(sensors_ranges[sensor])
             plt.legend(loc='best', prop={'size': 12}, ncol=3)
-            plt.savefig('../../results/png/plot_sensor_' + sensor + '_' + noise + '.png', bbox_inches='tight',
-                        pad_inches=0)
-            plt.savefig('../../results/eps/plot_sensor_' + sensor + '_' + noise + '.eps', bbox_inches='tight',
-                        pad_inches=0)
-            #plt.show()
+            if save_figure:
+                plt.savefig('../../results/png/plot_sensor_' + sensor + '_' + noise + '.png', bbox_inches='tight',
+                            pad_inches=0.1)
+                plt.savefig('../../results/eps/plot_sensor_' + sensor + '_' + noise + '.eps', bbox_inches='tight',
+                            pad_inches=0.1)
+            if show_figure:
+                plt.show()
             plt.close()
