@@ -13,7 +13,6 @@ A level-1 auxiliary file: tex/ch_discussion.aux
 A level-1 auxiliary file: tex/ch_conclussion.aux
 A level-1 auxiliary file: tex/app_working_dir_structure.aux
 A level-1 auxiliary file: tex/app_code_documentation.aux
-A level-1 auxiliary file: tex/app_list_of_datasets.aux
 A level-1 auxiliary file: tex/app_detailed_results.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -33,7 +32,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 20 entries,
             6047 wiz_defined-function locations,
-            1257 strings with 20276 characters,
+            1256 strings with 20248 characters,
 and the built_in function-call counts, 65146 in all, are:
 = -- 2324
 > -- 2075

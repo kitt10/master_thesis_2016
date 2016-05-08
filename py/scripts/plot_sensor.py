@@ -55,8 +55,8 @@ if __name__ == '__main__':
             for terrain in terrains_to_use:
                 plt.plot(np.mean(data[noise][terrain][sensor], axis=0), color=env[terrain]['color'], label=terrain)
 
-            plt.title('sensor: '+sensor+', terrain noise: '+noise+', mean of 500 samples')
-            plt.suptitle('AMOS II Terrain Classification')
+            plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, mean of 500 samples')
+            plt.title('AMOS II Terrain Classification : Simulated Sensory Output')
             plt.xlabel('timesteps')
             plt.ylabel('sensor values')
             plt.grid()

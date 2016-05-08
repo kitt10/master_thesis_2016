@@ -13,13 +13,92 @@ The account of the research should be presented in a manner suitable for the fie
 
 \subsubsection*{Data by Sensors} \label{sssec:data_by_sensors}
 
-\subsubsection*{Built Feature Vector} \label{sssec:data_by_sensors}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sensor_atr_f_no_noise}
+  \caption{Sensor ATRf : mean of 500 samples, 14 terrains}
+  \label{fig:sensor_atr_f_no_noise}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sensor_acr_m_no_noise}
+  \caption{Sensor ACRm : mean of 500 samples, 14 terrains}
+  \label{fig:sensor_acr_m_no_noise}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sensor_afl_h_no_noise}
+  \caption{Sensor AFLh : mean of 500 samples, 14 terrains}
+  \label{fig:sensor_afl_h_no_noise}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sensor_fl_f_no_noise}
+  \caption{Sensor FLf : mean of 500 samples, 14 terrains}
+  \label{fig:sensor_fl_f_no_noise}
+\end{figure}
+
+\subsubsection*{Built Feature Vector} \label{sssec:built_feature_vectors}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sample_no_noise_0_40}
+  \caption{Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps}
+  \label{fig:sample_40t}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{sample_no_noise_0_80}
+  \caption{Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps}
+  \label{fig:sample_80t}
+\end{figure}
 
 \subsubsection*{Terrain Noise Influence} \label{sssec:terrain_noise_influence}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle_gravel}
+  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)}
+  \label{fig:tn_analysis_angle_gravel}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact_gravel}
+  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)}
+  \label{fig:tn_analysis_foot_contact_gravel}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle}
+  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors}
+  \label{fig:tn_analysis_angle}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact}
+  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors}
+  \label{fig:tn_analysis_foot_contact}
+\end{figure}
+
 \subsubsection*{Signal Noise Influence} \label{sssec:signal_noise_influence}
 
+
+\subsection{Generated Datasets} \label{ssec:generated_datasets}
+
+table
+
 \subsection{Classification results} \label{ssec:classification_results}
+
+\subsection{Final Configuration} \label{ssec:final_configuration}
+
 
 evaluation (tables and figures) of classification:
 \begin{itemize}

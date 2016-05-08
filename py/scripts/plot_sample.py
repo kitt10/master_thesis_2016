@@ -39,6 +39,8 @@ def parse_arguments():
                         help='Whether to save the results')
     parser.add_argument('-shf', '--show_fig', type=bool, default=False,
                         help='Whether to show the figure')
+    parser.add_argument('-na', '--noise_analysis', type=str, default=[], nargs='+', choices=['tsv', 'tcv', 'ssv', 'scv'],
+                        help='tsv: terrain samples variance, tcv: terrain classes variance, ssv: signal samples var..')
     return parser.parse_args()
 
 
@@ -76,6 +78,7 @@ if __name__ == '__main__':
     n_samples = args.n_samples
     save_figure = args.save_fig
     show_figure = args.show_fig
+    noise_analysis = args.noise_analysis
 
     data = read_data(noises=noises_to_use, terrains=terrains_to_use, sensors=sensors_to_use, n_samples=n_samples)
 
@@ -89,50 +92,160 @@ if __name__ == '__main__':
                 for i_sample, sample_terrain in enumerate(data[noise][terrain][sensor]):
                     samples[noise][terrain][i_sample] += prepare_signal(signal=sample_terrain[10:sample_len + 10], sen=sensor)
 
-    batch_steps = np.arange(start=0, stop=len(sensors_to_use) * sample_len, step=sample_len)
-    for noise in noises_to_use:
-        fig = plt.figure('plot_sample_' + noise, figsize=(12, 7))
-        plt.gcf().subplots_adjust(bottom=0.2)
-        for terrain in terrains_to_use:
-            for batch in [np.arange(start=step, stop=step+sample_len) for step in batch_steps]:
-                do_it = False
-                if batch[0] < r[0]:
-                    if batch[1] > r[0]:
-                        batch[0] = r[0]
+    if not noise_analysis:
+        batch_steps = np.arange(start=0, stop=len(sensors_to_use) * sample_len, step=sample_len)
+        for noise in noises_to_use:
+            fig = plt.figure('plot_sample_' + noise+'_'+str(signal_noise_std)+'_'+str(sample_len), figsize=(12, 7))
+            plt.gcf().subplots_adjust(bottom=0.2)
+            for terrain in terrains_to_use:
+                for batch in [np.arange(start=step, stop=step+sample_len) for step in batch_steps]:
+                    do_it = False
+                    if batch[0] < r[0]:
+                        if batch[1] > r[0]:
+                            batch[0] = r[0]
+                            do_it = True
+                    if batch[1] > r[1]:
+                        if batch[0] < r[1]:
+                            batch[1] = r[1]
+                            do_it = True
+                    if batch[0] >= r[0] and batch[1] <= r[1]:
                         do_it = True
-                if batch[1] > r[1]:
-                    if batch[0] < r[1]:
-                        batch[1] = r[1]
-                        do_it = True
-                if batch[0] >= r[0] and batch[1] <= r[1]:
-                    do_it = True
 
-                if do_it:
-                    if batch[0] == 0:
-                        plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1]+1], color=env[terrain]['color'], label=terrain)
-                    else:
-                        plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1] + 1], color=env[terrain]['color'])
-        plt.suptitle('Terrain Classification for AMOS II : Feature Vector : Mean of 500 samples')
-        plt.title('timesteps: '+str(sample_len)+', normed: '+str(norm)+', signal noise: '+str(signal_noise_std)+
-                  ', terrain noise:'+str(noise))
-        plt.xlabel('timesteps sensor by sensor')
-        plt.ylabel('sensor values')
-        plt.grid()
-        plt.legend(loc='upper left', prop={'size': 12}, ncol=3)
-        ax = fig.add_subplot(111)
-        for i, sensor in enumerate(sensors_to_use):
-            if r[0] <= i*sample_len <= r[1]:
-                '''
-                ax.text(0.04+0.04*i-0.003, 0.01+(i % 2)*0.1, sensor,
-                        verticalalignment='bottom', horizontalalignment='right',
-                        transform=ax.transAxes,
-                        color='#6C0505', fontsize=12)
-                '''
-                plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.07-(i%2)*0.07), color='#6C0505', horizontalalignment='center')
-                plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.2, 1), '-..', color='#6C0505')
-        if save_figure:
-            plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'.png', bbox_inches='tight', pad_inches=0.1)
-            plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'.eps', bbox_inches='tight', pad_inches=0.1)
-        if show_figure:
-            plt.show()
-        plt.close()
+                    if do_it:
+                        if batch[0] == 0:
+                            plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1]+1], color=env[terrain]['color'], label=terrain)
+                        else:
+                            plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1] + 1], color=env[terrain]['color'])
+            plt.title('Terrain Classification for AMOS II : Feature Vector : Mean of 500 samples')
+            plt.suptitle('timesteps: '+str(sample_len)+', normed: '+str(norm)+', signal noise: '+str(signal_noise_std)+
+                         ', terrain noise: '+str(noise)+', zoom: '+str(r))
+            plt.xlabel('timesteps sensor by sensor')
+            plt.ylabel('sensor values')
+            plt.grid()
+            plt.legend(loc='upper left', prop={'size': 12}, ncol=3)
+            ax = fig.add_subplot(111)
+            for i, sensor in enumerate(sensors_to_use):
+                if r[0] <= (i+1)*sample_len <= r[1]:
+                    plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.07-(i%2)*0.07), color='#6C0505', horizontalalignment='center')
+                    plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.2, 1), '-..', color='#6C0505')
+            if save_figure:
+                plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.png', bbox_inches='tight', pad_inches=0.1)
+                plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.eps', bbox_inches='tight', pad_inches=0.1)
+            if show_figure:
+                plt.show()
+            plt.close()
+    else:
+        if 'tsv' in noise_analysis:
+            # Terrain Noise Analysis : Samples Variance
+            colors = ('r', 'g', 'b', 'y', 'm', 'c', 'k')
+            for terrain in terrains_to_use:
+                fig = plt.figure('terrain_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
+                sigs = list()
+                for noise, color in zip(noises_to_use, colors):
+                    sigs.append(np.var(samples[noise][terrain], axis=0)[r[0]:r[1]])
+                    plt.plot(range(r[0], r[1]), sigs[-1], label=noise, color=color)
+                plt.title('Terrain Classification for AMOS II : Terrain Noise Influence : Samples Variance for terrain '+terrain)
+                plt.suptitle('timesteps: ' + str(sample_len) + ', no signal noise, 500 samples, feature vector zoom: ' + str(r) + ' => foot contact sensors')
+                plt.xlabel('timesteps sensor by sensor')
+                plt.ylabel('var')
+                plt.legend(loc='best')
+                plt.grid()
+                ax = fig.add_subplot(111)
+                m = np.max(sigs)
+                for i, sensor in enumerate(sensors_to_use):
+                    if r[0] <= (i + 1) * sample_len <= r[1]:
+                        plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, -m/10.0 + (i % 2) * m/50.0), color='#6C0505',
+                                     horizontalalignment='center')
+                        plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (-m/10.0-m/50.0, m+m/50.0), '-..', color='#6C0505')
+                if save_figure:
+                    plt.savefig('../../results/png/tn_analysis_' + str(sample_len) + '_' + str(r) + '_'+terrain+'.png',
+                                bbox_inches='tight', pad_inches=0.1)
+                    plt.savefig('../../results/eps/tn_analysis_' + str(sample_len) + '_' + str(r) + '_'+terrain+'.eps',
+                                bbox_inches='tight', pad_inches=0.1)
+                if show_figure:
+                    plt.show()
+
+        if 'tcv' in noise_analysis:
+            # Terrain Noise Analysis : Classes Variance
+            means = dict()
+            fig = plt.figure('terrain_noise_analysis_'+str(signal_noise_std) + '_' + str(sample_len), figsize=(12, 7))
+            for noise in noises_to_use:
+                means[noise] = list()
+                for terrain in terrains_to_use:
+                    means[noise].append(np.mean(samples[noise][terrain], axis=0))
+
+                plt.plot(range(r[0], r[1]), np.var(means[noise], axis=0)[r[0]:r[1]], label=noise)
+
+            plt.title('Terrain Classification for AMOS II : Terrain Noise Influence : Classes Variance')
+            plt.suptitle('timesteps: ' + str(sample_len) + ', no signal noise, zoom: ' + str(r) + ' => angle sensors')
+            plt.xlabel('timesteps sensor by sensor')
+            plt.ylabel('var')
+            plt.legend(loc='best')
+            plt.grid()
+            ax = fig.add_subplot(111)
+            for i, sensor in enumerate(sensors_to_use):
+                if r[0] <= (i + 1) * sample_len <= r[1]:
+                    plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, 0.0028 - (i % 2) * 0.0002), color='#6C0505',
+                                 horizontalalignment='center')
+                    plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (0.0, 0.003), '-..', color='#6C0505')
+                    '''
+                    plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, 0.19 - (i % 2) * 0.01), color='#6C0505',
+                                 horizontalalignment='center')
+                    plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (0.0, 0.2), '-..', color='#6C0505')
+                    '''
+            if save_figure:
+                plt.savefig('../../results/png/tn_analysis_' + str(sample_len) + '_' + str(r) + '.png', bbox_inches='tight',
+                            pad_inches=0.1)
+                plt.savefig('../../results/eps/tn_analysis_' + str(sample_len) + '_' + str(r) + '.eps', bbox_inches='tight',
+                            pad_inches=0.1)
+            if show_figure:
+                plt.show()
+
+        if 'ssv' in noise_analysis:
+            # Signal Noise Analysis : Samples Variance
+
+            noises_to_use = (0.0, 0.01, 0.03, 0.1)
+            samples = dict()
+            for s_noise in noises_to_use:
+                samples[s_noise] = dict()
+                signal_noise_std = s_noise
+                for terrain in terrains_to_use:
+                    samples[s_noise][terrain] = [[] for i in range(len(data['no_noise'][terrain][sensors_to_use[0]]))]
+                    for sensor in sensors_to_use:
+                        for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
+                            samples[s_noise][terrain][i_sample] += prepare_signal(signal=sample_terrain[10:sample_len + 10], sen=sensor)
+
+            colors = ('r', 'g', 'b', 'y', 'm', 'c', 'k')
+            for terrain in terrains_to_use:
+                fig = plt.figure('signal_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
+                sigs = list()
+                for noise, color in zip(noises_to_use, colors):
+                    sigs.append(np.var(samples[noise][terrain], axis=0)[r[0]:r[1]])
+                    plt.plot(range(r[0], r[1]), sigs[-1], label=noise, color=color)
+                plt.title(
+                    'Terrain Classification for AMOS II : Signal Noise Influence : Samples Variance for terrain ' + terrain)
+                plt.suptitle(
+                    'timesteps: ' + str(sample_len) + ', no terrain noise, 500 samples, feature vector zoom: ' + str(
+                        r) + ' => foot contact sensors')
+                plt.xlabel('timesteps sensor by sensor')
+                plt.ylabel('variance')
+                plt.legend(loc='best')
+                plt.grid()
+                ax = fig.add_subplot(111)
+                m = np.max(sigs)
+                for i, sensor in enumerate(sensors_to_use):
+                    if r[0] <= (i + 1) * sample_len <= r[1]:
+                        plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, -m / 10.0 + (i % 2) * m / 50.0),
+                                     color='#6C0505',
+                                     horizontalalignment='center')
+                        plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (-m / 10.0 - m / 50.0, m + m / 50.0),
+                                 '-..', color='#6C0505')
+                if save_figure:
+                    plt.savefig(
+                        '../../results/png/sn_analysis_' + str(sample_len) + '_' + str(r) + '_' + terrain + '.png',
+                        bbox_inches='tight', pad_inches=0.1)
+                    plt.savefig(
+                        '../../results/eps/sn_analysis_' + str(sample_len) + '_' + str(r) + '_' + terrain + '.eps',
+                        bbox_inches='tight', pad_inches=0.1)
+                if show_figure:
+                    plt.show()

@@ -26,7 +26,16 @@
 \contentsline {figure}{\numberline {6.17}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{25}{figure.caption.114}
 \contentsline {figure}{\numberline {6.18}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{26}{figure.caption.116}
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Sensor ATRf : mean of 500 samples, 14 terrains\relax }}{30}{figure.caption.136}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Sensor ACRm : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.137}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Sensor AFLh : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.138}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Sensor FLf : mean of 500 samples, 14 terrains\relax }}{32}{figure.caption.139}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps\relax }}{32}{figure.caption.141}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps\relax }}{33}{figure.caption.142}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)\relax }}{33}{figure.caption.144}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{34}{figure.caption.145}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{34}{figure.caption.146}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{35}{figure.caption.147}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
