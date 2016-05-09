@@ -36,6 +36,10 @@
 \contentsline {figure}{\numberline {7.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{34}{figure.caption.145}
 \contentsline {figure}{\numberline {7.9}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{34}{figure.caption.146}
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{35}{figure.caption.147}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{35}{figure.caption.149}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{36}{figure.caption.150}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, angle sensors\relax }}{36}{figure.caption.151}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, foot contact sensors\relax }}{37}{figure.caption.152}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

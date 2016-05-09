@@ -47,12 +47,12 @@
 \contentsline {section}{\numberline {7.2}Pruning Algorithm Results}{30}{section.132}
 \contentsline {section}{\numberline {7.3}Terrain Processing Results}{30}{section.133}
 \contentsline {subsection}{\numberline {7.3.1}Gathered Data}{30}{subsection.134}
-\contentsline {subsection}{\numberline {7.3.2}Generated Datasets}{35}{subsection.149}
-\contentsline {subsection}{\numberline {7.3.3}Classification results}{35}{subsection.150}
-\contentsline {subsection}{\numberline {7.3.4}Final Configuration}{35}{subsection.151}
-\contentsline {chapter}{\numberline {8}Discussion}{37}{chapter.152}
-\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{38}{chapter.153}
-\contentsline {chapter}{Bibliography}{39}{chapter*.154}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{41}{appendix.155}
-\contentsline {chapter}{\numberline {A2}Code Documentation}{42}{appendix.156}
-\contentsline {chapter}{\numberline {A3}Detailed Results}{43}{appendix.157}
+\contentsline {subsection}{\numberline {7.3.2}Generated Datasets}{37}{subsection.153}
+\contentsline {subsection}{\numberline {7.3.3}Classification results}{37}{subsection.154}
+\contentsline {subsection}{\numberline {7.3.4}Final Configuration}{37}{subsection.155}
+\contentsline {chapter}{\numberline {8}Discussion}{39}{chapter.156}
+\contentsline {chapter}{\numberline {9}Conclussion and Outlook}{40}{chapter.157}
+\contentsline {chapter}{Bibliography}{41}{chapter*.158}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{43}{appendix.159}
+\contentsline {chapter}{\numberline {A2}Code Documentation}{44}{appendix.160}
+\contentsline {chapter}{\numberline {A3}Detailed Results}{45}{appendix.161}

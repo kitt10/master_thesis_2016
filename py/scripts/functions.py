@@ -9,7 +9,7 @@
 import json
 from glob import glob
 from os import path
-from numpy import random
+from numpy import random, mean
 
 
 def load_params(*params_names):
