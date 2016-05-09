@@ -17,32 +17,31 @@
 
 import argparse
 from sys import stderr
-from glob import glob
-from os import path
-from numpy.random import normal
 from shelve import open as open_shelve
 from time import gmtime, strftime
-from functions import load_params, f_range_gen, norm_signal, add_signal_noise
+from functions import load_params, f_range_gen, read_data, norm_signal, add_signal_noise
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Creates a .pkl dataset from cleaned .txt data.')
-    parser.add_argument('-t', '--terrains', type=int, default=range(1, 16), nargs='+', choices=range(1, 16),
-                        help='Terrains to be involved (integers)')
+    parser.add_argument('-rt', '--rem_terrains', type=int, default=[],
+                        nargs='+', choices=range(1, 16), help='Terrains to be removed (integers)')
     parser.add_argument('-tn', '--terrain_noise', type=str, default='no_noise', choices=noise_types,
                         help='Terrain noise to be used')
     parser.add_argument('-sn', '--signal_noise', type=float,
                         default=0.0, choices=list(f_range_gen(start=0.0, stop=0.1, step=0.005)),
                         help='Signal noise standard deviation (percentage)')
-    parser.add_argument('-s', '--sensors', type=str, nargs='+', default=all_sensors, choices=all_sensors,
+    parser.add_argument('-s', '--sensors', type=str, default='alls', choices=['alls', 'angle', 'foot'],
                         help='Sensors to be used for classification')
-    parser.add_argument('-sl', '--sample_len', type=int, default=80,
+    parser.add_argument('-ts', '--timesteps', type=int, default=40,
                         help='Length of one sample (simulation timesteps)')
-    parser.add_argument('-ds', '--data_split', type=float, nargs=3, default=[0.8, 0.1, 0.1],
+    parser.add_argument('-ds', '--data_split', type=float, nargs=3, default=[0.7, 0.1, 0.2  ],
                         choices=list(f_range_gen(start=0.0, stop=1.0, step=0.01)),
                         help='Training : Validation : Testing data split')
     parser.add_argument('-dn', '--destination_name', type=str, default=strftime('terrains_%Y_%m_%d_%H_%M_%S', gmtime()),
                         help='File name of the dataset')
+    parser.add_argument('-ns', '--n_samples', type=int, default=500, choices=range(501),
+                        help='Number of samples per terrain')
     args_tmp = parser.parse_args()
 
     ''' Check args '''
@@ -75,41 +74,41 @@ if __name__ == '__main__':
         load_params('terrain_types', 'sensors', 'sensors_ranges', 'noise_types', 'noise_params')
     args = parse_arguments()
 
-    terrains_to_use = [terrain_types[str(i)] for i in sorted(args.terrains)]
-    sensors_to_use = args.sensors
+    terrains_to_use = [terrain_types[str(i)] for i in [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15] if i not in args.rem_terrains]
+    if not args.rem_terrains:
+        terrains_flag = 'allt'
+    else:
+        terrains_flag = 'rt'
+        for t_i in sorted(args.rem_terrains):
+            terrains_flag += str(t_i)
+
+    sensors_to_use = all_sensors
+    if args.sensors == 'angle':
+        sensors_to_use = all_sensors[:18]
+    elif args.sensors == 'foot':
+        sensors_to_use = all_sensors[18:]
     terrain_noise = args.terrain_noise
     signal_noise_std = args.signal_noise
-    sample_len = args.sample_len
+    timesteps = args.timesteps
     data_split = args.data_split
-    destination_name = '../cache/datasets/amos_terrains_sim/'+args.destination_name+'.ds'
+    n_samples = args.n_samples
+
+    destination_name = 'amter_'+noise_params[terrain_noise][0]+'_0'+str(signal_noise_std)[2:]+'_'+str(timesteps)+\
+                       '_'+args.sensors+'_'+terrains_flag+'_'+str(n_samples)
+    destination = '../cache/datasets/amos_terrains_sim/'+destination_name+'.ds'
 
     ''' Reading .txt files to a dict called data '''
     print '\n\n ## Reading .txt data files...'
-    data = dict()
-    for terrain in terrains_to_use:
-        data[terrain] = dict()
-        data[terrain]['data_str'] = list()
-        for sensor in sensors_to_use:
-            data[terrain][sensor] = list()
-        txt_samples = glob(path.join('../../data/'+terrain_noise+'/'+noise_params[terrain_noise][0]+terrain, '*.txt'))
-        for i_sample, path_and_filename in enumerate(sorted(txt_samples)):
-            with open(path_and_filename, 'r') as data_file:
-                data[terrain]['data_str'].append(data_file.read())
-            for i_sensor, sensor in enumerate(sensors_to_use):
-                data[terrain][sensor].append([0.0])
-                for line in data[terrain]['data_str'][-1].split('\n')[:95]:
-                    values = line.split(';')
-                    data[terrain][sensor][i_sample].append(float(values[i_sensor+1]))
-        print 'Data for', terrain, 'added ('+str(len(data[terrain][sensors_to_use[0]]))+' samples).'
+    data = read_data(noises=[terrain_noise], terrains=terrains_to_use, sensors=sensors_to_use, n_samples=n_samples)
 
     ''' Cutting samples, normalizing and adding a signal noise '''
     print '\n\n ## Cutting samples, normalizing and adding a signal noise...'
     samples = dict()
     for terrain in terrains_to_use:
-        samples[terrain] = [[] for i in range(len(data[terrain][sensors_to_use[0]]))]
+        samples[terrain] = [[] for i in range(len(data[terrain_noise][terrain][sensors_to_use[0]]))]
         for sensor in sensors_to_use:
-            for i_sample, sample_terrain in enumerate(data[terrain][sensor]):
-                samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:sample_len+10], sen=sensor)
+            for i_sample, sample_terrain in enumerate(data[terrain_noise][terrain][sensor]):
+                samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:timesteps+10], sen=sensor)
         print 'Samples of', terrain, 'cut, normalized and noised.'
 
     ''' Splitting data '''
@@ -134,16 +133,29 @@ if __name__ == '__main__':
     ''' Saving dataset '''
     print '\n\n ## Saving dataset as', destination_name
 
-    dataset = open_shelve(destination_name, 'c')
+    dataset = open_shelve(destination, 'c')
     dataset['x'] = x
     dataset['y'] = y
     dataset['terrains'] = terrains_to_use
     dataset['terrain_noise'] = terrain_noise
     dataset['signal_noise_std'] = signal_noise_std
     dataset['sensors'] = sensors_to_use
-    dataset['sample_len'] = sample_len
+    dataset['timesteps'] = timesteps
+    dataset['n_samples'] = n_samples
     dataset['data_split'] = data_split
-    dataset['size'] = (len(x['training']), len(x['validation']), len(x['testing']))
+    dataset['support'] = (len(x['training']), len(x['validation']), len(x['testing']))
     dataset.close()
 
-    print 'Dataset dumped.'
+    print '\n## Dataset dumped. ----------------------------------- '
+    print ' $ terrain noise: \t', terrain_noise
+    print ' $ signal noise std: \t', signal_noise_std
+    print ' $ timesteps: \t\t', timesteps
+    print ' $ sensors: \t\t', args.sensors
+    print ' $ feature vector len: \t', len(samples[terrains_to_use[0]][0])
+    print ' $ removed terrains: \t', [terrain_types[str(i)] for i in sorted(args.rem_terrains)]
+    print ' $ n samples: \t\t', n_samples
+    print ' $ data splitting: \t', data_split
+    print ' $ support: \t\t', (len(x['training']), len(x['validation']), len(x['testing']))
+    print ' $ saved as: \t\t', destination_name
+    print '## --------------------------------------------------- \n\n'
+
