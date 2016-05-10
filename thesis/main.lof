@@ -5,41 +5,49 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{4}{figure.caption.20}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{4}{figure.caption.22}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{5}{figure.caption.25}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{6}{figure.caption.28}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Screenshot of the graphical user interface\relax }}{7}{figure.caption.31}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces The Pruning Algorithm\relax }}{8}{figure.caption.39}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 2D XOR Data illustration\relax }}{8}{figure.caption.42}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces XOR min structure 1\relax }}{9}{figure.caption.43}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces XOR min structure 2\relax }}{9}{figure.caption.44}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces MNIST Data illustration\relax }}{9}{figure.caption.46}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{8}{figure.caption.32}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{9}{figure.caption.35}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{10}{figure.caption.36}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{12}{figure.caption.39}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Structure of the two repositories (LPZRobots and GoRobots). \citep {misc:lpzrobots}\relax }}{12}{figure.caption.40}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Simulation alternative for AMOS II.\relax }}{13}{figure.caption.41}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces 2-neuron network oscillator. \citep {unpub:ai3_lec3}\relax }}{13}{figure.caption.43}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Tripod gait controller illustration.\relax }}{14}{figure.caption.59}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Variability of generated terrain types.\relax }}{17}{figure.caption.75}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Data example: ATRf, concrete, 10 seconds\relax }}{19}{figure.caption.92}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces The process of data acquisition from the simulation.\relax }}{20}{figure.caption.98}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces The structure of rough data directory.\relax }}{21}{figure.caption.99}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Forming a feature vector out of a data file.\relax }}{22}{figure.caption.101}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Example of feature vector building.\relax }}{23}{figure.caption.102}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Example of feature vector - normed.\relax }}{23}{figure.caption.108}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Three sets of data in a dataset.\relax }}{24}{figure.caption.115}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{25}{figure.caption.116}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{26}{figure.caption.118}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{11}{figure.caption.50}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{12}{figure.caption.53}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{13}{figure.caption.54}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{15}{figure.caption.57}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Structure of the two repositories (LPZRobots and GoRobots). \citep {misc:lpzrobots}\relax }}{15}{figure.caption.58}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Simulation alternative for AMOS II.\relax }}{16}{figure.caption.59}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces 2-neuron network oscillator. \citep {unpub:ai3_lec3}\relax }}{16}{figure.caption.61}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Tripod gait controller illustration.\relax }}{17}{figure.caption.77}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Variability of generated terrain types.\relax }}{20}{figure.caption.93}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Data example: ATRf, concrete, 10 seconds\relax }}{22}{figure.caption.110}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces The process of data acquisition from the simulation.\relax }}{23}{figure.caption.116}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces The structure of rough data directory.\relax }}{24}{figure.caption.117}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Forming a feature vector out of a data file.\relax }}{25}{figure.caption.119}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Example of feature vector building.\relax }}{26}{figure.caption.120}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Example of feature vector - normed.\relax }}{26}{figure.caption.126}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Three sets of data in a dataset.\relax }}{27}{figure.caption.133}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{28}{figure.caption.134}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{29}{figure.caption.136}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Sensor ATRf : mean of 500 samples, 14 terrains\relax }}{30}{figure.caption.137}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Sensor ACRm : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.138}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Sensor AFLh : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.139}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Sensor FLf : mean of 500 samples, 14 terrains\relax }}{32}{figure.caption.140}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps\relax }}{32}{figure.caption.142}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps\relax }}{33}{figure.caption.143}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)\relax }}{33}{figure.caption.145}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{34}{figure.caption.146}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{34}{figure.caption.147}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{35}{figure.caption.148}
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{35}{figure.caption.150}
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{36}{figure.caption.151}
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, angle sensors\relax }}{36}{figure.caption.152}
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, foot contact sensors\relax }}{37}{figure.caption.153}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Sensor ATRf : mean of 500 samples, 14 terrains\relax }}{33}{figure.caption.155}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Sensor ACRm : mean of 500 samples, 14 terrains\relax }}{34}{figure.caption.156}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Sensor AFLh : mean of 500 samples, 14 terrains\relax }}{34}{figure.caption.157}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Sensor FLf : mean of 500 samples, 14 terrains\relax }}{35}{figure.caption.158}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps\relax }}{35}{figure.caption.160}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps\relax }}{36}{figure.caption.161}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)\relax }}{36}{figure.caption.163}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{37}{figure.caption.164}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{37}{figure.caption.165}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{38}{figure.caption.166}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{38}{figure.caption.168}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{39}{figure.caption.169}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, angle sensors\relax }}{39}{figure.caption.170}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, foot contact sensors\relax }}{40}{figure.caption.171}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
