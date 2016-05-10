@@ -1,0 +1,71 @@
+\chapter{Neural Net Implementation} \label{chap:kitt_nn}
+Plenty of neural network implementations are available nowadays. Nevertheless, one of the objectives of this thesis is to implement own framework capable of using the idea behind artificial feedforward neural networks. Besides prooving a knowledge of mathematical and algorithmical backgrounds, an integration of own utilities and functions is the main reason for the from-scratch implementation.
+
+To accomplish the reasearch objectives, the new framework must meet following requirements, which might be unusal for some of the provided implementations (mentioned in \cref{chapter:01:state_of_the_art}).
+
+\begin{itemize}
+\item ability to remove any synapse in a network and then to retrain the network of the new structure
+\item ability to evaluate a network after each learning epoch and basically to provide an open-sourced learning algorithm
+\item ability to illustrate a network structure and to visualize the learning process in real time (an extra property)
+\end{itemize}
+
+In this thesis, the implemented neural network framework is called \textbf{kitt\_nn} and has been developed in programming language Python. The following diagram (\ref{img:kitt_nn_package}) shows the structure of the \textit{kitt\_nn .py package}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{kitt_nn_package.png}
+  \caption{kitt\_nn package : Implemented neural network framework}
+  \label{img:kitt_nn_package}
+\end{figure}
+
+Moreover, the framework must have some standard functions implemented, meaning it must be capable of:
+
+\begin{itemize}
+\item initializing a feedforward network of any structure supplied by some randomly set parameters
+\item fitting a model to a network (function \textit{fit()}), training a network on some data of a conventional structure
+\item predicting a target of never-seen samples (function \textit{predict()}), evaluating a classification performance
+\end{itemize}
+
+The \textit{kitt\_nn} implementation is based on some general knowledge gained at school and/or from [], the idea is pretty straight forward.
+
+\section{Structural Elements}
+The overall idea is based on the object-oriented programming. There are three main \textit{.py} files containing the main classes corresponding to strucutural elements - a network, a neuron and a synapse (a connection). A detailed API is attached as an appendix (\ref{app:code_documentation}).
+
+\subsection*{kitt\_net.py}
+
+, kitt\_neuron.py, kitt\_synapse.py
+
+structure diagram
+
+
+
+\section{Learning Algorithm} \label{sec:learning_algorithm}
+Backpropagation implementation in python
+
+algorithm
+
+1-2 pages
+
+\section{Graphical User Interface}
+GUI description and its usage
+
+printscreen
+
+1 page
+
+\section{Network Pruning Algorithm} \label{sec:network_pruning_algorithm}
+
+\subsection{Testing Datasets}
+
+\subsubsection*{XOR Dataset}
+XOR dataset introduction
+
+\subsubsection*{MNIST Dataset}
+MNIST dataset introduction
+
+\subsection{Minimal Structures Utilization}
+further MNIST analysis
+
+figures, tables
+
+4-5 pages

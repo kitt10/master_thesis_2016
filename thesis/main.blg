@@ -5,8 +5,7 @@ The style file: biblatex.bst
 A level-1 auxiliary file: tex/ch_introduction.aux
 A level-1 auxiliary file: tex/ch_state_of_the_art.aux
 A level-1 auxiliary file: tex/ch_master_thesis_objectives.aux
-A level-1 auxiliary file: tex/ch_neural_network_implementation.aux
-A level-1 auxiliary file: tex/ch_network_pruning_algorithm.aux
+A level-1 auxiliary file: tex/ch_kitt_nn.aux
 A level-1 auxiliary file: tex/ch_terrain_classification.aux
 A level-1 auxiliary file: tex/ch_results.aux
 A level-1 auxiliary file: tex/ch_discussion.aux
@@ -32,7 +31,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 20 entries,
             6047 wiz_defined-function locations,
-            1256 strings with 20248 characters,
+            1255 strings with 20190 characters,
 and the built_in function-call counts, 65146 in all, are:
 = -- 2324
 > -- 2075

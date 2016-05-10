@@ -1,4 +1,4 @@
-\chapter{Terrain Classification for AMOS II} \label{chapter:05:terrain_classification}
+\chapter{Terrain Classification for AMOS II} \label{chap:terrain_classification}
 Classification, one of the most widely used areas of machine learning, has a broad array of applications (see \cref{chapter:01:introduction}). To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The length of feature vectors usually determines an input of a chosen classifier and the number of classes sets an output.
 
 The classification problem in this thesis relates to AMOS II, an open-source multi sensori-motor robotic platform (see \cref{img:amosii}). The task is to classify various terrain types, while the only input comes from proprioceptive sensors. The overall process is based on simulation data and as \cref{chapter:04:neural_net_implementation} reveals, feedforward neural networks are involved.
@@ -10,7 +10,7 @@ Next, AMOS II (its simulation alternative) is forced to walk on every defined te
 
 Having the clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
 
-An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{chapter:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
+An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
 
 \begin{figure}[H]
   \centering
@@ -579,6 +579,8 @@ loss_type=None, callback=None, debug=False,  verbose=None)
 
 \subsection{Searching for Optimal Configuration (Grid Search)} \label{ssec:grid_search}
 \textbf{TODO :} describe here how the best parameters have been found using GridSearch
+
+datasets implication -> nets based on nets params (learning rate and number of epochs), fixed batch size, number of stable iterations ....
 
 \subsection{Other Classifiers} \label{ssec:other_classifiers}
 \textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part

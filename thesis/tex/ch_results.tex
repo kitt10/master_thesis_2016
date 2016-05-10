@@ -1,11 +1,8 @@
-\chapter{Experimental Evaluation}
-\label{chap:results}
+\chapter{Experimental Evaluation} \label{chap:results}
 
 The account of the research should be presented in a manner suitable for the field. It should be complete, systematic, and sufficiently detailed to enable a reader to understand how the data were gathered and how to apply similar methods in another study. Notation and formatting must be consistent throughout the thesis, including units of measure, abbreviations, and the numbering scheme for tables, figures, footnotes, and citations. One or more chapters may consist of material published (or submitted for publication) elsewhere. See “Including Published Material in a Thesis or Dissertation” for details.
 
-\section{Network Implementation Results}
-
-\section{Pruning Algorithm Results}
+\section{Verification of Network Implementation}
 
 \section{Terrain Processing Results}
 
@@ -120,12 +117,62 @@ The account of the research should be presented in a manner suitable for the fie
 
 \subsection{Generated Datasets} \label{ssec:generated_datasets}
 
-table
+\begin{table}[H]
+\centering
+\caption{Generated datasets}
+\label{tab:generated_datasets}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|l|}{\textit{name}} & \multicolumn{1}{l|}{\textit{ter. noise}} & \multicolumn{1}{l|}{\textit{sig. noise}} & \multicolumn{1}{l|}{\textit{timesteps}} & \multicolumn{1}{l|}{\textit{sensors}} & \multicolumn{1}{l|}{\textit{terrains}} & \multicolumn{1}{l|}{\textit{samples}} \\ \hline
+ds\_01                              & 0.0                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_02                              & 0.0                                             & 0.0                                            & 40                                      & angle                                 & all                                    & 500                                     \\ \hline
+ds\_03                              & 0.0                                             & 0.0                                            & 40                                      & foot                                  & all                                    & 500                                     \\ \hline
+ds\_04                              & 0.0                                             & 0.0                                            & 1                                       & all                                   & all                                    & 500                                     \\ \hline
+ds\_05                              & 0.0                                             & 0.0                                            & 10                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_06                              & 0.0                                             & 0.0                                            & 80                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_07                              & 0.0                                             & 0.01                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_08                              & 0.0                                             & 0.03                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_09                              & 0.0                                             & 0.05                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_10                              & 0.0                                             & 0.1                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_11                              & 0.01                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_12                              & 0.03                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_13                              & 0.05                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_14                              & 0.1                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+ds\_15                              & 0.2                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Classification results} \label{ssec:classification_results}
 
+\begin{table}[H]
+\centering
+\caption{Classification results}
+\label{tab:classification_results}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textit{dataset}} & \multicolumn{3}{c|}{\textit{\textbf{kitt net}}}         & \multicolumn{3}{c|}{\textit{\textbf{sknn net}}}         \\ \cline{2-7} 
+                                  & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{accuracy} & \textit{precision} & \textit{recall} \\ \hline
+ds\_01                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_02                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_03                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_04                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_05                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_06                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_07                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_08                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_09                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_10                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_11                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_12                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_13                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_14                            &                   &                    &                 &                   &                    &                 \\ \hline
+ds\_15                            &                   &                    &                 &                   &                    &                 \\ \hline
+\end{tabular}
+\end{table}
+
 \subsection{Final Configuration} \label{ssec:final_configuration}
 
+\section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
 
 evaluation (tables and figures) of classification:
 \begin{itemize}
