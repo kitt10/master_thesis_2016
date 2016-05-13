@@ -1,8 +1,7 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
-\contentsline {lstlisting}{\numberline {5.1}Adding terrain noise in main.cpp}{20}{lstlisting.77}
-\contentsline {lstlisting}{\numberline {5.2}Rough sensory data files structure}{22}{lstlisting.93}
-\contentsline {lstlisting}{\numberline {5.3}Data normalization}{25}{lstlisting.104}
-\contentsline {lstlisting}{\numberline {5.4}Adding signal noise in python}{26}{lstlisting.110}
-\contentsline {lstlisting}{\numberline {5.5}Sknn classifier specification \citep {misc:sknn}}{30}{lstlisting.123}
-\contentsline {lstlisting}{\numberline {A2.1}Setting a terrain ground in main.cpp}{48}{lstlisting.173}
+\contentsline {lstlisting}{\numberline {5.1}Data normalization}{23}{lstlisting.86}
+\contentsline {lstlisting}{\numberline {5.2}Adding signal noise in python}{24}{lstlisting.92}
+\contentsline {lstlisting}{\numberline {5.3}Sknn classifier specification \citep {misc:sknn}}{28}{lstlisting.105}
+\contentsline {lstlisting}{\numberline {A2.1}Setting a terrain ground in main.cpp}{46}{lstlisting.154}
+\contentsline {lstlisting}{\numberline {A2.2}Rough sensory data files structure}{47}{lstlisting.162}

@@ -271,113 +271,81 @@ In this work we use 14 terrain types. Their parameters (shown in \cref{tab:terra
 A brief analysis of this setting has been performed in \cref{ssec:terrains_analysis}.
 
 \subsection{Terrain Noise} \label{ssec:terrain_noise}
-Generally, using simulation data for the very first research steps brings many benefits and it is usually the right way to start. However, the real world is always different from the simulated alternative and these disparities may influence the results significantly.
+In general simulations are widely used coming with many benefits and being usually the right way to start, however, the real world is always different from the simulated one and these differences may influence the results significantly.
 
-In this case, there are some virtually created terrain types based on five qualities (\cref{ssec:terrain_qualities}). These parameters have been set up basically by a guess, intuitively. Therefore, one should assume that the real terrains might be distinct from the virtual ones in some ways.
+In this work, 14 terrain types have been simulated based on five features (\cref{tab:terrain_features}). The parameters in \cref{tab:terrains_parameters} have been set up manually by an intuition. Therefore, one should take into account that the real terrains might be different from the virtual ones in some ways.
 
-Secondly, if there is a terrain defined as grass for instance, this definition cannot be general on no account. There are many types of grass and they differ from each other at least in the reffered qualities.
+Secondly, if, for instance, there is a terrain defined as grass, this definition cannot be unique, since there are many types of grass and those differ from each other at least in the reffered features.
 
-Consequently, there are some lines of the code added to \textit{main.cpp} (see \ref{app:code_documentation}) enabling to noise the parameters shown in \cref{tab:terrains_parameters}. The following box (\ref{code:terrain_noise}) shows how it is done. 
+Consequently, the terrain parameters shown in \cref{tab:terrains_parameters} are noised. Regarding individual features and their upper limits from \cref{tab:terrain_features}, the following \cref{eq:terrain_noise_generation} shows, how the noise is added.
 
-\begin{lstlisting}[language=C++, caption={Adding terrain noise in main.cpp}, label=code:terrain_noise]
-terrain_roughness += fRand(-10.0*std_vol, 10.0*std_vol);
-terrain_slip  += fRand(-10.0*std_vol, 10.0*std_vol);
-terrain_hardness += fRand(-100.0*std_vol, 100.0*std_vol);
-terrain_elasticity += fRand(-2.0*std_vol, 2.0*std_vol);
-terrain_height += fRand(-0.1*std_vol, 0.1*std_vol);
-    
-// limits : params can not be negative
-terrain_roughness = max(0.0, terrain_roughness);
-terrain_slip = max(0.0, terrain_slip);
-terrain_hardness = max(0.0, terrain_hardness);
-terrain_elasticity = max(0.0, terrain_elasticity);
-terrain_height = max(0.0, terrain_height);
-\end{lstlisting}
+For noise generation, the normal (Gaussian) distribution is used: 
+\begin{center}
+$ feature\_noise \sim N(\mu, \sigma^2) $
+\end{center}
 
-The \textit{std\_vol} variable comes as an argument to \textit{main.cpp}. It is meant to be a standard deviation of Gaussian noise in percentage. Hence, this percentage is then multiplied with the corresponding quality range and passed to the \textit{fRand()} function in order to generate a random float number from the created range with zero mean.
+\begin{align} \label{eq:terrain_noise_generation}
+feature\_noise = fRand(0, feature_{up\_limit}*std_p)
+\end{align}
 
-The function generating the random number uses the \textit{normal (Gaussian) distribution} with a probability density function defined as:
+\begin{description}
+\item[$ \boldsymbol{std_p} $] : a standard deviation percentage, passed as a simulation argument
+\item[fRand()] : a function generating a random float number using the normal (Gaussian) distribution with zero mean and a specified standard deviation defined by the feature's range and percentage ($ std_p $)
+\end{description}
 
-\begin{equation} \label{eq:gaussian_distribution}
-p(z) = \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{(z-\mu)^2}{2 \sigma^2}}
-\end{equation}
+For instance, assuming \textit{roughness} as a feature, the feature upper limit equals $ 10.0 $ (\cref{tab:terrain_features}). Then having the $ std_p $ equal $ 0.1 $ for example, the noise value is generated as a random number between $ -1 $ and $ 1 $.
 
-In this case the mean $ \mu = 0 $ and the standard deviation $ \sigma $ is defined by a corresponding range percentage. As the values at any pair of times are identically distributed and statistically independent (and hence uncorrelated) \citep{misc:wiki}, a \textbf{white Gaussian noise} is being generated thereby. Additionally, there is some limits checking as the parameters cannot take negative values.
+Once the noise is generated, it is added to an original feature value (before normalization as shown in \cref{tab:terrains_parameters}) as given in \cref{eq:adding_terrain_noise}.
 
-In this manner, the terrain types parameters from \cref{tab:terrains_parameters} can be noised, where the magnitude of noise influence is passed as a simulation argument.
+\begin{align} \label{eq:adding_terrain_noise}
+feature\_value \pluseq feature\_noise
+\end{align}
+
+Additionally, there is some limits checking as the parameters cannot take negative values. The final form is set as shown in \cref{eq:terrain_noise_limit}.
+
+\begin{align} \label{eq:terrain_noise_limit}
+feature\_value = max(feature\_value, 0)
+\end{align}
 
 \section{Data Acquisition} \label{sec:data_acquisition}
-At this point the simulation is set up and ready to be launched. There are \textbf{14} virtually created terrain types (defined in \cref{sec:virtual_terrain_types}, \cref{tab:terrains_parameters}) and \textbf{24} robot's proprioceptive sensors (described in \cref{ssec:amosii}, \cref{tab:proprioceptors}) available.
+The data comes from the 18 proprioceptive and 6 tactile sensors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
 
-Predictably, the terrain types are assumed to be classification targets (classes). Therefore, some data needs to be generated for each of these classes. This data comes from the 24 proprioceptors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
+As it is later described in more detail, several sensors values in time need to be used to obtain the robot's dynamics on various terrains. Therefore, to generate a single data sample candidate, the simulation must be run for a period of time. We use the 'candidate' significaiton as the optimal duration of one sample is not known. Samples are then formed out of sample candidates.
 
-As it is later described in more detail, several sensors values in time need to be used to catch the robot's dynamics on various terrains. Therefore, to generate a single data example, the simulation must be run for a period of time. The optimal duration is not known yet, but besides this fact, one should start thinking of generating a sufficient amount of samples for classification at this point.
+To gather the data sample candidates, the simulator is launched several times in order to generate several candidates for every terrain type. It has been chosen to let the robot walk for $ 10 $ seconds each time, which leads to $ 100 $ values per sensor for one run (see simulation settings in \cref{ssec:app:lpzrobots_sim}).
 
-The very simple way might be to let the robot walk for a long period of time and then just to cut the signals coming from sensors into many samples, based on an estimated timestep. The hitch of this approach is in initial conditions - they would become the same for every sample, which is not correct.
-
-To keep the rightness, the simulator is launched several times in order to generate several samples for every terrain type. It has been decided to let the robot walk for \textbf{10} seconds each time. In combination with the simulation settings (see \cref{ssec:lpzrobots_sim}), this implies \textbf{100} values for every sensor and for every simulation run - which should be more than enough.
-
-For illustration, some data gathered from sensor \textit{ATRf} when the robot was walking on a \textit{concrete} surface for approximately 10 seconds is shown in \cref{fig:data_example}.
+For illustration, two examples of data candidates gathered from sensor \textit{ATRf} when the robot was walking on a \textit{concrete}, and on a \textit{rock} respectively, for approximately 10 seconds is shown in \cref{fig:data_example}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{plot_sensor_atr_f_nn_concrete.eps}
-  \caption{Data example: ATRf, concrete, 10 seconds}
+  \includegraphics[width=1.0\textwidth]{plot_sensor_atr_f_no_noise.eps}
+  \caption{Data example: ATRf, concrete, approx. 10 seconds}
   \label{fig:data_example}
 \end{figure}
 
-The \textit{no\_noise} indication in the figure legend reffers to \cref{ssec:terrain_noise}. An optimal starndard deviation value of the additive Gaussian noise is not known. Therefore some data for several values of this parameter has been generated. The simulation has been gradually run for:
+More detailed results for all of the terrain types and several sensors are shown in \cref{ssec:gathered_data}. 
+
+As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter have been generated. The simulation has been gradually run for:
 
 \begin{itemize}
 \item $ \sigma_p = 0.0 $ (no noise)
-\item $ \sigma_p = 0.01 $ (noise 1\%)
-\item $ \sigma_p = 0.03 $ (noise 3\%)
-\item $ \sigma_p = 0.05 $ (noise 5\%)
-\item $ \sigma_p = 0.1 $ (noise 10\%)
-\item $ \sigma_p = 0.2 $ (noise 20\%)
+\item $ \sigma_p = 0.01 $ (1\% relative noise)
+\item $ \sigma_p = 0.03 $ (3\% relative noise)
+\item $ \sigma_p = 0.05 $ (5\% relative noise)
+\item $ \sigma_p = 0.1 $ (10\% relative noise)
+\item $ \sigma_p = 0.2 $ (20\% relative noise)
 \end{itemize}
 
-The $ \sigma_p $ is a standard deviation percentage, as shown in \cref{code:terrain_noise}, this $ \sigma_p $ is applied on qualities ranges and so corresponding standard deviation values $ \sigma_i $ are computed.
+The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analyzed in \cref{ssec:terrain_noise_influence}.
 
-It is always recommended to store rough data before some processing, hence the simulator creates \textit{.txt} files of structure symbolized in \cref{txt:rough_data} (with the reference to sensors shortcuts in \cref{tab:proprioceptors}). 
-
-\begin{lstlisting}[language=XML, caption={Rough sensory data files structure}, label=txt:rough_data]
-timestep_001;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
-timestep_002;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
-...
-timestep_100;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh
-\end{lstlisting}
-
-There is a \textit{.txt} file of this structure for every single simulation run in the \textit{root/data/} directory (see \cref{app:code_documentation}).
-
-All the data files are generated by a script called \textit{generate\_txt\_data.py} (\ref{app:code_documentation}). This script takes several arguments, like the number of jobs (simulation runs), terrain types involved or the terrain noise \textit{std} ($ \sigma_p $). Then a loop based on these parameters starts, where the simulation is launched and stopped after ten seconds each iteration. This is performed by calling a bash command (since the simulation is \textit{.cpp} based) and then killing the called process from python. The corresponding \textit{.txt} file is saved after each iteration by the simulation and then copied by the python script to a corresponding folder in \textit{root/data/}.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{generating_data}
-  \caption{The process of data acquisition from the simulation.}
-  \label{img:generating_data}
-\end{figure}
-
-In this manner, \textit{.txt} files for all terrains and all mentioned $ \sigma_p $ are saved into a structure illustrated on \cref{img:data_dir_structure}. Each \textit{.txt} file contains approximately 100 lines, one for each simulation step (as shown in \cref{txt:rough_data}). Every line then contains values of the 24 proprioceptive sensors.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{data_dir_structure}
-  \caption{The structure of rough data directory.}
-  \label{img:data_dir_structure}
-\end{figure}
-
-Right after the data generation, a script called \textit{clean\_txt\_data.py} (\ref{app:code_documentation}) is used to check the created \textit{.txt} files. As it takes a long time to generate all the data, sometimes the simulation fails and the files are incomplete. Hence the script checks whether there are enough timesteps (at least more than 95) and also if the steps are not messed. Files that fail during the inspection are removed. As \cref{img:data_dir_structure} reveals, there are \textbf{500} \textit{.txt} files for every \textit{noise/terrain} configuration. This allows creating datasets of 500 samples per class.
+The approach of storing the gathered data is described in \cref{ssec:app:data_storing}. As \cref{img:data_dir_structure} shows, $ 500 $ sample candidates are generated for every \textit{noise/terrain} configuration. This allows creating datasets of $ 500 $ samples per class.
 
 \section{Building a Feature Vector} \label{sec:feature_vector_compilation}
-So far, the hexapod simulation has been introduced, virtual terrain types defined and the simulator has been run on these terrains and for various values of terrain noise power. All the data has been acquired from the simulation as \textit{.txt} files. Hence the simulation is not needed anymore and only the gathered data are used for the following processing.
+Classification tasks are generally based on datasets consisting of samples and corresponding targets. The samples need to be represented in a numerical way in order to be processed by a computer and its appropriate algorithms. In machine learning, this numerical representation of an object is called \textit{a feature vector}, an n-dimensional vector of numerical values. This section is devoted to building a feature vector out of the data gathered from proprioceptive and tactile sensors.
 
-Classification tasks are generally based on datasets consisting of samples and corresponding targets. The samples need to be represented in a numerical way in order to be processed by a computer and its appropriate algorithms. In machine learning, this numerical representation of an object is called \textit{a feature vector}, an n-dimensional vector of numerical values. This section is devoted to building a feature vector out of the data gathered from proprioceptive sensors.
+As the optimal structure is not known, several possibilities are tested and therefore some new global process parameters appear at this point (mentioned already in \cref{sec:overall_process_summary}).
 
-This part of the process is crucial as the way of feature vector compilation can influence classification results a lot. Information loss or redundant structures are quite frequent mistakes here. Therefore, as the optimal structure is not known, several possibilities are tested again and therefore some new global process parameters appear at this point (mentioned already in \cref{sec:overall_process_summary}).
-
-For this particular problem, the task is to form one feature vector out of the content of one \textit{.txt} file (got in \cref{sec:data_acquisition}), as each of these files contains data for one sample (see \cref{img:feature_vector_forming}).
+For this particular problem, the task is to form one feature vector out of the content of one stored data file (see \cref{ssec:app:data_storing}), as each of these files contains data for one sample (see \cref{img:feature_vector_forming}).
 
 \begin{figure}[H]
   \centering
@@ -386,24 +354,18 @@ For this particular problem, the task is to form one feature vector out of the c
   \label{img:feature_vector_forming}
 \end{figure}
 
-At this point, one may ask for the reason of using several timesteps for creating one sample. It is assumed that a proper terrain classification using proprioceptors at one moment in time is at least difficult, if not impossible. Therefore the idea is to let the robot walk for a while and take down the dynamics of the sensors. Of course, the more timesteps are used for one sample, the more time the classification takes. Because of these arguments the number of timesteps is left as a global process parameter and it is a subject for later discussion.
+It is assumed that a proper terrain classification using proprioceptors at one moment in time is at least difficult, if not impossible. Therefore the idea is to let the robot walk for a while and take down the dynamics of the sensors. Of course, the more timesteps are used for one sample, the more time the classification takes. Because of these arguments the number of timesteps is left as a global process parameter and it is a subject for later discussion.
 
-Sensors selection defines another global parameter coming out of this section. The anticipation is that the feature vector becomes redundant using all of the 24 sensors, as many of them might behave similarly. However, for now all of them are used to show how the feature vector is built and it is also left for later discussion.
+Sensor selection defines another global process parameter. The anticipation is that the feature vector becomes redundant using all of the 24 sensors, as many of them may contain similar information. However, for now all of them are used to show how the feature vector is built and it is also left for later discussion.
 
-Parameters coming out of feature vector compilation and left for later discussion:
-\begin{itemize}
-\item number of timesteps used to build one feature vector (one sample)
-\item sensors involved in classification
-\end{itemize}
+With reference to \cref{img:feature_vector_forming}, feature vectors have been constructed by fixing the \textit{timesteps} parameter and concatenating columns of the matrix into one vector. This results into having data from all sensors one by one next to each other and forming one feature vector together. 
 
-Now, with reference to \cref{img:feature_vector_forming}, the question is how to transform the \textbf{2D} data from \textit{.txt} files into \textbf{1D} vectors. The idea is to fix the \textit{timesteps} parameter and arrange the columns of the matrix into one vector. This implies having data from all sensors one by one next to each other and forming one feature vector together. 
-
-In \cref{fig:sample_example} an example of this kind of forming is shown. For illustration there is just one terrain type (\textit{concrete}) involved. The number of timesteps is set to 40 and all 24 sensors are used, hence a feature vector of length 960 is gained. The corresponding sensors shortcuts (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
+In \cref{fig:sample_example} an illustration of the vector formation is shown. The number of timesteps is set to $ 40 $ and all $ 24 $ sensors are used, hence a feature vector of length $ 960 $ is obtained. The corresponding sensor abbreviations (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{sample_example.eps}
-  \caption{Example of feature vector building.}
+  \caption{Example of feature vector (raw data), 40 timesteps, no signal noise}
   \label{fig:sample_example}
 \end{figure}
 

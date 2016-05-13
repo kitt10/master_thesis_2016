@@ -22,36 +22,36 @@
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Virtual alternative for AMOS II.\relax }}{16}{figure.caption.60}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces 2-neuron network oscillator \citep {unpub:ai3_lec3}\relax }}{17}{figure.caption.62}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Schematic diagram of tripod gait controller\relax }}{18}{figure.caption.69}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Data example: ATRf, concrete, 10 seconds\relax }}{21}{figure.caption.92}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces The process of data acquisition from the simulation.\relax }}{22}{figure.caption.98}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces The structure of rough data directory.\relax }}{23}{figure.caption.99}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Forming a feature vector out of a data file.\relax }}{24}{figure.caption.101}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Example of feature vector building.\relax }}{25}{figure.caption.102}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Example of feature vector - normed.\relax }}{25}{figure.caption.108}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Three sets of data in a dataset.\relax }}{26}{figure.caption.115}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{27}{figure.caption.116}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{28}{figure.caption.118}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Data example: ATRf, concrete, approx. 10 seconds\relax }}{21}{figure.caption.81}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Forming a feature vector out of a data file.\relax }}{22}{figure.caption.83}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Example of feature vector (raw data), 40 timesteps, no signal noise\relax }}{23}{figure.caption.84}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Example of feature vector - normed.\relax }}{24}{figure.caption.90}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Three sets of data in a dataset.\relax }}{25}{figure.caption.97}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces \textit {create\_terrains\_dataset.py} : script workflow\relax }}{25}{figure.caption.98}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces \textit {kitt\_train.py} and \textit {sknn\_train.py} : scripts workflow\relax }}{27}{figure.caption.100}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Similarity measures among various terrain types.\relax }}{32}{figure.caption.137}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Sensor ATRf : mean of 500 samples, 14 terrains\relax }}{33}{figure.caption.140}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Sensor ACRm : mean of 500 samples, 14 terrains\relax }}{33}{figure.caption.141}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Sensor AFLh : mean of 500 samples, 14 terrains\relax }}{34}{figure.caption.142}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Sensor FLf : mean of 500 samples, 14 terrains\relax }}{34}{figure.caption.143}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps\relax }}{35}{figure.caption.145}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps\relax }}{35}{figure.caption.146}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)\relax }}{36}{figure.caption.148}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{36}{figure.caption.149}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{37}{figure.caption.150}
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{37}{figure.caption.151}
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{38}{figure.caption.153}
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{38}{figure.caption.154}
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, angle sensors\relax }}{39}{figure.caption.155}
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, foot contact sensors\relax }}{39}{figure.caption.156}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Similarity measures among various terrain types.\relax }}{30}{figure.caption.119}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Sensor ATRf : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.121}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Sensor ACRm : mean of 500 samples, 14 terrains\relax }}{31}{figure.caption.122}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Sensor AFLh : mean of 500 samples, 14 terrains\relax }}{32}{figure.caption.123}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Sensor FLf : mean of 500 samples, 14 terrains\relax }}{32}{figure.caption.124}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps\relax }}{33}{figure.caption.126}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps\relax }}{33}{figure.caption.127}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)\relax }}{34}{figure.caption.129}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{34}{figure.caption.130}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{35}{figure.caption.131}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{35}{figure.caption.132}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{36}{figure.caption.134}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{36}{figure.caption.135}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, angle sensors\relax }}{37}{figure.caption.136}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Signal noise analysis : samples variance, terrain: snow, foot contact sensors\relax }}{37}{figure.caption.137}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{47}{figure.caption.169}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{48}{figure.caption.171}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{45}{figure.caption.150}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{46}{figure.caption.152}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{47}{figure.caption.167}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{47}{figure.caption.168}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
