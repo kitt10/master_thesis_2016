@@ -6,6 +6,31 @@ The account of the research should be presented in a manner suitable for the fie
 
 \section{Terrain Processing Results}
 
+\subsection{Analysis of Terrain Similarity} \label{ssec:terrains_analysis}
+In the following a brief analysis of terrain similarities is presented. In general, a (dis-) similarity between terrains should correlate with classification results, i.e., the more two terrains differ from each other the better classification results are expected, and vice versa.
+
+In order to quantify and visualise similarity among various terrains, a similarity measure was calculated as given in \cref{eq:similarity_measure}. The five qualities are listed in \cref{tab:terrain_features} and in \cref{tab:terrains_parameters}.
+
+\begin{align} \label{eq:similarity_measure}
+  SF_{t_1, t_2} = \frac{\displaystyle\sum_{i=1}^{5} \abs{quality(i, t_1) - quality(i, t_2)}}{5}
+\end{align} 
+
+The similarity measure equals 0 if two terrains are identical (have the same parameter values) and equals 1.0 if two terrains are totally different.
+
+The following \cref{fig:terrain_similarity_measures} shows the similarity measures among generated terrains.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{terrains_variability.eps}
+  \caption{Similarity measures among various terrain types.}
+  \label{fig:terrain_similarity_measures}
+\end{figure}
+
+The surfaces have been generated virtually and their similarity to real world terrains has not been verified. However, results demonstrate that foam is very different from ice or, for instance, sand is quite similar to mud. A low similarity measure can be seen among concrete, carpet and rubber as all of them are moreless flat.
+
+Surprisingly, a wooden terrain ended up as very similar to gravel and carpet, but a limited number of simulated terrain features has to be considered. 
+On the other hand, rubber results as very different from swamp and snow, which is a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
+
 \subsection{Gathered Data} \label{ssec:gathered_data}
 
 \subsubsection*{Data by Sensors} \label{sssec:data_by_sensors}

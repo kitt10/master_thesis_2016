@@ -44,7 +44,7 @@ hidelinks,
 \usepackage{lmodern} 		% Font family
 
 % Use the bibtex backend with the authoryear citation style (which resembles APA) (citestyle=alphabetic)
-\usepackage[backend=bibtex,style=alphabetic,citestyle=alphabetic,natbib=true,sorting=ynt]{biblatex} 
+\usepackage[backend=bibtex,style=alphabetic,citestyle=authoryear-icomp,natbib=true,sorting=ynt]{biblatex} 
 \addbibresource{bib/thesis_bibliography.bib} 				% The filename of the bibliography
 
 % Required to generate language-dependent quotes in the bibliography
@@ -77,8 +77,12 @@ hidelinks,
 \renewcommand{\lstlistingname}{Part of Code}
 \renewcommand{\lstlistlistingname}{List of Algorithms and Code Parts}
 
+\usepackage{amsmath}
 \usepackage{cleveref}
-\crefname{listing}{part of code}{parts of code}
+\crefname{listing}{code part}{code parts}
+\crefname{figure}{Fig.}{Fig.}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eq.}
 
 \usepackage{float}
 
@@ -87,3 +91,5 @@ hidelinks,
 \usepackage{commath}
 
 \usepackage{multirow}
+
+\usepackage{url}

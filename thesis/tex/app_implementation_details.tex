@@ -1,0 +1,41 @@
+\chapter{Implementation Details} \label{app:implementation_details}
+
+\section{Terrain Classification Implementation}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{terrain_classification_process}
+  \caption{Terrain classification process - overall diagram.}
+  \label{img:app:terrain_classification_process}
+\end{figure}
+
+\subsection*{LPZ Robots Simulation} \label{ssec:app:lpzrobots_sim}
+The \textit{lpzrobots} project contains many subprojects. For this study, the most important ones are:
+
+\begin{description}
+\item[selforg] : homeokinetic controllers implementation framework
+\item[ode\_robots] : a 3D physically correct robot simulator
+\end{description}
+
+The project is implemented in \textit{C++} and needs a Unix system to be run. It consists of two main GIT repositories to be forked - lpzrobots and go\_robots. The overall software architecture is shown in \cref{img:lpzrobots_architecture}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{lpzrobots_architecture}
+  \caption{Software architecture for LPZRobots and GoRobots. \citep{misc:lpzrobots}}
+  \label{img:lpzrobots_architecture}
+\end{figure}
+
+To introduce the elements in \cref{img:lpzrobots_architecture}, \textit{ThisSim} is an inherited class of another class called \textit{Simulation} and is initialized everytime the simulation is launched. It integrates all elements together, controls the environment as well as the robot and sets up initial parameters. An instance of the \textit{Agent} class integrates all components of the agent (robot) by using the shown classes.
+
+\subsection*{Terrain Construction in main.cpp} \label{ssec:app:terrain_construction_in_main.cpp}
+The \textbf{LpzRobots} AMOS II simulator supports some terrain setting. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
+
+\begin{lstlisting}[language=C++, caption={Setting a terrain ground in main.cpp}, label=code:terrain_ground]
+Substance roughterrainSubstance(terrain_roughness, terrain_slip,
+                       terrain_hardness, terrain_elasticity);
+oodeHandle.substance = roughterrainSubstance;
+TerrainGround* terrainground = new TerrainGround(oodeHandle, 
+                       osgHandle.changeColor(terrain_color),
+                       "rough1.ppm", "", 20, 25, terrain_height);
+\end{lstlisting}
