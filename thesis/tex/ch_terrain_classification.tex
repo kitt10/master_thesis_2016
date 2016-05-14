@@ -12,7 +12,7 @@ The overall process consists of several modules. The workflow is illustrated in 
   \label{img:terrain_overall_simple}
 \end{figure}
 
-The very first step is to make the AMOS II simulation run (\cref{ssec:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain quailities and their ranges are determined (\cref{ssec:terrain_qualities}). Based on these qualities (parameters), a number of virtual terrains is defined (\cref{ssec:terrain_parameters}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
+The very first step is to make the AMOS II simulation run (\cref{ssec:app:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain features and their ranges are determined (\cref{ssec:terrain_features}). Based on these features (parameters), a number of virtual terrains is defined (\cref{ssec:features_determination}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
 
 Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and the data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of an additive (Guassian) terrain noise and is run for several values.
 
@@ -65,7 +65,7 @@ As shown in \cref{img:amosii} and \cref{img:amosii_leg}, the robot has \textit{6
 
 There are three joints on each of the robot's legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
 
-These joints are physically actuated by standard servo motors. Angles of the joints are measured by the servo motors and are considered as propriceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textit{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:lpzrobots_sim}), it is omitted in this work.
+These joints are physically actuated by standard servo motors. Angles of the joints are measured by the servo motors and are considered as propriceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textit{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:app:lpzrobots_sim}), it is omitted in this work.
 
 In \cref{tab:proprioceptors} all the propriceptive sensors, their abbreviations and original ranges are listed. The ranges are based on the individual servo motors locations and are manually set to avoid collisions. In \cref{sec:feature_vector_compilation} a normalization of these ranges is discussed.
 
@@ -360,7 +360,7 @@ Sensor selection defines another global process parameter. The anticipation is t
 
 With reference to \cref{img:feature_vector_forming}, feature vectors have been constructed by fixing the \textit{timesteps} parameter and concatenating columns of the matrix into one vector. This results into having data from all sensors one by one next to each other and forming one feature vector together. 
 
-In \cref{fig:sample_example} an illustration of the vector formation is shown. The number of timesteps is set to $ 40 $ and all $ 24 $ sensors are used, hence a feature vector of length $ 960 $ is obtained. The corresponding sensor abbreviations (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
+In \cref{fig:sample_example} an illustration of the vector formation for three terrain types is shown. The number of timesteps is set to $ 40 $ and all $ 24 $ sensors are used, hence a feature vector of length $ 960 $ is obtained. The corresponding sensor abbreviations (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
 
 \begin{figure}[H]
   \centering
@@ -369,43 +369,66 @@ In \cref{fig:sample_example} an illustration of the vector formation is shown. T
   \label{fig:sample_example}
 \end{figure}
 
-\subsection{Normalization} \label{ssec:normalization}
-It is a good manner to keep the data normed - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the angle sensors, the following approach is used to map the data. 
+\subsection{Feature Vector Normalisation} \label{ssec:normalisation}
+It is a good manner to keep the data normalised - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the joint angle sensors, the following approach, sometimes called \textit{feature scaling}, is used to map the data.
 
-\begin{lstlisting}[language=Python, caption={Data normalization}, label=code:data_normalization]
-def norm_signal(s, a_min, a_max):
-  l = [min(max(float((x-a_min))/(a_max-a_min), 0), 1) for x in s]   
-  return l
-\end{lstlisting}
+For each element $ S_i $ of signal $ S $:
 
-The bounds (\textit{a\_min} and \textit{a\_max} used in \cref{code:data_normalization}) are defined by default sensors ranges (listed in \cref{tab:proprioceptors}). Also a $ [0, 1] $ interval overflow checking is added and values are adjusted if needed. This is a cover for the case ranges from \cref{tab:proprioceptors} were not accurate. The following figure (\ref{fig:sample_example_normed}) shows a normed feature vector example. The influence of normalization on classification results is another subject for the discussion.
+\begin{align} \label{eq:normalisation}
+S_i' = \frac{S_i - r_{min}}{r_{max} - r_{min}} 
+\end{align}
+
+\begin{description}
+\item[$ r_{min}, r_{max} $] : bounds of the corresponding original sensor range (listed in \cref{tab:proprioceptors})
+\item[$ S_i' $] : scaled element of the normalised signal
+\end{description}
+
+Also a $ [0, 1] $ interval overflow checking is added and values are adjusted if needed (\cref{eq:normalisation_overflow}). This is a cover for the case when ranges from \cref{tab:proprioceptors} were not accurate.
+
+\begin{align} \label{eq:normalisation_overflow}
+S_i' = min(max(S_i', 0), 1)
+\end{align}
+
+The following figure (\ref{fig:sample_example_normed}) shows normalised feature vector examples for three terrains. The influence of normalisation on classification results is another subject for the discussion.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{sample_example_normed.eps}
-  \caption{Example of feature vector - normed.}
+  \caption{Normalised feature vector examples}
   \label{fig:sample_example_normed}
 \end{figure}
 
 \subsection{Signal Noise} \label{ssec:signal_noise}
-In \cref{ssec:terrain_noise} a few general reasons for noising simulation data are disscused. In that case an additive Gaussian noise is used to make the terrains definitions (from \cref{tab:terrains_parameters}) more complex.
+In \cref{ssec:terrain_noise} a few general reasons for adding a noise to simulation data were disscused. In that case an additive Gaussian noise is used to generate variability in the data and to make the terrain types definitions (from \cref{tab:proprioceptors}) more general.
 
-For similar reasons a signal noise is added to the sensory data. In reality the mechanical sensors might shake, be influenced by environmental conditions or simply may not work as well as expected, while the data coming from the simulated sensors are always deterministic.
+For similar reasons a signal noise is also added to the sensory data. In reality the data obtained from mechanical sensors are noisy (environmental conditions, failures of electrical devices, etc.), while the data coming from the simulated sensors are always deterministic.
 
-Right after the data normalization, a white Gaussian noise is added to the normed feature vectors. This time it is performed in Python, using the \textit{random.normal()} function of \textit{numpy} library to get the \textit{normal distribution} with zero mean (\cref{code:adding_signal_noise}).
+In this case, a white Gaussian noise is added to the normalised feature vectors. Similarly to equations in \cref{ssec:terrain_noise}, at first a noise is generated using the normal distribution with zero mean and specified standard deviation. This time, a vector of length $ n $ needs to be generated as a noise.
 
-\begin{lstlisting}[language=Python, caption={Adding signal noise in python}, label=code:adding_signal_noise]
-def add_signal_noise(signal):
-  noise = np.random.normal(loc=0, scale=STD, size=len(signal))
-  return [x+n for x, n in zip(signal, noise)]
-\end{lstlisting}
+\begin{align}
+signal\_noise = [sn_1, sn_2, ..., sn_n]
+\end{align}
 
-Also in this case, it is difficult to estimate an optimal signal noise power (STD in \cref{code:adding_signal_noise}). Therefore it is left as another global process parameter and its influence is discussed in the results part. It is defined as a percentage of the $ [0.0, 1.0] $ interval and as the signals are normed in advance, there is no need for another processing of this parameter.
+\begin{align}
+sn_i \sim N(\mu, \sigma^2), \quad i = 1, 2, ..., n
+\end{align}
 
-\section{Datasets Creation} \label{sec:dataset_creation}
-Reffering to \cref{img:terrain_classification_process}, in this section the \textit{create\_terrains\_dataset.py} script is introduced. At this part of the process all the data files are ready and also the form of feature vectors is determined. The task is to transform all the data into so called datasets.
+Then, the generated vector is added to a normalised feature vector from \cref{ssec:normalisation} (\cref{eq:signal_noise_addition}).
 
-There are usually three sets of data used for classification tasks - training, validation and testing data. These three sets must be disjunctive, meaning they cannot have a single element in common. All these three sets together form a dataset.
+\begin{align} \label{eq:signal_noise_addition}
+noised\_signal_i = raw\_signal_i + sn_i, \quad i = 1, 2, ..., n
+\end{align}
+
+Finally, the noised signal is checked, whether its values do not overflow out of the $ [0, 1] $ range.
+
+\begin{align}
+noised\_signal_i = min(max(noised\_signal_i , 0), 1), \quad i = 1, 2, ..., n
+\end{align}
+
+Also in this case, it is difficult to estimate an optimal signal noise power (standard deviation of the normal distribution). Therefore it is left as another global process parameter and its influence is discussed in the results part. It is defined as a percentage of the $ [0.0, 1.0] $ interval and as the signals are normed in advance, there is no need for another processing of this parameter.
+
+\section{Creation of Datasets} \label{sec:dataset_creation}
+In this section, the task is to transform all the data into so called datasets. There are usually three sets of data used for classification tasks - training, validation and testing data. These three sets must be disjunctive, meaning they cannot have a single element in common. All these three sets together form a dataset.
 
 \begin{figure}[H]
   \centering
@@ -414,49 +437,56 @@ There are usually three sets of data used for classification tasks - training, v
   \label{img:three_sets}
 \end{figure}
 
-Each set of data consists of samples and targets (classes). The samples are represented by normed feature vectors (\cref{sec:feature_vector_compilation}) - lists of numerical floating point values from $ [0.0, 1.0] $ interval. The targets, in this case, match the names of virtually created terrain types (listed in \cref{tab:terrains_parameters}). Every sample must be uniformly assigned to precisely one target.
+Each set of data consists of samples and targets (class labels). The samples are represented by normalised feature vectors (\cref{sec:feature_vector_compilation}) - lists of numerical floating point values from $ [0.0, 1.0] $ interval. Every sample must be uniformly assigned to precisely one target. The targets, in this case, match the virtually created terrain types (listed in \cref{tab:terrains_parameters}) in the following manner.
 
-Once there are two ordered lists - a list of samples and a corresponding list of targets, these lists are split into the three sets shown in \cref{img:three_sets}. The script takes an argument called \textit{data\_split\_ratio} defining the proportions among the sets sizes. Defaultly the ratio is set to generate 80\% training, 10\% validation and 10\% of testing data.
+The target vector is of length 14, as there are 14 terrain types. Every terrain type has an unique identificator (numbers listed in \cref{tab:proprioceptors}) corresponding to positions in the target vector. In any case, the vector contains 13 'zeros' and 1 'one'. The vector is then matched to a terrain type depending on the position where the 'one' is. For instance, a target vector corresponding to \textit{concrete} is illustrated on \cref{img:target_vector_concrete}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{target_vector_concrete}
+  \caption{Target vector for concrete}
+  \label{img:target_vector_concrete}
+\end{figure}
+
+Once there are two ordered lists - a list of samples and a corresponding list of targets, these lists are split into the three sets shown in \cref{img:three_sets}. There is a parameter called \textit{data\_split\_ratio} defining the proportions among the sets sizes. By default the ratio is set to generate 80\% training, 10\% validation and 10\% of testing data.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{create_dataset}
-  \caption{\textit{create\_terrains\_dataset.py} : script workflow}
+  \caption{Workflow of generating a dataset}
   \label{img:create_dataset}
 \end{figure}
 
-The workflow happening inside the \textit{create\_terrains\_dataset.py} script is illustrated in \cref{img:create_dataset}. During the overall process description in previous sections, some global process parameters have been collected. These configurations are now passed as arguments to this script and therefore several datasets of various properties can be generated.
+The workflow of data generation procedure is illustrated in \cref{img:create_dataset}. 
 
-The datasets files are saved in directory \textit{root/py/cache/datasets/amos\_terrains\_sim/} (see \ref{app:code_documentation}). Their structure is based on a powerful serializing and de-serializing Python algorithm implemented under a package called \textit{pickle (cPickle)}. On the same basis a package called \textit{shelve} is used to represent a dataset as a dictionary-link object. The files are saved with the \textit{.ds} suffix.
-
-The list of all generated datasets can be found in \cref{app:list_of_datasets}. These datasets and influence of individual parameters are evaluated in the results section (\cref{chapter:06:experimental_evaluation}).
+The list of all generated datasets can be found in \cref{tab:generated_datasets}. These datasets and influence of individual parameters are evaluated in \cref{chap:results}.
 
 \section{Training and Classification}
-Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - illustrated in \cref{img:three_sets}.
+Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
 
-There are many classification methods differing in mathematical backgrounds and each of them has some pros and cons on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two functions that every classifier should be capable of:
+There are many classification methods differing in mathematical backgrounds and each of them has some adventages and disadvantages on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two procedures that every classifier should be capable of:
 
 \begin{description}
-\item[fit()] : Fitting some data to a model. This function usually takes training samples and their targets as arguments. Additiionally, it can take some validation data and/or learning parameters. Then a model is trained.
-\item[predict()] : This function is then called when a model is already trained. It takes one or more samples of testing data and returns the predicted target(s).
+\item[model fitting] : In this procedure, an initialized classifier is usually given training samples and their corresponding targets. Additiionally, it can take some validation data and/or learning parameters. Then a model is trained using some math behind the selected classification method.
+\item[unlabeled observation prediction] : Once the model is trained, it is capable of predicting classes of unlabeled samples. It takes one or more samples of testing data and returns the predicted target(s).
 \end{description}
 
-This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chapter:04:neural_net_implementation}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in sections \ref{ssec:sknn} and \ref{ssec:other_classifiers}).
+This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chap:kitt_nn}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in sections \ref{ssec:sknn} and \ref{ssec:other_classifiers}).
 
-In the overall process diagram (\cref{img:terrain_classification_process}) two scripts for training neural networks are included. The first one, \textit{kitt\_train.py}, uses the implemented network library \textit{kitt\_nn} (\cref{chapter:04:neural_net_implementation}) and the script called \textit{sknn\_train.py} uses a public library \textit{Scikit-neuralnetwork}, which is described in \cref{ssec:sknn}. It is important that these two scripts use the same workflow, which is illustrated in \cref{img:train_and_test_network}.
+In the overall process diagram (\cref{img:terrain_overall_simple}) there is a box called \textit{classification with full networks}. The procedure behind this box is illustrated on \cref{img:train_and_test_network}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{train_and_test_network}
-  \caption{\textit{kitt\_train.py} and \textit{sknn\_train.py} : scripts workflow}
+  \caption{Procedure of training and testing a network}
   \label{img:train_and_test_network}
 \end{figure}
 
-The scripts take several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
+This workflow is performed by the implemented framework \textit{kitt\_nn} (\cref{chap:kitt_nn}, as well as by other provided classifiers (discussed in \cref{ssec:other_classifiers}) for comparison. It is adventageous, that each of these tools can use the same workflow and so the comparison is fair.
 
-Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this reasearch, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
+There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
 
-Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
+Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
 
 \subsection{Evaluation Methods} \label{ssec:evaluation_methods}
 A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
@@ -472,25 +502,11 @@ F1 = \frac{2 * precision * recall}{precision + recall}
 \item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
 \end{description}
 
-\subsection{Terrain Classification using Pruned Nets} \label{ssec:pruned_net_on_terrains}
+\subsection{Terrain Classification using Network Pruning} \label{ssec:pruned_net_on_terrains}
 As the overall process diagram (\cref{img:terrain_classification_process}) shows, the developed network pruning algorithm (\cref{chapter:network_pruning_algorithm}) is tested on the terrain datasets. The approach has been already described. 
 
 Evaluation in... \textbf{TODO:} describe the process here and reffer the results after they are gathered.
 
-
-\subsection{Scikit-learn Neural Network Library} \label{ssec:sknn}
-In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says \citep{misc:sknn}, this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.
-
-This step has been considered with the aim to test another implementation of the learning algorithm rather than to obtain better classification results. As the only learning parameters are the \textit{net structure}, the \textit{learning rate} and the \textit{number of epochs}, some other default parameters of the tested network are shown in \cref{code:sknn_net}.
-
-\begin{lstlisting}[language=Python, caption={Sknn classifier specification \citep{misc:sknn}}, label=code:sknn_net]
-class sknn.mlp.Classifier(layers, warning=None, parameters=None, 
-random_state=None, learning_rule=u'sgd', learning_rate=0.01, 
-learning_momentum=0.9, normalize=None, regularize=None, 
-weight_decay=None, dropout_rate=None, batch_size=1, n_iter=None, 
-n_stable=10, f_stable=0.001,  valid_set=None, valid_size=0.0, 
-loss_type=None, callback=None, debug=False,  verbose=None)
-\end{lstlisting}
 
 \subsection{Searching for Optimal Configuration (Grid Search)} \label{ssec:grid_search}
 \textbf{TODO :} describe here how the best parameters have been found using GridSearch

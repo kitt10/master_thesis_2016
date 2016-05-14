@@ -34,32 +34,32 @@
 \contentsline {subsection}{\numberline {5.3.3}Terrain Noise}{20}{subsection.76}
 \contentsline {section}{\numberline {5.4}Data Acquisition}{21}{section.80}
 \contentsline {section}{\numberline {5.5}Building a Feature Vector}{22}{section.82}
-\contentsline {subsection}{\numberline {5.5.1}Normalization}{23}{subsection.85}
-\contentsline {subsection}{\numberline {5.5.2}Signal Noise}{24}{subsection.91}
-\contentsline {section}{\numberline {5.6}Datasets Creation}{24}{section.96}
-\contentsline {section}{\numberline {5.7}Training and Classification}{26}{section.99}
-\contentsline {subsection}{\numberline {5.7.1}Evaluation Methods}{27}{subsection.101}
-\contentsline {subsection}{\numberline {5.7.2}Terrain Classification using Pruned Nets}{28}{subsection.103}
-\contentsline {subsection}{\numberline {5.7.3}Scikit-learn Neural Network Library}{28}{subsection.104}
-\contentsline {subsection}{\numberline {5.7.4}Searching for Optimal Configuration (Grid Search)}{28}{subsection.112}
-\contentsline {subsection}{\numberline {5.7.5}Other Classifiers}{28}{subsection.113}
-\contentsline {chapter}{\numberline {6}Experimental Evaluation}{29}{chapter.114}
-\contentsline {section}{\numberline {6.1}Verification of Network Implementation}{29}{section.115}
-\contentsline {section}{\numberline {6.2}Terrain Processing Results}{29}{section.116}
-\contentsline {subsection}{\numberline {6.2.1}Analysis of Terrain Similarity}{29}{subsection.117}
-\contentsline {subsection}{\numberline {6.2.2}Gathered Data}{31}{subsection.120}
-\contentsline {subsection}{\numberline {6.2.3}Built Feature Vector}{33}{subsection.125}
-\contentsline {subsection}{\numberline {6.2.4}Terrain Noise Influence}{34}{subsection.128}
-\contentsline {subsection}{\numberline {6.2.5}Signal Noise Influence}{36}{subsection.133}
-\contentsline {subsection}{\numberline {6.2.6}Generated Datasets}{38}{subsection.138}
-\contentsline {subsection}{\numberline {6.2.7}Classification results}{38}{subsection.140}
-\contentsline {subsection}{\numberline {6.2.8}Final Configuration}{38}{subsection.142}
-\contentsline {section}{\numberline {6.3}Pruning Algorithm Results}{38}{section.143}
-\contentsline {chapter}{\numberline {7}Discussion}{40}{chapter.144}
-\contentsline {chapter}{\numberline {8}Conclussion and Outlook}{41}{chapter.145}
-\contentsline {chapter}{Bibliography}{42}{chapter*.146}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{44}{appendix.147}
-\contentsline {chapter}{\numberline {A2}Implementation Details}{45}{appendix.148}
-\contentsline {section}{\numberline {A2.1}Terrain Classification Implementation}{45}{section.149}
-\contentsline {chapter}{\numberline {A3}Code Documentation}{49}{appendix.169}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{50}{appendix.170}
+\contentsline {subsection}{\numberline {5.5.1}Feature Vector Normalisation}{23}{subsection.85}
+\contentsline {subsection}{\numberline {5.5.2}Signal Noise}{24}{subsection.89}
+\contentsline {section}{\numberline {5.6}Creation of Datasets}{25}{section.94}
+\contentsline {section}{\numberline {5.7}Training and Classification}{27}{section.98}
+\contentsline {subsection}{\numberline {5.7.1}Evaluation Methods}{28}{subsection.100}
+\contentsline {subsection}{\numberline {5.7.2}Terrain Classification using Network Pruning}{28}{subsection.102}
+\contentsline {subsection}{\numberline {5.7.3}Searching for Optimal Configuration (Grid Search)}{28}{subsection.103}
+\contentsline {subsection}{\numberline {5.7.4}Other Classifiers}{29}{subsection.104}
+\contentsline {chapter}{\numberline {6}Experimental Evaluation}{30}{chapter.105}
+\contentsline {section}{\numberline {6.1}Verification of Network Implementation}{30}{section.106}
+\contentsline {section}{\numberline {6.2}Terrain Processing Results}{30}{section.107}
+\contentsline {subsection}{\numberline {6.2.1}Analysis of Terrain Similarity}{30}{subsection.108}
+\contentsline {subsection}{\numberline {6.2.2}Gathered Data}{32}{subsection.111}
+\contentsline {subsection}{\numberline {6.2.3}Built Feature Vector}{34}{subsection.116}
+\contentsline {subsection}{\numberline {6.2.4}Terrain Noise Influence}{35}{subsection.119}
+\contentsline {subsection}{\numberline {6.2.5}Signal Noise Influence}{37}{subsection.124}
+\contentsline {subsection}{\numberline {6.2.6}Generated Datasets}{39}{subsection.129}
+\contentsline {subsection}{\numberline {6.2.7}Classification results}{39}{subsection.131}
+\contentsline {subsection}{\numberline {6.2.8}Final Configuration}{39}{subsection.133}
+\contentsline {section}{\numberline {6.3}Pruning Algorithm Results}{39}{section.134}
+\contentsline {chapter}{\numberline {7}Discussion}{41}{chapter.135}
+\contentsline {chapter}{\numberline {8}Conclussion and Outlook}{42}{chapter.136}
+\contentsline {chapter}{Bibliography}{43}{chapter*.137}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{45}{appendix.138}
+\contentsline {chapter}{\numberline {A2}Implementation Details}{46}{appendix.139}
+\contentsline {section}{\numberline {A2.1}Terrain Classification Implementation}{46}{section.140}
+\contentsline {section}{\numberline {A2.2}NN Implementation Details}{49}{section.162}
+\contentsline {chapter}{\numberline {A3}Code Documentation}{50}{appendix.171}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{51}{appendix.172}

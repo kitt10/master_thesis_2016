@@ -71,3 +71,27 @@ In this manner, \textit{.txt} files for all terrains and all mentioned $ \sigma_
 \end{figure}
 
 Right after the data generation, a script called \textit{clean\_txt\_data.py} (\ref{app:code_documentation}) is used to check the created \textit{.txt} files. As it takes a long time to generate all the data, sometimes the simulation fails and the files are incomplete. Hence the script checks whether there are enough timesteps (at least more than 95) and also if the steps are not messed. Files that fail during the inspection are removed.
+
+\subsection*{Datasets Storing} \label{ssec:app:datasets_storing}
+During the overall process description in previous sections, some global process parameters have been collected. These configurations are now passed as arguments to the script called \textit{create\_terrains\_dataset.py} and therefore several datasets of various properties can be generated.
+
+The datasets files are saved in directory \path{root/py/cache/datasets/amos_terrains_sim/} (see \ref{app:code_documentation}). Their structure is based on a powerful serializing and de-serializing Python algorithm implemented under a package called \textit{pickle (cPickle)}. On the same basis a package called \textit{shelve} is used to represent a dataset as a dictionary-link object. The files are saved with the \textit{.ds} suffix.
+
+\subsection*{Trained Network Storing} \label{ssec:app:network_storing}
+Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
+
+\section{NN Implementation Details}
+
+\subsection*{Scikit-learn Neural Network Library} \label{ssec:sknn}
+In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says \citep{misc:sknn}, this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.
+
+This step has been considered with the aim to test another implementation of the learning algorithm rather than to obtain better classification results. As the only learning parameters are the \textit{net structure}, the \textit{learning rate} and the \textit{number of epochs}, some other default parameters of the tested network are shown in \cref{code:sknn_net}.
+
+\begin{lstlisting}[language=Python, caption={Sknn classifier specification \citep{misc:sknn}}, label=code:sknn_net]
+class sknn.mlp.Classifier(layers, warning=None, parameters=None, 
+random_state=None, learning_rule=u'sgd', learning_rate=0.01, 
+learning_momentum=0.9, normalize=None, regularize=None, 
+weight_decay=None, dropout_rate=None, batch_size=1, n_iter=None, 
+n_stable=10, f_stable=0.001,  valid_set=None, valid_size=0.0, 
+loss_type=None, callback=None, debug=False,  verbose=None)
+\end{lstlisting}
