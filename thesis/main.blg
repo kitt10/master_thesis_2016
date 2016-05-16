@@ -27,12 +27,13 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: main-blx.bib
 Database file #2: bib/thesis_bibliography.bib
+Warning--I didn't find a database entry for "article:10:pruningalgs"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 20 entries,
             6047 wiz_defined-function locations,
-            1255 strings with 20157 characters,
+            1256 strings with 20170 characters,
 and the built_in function-call counts, 69227 in all, are:
 = -- 2412
 > -- 2571
@@ -71,3 +72,4 @@ warning$ -- 0
 while$ -- 442
 width$ -- 0
 write$ -- 608
+(There was 1 warning)

@@ -69,29 +69,47 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Network Pruning Algorithm}{12}{section.55}}
 \newlabel{sec:network_pruning_algorithm}{{4.4}{12}{Network Pruning Algorithm}{section.55}{}}
 \newlabel{sec:network_pruning_algorithm@cref}{{[section][4][4]4.4}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Idea}{12}{subsection.56}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Realization}{12}{subsection.57}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces The Pruning Algorithm\relax }}{12}{figure.caption.58}}
-\newlabel{img:pruning_algorithm}{{4.7}{12}{The Pruning Algorithm\relax }{figure.caption.58}{}}
-\newlabel{img:pruning_algorithm@cref}{{[figure][7][4]4.7}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Testing Datasets}{13}{subsection.59}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces 2D XOR Data illustration\relax }}{13}{figure.caption.61}}
-\newlabel{img:data_xor}{{4.8}{13}{2D XOR Data illustration\relax }{figure.caption.61}{}}
-\newlabel{img:data_xor@cref}{{[figure][8][4]4.8}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces XOR min structure 1\relax }}{13}{figure.caption.62}}
-\newlabel{img:xor_min_structure_1}{{4.9}{13}{XOR min structure 1\relax }{figure.caption.62}{}}
-\newlabel{img:xor_min_structure_1@cref}{{[figure][9][4]4.9}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces XOR min structure 2\relax }}{13}{figure.caption.63}}
-\newlabel{img:xor_min_structure_2}{{4.10}{13}{XOR min structure 2\relax }{figure.caption.63}{}}
-\newlabel{img:xor_min_structure_2@cref}{{[figure][10][4]4.10}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces MNIST Data illustration\relax }}{14}{figure.caption.65}}
-\newlabel{img:data_mnist}{{4.11}{14}{MNIST Data illustration\relax }{figure.caption.65}{}}
-\newlabel{img:data_mnist@cref}{{[figure][11][4]4.11}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Minimal Structures Utilization}{14}{subsection.66}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Pruning Idea}{12}{subsection.56}}
+\newlabel{ssec:pa_idea}{{4.4.1}{12}{Pruning Idea}{subsection.56}{}}
+\newlabel{ssec:pa_idea@cref}{{[subsection][1][4,4]4.4.1}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{12}{figure.caption.57}}
+\newlabel{img:pruning_problem_formulation}{{4.7}{12}{Pruning Algorithm: hypothesis formulation\relax }{figure.caption.57}{}}
+\newlabel{img:pruning_problem_formulation@cref}{{[figure][7][4]4.7}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Algorithm Realization}{12}{subsection.58}}
+\newlabel{ssec:pa_realization}{{4.4.2}{12}{Algorithm Realization}{subsection.58}{}}
+\newlabel{ssec:pa_realization@cref}{{[subsection][2][4,4]4.4.2}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Overall flowchart of the pruning process\relax }}{12}{figure.caption.59}}
+\newlabel{img:pa_flowchart}{{4.8}{12}{Overall flowchart of the pruning process\relax }{figure.caption.59}{}}
+\newlabel{img:pa_flowchart@cref}{{[figure][8][4]4.8}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref  {img:cut_synapses} and \ref  {img:accuracy_kept} respectively\relax }}{13}{figure.caption.60}}
+\newlabel{img:pruning_algorithm}{{4.9}{13}{The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }{figure.caption.60}{}}
+\newlabel{img:pruning_algorithm@cref}{{[figure][9][4]4.9}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Function: removing synapses based on weight changes and current percentile value\relax }}{14}{figure.caption.61}}
+\newlabel{img:cut_synapses}{{4.10}{14}{Function: removing synapses based on weight changes and current percentile value\relax }{figure.caption.61}{}}
+\newlabel{img:cut_synapses@cref}{{[figure][10][4]4.10}{14}}
+\newlabel{eq:weight_change}{{4.11}{14}{Algorithm Realization}{equation.62}{}}
+\newlabel{eq:weight_change@cref}{{[equation][11][4]4.11}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Function: checking if the accuracy has been kept after pruning\relax }}{14}{figure.caption.63}}
+\newlabel{img:accuracy_kept}{{4.11}{14}{Function: checking if the accuracy has been kept after pruning\relax }{figure.caption.63}{}}
+\newlabel{img:accuracy_kept@cref}{{[figure][11][4]4.11}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Testing Datasets for the Pruning Algorithm}{15}{subsection.66}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces 2D XOR Data illustration\relax }}{15}{figure.caption.68}}
+\newlabel{img:data_xor}{{4.12}{15}{2D XOR Data illustration\relax }{figure.caption.68}{}}
+\newlabel{img:data_xor@cref}{{[figure][12][4]4.12}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces XOR min structure 1\relax }}{16}{figure.caption.69}}
+\newlabel{img:xor_min_structure_1}{{4.13}{16}{XOR min structure 1\relax }{figure.caption.69}{}}
+\newlabel{img:xor_min_structure_1@cref}{{[figure][13][4]4.13}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces XOR min structure 2\relax }}{16}{figure.caption.70}}
+\newlabel{img:xor_min_structure_2}{{4.14}{16}{XOR min structure 2\relax }{figure.caption.70}{}}
+\newlabel{img:xor_min_structure_2@cref}{{[figure][14][4]4.14}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces MNIST Data illustration\relax }}{16}{figure.caption.72}}
+\newlabel{img:data_mnist}{{4.15}{16}{MNIST Data illustration\relax }{figure.caption.72}{}}
+\newlabel{img:data_mnist@cref}{{[figure][15][4]4.15}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Minimal Structures Utilization}{16}{subsection.73}}
 \@setckpt{tex/ch_kitt_nn}{
-\setcounter{page}{15}
-\setcounter{equation}{10}
-\setcounter{enumi}{6}
+\setcounter{page}{17}
+\setcounter{equation}{11}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -104,7 +122,7 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{11}
+\setcounter{figure}{15}
 \setcounter{table}{0}
 \setcounter{LT@tables}{1}
 \setcounter{LT@chunks}{1}
@@ -118,7 +136,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{10}
+\setcounter{instcount}{12}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -214,7 +232,7 @@
 \setcounter{smartand}{1}
 \setcounter{bbx:relatedcount}{0}
 \setcounter{bbx:relatedtotal}{0}
-\setcounter{Item}{6}
+\setcounter{Item}{8}
 \setcounter{Hfootnote}{0}
 \setcounter{bookmark@seq@number}{26}
 \setcounter{lstnumber}{1}

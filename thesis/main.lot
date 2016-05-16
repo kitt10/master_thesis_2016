@@ -6,13 +6,13 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{19}{table.caption.74}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{21}{table.caption.80}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Terrain features and their ranges\relax }}{23}{table.caption.90}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Parameters of virtual terrain types\relax }}{23}{table.caption.92}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{21}{table.caption.81}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{23}{table.caption.87}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Terrain features and their ranges\relax }}{25}{table.caption.97}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Parameters of virtual terrain types\relax }}{25}{table.caption.99}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Generated datasets\relax }}{43}{table.caption.147}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Classification results\relax }}{43}{table.caption.149}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Generated datasets\relax }}{45}{table.caption.154}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Classification results\relax }}{45}{table.caption.156}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
