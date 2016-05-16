@@ -12,7 +12,7 @@ In the following a brief analysis of terrain similarities is presented. In gener
 In order to quantify and visualise similarity among various terrains, a similarity measure was calculated as given in \cref{eq:similarity_measure}. The five qualities are listed in \cref{tab:terrain_features} and in \cref{tab:terrains_parameters}.
 
 \begin{align} \label{eq:similarity_measure}
-  SF_{t_1, t_2} = \frac{\displaystyle\sum_{i=1}^{5} \abs{quality(i, t_1) - quality(i, t_2)}}{5}
+  SM_{t_1, t_2} = \frac{\displaystyle\sum_{i=1}^{5} \abs{quality(i, t_1) - quality(i, t_2)}}{5}
 \end{align} 
 
 The similarity measure equals 0 if two terrains are identical (have the same parameter values) and equals 1.0 if two terrains are totally different.

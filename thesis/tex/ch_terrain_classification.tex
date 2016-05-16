@@ -32,10 +32,11 @@ The dataset packages may differ in these parameters:
 The trained networks may differ in the following parameters:
 \begin{itemize}
 \item dataset that the network has been tested on
-\item neural network structure, learning rate and number of epochs
+\item neural network structure
+\item learning parameters: learning rate and number of epochs
 \end{itemize}
 
-An optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
+Finally, an optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
 
 \section{Experimental Environment Specification}
 The ultimate goal is to implement an online terrain classifier for selection of optimal walking gait on real hexapod robot AMOS II. Therefore the real robot is presented in the following section \ref{ssec:amosii}.
@@ -78,24 +79,24 @@ Robot actuators (servo motors) can generate movements of variable compliance by 
 \begin{tabular}{|l|l|c|}
 \hline
 \textit{abbr.} & \multicolumn{1}{c|}{\textit{sensor description}} & \textit{original range} \\ \hline
-\textbf{ATRf}         & Angle sensor, Thoraco joint, Right front leg     & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ATRm}         & Angle sensor, Thoraco joint, Right middle leg    & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ATRh}         & Angle sensor, Thoraco joint, Right hind leg      & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ATLf}         & Angle sensor, Thoraco joint, Left front leg      & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ATLm}         & Angle sensor, Thoraco joint, Left middle leg     & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ATLh}         & Angle sensor, Thoraco joint, Left hind leg       & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACRf}         & Angle sensor, Coxa joint, Right front leg        & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACRm}         & Angle sensor, Coxa joint, Right middle leg       & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACRh}         & Angle sensor, Coxa joint, Right hind leg         & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACLf}         & Angle sensor, Coxa joint, Left front leg         & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACLm}         & Angle sensor, Coxa joint, Left middle leg        & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{ACLh}         & Angle sensor, Coxa joint, Left hind leg          & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFRf}         & Angle sensor, Femur joint, Right front leg       & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFRm}         & Angle sensor, Femur joint, Right middle leg      & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFRh}         & Angle sensor, Femur joint, Right hind leg        & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFLf}         & Angle sensor, Femur joint, Left front leg        & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFLm}         & Angle sensor, Femur joint, Left middle leg       & {[}-1.5, 1.5{]}         \\ \hline
-\textbf{AFLh}         & Angle sensor, Femur joint, Left hind leg         & {[}-1.5, 1.5{]}         \\ \hline
+\textbf{ATRf}         & Angle sensor, Thoraco joint, Right front leg     & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ATRm}         & Angle sensor, Thoraco joint, Right middle leg    & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ATRh}         & Angle sensor, Thoraco joint, Right hind leg      & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ATLf}         & Angle sensor, Thoraco joint, Left front leg      & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ATLm}         & Angle sensor, Thoraco joint, Left middle leg     & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ATLh}         & Angle sensor, Thoraco joint, Left hind leg       & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACRf}         & Angle sensor, Coxa joint, Right front leg        & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACRm}         & Angle sensor, Coxa joint, Right middle leg       & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACRh}         & Angle sensor, Coxa joint, Right hind leg         & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACLf}         & Angle sensor, Coxa joint, Left front leg         & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACLm}         & Angle sensor, Coxa joint, Left middle leg        & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{ACLh}         & Angle sensor, Coxa joint, Left hind leg          & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFRf}         & Angle sensor, Femur joint, Right front leg       & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFRm}         & Angle sensor, Femur joint, Right middle leg      & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFRh}         & Angle sensor, Femur joint, Right hind leg        & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFLf}         & Angle sensor, Femur joint, Left front leg        & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFLm}         & Angle sensor, Femur joint, Left middle leg       & {[}-0.5, 0.5{]}         \\ \hline
+\textbf{AFLh}         & Angle sensor, Femur joint, Left hind leg         & {[}-0.5, 0.5{]}         \\ \hline
 \textbf{FRf}          & Foot contact sensor, Right front leg             & {[}0.0, 1.0{]}          \\ \hline
 \textbf{FRm}          & Foot contact sensor, Right middle leg            & {[}0.0, 1.0{]}          \\ \hline
 \textbf{FRh}          & Foot contact sensor, Right hind leg              & {[}0.0, 1.0{]}          \\ \hline
@@ -128,7 +129,7 @@ This results in setting the simulation sensitivity to \textit{10 steps} per seco
 
 The initial robot position in the map is chosen randomly in order to generate a different route everytime the simulation is launched. The robot fixator, which is originally implemented for AMOS II, is removed, so the robot starts walking right after the simulation is launched.
 
-The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{sec:virtual_terrain_types}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. 
+The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{ssec:features_determination}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. 
 
 Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this study it is fixed to zero though and only the terrain noise combined with a signal noise is used.
 
