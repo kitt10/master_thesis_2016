@@ -14,6 +14,7 @@
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
+from random import choice
 from scripts.functions import load_params, read_data, f_range_gen, norm_signal, add_signal_noise
 
 
@@ -27,7 +28,7 @@ def parse_arguments():
                         help='Terrain noises to be involved')
     parser.add_argument('-sl', '--sample_len', type=int, default=40, choices=range(1, 85),
                         help='Number of timesteps for each sensor')
-    parser.add_argument('-nr', '--norm', type=bool, default=True,
+    parser.add_argument('-nr', '--norm', type=bool, default=False,
                         help='Whether to normalize the signal')
     parser.add_argument('-sn', '--signal_noise', type=float, choices=list(f_range_gen(start=0.0, stop=1.0, step=0.005)),
                         default=0.0, help='Signal noise std')
@@ -39,7 +40,7 @@ def parse_arguments():
                         help='Whether to save the results')
     parser.add_argument('-shf', '--show_fig', type=bool, default=False,
                         help='Whether to show the figure')
-    parser.add_argument('-na', '--noise_analysis', type=str, default=[], nargs='+', choices=['tsv', 'tcv', 'ssv', 'scv', 'ssm'],
+    parser.add_argument('-na', '--noise_analysis', type=str, default=[], nargs='+', choices=['tsv', 'tcv', 'ssv', 'scv', 'ssm', 'tsm'],
                         help='tsv: terrain samples variance, tcv: terrain classes variance, ssv: signal samples var..')
     return parser.parse_args()
 
@@ -113,12 +114,16 @@ if __name__ == '__main__':
 
                     if do_it:
                         if batch[0] == 0:
-                            plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1]+1], color=env[terrain]['color'], label=terrain)
+                            #plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1] + 1], color=env[terrain]['color'], label=terrain)
+                            plt.plot(batch, choice(samples[noise][terrain])[batch[0]:batch[-1] + 1], color=env[terrain]['color'], label=terrain)
                         else:
-                            plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1] + 1], color=env[terrain]['color'])
-            plt.title('Terrain Classification for AMOS II : Feature Vector : Mean of 500 samples')
+                            #plt.plot(batch, np.mean(samples[noise][terrain], axis=0)[batch[0]:batch[-1] + 1], color=env[terrain]['color'])
+                            plt.plot(batch, choice(samples[noise][terrain])[batch[0]:batch[-1] + 1], color=env[terrain]['color'])
+                            '''for sample in samples[noise][terrain]:
+                                plt.plot(batch, sample[batch[0]:batch[-1] + 1], color=env[terrain]['color'])'''
+            '''plt.title('Terrain Classification for AMOS II : Feature Vector : Mean of 500 samples')
             plt.suptitle('timesteps: '+str(sample_len)+', normed: '+str(norm)+', signal noise: '+str(signal_noise_std)+
-                         ', terrain noise: '+str(noise)+', zoom: '+str(r))
+                      ', terrain noise: '+str(noise)+', zoom: '+str(r))'''
             plt.xlabel('timesteps sensor by sensor')
             plt.ylabel('sensor values')
             plt.grid()
@@ -126,8 +131,8 @@ if __name__ == '__main__':
             ax = fig.add_subplot(111)
             for i, sensor in enumerate(sensors_to_use):
                 if r[0] <= (i+1)*sample_len <= r[1]:
-                    plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.07-(i%2)*0.07), color='#6C0505', horizontalalignment='center')
-                    plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.2, 1), '-..', color='#6C0505')
+                    plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.1-(i%2)*0.15), color='#6C0505', horizontalalignment='center')
+                    plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.5, 1), '-..', color='#6C0505')
             if save_figure:
                 plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.png', bbox_inches='tight', pad_inches=0.1)
                 plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.eps', bbox_inches='tight', pad_inches=0.1)
@@ -324,11 +329,61 @@ if __name__ == '__main__':
                 for noise, color in zip(noises_to_use, colors):
                     sigs.append(np.mean(samples[noise][terrain], axis=0)[r[0]:r[1]])
                     plt.plot(range(r[0], r[1]), sigs[-1], label='std: '+str(noise), color=color)
-                plt.title(
+                plt.title('Terrain Classification for AMOS II : Signal Noise Influence on One Sample for Terrain ' + terrain)
+                plt.suptitle('timesteps: ' + str(sample_len) + ', no terrain noise, 500 samples, feature vector zoom: ' + str(
+                        r) + ' => angle sensors')
+                plt.xlabel('timesteps sensor by sensor')
+                plt.ylabel('mean sensor value')
+                plt.legend(loc='best')
+                plt.grid()
+                ax = fig.add_subplot(111)
+                m = np.max(sigs)
+                for i, sensor in enumerate(sensors_to_use):
+                    if r[0] <= (i + 1) * sample_len <= r[1]:
+                        plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, -m / 10.0 + (i % 2) * m / 50.0),
+                                     color='#6C0505',
+                                     horizontalalignment='center')
+                        plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (-m / 10.0 - m / 50.0, m + m / 50.0),
+                                 '-..', color='#6C0505')
+                if save_figure:
+                    plt.savefig(
+                        '../../results/png/sn_analysis_mean_' + str(sample_len) + '_' + str(r) + '_' + terrain + '.png',
+                        bbox_inches='tight', pad_inches=0.1)
+                    plt.savefig(
+                        '../../results/eps/sn_analysis_mean_' + str(sample_len) + '_' + str(r) + '_' + terrain + '.eps',
+                        bbox_inches='tight', pad_inches=0.1)
+                if show_figure:
+                    plt.show()
+
+        if 'tsm' in noise_analysis:
+
+            # Terrain Noise Analysis : Samples for various terrain noises
+
+            noises_to_use = noise_types
+            samples = dict()
+            for noise in noises_to_use:
+                samples[noise] = dict()
+                terrain_noise_std = noise_params[noise][1]
+                for terrain in terrains_to_use:
+                    samples[noise][terrain] = [[] for i in range(len(data['no_noise'][terrain][sensors_to_use[0]]))]
+                    for sensor in sensors_to_use:
+                        for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
+                            samples[noise][terrain][i_sample] += prepare_signal(
+                                signal=sample_terrain[10:sample_len + 10], sen=sensor)
+
+            colors = ('#cccccc', 'y', 'g', 'b', 'r', 'm', 'c', 'k')
+            for terrain in terrains_to_use:
+                fig = plt.figure('signal_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
+                sigs = list()
+                for noise, color in zip(noises_to_use, colors):
+                    #sigs.append(np.mean(samples[noise][terrain], axis=0)[r[0]:r[1]])
+                    sigs.append(choice(samples[noise][terrain])[r[0]:r[1]])
+                    plt.plot(range(r[0], r[1]), sigs[-1], label=noise, color=color)
+                '''plt.title(
                     'Terrain Classification for AMOS II : Signal Noise Influence on One Sample for Terrain ' + terrain)
                 plt.suptitle(
                     'timesteps: ' + str(sample_len) + ', no terrain noise, 500 samples, feature vector zoom: ' + str(
-                        r) + ' => angle sensors')
+                        r) + ' => angle sensors')'''
                 plt.xlabel('timesteps sensor by sensor')
                 plt.ylabel('mean sensor value')
                 plt.legend(loc='best')

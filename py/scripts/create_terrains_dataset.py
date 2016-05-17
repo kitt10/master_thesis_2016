@@ -93,9 +93,9 @@ if __name__ == '__main__':
     data_split = args.data_split
     n_samples = args.n_samples
 
-    destination_name = 'amter_'+noise_params[terrain_noise][0]+'_0'+str(signal_noise_std)[2:]+'_'+str(timesteps)+\
+    destination_name = 'amter_'+noise_params[terrain_noise][0]+'0'+str(signal_noise_std)[2:]+'_'+str(timesteps)+\
                        '_'+args.sensors+'_'+terrains_flag+'_'+str(n_samples)
-    destination = '../cache/datasets/amos_terrains_sim/'+destination_name+'.ds'
+    destination = '../cache/datasets/amter/'+destination_name+'.ds'
 
     ''' Reading .txt files to a dict called data '''
     print '\n\n ## Reading .txt data files...'

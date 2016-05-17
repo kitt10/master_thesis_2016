@@ -9,7 +9,8 @@
 import json
 from glob import glob
 from os import path
-from numpy import random, mean
+from numpy import random
+from shelve import open as open_shelve
 
 
 def load_params(*params_names):
@@ -59,6 +60,13 @@ def read_data(noises, terrains, sensors, n_samples=10):
             print 'Data for', noise, terrain, 'found (' + str(len(data[noise][terrain][sensors[0]])) + ' samples).'
 
     return data
+
+
+def load_net(destination):
+    net_file = open_shelve(destination, 'r')
+    net = dict(net_file)
+    net_file.close()
+    return net
 
 
 def add_signal_noise(signal, std):

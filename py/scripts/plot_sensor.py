@@ -14,6 +14,7 @@
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
+from random import choice
 from scripts.functions import load_params, read_data
 
 
@@ -49,14 +50,18 @@ if __name__ == '__main__':
 
     for sensor in sensors_to_use:
         for noise in noises_to_use:
-            plt.figure('plot_sensor_'+sensor+'_'+noise, figsize=(10, 7))
+            plt.figure('plot_sensor_'+sensor+'_'+noise, figsize=(10, 5))
             plt.gcf().subplots_adjust(bottom=0.2)
 
             for terrain in terrains_to_use:
-                plt.plot(np.mean(data[noise][terrain][sensor], axis=0), color=env[terrain]['color'], label=terrain)
+                #plt.plot(np.mean(data[noise][terrain][sensor], axis=0), color=env[terrain]['color'], label=terrain)
+                plt.plot(choice(data[noise][terrain][sensor]), color=env[terrain]['color'], label=terrain)
+                #for sample in data[noise][terrain][sensor]:
+                    #plt.plot(sample)
 
-            plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, mean of 500 samples')
-            plt.title('AMOS II Terrain Classification : Simulated Sensory Output')
+
+            #plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, mean of 500 samples')
+            #plt.title('AMOS II Terrain Classification : Simulated Sensory Output')
             plt.xlabel('timesteps')
             plt.ylabel('sensor values')
             plt.grid()
