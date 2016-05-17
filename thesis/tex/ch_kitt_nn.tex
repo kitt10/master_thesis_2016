@@ -1,66 +1,54 @@
-\chapter{Neural Net Implementation} \label{chap:kitt_nn}
-Plenty of neural network implementations are available nowadays. Nevertheless, one of the objectives of this thesis is to implement own framework capable of using the idea behind artificial feedforward neural networks. Besides prooving a knowledge of mathematical and algorithmical backgrounds, an integration of own utilities and functions is the main reason for the from-scratch implementation.
+\chapter{Classification Method} \label{chap:kitt_nn}
+Own implementation of the chosen classification algorithm is one of the main objectives of the thesis. Principles of feedforward neural networks, based on the perceptron idea (see \cref{sec:intro_to_nn}), are used for developing the new framework.
 
-To accomplish the study objectives, the new framework must meet following requirements, which might be unusal for some of the provided implementations (mentioned in \cref{chapter:01:state_of_the_art}).
+As the first part of the study is devoted to the development of a new network pruning algorithm, besides some standard functions, the new framework implementation must meet the following requirements:
 
+\begin{enumerate}
+\item ability to remove a synapse in a network and then to retrain the network of a new structure
+\item realization of a learning algorithm for a pruned network
+\item visualization of the learning process in real time (an extra property)
+\end{enumerate}
+
+In this thesis, the implemented neural network framework is called \textbf{kitt\_nn}. The implementation is described in \cref{sec:implementation_of_nn}.
+
+\section{Network Design Choices} \label{sec:network_design_choices}
+It is chosen to use the \textit{feedforward} neural network idea, so none of the neurons can lead to the same or any of the previous layers and is connected to all neurons in the following layer by default (\cref{img:neural_net}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{neural_net.png}
+  \caption{Feedforward neural network}
+  \label{img:neural_net}
+\end{figure}
+
+As the sizes of input and output layers are determined by a chosen dataset, the network structure is utterly defined by:
 \begin{itemize}
-\item ability to remove any synapse in a network and then to retrain the network of a new structure
-\item ability to evaluate a network after each learning epoch and basically to provide an open-sourced learning algorithm
-\item ability to illustrate a network structure and to visualize the learning process in real time (an extra property)
+\item number of hidden layers
+\item number of neurons in each of the hidden layers
 \end{itemize}
 
-In this thesis, the implemented neural network framework is called \textbf{kitt\_nn} and has been developed in programming language Python. The following diagram (\ref{img:kitt_nn_package}) shows the structure of the \textit{kitt\_nn .py package}.
+A learning algorithm is assigned to an already initialized network afterwards. Standard \textit{backpropagation} is used (described in the following \cref{sec:learning_algorithm}).
+
+The forward propagation is discussed also as a part of the learning process in \cref{ssec:forward_propagation}. The sigmoid function given as in \cref{eq:nn_transfer_function} is used as the transfer function for computing the activities of individual neurons.
+
+\begin{align} \label{eq:nn_transfer_function}
+f(z) = \frac{1}{1 + e^{-z}}
+\end{align}
+
+Its derivative used in backpropagation for computing the errors (\cref{eq:error_backprop}) is defined as in \ref{eq:nn_transfer_function_der}
+
+\begin{align} \label{eq:nn_transfer_function_der}
+f'(z) = f(z) \cdot (1-f(z))
+\end{align}
+
+The sigmoid function maps neuron activations into $ [0.0, 1.0] $ interval. This approach is used for most of the work in this study. Additionaly, the \textit{tanh(z)} function is implemented (compared to \textit{sigmoid(z)} in \cref{img:sigmoid}), in order to test one of the pruning methods based weights sensitivity (discussed later). The \textit{tanh(z)} function maps the input \textit{z} into $ [-1.0, 1.0] $ interval.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{kitt_nn_package.png}
-  \caption{kitt\_nn package : Implemented neural network framework}
-  \label{img:kitt_nn_package}
+  \includegraphics[width=0.7\textwidth]{transfer_functions}
+  \caption{Used transfer functions: sigmoid and tanh}
+  \label{img:sigmoid}
 \end{figure}
-
-Moreover, the framework must have some standard functions implemented, meaning it must be capable of:
-
-\begin{itemize}
-\item initializing a feedforward network of any structure supplied by some randomly set parameters
-\item fitting a model to a network (function \textit{fit()}), training a network on some data of a conventional structure
-\item predicting a target of never-seen samples (function \textit{predict()}), evaluating a classification performance
-\end{itemize}
-
-The \textit{kitt\_nn} implementation is based on some general knowledge gained at school and/or from [], the idea is pretty straight forward.
-
-\section{Structural Elements} \label{sec:structural_elements}
-The overall idea is based on the object-oriented programming. There are three fundamental files containing the main classes corresponding to structural elements - a network, a neuron and a synapse (a connection). A detailed API is attached as \cref{app:code_documentation}.
-
-\subsection*{kitt\_neuron.py} \label{ssec:kitt_neuron}
-The very basic units of a neural net are called neurons. In case of artificial systems, these units are responsible for transfering all their inputs into one output. The behavior is moreless the same for all of the units, therefore a class called \textit{Neuron} implements some basic common functions.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{kitt_neuron.png}
-  \caption{kitt\_neuron.py : Neuron class inheritance}
-  \label{img:kitt_neuron}
-\end{figure}
-
-Then, as \cref{img:kitt_neuron} shows, three classes are inherited from the \textit{Neuron} class. Some special functions, like fitting a sample in case of input layers or producing network outcome by output layers respectively, can be implemented this way, while some common functions are shared in the mother \textit{Neuron} class.
-
-\subsection*{kitt\_synapse.py} \label{ssec:kitt_synapse}
-Next, there is a class representing a neural connection - a synapse. An instance of this class takes care of the corresponding weight and remembers the two connected neurons. 
-
-Additionally, a function called \textbf{remove\_self()} is implemented, which sets the weight to zero and removes the synapse from a database of the corresponding neural net. Then it also checks the two connected neurons, if they have some other connections remaining. If not, they are labeled as \textit{dead}, as they are not a part of the network anymore.
-
-\subsection*{kitt\_net.py} \label{ssec:kitt_net}
-The network is initialized by creating an instance of \textit{NeuralNetwork()} class from \textit{kitt\_net.py}. The initialization process is illustrated in \cref{img:kitt_net}. Basically, the only parameter is the network structure, which is expected as a \textit{.py iterable} type. 
-
-For instance, a network with 2 input, 5 hidden and 3 output units would be created as \textit{NeuralNetwork(structure=[2, 5, 3])}. Number of hidden layers is not limited.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{kitt_net.png}
-  \caption{kitt\_net.py : Neural Network Initialization}
-  \label{img:kitt_net}
-\end{figure}
-
-A learning algorithm is added to the initialized network thereafter (see \cref{sec:learning_algorithm}). The network class implements basic functions like \textit{fit()}, \textit{predict()} in order to be used as a classifier. Moreover, it has some additional utilities like \textit{copy\_self()} or \textit{print\_self()}, which are essential for this work (\cref{sec:gui}, \cref{sec:network_pruning_algorithm}).
 
 \newpage
 \section{Learning Algorithm} \label{sec:learning_algorithm}
@@ -70,7 +58,7 @@ In case of feedforward neural networks, the learning goal is to find optimal val
 
 A popular algorithm called \textit{Backpropagation} has been chosen to deal with the learning task. The backpropagation abbreviation stands for \textit{backward propagation of errors}. The approach is based on an optimization method called \textit{Gradient Descent Algorithm (GDA)}. Method details can be found in \citep{online:nn_demystified}.
 
-In this work, the implementation is made to be compatible with the \textit{kitt\_nn} network (\cref{sec:structural_elements}) and adjusted to the needs of the developed pruning algorithm (\cref{sec:network_pruning_algorithm}). The learning process is summarized by the following flowchart \ref{img:backpropagation} and the procedure follows algorithmical steps in \citep{online:nn_demystified}.
+In this work, the implementation is made to be compatible with the \textit{kitt\_nn} network (\cref{sec:implementation_of_nn}) and adjusted to the needs of the developed pruning algorithm (\cref{sec:network_pruning_algorithm}). The learning process is summarized by the following flowchart \ref{img:backpropagation} and the procedure follows algorithmical steps in \citep{online:nn_demystified}.
 
 \begin{figure}[H]
   \centering
@@ -96,8 +84,8 @@ Assuming feedforward neural networks (multilayer perceptrons), the following not
 \item[$ X $] : network input: $ m $-by-$ n $ matrix, where $ m $ is the number of samples and $ n $ is the size of one sample
 \item[$ W^{(i)} $] : $ p $-by-$ r $ matrix of weights for synapses from neurons in layer $ i $ (layer of $ p $ neurons) to neurons in layer $ (i+1) $ (layer of $ r $ neurons)
 \item[$ Z^{(i+1)} $] : $ r $-by-$ m $ matrix of activities for neurons in layer $ (i+1) $ (layer of $ r $ neurons), $ m $ is the number of processed samples at the same time (see \cref{ssec:minibatches})
-\item[$ f() $] : activation function
-\item[$ f'() $] : activation function derivative
+\item[$ f() $] : transfer function (\cref{eq:nn_transfer_function})
+\item[$ f'() $] : transfer function derivative (\cref{eq:nn_transfer_function_der})
 \item[$ \hat{y} $] : network predicted output: $ q $-by-$ m $ matrix, where $ q $ is the number of output neurons and $ m $ is the number of processed samples ($ \hat{y} = f(Z^{(j)}) $, where $ j $ is the number of layers)
 \item[$ y $] : network actual output (known targets): $ q $-by-$ m $ matrix, where $ q $ is the number of output neurons and $ m $ is the number of processed samples
 \item[$ \delta^{(i)} $] : error vector of length $ p $ for $ p $ neurons of $ i^{th} $ layer
@@ -238,7 +226,7 @@ At first, the following variables are initialized:
 
 Additionally, some standard learning parameters like the \textit{learning rate}, \textit{number of epochs} and \textit{mini-batch size} can be set and, of course, a dataset is chosen.
 
-Once the initialization is done, the network is trained with some optimal learning parameters until it reaches the required classification success rate. As mentioned above, the algorithm is based on weight changes. Therefore, the initialize weight for each synapse is kept. Then, the trained network is passed to the pruning loop, which is introduced in \cref{img:pruning_algorithm}.
+Once the initialization is done, the network is trained with some optimal learning parameters until it reaches the required classification success rate. As mentioned above, the algorithm is based on weight changes. Therefore, the initial weights for synapses are kept. Then, the trained network is passed to the pruning loop, which is introduced in \cref{img:pruning_algorithm}.
 
 \begin{figure}[H]
   \centering
@@ -247,7 +235,7 @@ Once the initialization is done, the network is trained with some optimal learni
   \label{img:pruning_algorithm}
 \end{figure}
 
-At first, a backup for current network structure is made by creating a network copy. The pruning is then performed on this copy and the method is shown in \cref{img:cut_synapses}.
+At first, a backup of the current network structure is made by creating a network copy. The pruning is then performed on this copy. The pruning method is shown in \cref{img:cut_synapses}.
 
 \begin{figure}[H]
   \centering
@@ -262,9 +250,9 @@ As discussed above, an initial weight value had been saved for each synapse befo
 \Delta w_i = |w\_init_i - w\_current_i|, \quad i = 1, ..., n
 \end{align}
 
-Based on these changes and on the current $ percentile $ value, a threshold is determined. Then, all synapses with a lower change in weight than this threshold are removed. 
+Based on these changes and on the current $ percentile $ value, a threshold ($ th $ in \cref{img:cut_synapses}) is determined. Then, all synapses with a lower change in weight than this threshold are removed, and, if there is a neuron with no connections left, it is removed as well.
 
-If the $ percentile $ variable has been decreased such that it equals zero, the threshold is set to the minimum of all weight changes. In this case, only one synapse is then removed.
+If the $ percentile $ variable has been decreased such that it equals zero, the threshold is set to the minimum of all weight changes. In this case, only one synapse is then removed at a time.
 
 After cutting some synapses, the network is checked for keeping the required classification accuracy as shown in \cref{img:accuracy_kept}.
 
@@ -277,54 +265,98 @@ After cutting some synapses, the network is checked for keeping the required cla
 
 The checking is performed by evaluating the network on validation data. If the classification accuracy has dropped, the network is tried to be retrained (using training data of the dataset).
 
-Getting back to \cref{img:pruning_algorithm}, if the classification accuracy has been kept after the pruning, the current net structure is saved and considered as a reference for next pruning loop.
+Getting back to \cref{img:pruning_algorithm}, if the classification accuracy has been kept after the pruning, the current net structure is saved and considered as a reference for the next pruning loop.
 
-If it is not possible to retrain the pruned net and to reach the required accuracy, there are two possibilities:
+If it is not possible to retrain the pruned net and to reach the required accuracy, two possibilities arise:
 
 \begin{enumerate}
-\item Only one synapse has been removed during the last pruning step and the accuracy has been broken. This means that even this single synapse with the least change in weight is important for classification. Therefore, the pruning is stopped and the current net structure (also with this last synapse) is saved as the minimal structure.
-\item More synapses have been removed during the last pruning step, which broke the accuracy. In this case, the percentile level is decreased (based on the initialized array of percentile levels) and so less synapses are removed during the next pruning iteration.
+\item Only one synapse has been removed during the last pruning step and the accuracy has been broken. This means that even this single synapse with the least change in weight is important for classification. Therefore, the pruning is stopped and the current net structure (including this last synapse) is saved as the minimal structure.
+\item More synapses have been removed during the last pruning step, and this broke the accuracy. In this case, the percentile level is decreased (based on the initialized array of percentile levels) and so less synapses are removed during the next pruning iteration.
+
+In this manner, at some point of the pruning process, the algorithm will come to removing only one synapse at once and then, sooner or later, case 1 must supervene.
 \end{enumerate}
 
-The algorithm is finite and guarantees that the classification success rate does not drop. It is evaluated in detail and compared to some other approaches from \citep{article:10:pa} (also discussed in \cref{sec:pruning_algorithms}) in the results part (\cref{sec:pruning_algorithm_results}).
+Therefore, the algorithm is finite. Moreover, it guarantees that the classification success rate does not drop. It is evaluated in detail and compared to some other approaches from \citep{article:10:pa} (also discussed in \cref{sec:pruning_algorithms}) in the results part (\cref{sec:pruning_algorithm_results}).
 
 \subsection{Testing Datasets for the Pruning Algorithm}
+Two datasets are used for testing and verification of the pruning algorithm: XOR and MNIST. Those are introduced in the following sections and the evaluation is presented in section X.
+
+Then, the pruning algorithm is applied also on data related to this thesis: proprioceptive and tactile sensory data from a hexapod robot used for terrain classification (section X).
 
 \subsubsection*{XOR Dataset}
+This dataset relates to the well-known XOR problem defined by a thruth table (\cref{tab:xor}).
+
+\begin{table}[H]
+\centering
+\caption{XOR problem definition}
+\label{tab:xor}
+\begin{tabular}{|c|c|c|}
+\hline
+$ \mathbf{x_1} $ & $ \mathbf{x_2} $ & \textbf{y} \\ \hline
+0           & 0           & 0          \\ \hline
+0           & 1           & 1          \\ \hline
+1           & 0           & 1          \\ \hline
+1           & 1           & 0          \\ \hline
+\end{tabular}
+\end{table}
+
+Formulating the XOR gate as a classification problem, it is represented by two linearly inseparable classes with labels $ 0 $ and $ 1 $. In this case, each class consists of $ 1000 $ samples, which have been generated using the developed GUI (\cref{sec:gui}). The composition of the two classes in a 2D space is shown in \cref{img:data_xor}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{data_xor.png}
+  \includegraphics[width=0.4\textwidth]{data_xor.png}
   \caption{2D XOR Data illustration}
   \label{img:data_xor}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{xor_min_structure_1.png}
-  \caption{XOR min structure 1}
-  \label{img:xor_min_structure_1}
-\end{figure}
+The points (samples) have been generated pseudo-randomly, while it is guaranteed that the 'red' samples are distributed half-and-half between the two 'red' areas. The minimal distance between a 'blue' and a 'red' sample is $ 0.001 $ and it is possible to separate the classes using two lines.
+
+The XOR dataset is essential for evaluation of the implemented PA, as the minimal network structure capable of solving the problem is known. There are two structures (\cref{img:xor_min}), both considered as minimal in a way. Mathematically, the version shown in \cref{img:xor_min1} creates the two lines in 2D space to separate the classes, while the second one (\cref{img:xor_min2}) creates a plane and transfers the problem into 3D.
 
 \begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=0.6\textwidth]{xor_min_structure_2.png}
-  \caption{XOR min structure 2}
-  \label{img:xor_min_structure_2}
+  \includegraphics[width=.5\linewidth]{xor_min1.png}
+  \caption{Minimal structure 1 (2D)}
+  \label{img:xor_min1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.5\linewidth]{xor_min2.png}
+  \caption{Minimal structure 2 (3D)}
+  \label{img:xor_min2}
+\end{subfigure}
+\caption{XOR Dataset: minimal network structures}
+\label{img:xor_min}
 \end{figure}
+
+The goal of the pruning algorithm is to end up with a network of one of these structures, when the network is initially oversized (evaluated in X).
 
 \subsubsection*{MNIST Dataset}
+The second testing problem is the well-known classification of handwritten digits. The dataset is provided by \citep{online:mnist}. Some examples of digit samples are shown in \cref{img:data_mnist}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{data_mnist.png}
-  \caption{MNIST Data illustration}
+  \caption{MNIST Data illustration \citep{online:mnist}}
   \label{img:data_mnist}
 \end{figure}
 
-\subsection{Minimal Structures Utilization}
-further MNIST analysis
+The dataset has a training set of $ 60,000 $ examples (later split into $ 50,000 $ training and $ 10,000 $ validation examples), and a test set of $ 10,000 $ examples. The digits have been size-normalized and centered in a fixed-size image.
 
-figures, tables
+In this case, the minimal network structure is not known. On the other hand, detailed results of classification accuracy for various classifiers are provided, which is good for comparison.
 
-4-5 pages
+\subsection{Minimal Structure Utilization}
+In general, only the size of the input and output layer is determined for a chosen dataset. The pruning algorithm brings an additional information about the hidden part of the network. A minimal network structure is obtained as the PA outcome. This means that all the neurons and synapses contained in the network are important for classification.
+
+Knowing that each of these units takes a part and is not useless, one can ask what role does a single neuron/synapse have with respect to the chosen dataset.
+
+This can be researched by tracking the connections from the input to the output layer. Based on this approach, one can find some correlations between specified parts of input vectors and a selected output class (demonstrated on a MNIST example in \cref{img:structure_util}). Evaluation on MNIST dataset is shown in section X.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{min_structure_analysis.png}
+  \caption{Minimal strucuture utilization explained on MNIST ('5' class sample example)}
+  \label{img:structure_util}
+\end{figure}

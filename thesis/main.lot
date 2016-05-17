@@ -4,15 +4,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces XOR problem definition\relax }}{14}{table.caption.69}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{21}{table.caption.83}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{23}{table.caption.89}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Terrain features and their ranges\relax }}{25}{table.caption.99}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Parameters of virtual terrain types\relax }}{25}{table.caption.101}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{21}{table.caption.81}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{23}{table.caption.87}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Terrain features and their ranges\relax }}{25}{table.caption.97}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Parameters of virtual terrain types\relax }}{25}{table.caption.99}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Generated datasets\relax }}{45}{table.caption.154}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Classification results\relax }}{45}{table.caption.156}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Generated datasets\relax }}{45}{table.caption.156}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Classification results\relax }}{45}{table.caption.158}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

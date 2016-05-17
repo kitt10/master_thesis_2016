@@ -1,6 +1,6 @@
-\chapter{Implementation Details} \label{app:implementation_details}
+\chapter{Implementation of the Algorithm} \label{app:implementation_details}
 
-\section{Terrain Classification Implementation}
+\section{Implementation of the Terrain Classification}
 
 \begin{figure}[H]
   \centering
@@ -80,7 +80,50 @@ The datasets files are saved in directory \path{root/py/cache/datasets/amos_terr
 \subsection*{Trained Network Storing} \label{ssec:app:network_storing}
 Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
 
-\section{NN Implementation Details}
+\section{Implementation of the Neural Network} \label{sec:implementation_of_nn}
+The following diagram (\ref{img:kitt_nn_package}) shows the structure of the \textit{kitt\_nn .py package}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{kitt_nn_package.png}
+  \caption{kitt\_nn package : Implemented neural network framework}
+  \label{img:kitt_nn_package}
+\end{figure}
+
+The \textit{kitt\_nn} implementation is based on some general knowledge gained at school and/or from \citep{online:nn_demystified}, the idea is pretty straight forward.
+
+The overall idea is based on the object-oriented programming. There are three fundamental files containing the main classes corresponding to structural elements - a network, a neuron and a synapse (a connection). A detailed API is attached as \cref{app:code_documentation}.
+
+\subsubsection*{kitt\_neuron.py} \label{ssec:kitt_neuron}
+The very basic units of a neural net are called neurons. In case of artificial systems, these units are responsible for transfering all their inputs into one output. The behavior is moreless the same for all of the units, therefore a class called \textit{Neuron} implements some basic common functions.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{kitt_neuron.png}
+  \caption{kitt\_neuron.py : Neuron class inheritance}
+  \label{img:kitt_neuron}
+\end{figure}
+
+Then, as \cref{img:kitt_neuron} shows, three classes are inherited from the \textit{Neuron} class. Some special functions, like fitting a sample in case of input layers or producing network outcome by output layers respectively, can be implemented this way, while some common functions are shared in the mother \textit{Neuron} class.
+
+\subsubsection*{kitt\_synapse.py} \label{ssec:kitt_synapse}
+Next, there is a class representing a neural connection - a synapse. An instance of this class takes care of the corresponding weight and remembers the two connected neurons. 
+
+Additionally, a function called \textbf{remove\_self()} is implemented, which sets the weight to zero and removes the synapse from a database of the corresponding neural net. Then it also checks the two connected neurons, if they have some other connections remaining. If not, they are labeled as \textit{dead}, as they are not a part of the network anymore.
+
+\subsubsection*{kitt\_net.py} \label{ssec:kitt_net}
+The network is initialized by creating an instance of \textit{NeuralNetwork()} class from \textit{kitt\_net.py}. The initialization process is illustrated in \cref{img:kitt_net}. Basically, the only parameter is the network structure, which is expected as a \textit{.py iterable} type. 
+
+For instance, a network with 2 input, 5 hidden and 3 output units would be created as \textit{NeuralNetwork(structure=[2, 5, 3])}. Number of hidden layers is not limited.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{kitt_net.png}
+  \caption{kitt\_net.py : Neural Network Initialization}
+  \label{img:kitt_net}
+\end{figure}
+
+A learning algorithm is added to the initialized network thereafter (see \cref{sec:learning_algorithm}). The network class implements basic functions like \textit{fit()}, \textit{predict()} in order to be used as a classifier. Moreover, it has some additional utilities like \textit{copy\_self()} or \textit{print\_self()}, which are essential for this work (\cref{sec:gui}, \cref{sec:network_pruning_algorithm}).
 
 \subsection*{Scikit-learn Neural Network Library} \label{ssec:sknn}
 In order to verify the functionality of implemented neural network library (\cref{chapter:04:neural_net_implementation}), a provided public library is used. As the official description says \citep{misc:sknn}, this library implements multi-layer perceptrons as a wrapper for the powerful \textit{pylearn2} library that is compatible with \textit{scikit-learn} for a more user-friendly and Pythonic interface.

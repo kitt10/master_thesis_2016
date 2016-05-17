@@ -51,6 +51,31 @@
   \field{year}{1993}
 \endentry
 
+\entry{online:mnist}{online}{}
+  \name{author}{2}{}{%
+    {{}%
+     {LeCun}{L.}%
+     {Yann}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cortes}{C.}%
+     {Corinna}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LYCC1}
+  \strng{fullhash}{LYCC1}
+  \field{labelalpha}{LC98}
+  \field{labelyear}{1998}
+  \field{sortinit}{1}
+  \field{title}{The MNIST database of handwritten digits}
+  \verb{url}
+  \verb http://yann.lecun.com/exdb/mnist/
+  \endverb
+  \field{year}{1998}
+\endentry
+
 \entry{book:11:scorpion}{book}{}
   \name{author}{2}{}{%
     {{}%

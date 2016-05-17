@@ -4,7 +4,6 @@ The top-level auxiliary file: main.aux
 The style file: biblatex.bst
 A level-1 auxiliary file: tex/ch_introduction.aux
 A level-1 auxiliary file: tex/ch_state_of_the_art.aux
-A level-1 auxiliary file: tex/ch_master_thesis_objectives.aux
 A level-1 auxiliary file: tex/ch_kitt_nn.aux
 A level-1 auxiliary file: tex/ch_terrain_classification.aux
 A level-1 auxiliary file: tex/ch_results.aux
@@ -31,45 +30,45 @@ Warning--I didn't find a database entry for "article:10:pruningalgs"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 20 entries,
+You've used 21 entries,
             6047 wiz_defined-function locations,
-            1256 strings with 20170 characters,
-and the built_in function-call counts, 69227 in all, are:
-= -- 2412
-> -- 2571
-< -- 863
-+ -- 1148
-- -- 1201
-* -- 5475
-:= -- 4414
+            1260 strings with 20253 characters,
+and the built_in function-call counts, 74846 in all, are:
+= -- 2528
+> -- 3171
+< -- 919
++ -- 1633
+- -- 1695
+* -- 5761
+:= -- 5100
 add.period$ -- 0
-call.type$ -- 20
-change.case$ -- 359
-chr.to.int$ -- 156
-cite$ -- 44
-duplicate$ -- 7849
-empty$ -- 7324
-format.name$ -- 1363
-if$ -- 15137
+call.type$ -- 21
+change.case$ -- 372
+chr.to.int$ -- 184
+cite$ -- 46
+duplicate$ -- 8302
+empty$ -- 7724
+format.name$ -- 1436
+if$ -- 15990
 int.to.chr$ -- 0
-int.to.str$ -- 42
+int.to.str$ -- 44
 missing$ -- 0
-newline$ -- 629
-num.names$ -- 851
-pop$ -- 6413
+newline$ -- 654
+num.names$ -- 896
+pop$ -- 6754
 preamble$ -- 1
-purify$ -- 388
+purify$ -- 403
 quote$ -- 0
-skip$ -- 3621
+skip$ -- 3841
 stack$ -- 0
-substring$ -- 1662
-swap$ -- 2789
-text.length$ -- 668
-text.prefix$ -- 31
+substring$ -- 1788
+swap$ -- 2937
+text.length$ -- 716
+text.prefix$ -- 32
 top$ -- 1
-type$ -- 745
+type$ -- 783
 warning$ -- 0
-while$ -- 442
+while$ -- 482
 width$ -- 0
-write$ -- 608
+write$ -- 632
 (There was 1 warning)
