@@ -29,6 +29,8 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Classifies testing data.')
     parser.add_argument('-n', '--net', type=str, required=True,
                         help='Net filename to be pruned')
+    parser.add_argument('-ds', '--dataset', type=str, required=True,
+                        help='Dataset filename to train on')
     parser.add_argument('-ra', '--req_accuracy', type=float, default=0.99,
                         help='Required accuracy for the pruned net')
     parser.add_argument('-lr', '--learning_rate', type=float, default=0.03,
@@ -37,8 +39,8 @@ def parse_arguments():
                         help='Maximum number of iterations (epochs)')
     parser.add_argument('-ns', '--n_stable', type=int, default=10,
                         help='N iterations to fire a stability')
-    parser.add_argument('-dn', '--destination_name', type=str, default=strftime('%Y_%m_%d_%H_%M_%S', gmtime()),
-                        help='Pruned net filename')
+    parser.add_argument('-na', '--name_appendix', type=str, default='',
+                        help='App. to the filename')
     return parser.parse_args()
 
 
@@ -56,7 +58,7 @@ def report(y_pred, y_true, labels):
     print_cm(cm=cm_normed, labels=labels, normed=True)
     print '\n # ------------------------------------------------------- \n'
 
-    return c_accuracy
+    return c_accuracy, c_report, cm
 
 
 def cut_synapses(net, level):
@@ -89,18 +91,19 @@ if __name__ == '__main__':
 
     args = parse_arguments()
     net_dir = '../cache/trained/'+args.net+'.net'
+    destination = '../cache/pruned/'+args.net+'_p_'+args.name_appendix+'.net'
     learning_rate = args.learning_rate
     max_epochs = args.max_iter
     n_stable = args.n_stable
+    dataset_dir = args.dataset
 
     ''' Loading the classifier and testing data '''
     net_file = open_shelve(net_dir, 'c')
-    nn_classifier = net_file['classifier']
+    nn_classifier = net_file['net']
     structure = nn_classifier[0]
     weights = nn_classifier[1]
     biases = nn_classifier[2]
     labels = nn_classifier[3]
-    dataset_dir = net_file['dataset']
     print '\n\n ##Net loaded. Training parameters:', net_file['training_params']
     net_file.close()
 
@@ -120,23 +123,34 @@ if __name__ == '__main__':
 
     print '\n\n ## VALIDATION DATA initial prediction...'
     req_accuaracy = report(y_pred=net.predict(dataset['x']['validation']), y_true=np.array(dataset['y']['validation']),
-                           labels=net.labels)
+                           labels=net.labels)[0]
     if args.req_accuracy < req_accuaracy:
         req_accuaracy = args.req_accuracy
     print '\n '+colored('=> @required_accuracy has been set to '+str(req_accuaracy), 'blue')
 
     ''' Pruning '''
-    cutting_levels = (50, 20, 5, 0)
+    cutting_levels = (50, 35, 20, 10, 5, 0)
     cl_index = 0
     pruning_done = False
     pruning_step = 0
     n_to_remove = None
+
+    # stats containers
+    acc_list = list()
+    n_syn_list = list()
+    structure_list = list()
 
     print '\n\n ## PRUNING HAS STARTED...'
     while not pruning_done:
 
         pruning_step += 1
         print '\n# Pruning step', pruning_step
+
+        ''' Save stats '''
+        acc_list.append(accuracy_score(y_pred=net.predict(dataset['x']['testing']),
+                                       y_true=np.array(dataset['y']['testing'])))
+        n_syn_list.append(len(net.synapsesG))
+        structure_list.append([sum([not neuron.dead for neuron in layer]) for layer in net.neuronsLP.values()])
 
         ''' Make a copy of the net '''
         net_tmp = net.copy()
@@ -161,9 +175,16 @@ if __name__ == '__main__':
         print sum([not neuron.dead for neuron in layer]),
 
     print '\n\n ## TESTING DATA final structure prediction...'
-    report(y_pred=net.predict(dataset['x']['testing']), y_true=np.array(dataset['y']['testing']),
-           labels=net.labels)
+    c_accuracy, c_report, cm = report(y_pred=net.predict(dataset['x']['testing']),
+                                       y_true=np.array(dataset['y']['testing']), labels=net.labels)
 
     dataset.close()
 
-
+    ''' Saving trained classifier '''
+    print '\n\n ## Saving pruned classifier to', destination, '...'
+    clf = open_shelve(destination, 'c')
+    clf['net'] = (net.structure, net.weights, net.biases, net.labels, net.synapses_exist)
+    clf['training_params'] = ([sum([not neuron.dead for neuron in layer]) for layer in net.neuronsLP.values()], learning_rate, max_epochs, n_stable)
+    clf['skills'] = (c_accuracy, c_report, cm)
+    clf['pruning_eval'] = (acc_list, n_syn_list, structure_list)
+    clf.close()

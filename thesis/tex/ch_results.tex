@@ -1,12 +1,12 @@
 \chapter{Experimental Evaluation} \label{chap:results}
-In this chapter the methods from previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (\cref{chap:kitt_nn} and detailed in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Then, results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
+In this chapter the methods introduced in previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Then, results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
 
 Finally, steps of the overall terrain classification process are gradually evaluated in \cref{sec:terrain_processing_results}.
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
 Classification skills of the implemented method \textit{kitt\_nn} are compared to a \textit{Scikit-neuralnetwork} classifier (\textit{sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
-The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination $ 10 $ observations are done mean values with standard deviation ranges are shown.
+The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations are run and mean values with standard deviation ranges are shown.
 
 \begin{figure}[H]
   \centering
@@ -15,7 +15,7 @@ The following figure \ref{fig:kitt_verify_acc} shows the progress of classificat
   \label{fig:kitt_verify_acc}
 \end{figure}
 
-Regarding the XOR dataset, both nets start with about $ 0.5 $ accuracy, as there are $ 2 $ classes and, naturally, with about $ 0.1 $ accuracy for the $ 10 $ classes of the MNIST dataset. Individual observations differ more to each other (see the standard deviation in \cref{fig:kitt_verify_acc}) for XOR, as there are much less training samples compared to MNIST (50 times less). However, both nets are able to reach $ 1.0 $ accuracy on XOR within $ 100 $ epochs.
+Regarding the XOR dataset, both nets start with the accuracy of about $ 0.5 $, as it has $ 2 $ classes and, naturally, with accuracy of about $ 0.1 $ for the $ 10 $ classes of the MNIST dataset. Individual observations differ more to each other (see the standard deviation in \cref{fig:kitt_verify_acc}) for XOR, as there are much less training samples compared to MNIST (50 times less). However, both nets are able to reach the accuracy of $ 1.0 $ on XOR within $ 100 $ epochs.
 
 %\begin{figure}[H]
 %  \centering
@@ -42,7 +42,7 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_sco
 
 In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included into comparison.
 
-This evaluation is done on the MNIST dataset only, as the training is quite fast for both implementations due to the smaller amount and size of samples.
+This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples.
 
 \begin{figure}[H]
   \centering
@@ -51,21 +51,78 @@ This evaluation is done on the MNIST dataset only, as the training is quite fast
   \label{fig:kitt_verify_time}
 \end{figure}
 
-The implemented \textit{kitt\_nn} framework cannot compete with the optimized stochastic \textit{GDA} (see \citep{misc:sknn}) of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
+The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} (see \citep{misc:sknn}) of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
 
 \section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
+This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a chosen dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned net of a minimal structure, but keeping a specified classification accuracy, is expected.
+
+The evalutaion of the algorithm is performed on the two datasets described in \cref{ssec:testing_datasets}: XOR and MNIST.
 
 \subsection{Evaluation on XOR Dataset} \label{ssec:evaluation_on_xor}
+The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). It is chosen to use a network with one hidden layer of $ 100 $ neurons as the algorithm input (\cref{img:pa_xor_start}). The expected and also obtained result is shown in \cref{img:pa_xor_final}.
+
+During the pruning process, three key network properties are observed:
+\begin{enumerate}
+\item network structure
+\item number of synapses in the network
+\item classification accuracy on a chosen dataset
+\end{enumerate}
+
+Those are shown with respect to the pruning step (see the pruning loop in \cref{img:pruning_algorithm}) all together in \cref{fig:pa_result_xor}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{pa_result_xor}
-  \caption{Pruning Algorithm Results on XOR Dataset.}
+  \caption{Pruning Algorithm Results on the XOR Dataset.}
   \label{fig:pa_result_xor}
 \end{figure}
 
-\subsection{Evaluation on MNIST Dataset} \label{ssec:evaluation_on_mnist}
+The results are obtained by averaging $ 10 $ observations, so they are not dependent on initial conditions. For retraining the network after a pruning step, training data is used. For verification, whether the network is capable of classification, validation data is used. Testing data is used to check the accuracy after pruning (values in \cref{fig:pa_result_xor}).
 
+Algorithm parameters:
+\begin{itemize}
+\item initial network structure: $ [2, 100, 1] $
+\item required classification accuracy on validation data: $ 0.9 $
+\item learning rate: $ 0.5 $
+\item percentile levels: $ [50, 20, 5, 0] $
+\end{itemize}
+
+Algorithm outcomes:
+\begin{itemize}
+\item final strucuture: $ [2, 2, 1] $
+\item number of removed synapses: $ 294 $ ($ 300 $ -> $ 6 $)
+\item classification accuracy on testing data: $ 0.99 $
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_xor_start.png}
+  \caption{PA input: oversized and fully-connected network}
+  \label{img:pa_xor_start}
+\end{subfigure}%
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_xor_final.png}
+  \caption{PA output: minimal network structure}
+  \label{img:pa_xor_final}
+\end{subfigure}
+\caption{Application of the pruning algorithm on XOR}
+\label{img:pa_xor_morph}
+\end{figure}
+
+\subsection{Evaluation on MNIST Dataset} \label{ssec:evaluation_on_mnist}
+Similarly, the algorithm is evaluated on the MNIST dataset. In this case, the minimal structure is not known. The recommended size of the hidden layer for MNIST classification is $ 15 $. In \cref{fig:kitt_verify_acc} the classification accuracy of \textit{kitt\_nn} framework on this dataset is presented. Apparently, it is possible to reach a success rate around $ 90\% $. Hence these parameters are used:
+
+\begin{itemize}
+\item initial network structure: $ [784, 15, 10] $ ($ 784 $, because the samples are images of size $ 28x28 $, and $ 10 $, because we have ten digits)
+\item required classification accuracy on validation data: $ 0.9 $
+\item learning rate:
+\item percentile levels:
+\end{itemize}
+
+In \cref{fig:pa_result_mnist}, pruning algorithm results for MNIST are presented.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{pa_result_mnist}
@@ -73,13 +130,36 @@ The implemented \textit{kitt\_nn} framework cannot compete with the optimized st
   \label{fig:pa_result_mnist}
 \end{figure}
 
+COMMENT THE FIGURE, REPLACE RESULTS STRUCTURES IMAGES
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_xor_start.png}
+  \caption{PA input: oversized and fully-connected network}
+  \label{img:pa_xor_start}
+\end{subfigure}%
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_xor_final.png}
+  \caption{PA output: minimal network structure}
+  \label{img:pa_xor_final}
+\end{subfigure}
+\caption{Application of the pruning algorithm on XOR}
+\label{img:pa_xor_morph}
+\end{figure}
+
+\newpage
 \subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
 For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 5 $ class and/or which pixels are totally useless for classification. This analysis is briefly presented in section X.
 
+\newpage
 \section{Terrain Processing Results} \label{sec:terrain_processing_results}
+In this section, results of the overall terrain classification process are shown. The results are sorted in correspondance to the methods explanation in \cref{chap:terrain_classification}.
 
 \subsection{Analysis of Terrain Similarity} \label{ssec:terrains_analysis}
-In the following a brief analysis of terrain similarities is presented. In general, a (dis-) similarity between terrains should correlate with classification results, i.e., the more two terrains differ from each other the better classification results are expected, and vice versa.
+In the following a brief analysis of terrain similarities is presented. In general, a (dis-)similarity between terrains should correlate with classification results, i.e., the more two terrains differ from each other the better classification results are expected, and vice versa.
 
 In order to quantify and visualise similarity among various terrains, a similarity measure was calculated as given in \cref{eq:similarity_measure}. The five qualities are listed in \cref{tab:terrain_features} and in \cref{tab:terrains_parameters}.
 
@@ -93,7 +173,7 @@ The following \cref{fig:terrain_similarity_measures} shows the similarity measur
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{terrains_variability.eps}
+  \includegraphics[width=0.8\textwidth]{terrains_variability.eps}
   \caption{Similarity measures among various terrain types.}
   \label{fig:terrain_similarity_measures}
 \end{figure}
@@ -104,6 +184,7 @@ Surprisingly, a wooden terrain ended up as very similar to gravel and carpet, bu
 On the other hand, rubber results as very different from swamp and snow, which is a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
 
 \subsection{Gathered Data} \label{ssec:gathered_data}
+As stated in \cref{sec:data_acquisition}, $ 500 $ examples for every terrain type have been generated.
 
 \begin{figure}[H]
   \centering

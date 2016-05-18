@@ -79,16 +79,23 @@ if __name__ == '__main__':
             x['training'].append([x1_r, y1_r])
             y['training'].append(0.0)
             y['training'].append(1.0)
+            #y['training'].append([1.0, 0.0])
+            #y['training'].append([0.0, 1.0])
         elif split_bounds[0] <= ni < split_bounds[1]:
             x['validation'].append([x0_r, y0_r])
             x['validation'].append([x1_r, y1_r])
             y['validation'].append(0.0)
             y['validation'].append(1.0)
+            #y['validation'].append([1.0, 0.0])
+            #y['validation'].append([0.0, 1.0])
         else:
             x['testing'].append([x0_r, y0_r])
             x['testing'].append([x1_r, y1_r])
             y['testing'].append(0.0)
             y['testing'].append(1.0)
+            #y['testing'].append([1.0, 0.0])
+            #y['testing'].append([0.0, 1.0])
+
 
     print 'Got dataset:', len(x['training']), ':', len(x['validation']), ':', len(x['testing'])
 

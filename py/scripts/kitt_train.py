@@ -35,6 +35,8 @@ def parse_arguments():
                         help='Learning rate for backpropagation')
     parser.add_argument('-i', '--n_iter', type=int, default=500,
                         help='Number of iterations (epochs)')
+    parser.add_argument('-na', '--name_appendix', type=str, default='',
+                        help='App. to the filename')
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -44,7 +46,7 @@ if __name__ == '__main__':
     learning_rate = args.learning_rate
     n_iter = args.n_iter
 
-    destination_name = args.dataset+'&'+str(learning_rate)+'_'+str(n_iter)+'_'+str(args.structure)
+    destination_name = args.dataset+'&'+str(learning_rate)+'_'+str(n_iter)+'_'+str(args.structure)+'_'+args.name_appendix
     destination = '../cache/trained/kitt_'+destination_name+'.net'
 
     ''' Loading dataset and training '''
@@ -55,7 +57,7 @@ if __name__ == '__main__':
     net = NeuralNet(program=None, name=str(net_structure), structure=net_structure)
     net.learning = BackPropagation(program=None, net=net, learning_rate=learning_rate, n_iter=n_iter)
 
-    print ' ## Fitting the training data...'
+    print '\n\n ## Fitting the training data...'
     acc_list, err_list, time_list = net.fit(X=dataset['x']['training'], y=dataset['y']['training'],
                                             X_val=dataset['x']['validation'], y_val=dataset['y']['validation'])
 

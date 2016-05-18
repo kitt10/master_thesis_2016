@@ -1,5 +1,5 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
-\contentsline {lstlisting}{\numberline {A2.1}Setting a terrain ground in main.cpp}{56}{lstlisting.179}
-\contentsline {lstlisting}{\numberline {A2.2}Rough sensory data files structure}{57}{lstlisting.187}
-\contentsline {lstlisting}{\numberline {A2.3}Sknn classifier specification \citep {misc:sknn}}{60}{lstlisting.204}
+\contentsline {lstlisting}{\numberline {A2.1}Setting a terrain ground in main.cpp}{59}{lstlisting.184}
+\contentsline {lstlisting}{\numberline {A2.2}Rough sensory data files structure}{60}{lstlisting.192}
+\contentsline {lstlisting}{\numberline {A2.3}Sknn classifier specification \citep {misc:sknn}}{63}{lstlisting.209}
