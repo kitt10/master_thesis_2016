@@ -1,10 +1,82 @@
 \chapter{Experimental Evaluation} \label{chap:results}
+In this chapter the methods from previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (\cref{chap:kitt_nn} and detailed in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Then, results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
 
-The account of the research should be presented in a manner suitable for the field. It should be complete, systematic, and sufficiently detailed to enable a reader to understand how the data were gathered and how to apply similar methods in another study. Notation and formatting must be consistent throughout the thesis, including units of measure, abbreviations, and the numbering scheme for tables, figures, footnotes, and citations. One or more chapters may consist of material published (or submitted for publication) elsewhere. See “Including Published Material in a Thesis or Dissertation” for details.
+Finally, steps of the overall terrain classification process are gradually evaluated in \cref{sec:terrain_processing_results}.
 
-\section{Verification of the Network Implementation}
+\section{Verification of the Network Implementation} \label{sec:verification_of_nn}
+Classification skills of the implemented method \textit{kitt\_nn} are compared to a \textit{Scikit-neuralnetwork} classifier (\textit{sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
-\section{Terrain Processing Results}
+The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination $ 10 $ observations are done mean values with standard deviation ranges are shown.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{kitt_verify_acc}
+  \caption{Comparison of the learning process to another framework (sknn).}
+  \label{fig:kitt_verify_acc}
+\end{figure}
+
+Regarding the XOR dataset, both nets start with about $ 0.5 $ accuracy, as there are $ 2 $ classes and, naturally, with about $ 0.1 $ accuracy for the $ 10 $ classes of the MNIST dataset. Individual observations differ more to each other (see the standard deviation in \cref{fig:kitt_verify_acc}) for XOR, as there are much less training samples compared to MNIST (50 times less). However, both nets are able to reach $ 1.0 $ accuracy on XOR within $ 100 $ epochs.
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{kitt_verify_err}
+%  \caption{Comparison of error through learning epochs to another framework (sknn).}
+%  \label{fig:kitt_verify_err}
+%\end{figure}
+
+In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_score} in \cref{ssec:evaluation_methods}) is shown for individual classes (digits) of the MNIST dataset. This evaluation is done after $ 100 $ epochs on the testing data of the dataset.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of f1-score on MNIST to another framework (sknn)}
+\label{tab:kitt_verify_f1}
+\resizebox{\textwidth}{!} {
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textit{net}  & \textit{0} & \textit{1} & \textit{2} & \textit{3} & \textit{4} & \textit{5} & \textit{6} & \textit{7} & \textit{8} & \textit{9} & \textit{avg}  \\ \hline
+\textbf{kitt} & 0.94       & 0.98       & 0.91       & 0.90       & 0.93       & 0.89       & 0.93       & 0.93       & 0.90       & 0.91       & \textbf{0.92} \\ \hline
+\textbf{sknn} & 0.96       & 0.97       & 0.92       & 0.91       & 0.93       & 0.89       & 0.94       & 0.93       & 0.90       & 0.91       & \textbf{0.93} \\ \hline
+\end{tabular}
+}
+\end{table}
+
+In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included into comparison.
+
+This evaluation is done on the MNIST dataset only, as the training is quite fast for both implementations due to the smaller amount and size of samples.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{kitt_verify_time}
+  \caption{Comparison of average epoch processing time to another framework (sknn).}
+  \label{fig:kitt_verify_time}
+\end{figure}
+
+The implemented \textit{kitt\_nn} framework cannot compete with the optimized stochastic \textit{GDA} (see \citep{misc:sknn}) of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
+
+\section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
+
+\subsection{Evaluation on XOR Dataset} \label{ssec:evaluation_on_xor}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{pa_result_xor}
+  \caption{Pruning Algorithm Results on XOR Dataset.}
+  \label{fig:pa_result_xor}
+\end{figure}
+
+\subsection{Evaluation on MNIST Dataset} \label{ssec:evaluation_on_mnist}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{pa_result_mnist}
+  \caption{Pruning Algorithm Results on MNIST Dataset.}
+  \label{fig:pa_result_mnist}
+\end{figure}
+
+\subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
+For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 5 $ class and/or which pixels are totally useless for classification. This analysis is briefly presented in section X.
+
+\section{Terrain Processing Results} \label{sec:terrain_processing_results}
 
 \subsection{Analysis of Terrain Similarity} \label{ssec:terrains_analysis}
 In the following a brief analysis of terrain similarities is presented. In general, a (dis-) similarity between terrains should correlate with classification results, i.e., the more two terrains differ from each other the better classification results are expected, and vice versa.
@@ -165,7 +237,7 @@ ds\_15                              & 0.2                                       
 \end{tabular}
 \end{table}
 
-\subsection{Classification results} \label{ssec:classification_results}
+\subsection{Classification Results} \label{ssec:classification_results}
 
 \begin{table}[H]
 \centering
@@ -195,9 +267,7 @@ ds\_15                            &                   &                    &    
 
 \subsection{Final Configuration} \label{ssec:final_configuration}
 
-\section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
 
-For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 5 $ class and/or which pixels are totally useless for classification. This analysis is briefly presented in section X. 
 
 
 evaluation (tables and figures) of classification:
