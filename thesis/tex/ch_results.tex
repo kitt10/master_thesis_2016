@@ -1,12 +1,12 @@
 \chapter{Experimental Evaluation} \label{chap:results}
-In this chapter the methods introduced in previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Then, results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
+In this chapter the methods introduced in previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
 
-Finally, steps of the overall terrain classification process are gradually evaluated in \cref{sec:terrain_processing_results}.
+Then, modules of the overall terrain classification process are gradually evaluated in (\cref{sec:terrain_processing_results}).
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
 Classification skills of the implemented method \textit{kitt\_nn} are compared to a \textit{Scikit-neuralnetwork} classifier (\textit{sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
-The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations are run and mean values with standard deviation ranges are shown.
+The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations were performed and mean values with standard deviation ranges are shown.
 
 \begin{figure}[H]
   \centering
@@ -24,7 +24,7 @@ Regarding the XOR dataset, both nets start with the accuracy of about $ 0.5 $, a
 %  \label{fig:kitt_verify_err}
 %\end{figure}
 
-In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_score} in \cref{ssec:evaluation_methods}) is shown for individual classes (digits) of the MNIST dataset. This evaluation is done after $ 100 $ epochs on the testing data of the dataset.
+In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_score} in \cref{ssec:evaluation_methods}) is shown for individual classes (digits) of the MNIST dataset. This evaluation is done on the testing data.
 
 \begin{table}[H]
 \centering
@@ -40,26 +40,26 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_sco
 }
 \end{table}
 
-In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included into comparison.
+In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included to the comparison.
 
 This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{kitt_verify_time}
-  \caption{Comparison of average epoch processing time to another framework (sknn).}
+  \caption{Comparison of average epoch processing time to another framework (on MNIST).}
   \label{fig:kitt_verify_time}
 \end{figure}
 
 The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} (see \citep{misc:sknn}) of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
 
 \section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
-This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a chosen dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned net of a minimal structure, but keeping a specified classification accuracy, is expected.
+This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned network of a minimal structure, but keeping a required classification accuracy, is expected.
 
 The evalutaion of the algorithm is performed on the two datasets described in \cref{ssec:testing_datasets}: XOR and MNIST.
 
 \subsection{Evaluation on XOR Dataset} \label{ssec:evaluation_on_xor}
-The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). It is chosen to use a network with one hidden layer of $ 100 $ neurons as the algorithm input (\cref{img:pa_xor_start}). The expected and also obtained result is shown in \cref{img:pa_xor_final}.
+The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). It is chosen to use a network with one hidden layer of $ 100 $ neurons as the algorithm input (\cref{img:pa_xor_start}). The desired structure is shown in \cref{img:pa_xor_final}.
 
 During the pruning process, three key network properties are observed:
 \begin{enumerate}
@@ -162,31 +162,31 @@ epochs to retrain                   & X                    & 0                  
 }
 \end{table}
 
-In this example, the algorithm uses the percentile level of $ 50 $ in the frist three steps, meaning it cuts out the half of the synapses each time. In the fourth step, the network is not able to retrain after cutting half of the remaining synapses, hence the percentile level is decreased to $ 35 $ and less synapses are tried to be removed in the fifth step. However, the retraining is not successful again (the accuracy of $ 0.89 $ is not reached in $ 100 $ epochs), so the percentile level is decreased to $ 20 $. This time the pruned network is able to retrain, so a new structure is saved and the algorithm continues with the percentile level of $ 20 $ in the next steps.
+In this example, the algorithm uses the percentile level of $ 50 $ in the first three steps, meaning it cuts out the half of the synapses each time. In the fourth step, the network is not able to retrain after cutting half of the remaining synapses, hence the percentile level is decreased to $ 35 $ and less synapses are tried to be removed in the fifth step. However, the retraining is not successful again (the accuracy of $ 0.89 $ is not reached in $ 100 $ epochs), so the percentile level is decreased to $ 20 $. This time the pruned network is able to retrain, so a new structure is saved and the algorithm continues with the percentile level of $ 20 $ in the next steps.
 
-The following figures (\ref{img:pa_xor_morph}) illustrate the transformation of the network.
+The following figures (\ref{img:pa_mnist_morph}) illustrate the transformation of the network.
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_mnist_start.png}
   \caption{PA input: oversized and fully-connected network (MNIST)}
-  \label{img:pa_xor_start}
+  \label{img:pa_mnist_start}
 \end{subfigure}%
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_mnist_final.png}
   \caption{PA output: minimal network structure (MNIST)}
-  \label{img:pa_xor_final}
+  \label{img:pa_mnist_final}
 \end{subfigure}
 \caption{Application of the pruning algorithm on MNIST}
-\label{img:pa_xor_morph}
+\label{img:pa_mnist_morph}
 \end{figure}
 
 \subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
 As mentioned in \cref{ssec:minimal_structure_util}, minimal structures obtained from the pruning algorithm can be further researched.
 
-For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class and/or which pixels are totally useless for classification.
+For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class or which pixels are totally useless for classification.
 
 \begin{figure}[H]
 \centering
@@ -206,17 +206,17 @@ For instance, considering the MNIST dataset, there is an image (meaning a vector
 \label{img:pa_xor_morph}
 \end{figure}
 
-As illustrated in \cref{img:structure_util}, paths from the input to the outpu layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected. \cref{img:msu_seven} shows in white all input neurons (pixels of the $ 28x28 $ input images) that are connected to output neuron $ 7 $.
+As illustrated in \cref{img:structure_util}, paths from the input to the output layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected with it. \cref{img:msu_seven} shows in white all input neurons (pixels of the $ 28x28 $ input images) that are connected to output neuron $ 7 $.
 
 In \cref{img:msu_interesting}, an analysis of all $ 784 $ input neurons is presented. As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ connections and, naturally, minimially $ 0 $ connections in the final structure. 
 
 The number of remaining connections $ n\_con $ is mapped into $ [0, 255] $ range, in order to be represented as a greyscale color, using the following equation:
 
 \begin{align} \label{eq:grayscale_mapping}
-intensity = \frac{255 \cdot 255}{15}
+intensity = \frac{255 \cdot n\_con}{15}
 \end{align}
 
-\cref{img:msu_interesting} shows the number of connections to the hidden layer $ n\_con $ as a greyscale value for every pixel of input samples. The more bright the pixel is, the more connections it has. Black pixels have no connections to the hidden layer and so they are not used for classification at all.
+\cref{img:msu_interesting} shows the number of connections to the hidden layer $ n\_con $ as a greyscale value ($ intensity $) for every pixel of input samples. The more bright the pixel is, the more connections it has. Black pixels have no connections to the hidden layer and so they are not used for classification at all.
 
 The results on both figures (\ref{img:msu_interesting} and \ref{img:msu_seven}) make a good sense, as the pixels close to borders are black. One could expect, that these pixels are not important, as the digits are centered in the images.
 
@@ -247,141 +247,6 @@ The surfaces have been generated virtually and their similarity to real world te
 
 Surprisingly, a wooden terrain ended up as very similar to gravel and carpet, but a limited number of simulated terrain features has to be considered. 
 On the other hand, rubber results as very different from swamp and snow, which is a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
-
-\subsection{Gathered Data} \label{ssec:gathered_data}
-As stated in \cref{sec:data_acquisition}, $ 500 $ examples for every terrain type have been generated.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sensor_atr_f_no_noise}
-  \caption{Thoraco Sensor (ATRf): sample examples, 14 terrains}
-  \label{fig:sensor_atr_f_no_noise}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sensor_acr_m_no_noise}
-  \caption{Coxa Sensor (ACRm): sample examples, 14 terrains}
-  \label{fig:sensor_acr_m_no_noise}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sensor_afr_h_no_noise}
-  \caption{Femur Sensor (AFRh): sample examples, 14 terrains}
-  \label{fig:sensor_afr_h_no_noise}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sensor_fr_f_no_noise}
-  \caption{Foot Contact Sensor (FRf): sample examples, 14 terrains}
-  \label{fig:sensor_fl_f_no_noise}
-\end{figure}
-
-\subsection{Built Feature Vector} \label{ssec:built_feature_vectors}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sample_no_noise_0_40}
-  \caption{Feature Vector : mean of 500 samples, 14 terrains, no noise, 40 timesteps}
-  \label{fig:sample_40t}
-\end{figure}
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sample_no_noise_0_80}
-  \caption{Feature Vector : mean of 500 samples, 14 terrains, no noise, 80 timesteps}
-  \label{fig:sample_80t}
-\end{figure}
-
-\subsection{Terrain Noise Influence} \label{ssec:terrain_noise_influence}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle_gravel}
-  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, angle sensors (feature vector [0:720] for 40 timesteps)}
-  \label{fig:tn_analysis_angle_gravel}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact_gravel}
-  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)}
-  \label{fig:tn_analysis_foot_contact_gravel}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle}
-  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors}
-  \label{fig:tn_analysis_angle}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact}
-  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors}
-  \label{fig:tn_analysis_foot_contact}
-\end{figure}
-
-\subsection{Signal Noise Influence} \label{ssec:signal_noise_influence}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sn_analysis_one_sample_40_angle_concrete}
-  \caption{Signal noise influence on one sample, terrain: concrete, angle sensors}
-  \label{fig:sn_analysis_one_sample_angle_concrete}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sn_analysis_one_sample_40_foot_contact_concrete}
-  \caption{Signal noise influence on one sample, terrain: concrete, foot contact sensors}
-  \label{fig:sn_analysis_one_sample_foot_contact_concrete}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sn_analysis_40_angle_snow}
-  \caption{Signal noise analysis : samples variance, terrain: snow, angle sensors}
-  \label{fig:sn_analysis_angle_snow}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sn_analysis_40_foot_contact_snow}
-  \caption{Signal noise analysis : samples variance, terrain: snow, foot contact sensors}
-  \label{fig:sn_analysis_foot_contact_snow}
-\end{figure}
-
-\subsection{Generated Datasets} \label{ssec:generated_datasets}
-
-\begin{table}[H]
-\centering
-\caption{Generated datasets}
-\label{tab:generated_datasets}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\multicolumn{1}{|l|}{\textit{name}} & \multicolumn{1}{l|}{\textit{ter. noise}} & \multicolumn{1}{l|}{\textit{sig. noise}} & \multicolumn{1}{l|}{\textit{timesteps}} & \multicolumn{1}{l|}{\textit{sensors}} & \multicolumn{1}{l|}{\textit{terrains}} & \multicolumn{1}{l|}{\textit{samples}} \\ \hline
-ds\_01                              & 0.0                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_02                              & 0.0                                             & 0.0                                            & 40                                      & angle                                 & all                                    & 500                                     \\ \hline
-ds\_03                              & 0.0                                             & 0.0                                            & 40                                      & foot                                  & all                                    & 500                                     \\ \hline
-ds\_04                              & 0.0                                             & 0.0                                            & 1                                       & all                                   & all                                    & 500                                     \\ \hline
-ds\_05                              & 0.0                                             & 0.0                                            & 10                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_06                              & 0.0                                             & 0.0                                            & 80                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_07                              & 0.0                                             & 0.01                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_08                              & 0.0                                             & 0.03                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_09                              & 0.0                                             & 0.05                                           & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_10                              & 0.0                                             & 0.1                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_11                              & 0.01                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_12                              & 0.03                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_13                              & 0.05                                            & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_14                              & 0.1                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-ds\_15                              & 0.2                                             & 0.0                                            & 40                                      & all                                   & all                                    & 500                                     \\ \hline
-\end{tabular}
-\end{table}
 
 \subsection{Classification Results} \label{ssec:classification_results}
 
