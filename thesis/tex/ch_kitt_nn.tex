@@ -347,12 +347,12 @@ The dataset has a training set of $ 60,000 $ examples (later split into $ 50,000
 
 In this case, the minimal network structure is not known. On the other hand, detailed results of classification accuracy for various classifiers are provided, which is good for comparison.
 
-\subsection{Minimal Structure Utilization}
+\subsection{Minimal Structure Utilization} \label{ssec:minimal_structure_util}
 In general, only the size of the input and output layer is determined for a chosen dataset. The pruning algorithm brings an additional information about the hidden part of the network. A minimal network structure is obtained as the PA outcome. This means that all the neurons and synapses contained in the network are important for classification.
 
 Knowing that each of these units takes a part and is not useless, one can ask what role does a single neuron/synapse have with respect to the chosen dataset.
 
-This can be researched by tracking the connections from the input to the output layer. Based on this approach, one can find some correlations between specified parts of input vectors and a selected output class (demonstrated on a MNIST example in \cref{img:structure_util}). Evaluation on MNIST dataset is shown in section X.
+This can be researched by tracking the connections from the input to the output layer. Based on this approach, one can find some correlations between specified parts of input vectors and a selected output class (demonstrated on a MNIST example in \cref{img:structure_util}). Evaluation on MNIST dataset is shown in \cref{sssec:mnist_analysis}.
 
 \begin{figure}[H]
   \centering

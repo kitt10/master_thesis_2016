@@ -52,22 +52,23 @@
 \contentsline {section}{\numberline {5.2}Pruning Algorithm Results}{38}{section.136}
 \contentsline {subsection}{\numberline {5.2.1}Evaluation on XOR Dataset}{38}{subsection.137}
 \contentsline {subsection}{\numberline {5.2.2}Evaluation on MNIST Dataset}{39}{subsection.143}
-\contentsline {subsubsection}{Minimal Structure Analysis for MNIST}{41}{section*.146}
-\contentsline {section}{\numberline {5.3}Terrain Processing Results}{42}{section.147}
-\contentsline {subsection}{\numberline {5.3.1}Analysis of Terrain Similarity}{42}{subsection.148}
-\contentsline {subsection}{\numberline {5.3.2}Gathered Data}{43}{subsection.151}
-\contentsline {subsection}{\numberline {5.3.3}Built Feature Vector}{45}{subsection.156}
-\contentsline {subsection}{\numberline {5.3.4}Terrain Noise Influence}{46}{subsection.159}
-\contentsline {subsection}{\numberline {5.3.5}Signal Noise Influence}{48}{subsection.164}
-\contentsline {subsection}{\numberline {5.3.6}Generated Datasets}{50}{subsection.169}
-\contentsline {subsection}{\numberline {5.3.7}Classification Results}{51}{subsection.171}
-\contentsline {subsection}{\numberline {5.3.8}Final Configuration}{51}{subsection.173}
-\contentsline {chapter}{\numberline {6}Discussion}{53}{chapter.174}
-\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{54}{chapter.175}
-\contentsline {chapter}{Bibliography}{55}{chapter*.176}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{57}{appendix.177}
-\contentsline {chapter}{\numberline {A2}Methods Implementation}{58}{appendix.178}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{58}{section.179}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{61}{section.201}
-\contentsline {chapter}{\numberline {A3}Code Documentation}{64}{appendix.216}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{65}{appendix.217}
+\contentsline {subsubsection}{Minimal Structure Analysis for MNIST}{41}{section*.147}
+\contentsline {section}{\numberline {5.3}Terrain Processing Results}{42}{section.150}
+\contentsline {subsection}{\numberline {5.3.1}Analysis of Terrain Similarity}{42}{subsection.151}
+\contentsline {subsection}{\numberline {5.3.2}Gathered Data}{43}{subsection.154}
+\contentsline {subsection}{\numberline {5.3.3}Built Feature Vector}{46}{subsection.159}
+\contentsline {subsection}{\numberline {5.3.4}Terrain Noise Influence}{47}{subsection.162}
+\contentsline {subsection}{\numberline {5.3.5}Signal Noise Influence}{49}{subsection.167}
+\contentsline {subsection}{\numberline {5.3.6}Generated Datasets}{51}{subsection.172}
+\contentsline {subsection}{\numberline {5.3.7}Classification Results}{51}{subsection.174}
+\contentsline {subsection}{\numberline {5.3.8}Final Configuration}{51}{subsection.176}
+\contentsline {chapter}{\numberline {6}Discussion}{53}{chapter.177}
+\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{54}{chapter.178}
+\contentsline {chapter}{Bibliography}{55}{chapter*.179}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{57}{appendix.180}
+\contentsline {chapter}{\numberline {A2}Methods Implementation}{58}{appendix.181}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{58}{section.182}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{61}{section.204}
+\contentsline {chapter}{\numberline {A3}Code Documentation}{64}{appendix.219}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{65}{appendix.220}
+\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{65}{section.221}

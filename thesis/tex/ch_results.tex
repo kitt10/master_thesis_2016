@@ -89,6 +89,7 @@ Algorithm parameters:
 
 Algorithm outcomes:
 \begin{itemize}
+\item pruning steps: $ 10 $
 \item final strucuture: $ [2, 2, 1] $
 \item number of removed synapses: $ 294 $ ($ 300 $ -> $ 6 $)
 \item classification accuracy on testing data: $ 0.99 $
@@ -99,13 +100,13 @@ Algorithm outcomes:
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_xor_start.png}
-  \caption{PA input: oversized and fully-connected network}
+  \caption{PA input: oversized and fully-connected network (XOR)}
   \label{img:pa_xor_start}
 \end{subfigure}%
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_xor_final.png}
-  \caption{PA output: minimal network structure}
+  \caption{PA output: minimal network structure (XOR)}
   \label{img:pa_xor_final}
 \end{subfigure}
 \caption{Application of the pruning algorithm on XOR}
@@ -117,12 +118,12 @@ Similarly, the algorithm is evaluated on the MNIST dataset. In this case, the mi
 
 \begin{itemize}
 \item initial network structure: $ [784, 15, 10] $ ($ 784 $, because the samples are images of size $ 28x28 $, and $ 10 $, because we have ten digits)
-\item required classification accuracy on validation data: $ 0.9 $
-\item learning rate:
-\item percentile levels:
+\item required classification accuracy on validation data: $ 0.89 $
+\item learning rate: $ 0.1 $
+\item percentile levels: $ [50, 35, 20, 10, 5, 0] $
 \end{itemize}
 
-In \cref{fig:pa_result_mnist}, pruning algorithm results for MNIST are presented.
+\cref{fig:pa_result_mnist} shows a significant reduction of synapses while the classification accuracy is kept on $ 0.89 $. The shown results are obtained by averaging $ 10 $ observations.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{pa_result_mnist}
@@ -130,31 +131,95 @@ In \cref{fig:pa_result_mnist}, pruning algorithm results for MNIST are presented
   \label{fig:pa_result_mnist}
 \end{figure}
 
-COMMENT THE FIGURE, REPLACE RESULTS STRUCTURES IMAGES
+Results of the pruning algorithm on MNIST:
+\begin{itemize}
+\item pruning steps: $ 76 $
+\item final strucuture: $ [495, 15, 10] $
+\item number of removed synapses: $ 11075 $ ($ 11910 $ -> $ 835 $ : $ 92.9\% $)
+\item classification accuracy on testing data: $ 0.88776 $
+\end{itemize}
+
+The figure \ref{fig:pa_result_mnist} says that more than $ 90\% $ of the synapses in the initial network structure are redundant. Regarding the number of neurons in the network, mostly the input layer is reduced. These results make a pretty good sense, as shown in \cref{sssec:mnist_analysis}.
+
+The following \cref{tab:pa_results_mnist} presents statistics of the first seven steps of one of the performed observations. For each step we can see the current percentile level (see \cref{img:pruning_algorithm}), corresponding reduction in the network and retraining results.
+
+\begin{table}[H]
+\centering
+\caption{PA progress example on MNIST}
+\label{tab:pa_results_mnist}
+\resizebox{\textwidth}{!} {
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{\textit{step}} & \textit{0 (initial)} & \textit{1}                  & \textit{2}                  & \textit{3}                  & \textit{4}                 & \textit{5} & \textit{6} & \textit{7} \\ \hline
+percentile level                    & 50                   & 50                          & 50                          & 50                          & 50                         & 35         & 20           & 20           \\ \hline
+synapses removed                    & X                    & 5955                        & 2978                        & 1489                        & 744                        & 521            & 298            & 238           \\ \hline
+input neurons left                  & 784                  & 784                         & 769                         & 664                         & 464                        & 539           & 602           & 521           \\ \hline
+synapses left                       & 11910                & 5955                        & 2977                        & 1488                        & 744                        & 967           & 1190           & 952           \\ \hline
+acc. after pruning                  & X                    & 0.9                         & 0.887                       & 0.851                       &  0.817                      & 0.858            & 0.880           & 0.878           \\ \hline
+retrained?                          & X                    & \cellcolor[HTML]{34FF34}yes & \cellcolor[HTML]{34FF34}yes & \cellcolor[HTML]{34FF34}yes & \cellcolor[HTML]{FD6864}no & \cellcolor[HTML]{FD6864}no            & \cellcolor[HTML]{34FF34}yes            & \cellcolor[HTML]{34FF34}yes            \\ \hline
+epochs to retrain                   & X                    & 0                           & 4                           & 63                          & \textgreater 100           & \textgreater 100           & 8           & 12           \\ \hline
+\end{tabular}
+}
+\end{table}
+
+In this example, the algorithm uses the percentile level of $ 50 $ in the frist three steps, meaning it cuts out the half of the synapses each time. In the fourth step, the network is not able to retrain after cutting half of the remaining synapses, hence the percentile level is decreased to $ 35 $ and less synapses are tried to be removed in the fifth step. However, the retraining is not successful again (the accuracy of $ 0.89 $ is not reached in $ 100 $ epochs), so the percentile level is decreased to $ 20 $. This time the pruned network is able to retrain, so a new structure is saved and the algorithm continues with the percentile level of $ 20 $ in the next steps.
+
+The following figures (\ref{img:pa_xor_morph}) illustrate the transformation of the network.
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_mnist_start.png}
+  \caption{PA input: oversized and fully-connected network (MNIST)}
+  \label{img:pa_xor_start}
+\end{subfigure}%
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{pa_mnist_final.png}
+  \caption{PA output: minimal network structure (MNIST)}
+  \label{img:pa_xor_final}
+\end{subfigure}
+\caption{Application of the pruning algorithm on MNIST}
+\label{img:pa_xor_morph}
+\end{figure}
+
+\subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
+As mentioned in \cref{ssec:minimal_structure_util}, minimal structures obtained from the pruning algorithm can be further researched.
+
+For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class and/or which pixels are totally useless for classification.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.45\textwidth}
   \centering
-  \includegraphics[width=0.8\linewidth]{pa_xor_start.png}
-  \caption{PA input: oversized and fully-connected network}
-  \label{img:pa_xor_start}
+  \includegraphics[width=0.7\linewidth]{mnist_interesting_pixels.png}
+  \caption{Pixels of the MNIST samples that are essential for classification}
+  \label{img:msu_interesting}
 \end{subfigure}%
 \begin{subfigure}{0.45\textwidth}
   \centering
-  \includegraphics[width=0.8\linewidth]{pa_xor_final.png}
-  \caption{PA output: minimal network structure}
-  \label{img:pa_xor_final}
+  \includegraphics[width=0.7\linewidth]{mnist_pixels_seven.png}
+  \caption{Pixels of the MNIST samples influencing the class $ 7 $}
+  \label{img:msu_seven}
 \end{subfigure}
-\caption{Application of the pruning algorithm on XOR}
+\caption{Demonstration of the minimal structures utilization on MNIST}
 \label{img:pa_xor_morph}
 \end{figure}
 
-\newpage
-\subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
-For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 5 $ class and/or which pixels are totally useless for classification. This analysis is briefly presented in section X.
+As illustrated in \cref{img:structure_util}, paths from the input to the outpu layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected. \cref{img:msu_seven} shows in white all input neurons (pixels of the $ 28x28 $ input images) that are connected to output neuron $ 7 $.
 
-\newpage
+In \cref{img:msu_interesting}, an analysis of all $ 784 $ input neurons is presented. As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ connections and, naturally, minimially $ 0 $ connections in the final structure. 
+
+The number of remaining connections $ n\_con $ is mapped into $ [0, 255] $ range, in order to be represented as a greyscale color, using the following equation:
+
+\begin{align} \label{eq:grayscale_mapping}
+intensity = \frac{255 \cdot 255}{15}
+\end{align}
+
+\cref{img:msu_interesting} shows the number of connections to the hidden layer $ n\_con $ as a greyscale value for every pixel of input samples. The more bright the pixel is, the more connections it has. Black pixels have no connections to the hidden layer and so they are not used for classification at all.
+
+The results on both figures (\ref{img:msu_interesting} and \ref{img:msu_seven}) make a good sense, as the pixels close to borders are black. One could expect, that these pixels are not important, as the digits are centered in the images.
+
 \section{Terrain Processing Results} \label{sec:terrain_processing_results}
 In this section, results of the overall terrain classification process are shown. The results are sorted in correspondance to the methods explanation in \cref{chap:terrain_classification}.
 
@@ -189,28 +254,28 @@ As stated in \cref{sec:data_acquisition}, $ 500 $ examples for every terrain typ
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{sensor_atr_f_no_noise}
-  \caption{Sensor ATRf : mean of 500 samples, 14 terrains}
+  \caption{Thoraco Sensor (ATRf): sample examples, 14 terrains}
   \label{fig:sensor_atr_f_no_noise}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{sensor_acr_m_no_noise}
-  \caption{Sensor ACRm : mean of 500 samples, 14 terrains}
+  \caption{Coxa Sensor (ACRm): sample examples, 14 terrains}
   \label{fig:sensor_acr_m_no_noise}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{sensor_afl_h_no_noise}
-  \caption{Sensor AFLh : mean of 500 samples, 14 terrains}
-  \label{fig:sensor_afl_h_no_noise}
+  \includegraphics[width=1.0\textwidth]{sensor_afr_h_no_noise}
+  \caption{Femur Sensor (AFRh): sample examples, 14 terrains}
+  \label{fig:sensor_afr_h_no_noise}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{sensor_fl_f_no_noise}
-  \caption{Sensor FLf : mean of 500 samples, 14 terrains}
+  \includegraphics[width=1.0\textwidth]{sensor_fr_f_no_noise}
+  \caption{Foot Contact Sensor (FRf): sample examples, 14 terrains}
   \label{fig:sensor_fl_f_no_noise}
 \end{figure}
 

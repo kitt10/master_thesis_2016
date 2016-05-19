@@ -48,6 +48,7 @@ if __name__ == '__main__':
 
     data = read_data(noises=noises_to_use, terrains=terrains_to_use, sensors=sensors_to_use, n_samples=n_samples)
 
+    sensors_to_use = ['fl_h']
     for sensor in sensors_to_use:
         for noise in noises_to_use:
             plt.figure('plot_sensor_'+sensor+'_'+noise, figsize=(10, 5))
@@ -60,18 +61,21 @@ if __name__ == '__main__':
                     #plt.plot(sample)
 
 
-            #plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, mean of 500 samples')
+            #plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, 14 terrains, random sample')
             #plt.title('AMOS II Terrain Classification : Simulated Sensory Output')
             plt.xlabel('timesteps')
             plt.ylabel('sensor values')
             plt.grid()
             plt.ylim(sensors_ranges[sensor])
-            plt.legend(loc='best', prop={'size': 12}, ncol=3)
+            #plt.legend(loc='best', prop={'size': 12}, ncol=5)
             if save_figure:
+                '''
                 plt.savefig('../../results/png/plot_sensor_' + sensor + '_' + noise + '.png', bbox_inches='tight',
                             pad_inches=0.1)
                 plt.savefig('../../results/eps/plot_sensor_' + sensor + '_' + noise + '.eps', bbox_inches='tight',
                             pad_inches=0.1)
+                '''
+                plt.savefig('../../thesis/img/app_sensor_' + sensor + '.eps', bbox_inches='tight', pad_inches=0.1)
             if show_figure:
                 plt.show()
             plt.close()
