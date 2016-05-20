@@ -23,7 +23,7 @@ def load():
                     nets[tn][sn][ts][sen]['net_name'] = net_name
                     nets[tn][sn][ts][sen]['has_data'] = True
 
-                    for obs in range(1, n_obs+1):
+                    for obs in observations:
                         nets[tn][sn][ts][sen][obs] = dict()
                         try:
                             nets[tn][sn][ts][sen][obs]['net'] = load_net('../cache/trained/'+net_name+'_'+str(obs)+'.net')
@@ -34,24 +34,44 @@ def load():
                             nets[tn][sn][ts][sen][obs]['acc'] = nets[tn][sn][ts][sen][obs]['net']['skills'][0]
                             nets[tn][sn][ts][sen][obs]['report'] = nets[tn][sn][ts][sen][obs]['net']['skills'][1]
                             nets[tn][sn][ts][sen][obs]['cm'] = nets[tn][sn][ts][sen][obs]['net']['skills'][2]
+                            nets[tn][sn][ts][sen][obs]['precision'] = float(nets[tn][sn][ts][sen][obs]['report'][815:819])
+                            nets[tn][sn][ts][sen][obs]['recall'] = float(nets[tn][sn][ts][sen][obs]['report'][825:829])
+                            nets[tn][sn][ts][sen][obs]['f1'] = float(nets[tn][sn][ts][sen][obs]['report'][835:839])
                             #print ' => OK'
                         except:
-                            nets[tn][sn][ts][sen][obs]['acc_list'] = [-1]*n_epochs
-                            nets[tn][sn][ts][sen][obs]['err_list'] = [-1]*n_epochs
-                            nets[tn][sn][ts][sen][obs]['time_list'] = [-1]*n_epochs
+                            nets[tn][sn][ts][sen][obs]['acc_list'] = [-1]*(n_epochs+1)
+                            nets[tn][sn][ts][sen][obs]['err_list'] = [-1]*(n_epochs+1)
+                            nets[tn][sn][ts][sen][obs]['time_list'] = [-1]*(n_epochs+1)
                             nets[tn][sn][ts][sen][obs]['acc'] = 0
                             nets[tn][sn][ts][sen][obs]['report'] = None
                             nets[tn][sn][ts][sen][obs]['cm'] = None
+                            nets[tn][sn][ts][sen][obs]['precision'] = 0
+                            nets[tn][sn][ts][sen][obs]['recall'] = 0
+                            nets[tn][sn][ts][sen][obs]['f1'] = 0
                             #print ' => Failed'
                             nets[tn][sn][ts][sen]['has_data'] = False
 
-                    nets[tn][sn][ts][sen]['mean_acc'] = np.mean([nets[tn][sn][ts][sen][obs]['acc'] for obs in range(1, n_obs+1)])
+                    nets[tn][sn][ts][sen]['mean_acc'] = np.mean(
+                        [nets[tn][sn][ts][sen][obs]['acc'] for obs in observations])
+                    nets[tn][sn][ts][sen]['std_acc'] = np.std(
+                        [nets[tn][sn][ts][sen][obs]['acc'] for obs in observations])
+                    nets[tn][sn][ts][sen]['mean_precision'] = np.mean(
+                        [nets[tn][sn][ts][sen][obs]['precision'] for obs in observations])
+                    nets[tn][sn][ts][sen]['mean_recall'] = np.mean(
+                        [nets[tn][sn][ts][sen][obs]['recall'] for obs in observations])
+                    nets[tn][sn][ts][sen]['mean_f1'] = np.mean(
+                        [nets[tn][sn][ts][sen][obs]['f1'] for obs in observations])
                     nets[tn][sn][ts][sen]['mean_acc_list'] = np.mean(
-                        [nets[tn][sn][ts][sen][obs]['acc_list'] for obs in range(1, n_obs + 1)], axis=0)
+                        [nets[tn][sn][ts][sen][obs]['acc_list'] for obs in observations], axis=0)
+                    nets[tn][sn][ts][sen]['std_acc_list'] = np.std(
+                        [nets[tn][sn][ts][sen][obs]['acc_list'] for obs in observations], axis=0)
                     nets[tn][sn][ts][sen]['mean_err_list'] = np.mean(
-                        [nets[tn][sn][ts][sen][obs]['err_list'] for obs in range(1, n_obs + 1)], axis=0)
+                        [nets[tn][sn][ts][sen][obs]['err_list'] for obs in observations], axis=0)
+                    nets[tn][sn][ts][sen]['std_err_list'] = np.std(
+                        [nets[tn][sn][ts][sen][obs]['err_list'] for obs in observations], axis=0)
                     nets[tn][sn][ts][sen]['mean_time_list'] = np.mean(
-                        [nets[tn][sn][ts][sen][obs]['time_list'] for obs in range(1, n_obs + 1)], axis=0)
+                        [nets[tn][sn][ts][sen][obs]['time_list'] for obs in observations], axis=0)
+                    nets[tn][sn][ts][sen]['mean_time'] = np.mean(nets[tn][sn][ts][sen]['mean_time_list'])
 
     return nets
 
@@ -59,12 +79,13 @@ def load():
 if __name__ == '__main__':
     terrain_noise_types = ('nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p')
     signal_noise_types = (0.0, 0.01, 0.03, 0.05, 0.1)
-    timesteps = (1, 10, 40, 80)
+    timesteps = (1, 10, 20, 30, 40, 80)
     sensors = ('alls', 'angle', 'foot')
     n_epochs = 500
     lr = 0.5
     st = 20
     n_obs = 1
+    observations = range(1, n_obs+1)
 
     nets = load()
 
@@ -87,58 +108,114 @@ if __name__ == '__main__':
                         print '@jobs:\t\t\t', n_obs
                         print '---- # results:'
                         print '---- @accuracy:\t\t', nets[tn][sn][ts][sen]['mean_acc']
-                        print '---- @precision:\t', nets[tn][sn][ts][sen]['mean_acc']
-                        print '---- @recall:\t\t', nets[tn][sn][ts][sen]['mean_acc']
-                        print '---- @f1-score:\t\t', nets[tn][sn][ts][sen]['mean_acc']
+                        print '---- @precision:\t', nets[tn][sn][ts][sen]['mean_precision']
+                        print '---- @recall:\t\t', nets[tn][sn][ts][sen]['mean_recall']
+                        print '---- @f1-score:\t\t', nets[tn][sn][ts][sen]['mean_f1']
                         print '---- @error:\t\t', nets[tn][sn][ts][sen]['mean_err_list'][-1]
-                        print '---- @avg. time:\t', nets[tn][sn][ts][sen]['mean_time_list'][-1]
+                        print '---- @avg. time:\t', nets[tn][sn][ts][sen]['mean_time']
 
-    exit()
     epochs = range(n_epochs+1)
     colors = ('red', 'green', 'blue', 'magenta', 'yellow', 'cyan', 'black', 'orange', 'violet', 'brown', 'lime', 'maroon')
 
-    ''' Grid Search Analysis to find optimal learning params '''
+    ''' Required Number of Timesteps '''
 
-    # Learning rate analysis
-    plt.figure()
-    st = 20
-    for color, lr in zip(colors, sorted(nets.keys())):
-        plt.plot(epochs, nets[lr][st]['acc_list'], '--', color=color, label=str(lr))
-    plt.xlabel('training epoch')
-    plt.ylabel('classification accuracy')
-    plt.xlim([-1, len(epochs) + 1])
-    plt.ylim([0, 1.1])
+    # Timesteps: bar: acc and time
+    tn = 'nn'
+    sn = 0.0
+    sen = 'alls'
+    fig, ax1 = plt.subplots()
+    for ts in timesteps:
+        ax1.bar(ts-4, nets[tn][sn][ts][sen]['mean_acc'], width=4, color='blue')
+        #ax1.boxplot([nets[tn][sn][ts][sen][obs]['acc'] for obs in observations], positions=[ts])
+    ax1.set_xlabel('number of timesteps')
+    ax1.set_ylabel('classification accuracy', color='darkblue')
+    ax1.set_ylim([0, 1.0])
+    for tl in ax1.get_yticklabels():
+        tl.set_color('darkblue')
+
+    ax2 = ax1.twinx()
+    for ts in timesteps:
+        ax2.bar(ts, nets[tn][sn][ts][sen]['mean_time'], width=4, color='maroon')
+    ax2.set_ylabel('average epoch time [s]', color='maroon')
+    ax2.set_ylim([0, 2])
+    for tl in ax2.get_yticklabels():
+        tl.set_color('maroon')
+
+    plt.xlim([-5, 100])
+    plt.xticks(timesteps, timesteps, ha='center')
+
     plt.grid()
-    plt.legend(loc='best')
     plt.show()
 
-    # Network structure analysis
-    plt.figure()
-    lr = 0.1
-    for color, st in zip(colors, sorted(nets[lr].keys())):
-        plt.plot(epochs, nets[lr][st]['acc_list'], '--', color=color, label='[960, '+str(st)+', 14]')
-    plt.xlabel('training epoch')
-    plt.ylabel('classification accuracy')
-    plt.xlim([-1, len(epochs) + 1])
-    plt.ylim([0, 1.1])
-    plt.grid()
-    plt.legend(loc='best')
-    plt.show()
-
-    # Network structure vs Learning rate Final accuracy
+    ''' Noise Analysis '''
+    # Noise Analysis : mat: terrain-signal-accuracy
+    ts = 40
+    sen = 'alls'
     mat = list()
-    lrs = sorted(nets.keys())
-    sts = sorted(nets[0.1].keys())
-    for st in sts:
-        mat.append([nets[lr][st]['acc'] for lr in lrs])
+    for sn in signal_noise_types:
+        mat.append([nets[tn][sn][ts][sen]['mean_acc'] for tn in terrain_noise_types])
     plt.matshow(mat, vmin=0.0, vmax=1.0)
-    plt.xticks(range(len(lrs)), lrs)
-    plt.yticks(range(len(sts)), ['[960, '+str(st)+', 14]' for st in sts])
-    plt.xlabel('learning rate')
-    plt.ylabel('network structure')
+    plt.xticks(range(len(terrain_noise_types)), (0.0, 0.01, 0.03, 0.05, 0.1, 0.2))
+    plt.yticks(range(len(signal_noise_types)), signal_noise_types)
+    plt.xlabel('standard deviation of additive terrain noise')
+    plt.ylabel('standard deviation of additive signal noise')
     plt.colorbar()
 
-    for lr_i, lr in enumerate(lrs):
-        for st_i, st in enumerate(sts):
-            plt.text(lr_i, st_i, round(mat[st_i][lr_i], 2), va='center', ha='center', fontsize=11)
+    for tn_i, tn in enumerate(terrain_noise_types):
+        for sn_i, sn in enumerate(signal_noise_types):
+            plt.text(tn_i, sn_i, round(mat[sn_i][tn_i], 2), va='center', ha='center', fontsize=11)
+    #plt.savefig('../../thesis/img/cl_acc_tn_nn_mat.eps', bbox_inches='tight', pad_inches=0.1)
+    plt.show()
+
+    ''' Needed sensors '''
+    # Needed Sensors: errorbars: accuracy vs. epochs
+    tn = 'nn'
+    sn = 0.0
+    timesteps = (10, 40, 80)
+    c_i = 0
+    colors = ('orange', 'red', 'maroon', 'lime', 'green', 'darkgreen', 'cyan', 'blue', 'black')
+    for sen in sensors:
+        for ts in timesteps:
+            epochs = range(len(nets[tn][sn][ts][sen]['mean_acc_list']))
+            plt.errorbar(x=epochs, y=nets[tn][sn][ts][sen]['mean_acc_list'], yerr=nets[tn][sn][ts][sen]['std_acc_list'],
+             label=sen+':'+str(ts), color=colors[c_i])
+            '''plt.plot(epochs, nets[tn][sn][ts][sen]['mean_acc_list'], label=sen + ':' + str(ts), color=colors[c_i])'''
+            c_i += 1
+    plt.xlabel('training epochs')
+    plt.ylabel('classification accuracy')
+    plt.ylim([0, 1])
+    plt.legend(loc='best', ncol=3)
+
+    #plt.savefig('../../thesis/img/cl_sen_epochs.eps', bbox_inches='tight', pad_inches=0.1)
+    plt.show()
+
+    # Needed sensors: bar: acc and time
+    tn = 'nn'
+    sn = 0.0
+    timesteps = (10, 40, 80)
+    colors = ('black', 'blue', 'cyan')
+    fig, ax1 = plt.subplots()
+    for s_i, sen in enumerate(sensors):
+        for t_i, ts in enumerate(timesteps):
+            ax1.bar(ts - s_i * 1.5, nets[tn][sn][ts][sen]['mean_acc'], width=1.5, color=colors[s_i])
+    ax1.set_xlabel('number of timesteps / used sensors')
+    ax1.set_ylabel('classification accuracy', color='darkblue')
+    ax1.set_ylim([0, 1.0])
+    for tl in ax1.get_yticklabels():
+        tl.set_color('darkblue')
+
+    ax2 = ax1.twinx()
+    colors = ('maroon', 'red', 'orange')
+    for s_i, sen in enumerate(sensors):
+        for t_i, ts in enumerate(timesteps):
+            ax2.bar(ts + t_i*1.5, nets[tn][sn][ts][sen]['mean_time'], width=1.5, color='maroon')
+    ax2.set_ylabel('average epoch time [s]', color='maroon')
+    ax2.set_ylim([0, 2])
+    for tl in ax2.get_yticklabels():
+        tl.set_color('maroon')
+
+    plt.xlim([-5, 100])
+    plt.xticks(timesteps, timesteps, ha='center')
+
+    plt.grid()
     plt.show()

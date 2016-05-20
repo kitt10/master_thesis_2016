@@ -250,7 +250,7 @@ On the other hand, rubber results as very different from swamp and snow, which i
 
 \subsection{Classification Results} \label{ssec:classification_results}
 
-\subsubsection{Analysis of Learning Parameters} \label{sssec:analysis_of_learning_parameters}
+\subsubsection{Network Learning Parameters} \label{sssec:analysis_of_learning_parameters}
 
 learning rate
 
@@ -275,6 +275,29 @@ learning rate
   \label{fig:acc_st_lr_mat}
 \end{figure}
 
+\subsubsection{Required Number of Timesteps} \label{sssec:number_of_timesteps}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_ts_bar}
+  \caption{Number of simulation timesteps: influence on the accuracy and training time}
+  \label{fig:ts_bar}
+\end{figure}
+
+\subsection{Allowed Data Noise} \label{ssec:final_configuration}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_acc_tn_sn_mat}
+  \caption{Additive terrain and signal noise: influence on the accuracy}
+  \label{fig:acc_tn_sn_mat}
+\end{figure}
+
+\subsection{Needed Sensors} \label{ssec:final_configuration}
+
+
+\subsubsection{Results Complete Overview} \label{sssec:results_overview}
+
 \begin{table}[H]
 \centering
 \caption{Classification results}
@@ -282,29 +305,25 @@ learning rate
 \resizebox{\textwidth}{!} {
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textit{dataset} & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} & \textit{error} & \textit{avg. ep. time} \\ \hline
-\textbf{ds\_01}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_02}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_03}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_04}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_05}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_06}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_07}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_08}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_09}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_10}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_11}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_12}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_13}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_14}  &                   &                    &                 &                   &                   &                  \\ \hline
-\textbf{ds\_15}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textit{dataset} & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} & \textit{c. error} & \textit{avg. ep. time {[}s{]}} \\ \hline
+\textbf{ds\_01}  & 0.923             & 0.920              & 0.920           & 0.920             & 0.015             & 0.757                          \\ \hline
+\textbf{ds\_02}  & 0.682             & 0.660              & 0.680           & 0.640             & 0.068             & 0.650                          \\ \hline
+\textbf{ds\_03}  & 0.708             & 0.700              & 0.710           & 0.680             & 0.063             & 0.439                          \\ \hline
+\textbf{ds\_04}  & 0.640             & 0.650              & 0.640           & 0.620             & 0.071             & 0.401                          \\ \hline
+\textbf{ds\_05}  & 0.806             & 0.810              & 0.810           & 0.800             & 0.039             & 0.488                          \\ \hline
+\textbf{ds\_06}  & 0.921             & 0.920              & 0.920           & 0.920             & 0.015             & 1.332                          \\ \hline
+\textbf{ds\_07}  & 0.776             & 0.790              & 0.780           & 0.760             & 0.039             & 0.751                          \\ \hline
+\textbf{ds\_08}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_09}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_10}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_11}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_12}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_13}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_14}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textbf{ds\_15}  &                   &                    &                 &                   &                   &                                \\ \hline
 \end{tabular}
 }
 \end{table}
-
-\subsection{Final Configuration} \label{ssec:final_configuration}
-
-
 
 
 evaluation (tables and figures) of classification:

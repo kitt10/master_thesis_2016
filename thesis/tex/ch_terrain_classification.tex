@@ -578,7 +578,7 @@ There are several arguments (firstly listed in \cref{sec:overall_process_summary
 
 Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
 
-\subsection{Evaluation Methods} \label{ssec:evaluation_methods}
+\subsection{Evaluation Measures} \label{ssec:evaluation_measures}
 A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
 
 \begin{description}
@@ -590,7 +590,12 @@ A trained network is evaluated on testing data. This evaluation provides a set o
 F1 = \frac{2 * precision * recall}{precision + recall}
 \end{equation}
 \item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
+\item[classification error] : DESCRIBE (formula).
+\item[average epoch time] : DESCRIBE.
+\item[evarage classification time] : DESCRIBE.
 \end{description}
+
+structure, n synapses ?
 
 \subsection{Terrain Classification using Network Pruning} \label{ssec:pruned_net_on_terrains}
 As the overall process diagram (\cref{img:terrain_classification_process}) shows, the developed network pruning algorithm (\cref{chapter:network_pruning_algorithm}) is tested on the terrain datasets. The approach has been already described. 
