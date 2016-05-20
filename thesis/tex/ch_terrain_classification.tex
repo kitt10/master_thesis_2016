@@ -22,7 +22,7 @@ Finally, a dataset is created by splitting all the data into training, validatio
 
 The dataset packages may differ in these parameters:
 \begin{itemize}
-\item terrain types included (-> number of classes)
+\item terrain types included (number of classes)
 \item sensors on input
 \item samples length (number of simulation timesteps)
 \item terrain noise and signal noise
@@ -39,7 +39,7 @@ The trained networks may differ in the following parameters:
 Finally, an optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
 
 \section{Experimental Environment Specification}
-The ultimate goal is to implement an online terrain classifier for selection of optimal walking gait on real hexapod robot AMOS II. Therefore the real robot is presented in the following section \ref{ssec:amosii}.
+The final objective of this thesis was to implement an online terrain classifier for selection of optimal walking gait on real hexapod robot AMOS II. Therefore the real hexapod robot is presented in the following section \ref{ssec:amosii}.
 
 However, as already stated above, the proposed approach will be evaluated using simulated robot in a virtual environment. In this case, \textit{LPZ Robots simulator} \citep{misc:lpzrobots} was used and a description is given in section 6.2.2.
 
@@ -309,25 +309,16 @@ feature\_value = max(feature\_value, 0)
 \end{align}
 
 \subsubsection*{Influence of Terrain Noise} \label{sssec:terrain_noise_influence}
-Based on the explanation of adding the terrain noise, single samples representing various volumes of the additive terrain noise may vary, but not necessarily. As an example, in \cref{fig:tn_influence_samples_grass} samples of $ 6 $ noise volumes for \textit{grass} are shown (angle sensors only). 
+Based on the explanation of adding the terrain noise, single samples representing various volumes of the additive terrain noise may vary, but not necessarily. For illustration, three noisy terrain examples (of different noise level) for \textit{rock} are shown in \cref{fig:tn_influence_samples_rock}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{tn_influence_samples_grass}
-  \caption{Terrain Noise Analysis (sample examples): terrain grass, angle sensors}
-  \label{fig:tn_influence_samples_grass}
+  \includegraphics[width=1.0\textwidth]{tn_influence_samples_rock}
+  \caption{Examples of noisy terrains: terrain rock, angle sensors}
+  \label{fig:tn_influence_samples_rock}
 \end{figure}
 
-The purpose of adding the terrain noise is to generate a variability among samples of one terrain and so to make the terrain definition not that strict. Therefore, the \cref{fig:tn_analysis_angle_gravel} shows a variance among \textit{gravel} samples for every timestep of joint angle sensors. The same analysis for foot contact sensors can be found in \cref{fig:tn_analysis_foot_contact_gravel}.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle_gravel}
-  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, proprioceptive sensors}
-  \label{fig:tn_analysis_angle_gravel}
-\end{figure}
-
-The results are as expected. Samples generated with a higher standard deviation of terrain noise vary more from each other. Interestingly, even $ 3\% $ of relative terrain noise is enough to make the samples quite variable. Naturally, the more samples of one class differ, the worse classification results are expected. Moreover, the variance among classes with respect to the additional terrain noise volume is presented in \cref{sec:further_data_analysis}.
+The purpose of adding the terrain noise is to generate a variability among samples of one terrain, which makes the terrain definition more flexible. As shown in \cref{fig:tn_influence_samples_rock}, the sample representing the $ 20\%-noise $ class fluctuates more in comparison to the others, expecially for the femur-tibia sensors. This might indicate a generation of an unusual rocky terrain.
 
 \section{Data Acquisition} \label{sec:data_acquisition}
 The data comes from the 18 proprioceptive and 6 tactile sensors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
@@ -376,8 +367,6 @@ The biggest variance among signals for various terrains is obtained from the foo
 
 Examples of signals from all 24 sensors can be found in \cref{sec:complete_sensory_data}.
 
-More detailed results for all of the terrain types and several sensors are shown in \cref{ssec:gathered_data}. 
-
 As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter have been generated. The simulation has been gradually run for:
 
 \begin{itemize}
@@ -389,7 +378,7 @@ As an optimal standard deviation value of the additive terrain noise is not know
 \item $ \sigma_p = 0.2 $ (20\% relative noise)
 \end{itemize}
 
-The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analyzed in \cref{ssec:terrain_noise_influence}.
+The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analyzed in \cref{sssec:terrain_noise_influence}.
 
 The approach of storing the gathered data is described in \cref{ssec:app:data_storing}. As \cref{img:data_dir_structure} shows, $ 500 $ sample candidates are generated for every \textit{noise/terrain} configuration. This allows creating datasets of $ 500 $ samples per class.
 
@@ -413,14 +402,7 @@ Sensor selection defines another global process parameter. The anticipation is t
 
 With reference to \cref{img:feature_vector_forming}, feature vectors have been constructed by fixing the \textit{timesteps} parameter and concatenating columns of the matrix into one vector. This results into having data from all sensors one by one next to each other and forming one feature vector together. 
 
-In \cref{fig:sample_example} an illustration of the vector formation for three terrain types is shown. The number of timesteps is set to $ 40 $ and all $ 24 $ sensors are used, hence a feature vector of length $ 960 $ is obtained. The corresponding sensor abbreviations (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sample_example.eps}
-  \caption{Example of feature vector (raw data), 40 timesteps, no signal noise}
-  \label{fig:sample_example}
-\end{figure}
+In \cref{fig:sample_example_normed} an illustration of the vector formation for three terrain types is shown. The number of timesteps is set to $ 40 $ and all $ 24 $ sensors are used, hence a feature vector of length $ 960 $ is obtained. The corresponding sensor abbreviations (see \cref{tab:proprioceptors}) are added to the x-axis annotation. The 18 angle sensors are followed by the 6 foot contact sensors.
 
 \subsection{Feature Vector Normalisation} \label{ssec:normalisation}
 It is a good manner to keep the data normalised - mapped to $ [0.0, 1.0] $ interval. The default range of foot contact sensors is already set to $ [0.0, 1.0] $, so there is nothing to change. For the joint angle sensors, the following approach, sometimes called \textit{feature scaling}, is used to map the data.
@@ -488,11 +470,11 @@ Naturally, the higher the standard deviation of additive Gaussian noise is, the 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{sn_influence_samples_concrete}
-  \caption{Signal noise influence on one sample, terrain: concrete, angle sensors}
+  \caption{Examples of noisy signals: concrete, angle sensors}
   \label{fig:sn_influence_samples_concrete}
 \end{figure}
 
-\section{Creation of Datasets} \label{sec:dataset_creation}
+\section{Generation of Datasets} \label{sec:dataset_creation}
 In this section, the task is to transform all the data into so called datasets. There are usually three sets of data used for classification tasks - training, validation and testing data. These three sets must be disjunctive, meaning they cannot have a single element in common. All these three sets together form a dataset.
 
 \begin{figure}[H]
