@@ -127,7 +127,7 @@ if __name__ == '__main__':
             plt.xlabel('timesteps sensor by sensor')
             plt.ylabel('sensor values')
             plt.grid()
-            plt.legend(loc='upper left', prop={'size': 12}, ncol=3)
+            plt.legend(loc='lower left', prop={'size': 12}, ncol=5)
             ax = fig.add_subplot(111)
             for i, sensor in enumerate(sensors_to_use):
                 if r[0] <= (i+1)*sample_len <= r[1]:
@@ -149,10 +149,12 @@ if __name__ == '__main__':
                 for noise, color in zip(noises_to_use, colors):
                     sigs.append(np.var(samples[noise][terrain], axis=0)[r[0]:r[1]])
                     plt.plot(range(r[0], r[1]), sigs[-1], label=noise, color=color)
+                '''
                 plt.title('Terrain Classification for AMOS II : Terrain Noise Influence : Samples Variance for terrain '+terrain)
                 plt.suptitle('timesteps: ' + str(sample_len) + ', no signal noise, 500 samples, feature vector zoom: ' + str(r) + ' => foot contact sensors')
+                '''
                 plt.xlabel('timesteps sensor by sensor')
-                plt.ylabel('var')
+                plt.ylabel('samples variance')
                 plt.legend(loc='best')
                 plt.grid()
                 ax = fig.add_subplot(111)
@@ -327,13 +329,15 @@ if __name__ == '__main__':
                 fig = plt.figure('signal_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
                 sigs = list()
                 for noise, color in zip(noises_to_use, colors):
-                    sigs.append(np.mean(samples[noise][terrain], axis=0)[r[0]:r[1]])
+                    #sigs.append(np.mean(samples[noise][terrain], axis=0)[r[0]:r[1]])
+                    sigs.append(choice(samples[noise][terrain])[r[0]:r[1]])
                     plt.plot(range(r[0], r[1]), sigs[-1], label='std: '+str(noise), color=color)
+                '''
                 plt.title('Terrain Classification for AMOS II : Signal Noise Influence on One Sample for Terrain ' + terrain)
                 plt.suptitle('timesteps: ' + str(sample_len) + ', no terrain noise, 500 samples, feature vector zoom: ' + str(
-                        r) + ' => angle sensors')
+                        r) + ' => angle sensors')'''
                 plt.xlabel('timesteps sensor by sensor')
-                plt.ylabel('mean sensor value')
+                plt.ylabel('sensor value')
                 plt.legend(loc='best')
                 plt.grid()
                 ax = fig.add_subplot(111)

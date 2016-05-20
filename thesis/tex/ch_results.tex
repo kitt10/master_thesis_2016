@@ -238,7 +238,7 @@ The following \cref{fig:terrain_similarity_measures} shows the similarity measur
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{terrains_variability.eps}
+  \includegraphics[width=0.8\textwidth]{terrains_variability}
   \caption{Similarity measures among various terrain types.}
   \label{fig:terrain_similarity_measures}
 \end{figure}
@@ -250,30 +250,56 @@ On the other hand, rubber results as very different from swamp and snow, which i
 
 \subsection{Classification Results} \label{ssec:classification_results}
 
+\subsubsection{Analysis of Learning Parameters} \label{sssec:analysis_of_learning_parameters}
+
+learning rate
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr01}
+  \caption{Network structure analysis. Learning rate: 0.1.}
+  \label{fig:st_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_st_lr_mat}
+  \caption{Learning parameters analysis: Classification accuracy vs. learning rate and network structure}
+  \label{fig:acc_st_lr_mat}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \caption{Classification results}
 \label{tab:classification_results}
+\resizebox{\textwidth}{!} {
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\multirow{2}{*}{\textit{dataset}} & \multicolumn{3}{c|}{\textit{\textbf{kitt net}}}         & \multicolumn{3}{c|}{\textit{\textbf{sknn net}}}         \\ \cline{2-7} 
-                                  & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{accuracy} & \textit{precision} & \textit{recall} \\ \hline
-ds\_01                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_02                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_03                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_04                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_05                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_06                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_07                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_08                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_09                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_10                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_11                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_12                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_13                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_14                            &                   &                    &                 &                   &                    &                 \\ \hline
-ds\_15                            &                   &                    &                 &                   &                    &                 \\ \hline
+\textit{dataset} & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} & \textit{error} & \textit{avg. ep. time} \\ \hline
+\textbf{ds\_01}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_02}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_03}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_04}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_05}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_06}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_07}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_08}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_09}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_10}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_11}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_12}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_13}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_14}  &                   &                    &                 &                   &                   &                  \\ \hline
+\textbf{ds\_15}  &                   &                    &                 &                   &                   &                  \\ \hline
 \end{tabular}
+}
 \end{table}
 
 \subsection{Final Configuration} \label{ssec:final_configuration}
