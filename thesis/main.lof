@@ -4,82 +4,82 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Feedforward neural network\relax }}{4}{figure.caption.26}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Used transfer functions: sigmoid and tanh\relax }}{5}{figure.caption.29}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Training process flowchart\relax }}{6}{figure.caption.31}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces GDA issues \citep {online:nn_demystified} (a) slopes are too big, (b) local minimums, (c) slopes are too small\relax }}{9}{figure.caption.43}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Screenshot of the graphical user interface\relax }}{10}{figure.caption.49}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{11}{figure.caption.58}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Overall flowchart of the pruning process\relax }}{11}{figure.caption.60}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{12}{figure.caption.61}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Function: removing synapses based on weight changes and current percentile value\relax }}{13}{figure.caption.62}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Function: checking if the accuracy has been kept after pruning\relax }}{13}{figure.caption.64}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces 2D XOR Data illustration\relax }}{15}{figure.caption.70}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces XOR Dataset: minimal network structures\relax }}{15}{figure.caption.71}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces MNIST Data illustration \citep {online:mnist}\relax }}{16}{figure.caption.73}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Minimal strucuture utilization explained on MNIST ('5' class sample example)\relax }}{16}{figure.caption.75}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Structure of a feedforward neural network\relax }}{4}{figure.caption.25}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces A model neuron\relax }}{5}{figure.caption.29}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Used transfer functions: sigmoid and tanh\relax }}{6}{figure.caption.32}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Training process flowchart. $ T_1 $: Threshold for a terminating condition based on a learning error. If the error is reduced to be lower than this threshold, the learning process is stopped. $ T_2 $: Threshold for a terminating condition based on number of iterations (epochs). The learning process is stopped after a specified number of epochs, no matter how successful the training has been.\relax }}{6}{figure.caption.34}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{10}{figure.caption.54}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Overall flowchart of the pruning process\relax }}{11}{figure.caption.59}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{11}{figure.caption.60}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Synaptic pruning based on weight changes and current percentile value\relax }}{12}{figure.caption.61}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Evaluation of the classification accuracy after pruning\relax }}{12}{figure.caption.63}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces 2D XOR Data illustration\relax }}{14}{figure.caption.69}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces XOR Dataset: minimal network structures\relax }}{14}{figure.caption.70}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces MNIST Data illustration \citep {online:mnist}\relax }}{15}{figure.caption.72}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Analysis of the minimal structure examplified on digit 5 (MNIST dataset)\relax }}{15}{figure.caption.74}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Screenshot of the graphical user interface\relax }}{16}{figure.caption.76}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Terrain Classification: overall process diagram\relax }}{17}{figure.caption.78}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{19}{figure.caption.81}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Structure of the AMOS's leg. \citep {misc:amosii}\relax }}{20}{figure.caption.82}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Structure of the two repositories: LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{22}{figure.caption.85}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Virtual alternative for AMOS II.\relax }}{22}{figure.caption.86}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 2-neuron network oscillator \citep {unpub:ai3_lec3}\relax }}{23}{figure.caption.88}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Schematic diagram of tripod gait controller\relax }}{24}{figure.caption.95}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Terrain Noise Analysis (sample examples): terrain grass, angle sensors\relax }}{27}{figure.caption.107}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, proprioceptive sensors\relax }}{27}{figure.caption.108}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Thoraco Sensor (ATRf) output examples, 14 terrains\relax }}{28}{figure.caption.110}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Coxa Sensor (ACRm) output examples, 14 terrains\relax }}{29}{figure.caption.111}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Femur Sensor (AFRh) output examples, 14 terrains\relax }}{29}{figure.caption.112}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Foot Contact Sensor (FRf) output examples, 14 terrains\relax }}{30}{figure.caption.113}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Forming a feature vector out of a data file.\relax }}{31}{figure.caption.115}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Example of feature vector (raw data), 40 timesteps, no signal noise\relax }}{32}{figure.caption.116}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Normalised feature vector examples\relax }}{33}{figure.caption.120}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{34}{figure.caption.127}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Three sets of data in a dataset.\relax }}{35}{figure.caption.129}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Target vector for concrete\relax }}{35}{figure.caption.130}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Workflow of generating a dataset\relax }}{36}{figure.caption.131}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Procedure of training and testing a network\relax }}{37}{figure.caption.135}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Terrain Classification: overall process diagram\relax }}{17}{figure.caption.85}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{19}{figure.caption.88}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Structure of the AMOS's leg. \citep {misc:amosii}\relax }}{20}{figure.caption.89}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Structure of the two repositories: LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{22}{figure.caption.92}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Virtual alternative for AMOS II.\relax }}{22}{figure.caption.93}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 2-neuron network oscillator \citep {unpub:ai3_lec3}\relax }}{23}{figure.caption.95}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Schematic diagram of tripod gait controller\relax }}{24}{figure.caption.102}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Terrain Noise Analysis (sample examples): terrain grass, angle sensors\relax }}{27}{figure.caption.114}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, proprioceptive sensors\relax }}{27}{figure.caption.115}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Thoraco Sensor (ATRf) output examples, 14 terrains\relax }}{28}{figure.caption.117}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Coxa Sensor (ACRm) output examples, 14 terrains\relax }}{29}{figure.caption.118}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Femur Sensor (AFRh) output examples, 14 terrains\relax }}{29}{figure.caption.119}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Foot Contact Sensor (FRf) output examples, 14 terrains\relax }}{30}{figure.caption.120}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Forming a feature vector out of a data file.\relax }}{31}{figure.caption.122}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Example of feature vector (raw data), 40 timesteps, no signal noise\relax }}{32}{figure.caption.123}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Normalised feature vector examples\relax }}{33}{figure.caption.127}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Signal noise influence on one sample, terrain: concrete, angle sensors\relax }}{34}{figure.caption.134}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Three sets of data in a dataset.\relax }}{35}{figure.caption.136}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Target vector for concrete\relax }}{35}{figure.caption.137}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Workflow of generating a dataset\relax }}{36}{figure.caption.138}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Procedure of training and testing a network\relax }}{37}{figure.caption.142}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Comparison of the learning process to another framework (sknn).\relax }}{40}{figure.caption.143}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison of average epoch processing time to another framework (on MNIST).\relax }}{41}{figure.caption.145}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pruning Algorithm Results on the XOR Dataset.\relax }}{42}{figure.caption.151}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Application of the pruning algorithm on XOR\relax }}{43}{figure.caption.152}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Pruning Algorithm Results on MNIST Dataset.\relax }}{44}{figure.caption.154}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Application of the pruning algorithm on MNIST\relax }}{45}{figure.caption.156}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Demonstration of the minimal structures utilization on MNIST\relax }}{45}{figure.caption.158}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Similarity measures among various terrain types.\relax }}{47}{figure.caption.163}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Learning rate analysis. Net structure: [960, 20, 14].\relax }}{48}{figure.caption.166}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Network structure analysis. Learning rate: 0.1.\relax }}{48}{figure.caption.167}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Learning parameters analysis: Classification accuracy vs. learning rate and network structure\relax }}{49}{figure.caption.168}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Number of simulation timesteps: influence on the accuracy and training time\relax }}{49}{figure.caption.170}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Additive terrain and signal noise: influence on the accuracy\relax }}{49}{figure.caption.172}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Comparison of the learning process to another framework (sknn).\relax }}{40}{figure.caption.150}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison of average epoch processing time to another framework (on MNIST).\relax }}{41}{figure.caption.152}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pruning Algorithm Results on the XOR Dataset.\relax }}{42}{figure.caption.158}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Application of the pruning algorithm on XOR\relax }}{43}{figure.caption.159}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Pruning Algorithm Results on MNIST Dataset.\relax }}{44}{figure.caption.161}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Application of the pruning algorithm on MNIST\relax }}{45}{figure.caption.163}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Demonstration of the minimal structures utilization on MNIST\relax }}{45}{figure.caption.165}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Similarity measures among various terrain types.\relax }}{47}{figure.caption.170}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Learning rate analysis. Net structure: [960, 20, 14].\relax }}{48}{figure.caption.173}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Network structure analysis. Learning rate: 0.1.\relax }}{48}{figure.caption.174}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Learning parameters analysis: Classification accuracy vs. learning rate and network structure\relax }}{49}{figure.caption.175}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Number of simulation timesteps: influence on the accuracy and training time\relax }}{49}{figure.caption.177}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Additive terrain and signal noise: influence on the accuracy\relax }}{50}{figure.caption.179}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{57}{figure.caption.182}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{58}{figure.caption.184}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{59}{figure.caption.199}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{59}{figure.caption.200}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{60}{figure.caption.204}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{61}{figure.caption.206}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{62}{figure.caption.209}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A4.1}{\ignorespaces Thoraco joints on the front legs\relax }}{64}{figure.caption.221}
-\contentsline {figure}{\numberline {A4.2}{\ignorespaces Coxa joints on the front legs\relax }}{64}{figure.caption.222}
-\contentsline {figure}{\numberline {A4.3}{\ignorespaces Femur joints on the front legs\relax }}{64}{figure.caption.223}
-\contentsline {figure}{\numberline {A4.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{65}{figure.caption.224}
-\contentsline {figure}{\numberline {A4.5}{\ignorespaces Coxa joints on the middle legs\relax }}{65}{figure.caption.225}
-\contentsline {figure}{\numberline {A4.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{65}{figure.caption.226}
-\contentsline {figure}{\numberline {A4.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{65}{figure.caption.227}
-\contentsline {figure}{\numberline {A4.8}{\ignorespaces Coxa joints on the hint legs\relax }}{66}{figure.caption.228}
-\contentsline {figure}{\numberline {A4.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{66}{figure.caption.229}
-\contentsline {figure}{\numberline {A4.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{66}{figure.caption.230}
-\contentsline {figure}{\numberline {A4.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{66}{figure.caption.231}
-\contentsline {figure}{\numberline {A4.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{67}{figure.caption.232}
-\contentsline {figure}{\numberline {A4.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{67}{figure.caption.234}
-\contentsline {figure}{\numberline {A4.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{68}{figure.caption.235}
-\contentsline {figure}{\numberline {A4.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{68}{figure.caption.236}
-\contentsline {figure}{\numberline {A4.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{69}{figure.caption.237}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{57}{figure.caption.189}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{58}{figure.caption.191}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{59}{figure.caption.206}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{59}{figure.caption.207}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{60}{figure.caption.211}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{61}{figure.caption.213}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{62}{figure.caption.216}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A4.1}{\ignorespaces Thoraco joints on the front legs\relax }}{64}{figure.caption.228}
+\contentsline {figure}{\numberline {A4.2}{\ignorespaces Coxa joints on the front legs\relax }}{64}{figure.caption.229}
+\contentsline {figure}{\numberline {A4.3}{\ignorespaces Femur joints on the front legs\relax }}{64}{figure.caption.230}
+\contentsline {figure}{\numberline {A4.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{65}{figure.caption.231}
+\contentsline {figure}{\numberline {A4.5}{\ignorespaces Coxa joints on the middle legs\relax }}{65}{figure.caption.232}
+\contentsline {figure}{\numberline {A4.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{65}{figure.caption.233}
+\contentsline {figure}{\numberline {A4.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{65}{figure.caption.234}
+\contentsline {figure}{\numberline {A4.8}{\ignorespaces Coxa joints on the hint legs\relax }}{66}{figure.caption.235}
+\contentsline {figure}{\numberline {A4.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{66}{figure.caption.236}
+\contentsline {figure}{\numberline {A4.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{66}{figure.caption.237}
+\contentsline {figure}{\numberline {A4.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{66}{figure.caption.238}
+\contentsline {figure}{\numberline {A4.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{67}{figure.caption.239}
+\contentsline {figure}{\numberline {A4.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{67}{figure.caption.241}
+\contentsline {figure}{\numberline {A4.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{68}{figure.caption.242}
+\contentsline {figure}{\numberline {A4.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{68}{figure.caption.243}
+\contentsline {figure}{\numberline {A4.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{69}{figure.caption.244}

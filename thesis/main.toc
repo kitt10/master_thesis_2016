@@ -14,61 +14,62 @@
 \contentsline {section}{\numberline {2.3}Pruning Algorithms}{3}{section.19}
 \contentsline {section}{\numberline {2.4}Terrain Classification for Legged Robots}{3}{section.20}
 \contentsline {chapter}{\numberline {3}Classification Method}{4}{chapter.21}
-\contentsline {section}{\numberline {3.1}Network Design Choices}{4}{section.25}
-\contentsline {section}{\numberline {3.2}Learning Algorithm}{6}{section.30}
-\contentsline {subsection}{\numberline {3.2.1}Using Mini-batches}{7}{subsection.32}
-\contentsline {subsection}{\numberline {3.2.2}Matrix Notation}{7}{subsection.33}
-\contentsline {subsection}{\numberline {3.2.3}Forward Propagation}{7}{subsection.34}
-\contentsline {subsection}{\numberline {3.2.4}Error Calculation}{8}{subsection.39}
-\contentsline {subsection}{\numberline {3.2.5}Parameters Update}{8}{subsection.41}
-\contentsline {section}{\numberline {3.3}Graphical User Interface}{10}{section.48}
-\contentsline {section}{\numberline {3.4}Network Pruning Algorithm}{11}{section.56}
-\contentsline {subsection}{\numberline {3.4.1}Pruning Idea}{11}{subsection.57}
-\contentsline {subsection}{\numberline {3.4.2}Algorithm Realization}{11}{subsection.59}
-\contentsline {subsection}{\numberline {3.4.3}Testing Datasets for the Pruning Algorithm}{14}{subsection.67}
-\contentsline {subsection}{\numberline {3.4.4}Minimal Structure Utilization}{16}{subsection.74}
-\contentsline {chapter}{\numberline {4}Terrain Classification for hexapod robot AMOS II}{17}{chapter.76}
-\contentsline {section}{\numberline {4.1}Overall Process Summary}{17}{section.77}
-\contentsline {section}{\numberline {4.2}Experimental Environment Specification}{18}{section.79}
-\contentsline {subsection}{\numberline {4.2.1}Hexapod Robot AMOS II}{19}{subsection.80}
-\contentsline {subsection}{\numberline {4.2.2}AMOS II Simulation}{21}{subsection.84}
-\contentsline {subsection}{\numberline {4.2.3}Tripod Gait Controller}{23}{subsection.87}
-\contentsline {section}{\numberline {4.3}Generation of Virtual Terrains}{24}{section.96}
-\contentsline {subsection}{\numberline {4.3.1}Terrain Features}{25}{subsection.97}
-\contentsline {subsection}{\numberline {4.3.2}Features Determination for Various Terrains}{25}{subsection.100}
-\contentsline {subsection}{\numberline {4.3.3}Terrain Noise}{26}{subsection.102}
-\contentsline {section}{\numberline {4.4}Data Acquisition}{28}{section.109}
-\contentsline {section}{\numberline {4.5}Building a Feature Vector}{30}{section.114}
-\contentsline {subsection}{\numberline {4.5.1}Feature Vector Normalisation}{32}{subsection.117}
-\contentsline {subsection}{\numberline {4.5.2}Signal Noise}{33}{subsection.121}
-\contentsline {section}{\numberline {4.6}Creation of Datasets}{34}{section.128}
-\contentsline {section}{\numberline {4.7}Training and Classification}{36}{section.134}
-\contentsline {subsection}{\numberline {4.7.1}Evaluation Measures}{38}{subsection.136}
-\contentsline {subsection}{\numberline {4.7.2}Terrain Classification using Network Pruning}{38}{subsection.138}
-\contentsline {subsection}{\numberline {4.7.3}Searching for Optimal Configuration (Grid Search)}{38}{subsection.139}
-\contentsline {subsection}{\numberline {4.7.4}Other Classifiers}{39}{subsection.140}
-\contentsline {chapter}{\numberline {5}Experimental Evaluation}{40}{chapter.141}
-\contentsline {section}{\numberline {5.1}Verification of the Network Implementation}{40}{section.142}
-\contentsline {section}{\numberline {5.2}Pruning Algorithm Results}{42}{section.146}
-\contentsline {subsection}{\numberline {5.2.1}Evaluation on XOR Dataset}{42}{subsection.147}
-\contentsline {subsection}{\numberline {5.2.2}Evaluation on MNIST Dataset}{43}{subsection.153}
-\contentsline {subsubsection}{Minimal Structure Analysis for MNIST}{45}{section*.157}
-\contentsline {section}{\numberline {5.3}Terrain Processing Results}{46}{section.160}
-\contentsline {subsection}{\numberline {5.3.1}Analysis of Terrain Similarity}{46}{subsection.161}
-\contentsline {subsection}{\numberline {5.3.2}Classification Results}{47}{subsection.164}
-\contentsline {subsubsection}{Network Learning Parameters}{47}{section*.165}
-\contentsline {subsubsection}{Required Number of Timesteps}{49}{section*.169}
-\contentsline {subsection}{\numberline {5.3.3}Allowed Data Noise}{49}{subsection.171}
-\contentsline {subsection}{\numberline {5.3.4}Needed Sensors}{50}{subsection.173}
-\contentsline {subsubsection}{Results Complete Overview}{50}{section*.174}
-\contentsline {chapter}{\numberline {6}Discussion}{52}{chapter.176}
-\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{53}{chapter.177}
-\contentsline {chapter}{Bibliography}{54}{chapter*.178}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{56}{appendix.179}
-\contentsline {chapter}{\numberline {A2}Methods Implementation}{57}{appendix.180}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{57}{section.181}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{60}{section.203}
-\contentsline {chapter}{\numberline {A3}Code Documentation}{63}{appendix.218}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{64}{appendix.219}
-\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{64}{section.220}
-\contentsline {section}{\numberline {A4.2}Further Data Analysis}{67}{section.233}
+\contentsline {section}{\numberline {3.1}Network Structure}{4}{section.24}
+\contentsline {section}{\numberline {3.2}Neuron Principle}{5}{section.28}
+\contentsline {section}{\numberline {3.3}Learning Algorithm for Network Training}{6}{section.33}
+\contentsline {subsection}{\numberline {3.3.1}Using Mini-batches}{7}{subsection.35}
+\contentsline {subsection}{\numberline {3.3.2}Matrix Notations}{7}{subsection.36}
+\contentsline {subsection}{\numberline {3.3.3}Forward Propagation}{8}{subsection.37}
+\contentsline {subsection}{\numberline {3.3.4}Error Calculation}{8}{subsection.42}
+\contentsline {subsection}{\numberline {3.3.5}Parameter Update}{8}{subsection.44}
+\contentsline {section}{\numberline {3.4}Network Pruning Algorithm}{10}{section.52}
+\contentsline {subsection}{\numberline {3.4.1}Pruning Method}{10}{subsection.53}
+\contentsline {subsection}{\numberline {3.4.2}Algorithm Realization}{10}{subsection.58}
+\contentsline {subsection}{\numberline {3.4.3}Datasets for Evaluation of the Pruning Algorithm}{13}{subsection.66}
+\contentsline {subsection}{\numberline {3.4.4}Using Network Pruning for Feature Selection}{15}{subsection.73}
+\contentsline {section}{\numberline {3.5}Graphical User Interface}{16}{section.75}
+\contentsline {chapter}{\numberline {4}Terrain Classification for hexapod robot AMOS II}{17}{chapter.83}
+\contentsline {section}{\numberline {4.1}Overall Process Summary}{17}{section.84}
+\contentsline {section}{\numberline {4.2}Experimental Environment Specification}{18}{section.86}
+\contentsline {subsection}{\numberline {4.2.1}Hexapod Robot AMOS II}{19}{subsection.87}
+\contentsline {subsection}{\numberline {4.2.2}AMOS II Simulation}{21}{subsection.91}
+\contentsline {subsection}{\numberline {4.2.3}Tripod Gait Controller}{23}{subsection.94}
+\contentsline {section}{\numberline {4.3}Generation of Virtual Terrains}{24}{section.103}
+\contentsline {subsection}{\numberline {4.3.1}Terrain Features}{25}{subsection.104}
+\contentsline {subsection}{\numberline {4.3.2}Features Determination for Various Terrains}{25}{subsection.107}
+\contentsline {subsection}{\numberline {4.3.3}Terrain Noise}{26}{subsection.109}
+\contentsline {section}{\numberline {4.4}Data Acquisition}{28}{section.116}
+\contentsline {section}{\numberline {4.5}Building a Feature Vector}{30}{section.121}
+\contentsline {subsection}{\numberline {4.5.1}Feature Vector Normalisation}{32}{subsection.124}
+\contentsline {subsection}{\numberline {4.5.2}Signal Noise}{33}{subsection.128}
+\contentsline {section}{\numberline {4.6}Creation of Datasets}{34}{section.135}
+\contentsline {section}{\numberline {4.7}Training and Classification}{36}{section.141}
+\contentsline {subsection}{\numberline {4.7.1}Evaluation Measures}{38}{subsection.143}
+\contentsline {subsection}{\numberline {4.7.2}Terrain Classification using Network Pruning}{38}{subsection.145}
+\contentsline {subsection}{\numberline {4.7.3}Searching for Optimal Configuration (Grid Search)}{38}{subsection.146}
+\contentsline {subsection}{\numberline {4.7.4}Other Classifiers}{39}{subsection.147}
+\contentsline {chapter}{\numberline {5}Experimental Evaluation}{40}{chapter.148}
+\contentsline {section}{\numberline {5.1}Verification of the Network Implementation}{40}{section.149}
+\contentsline {section}{\numberline {5.2}Pruning Algorithm Results}{42}{section.153}
+\contentsline {subsection}{\numberline {5.2.1}Evaluation on XOR Dataset}{42}{subsection.154}
+\contentsline {subsection}{\numberline {5.2.2}Evaluation on MNIST Dataset}{43}{subsection.160}
+\contentsline {subsubsection}{Minimal Structure Analysis for MNIST}{45}{section*.164}
+\contentsline {section}{\numberline {5.3}Terrain Processing Results}{46}{section.167}
+\contentsline {subsection}{\numberline {5.3.1}Analysis of Terrain Similarity}{46}{subsection.168}
+\contentsline {subsection}{\numberline {5.3.2}Classification Results}{47}{subsection.171}
+\contentsline {subsubsection}{Network Learning Parameters}{47}{section*.172}
+\contentsline {subsubsection}{Required Number of Timesteps}{49}{section*.176}
+\contentsline {subsection}{\numberline {5.3.3}Allowed Data Noise}{50}{subsection.178}
+\contentsline {subsection}{\numberline {5.3.4}Needed Sensors}{50}{subsection.180}
+\contentsline {subsubsection}{Results Complete Overview}{50}{section*.181}
+\contentsline {chapter}{\numberline {6}Discussion}{52}{chapter.183}
+\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{53}{chapter.184}
+\contentsline {chapter}{Bibliography}{54}{chapter*.185}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{56}{appendix.186}
+\contentsline {chapter}{\numberline {A2}Methods Implementation}{57}{appendix.187}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{57}{section.188}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{60}{section.210}
+\contentsline {chapter}{\numberline {A3}Code Documentation}{63}{appendix.225}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{64}{appendix.226}
+\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{64}{section.227}
+\contentsline {section}{\numberline {A4.2}Further Data Analysis}{67}{section.240}

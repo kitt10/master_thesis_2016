@@ -4,17 +4,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces XOR problem definition\relax }}{14}{table.caption.69}
+\contentsline {table}{\numberline {3.1}{\ignorespaces XOR problem definition\relax }}{13}{table.caption.68}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{21}{table.caption.83}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{23}{table.caption.89}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Terrain features and their ranges\relax }}{25}{table.caption.99}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Parameters of virtual terrain types\relax }}{25}{table.caption.101}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Generated datasets\relax }}{36}{table.caption.133}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{21}{table.caption.90}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{23}{table.caption.96}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Terrain features and their ranges\relax }}{25}{table.caption.106}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Parameters of virtual terrain types\relax }}{25}{table.caption.108}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Generated datasets\relax }}{36}{table.caption.140}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Comparison of f1-score on MNIST to another framework (sknn)\relax }}{41}{table.caption.144}
-\contentsline {table}{\numberline {5.2}{\ignorespaces PA progress example on MNIST\relax }}{44}{table.caption.155}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Classification results\relax }}{50}{table.caption.175}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Comparison of f1-score on MNIST to another framework (sknn)\relax }}{41}{table.caption.151}
+\contentsline {table}{\numberline {5.2}{\ignorespaces PA progress example on MNIST\relax }}{44}{table.caption.162}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Classification results\relax }}{50}{table.caption.182}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
