@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import matplotlib as mpl
+mpl.rcParams['axes.labelsize'] = 18
+mpl.rcParams['xtick.labelsize'] = 15
+mpl.rcParams['ytick.labelsize'] = 15
+mpl.rcParams['legend.fontsize'] = 18
+
 import matplotlib.pyplot as plt
 import numpy as np
 from functions import load_net
@@ -18,7 +24,8 @@ def load_nets():
     kitt_mnist['acc_std'] = np.std(kitt_mnist['accs'], axis=0)
     kitt_mnist['err_mean'] = np.mean(kitt_mnist['errs'], axis=0)
     kitt_mnist['err_std'] = np.std(kitt_mnist['errs'], axis=0)
-    kitt_mnist['time_mean'] = np.mean(kitt_mnist['times'], axis=0)
+    #kitt_mnist['time_mean'] = np.mean(kitt_mnist['times'], axis=0)
+    kitt_mnist['time_mean'] = [item for sublist in kitt_mnist['times'] for item in sublist]
 
     print 'kitt on MNIST:'
     print net['skills'][1]
@@ -47,7 +54,8 @@ def load_nets():
     sknn_mnist['acc_std'] = np.std(sknn_mnist['accs'], axis=0)
     sknn_mnist['err_mean'] = np.mean(sknn_mnist['errs'], axis=0)
     sknn_mnist['err_std'] = np.std(sknn_mnist['errs'], axis=0)
-    sknn_mnist['time_mean'] = np.mean(sknn_mnist['times'], axis=0)
+    #sknn_mnist['time_mean'] = np.mean(sknn_mnist['times'], axis=0)
+    sknn_mnist['time_mean'] = [item for sublist in sknn_mnist['times'] for item in sublist]
 
     print 'sknn on MNIST:'
     print net['skills'][1]
@@ -81,9 +89,9 @@ if __name__ == '__main__':
 
     ''' Accuracy through epochs '''
     plt.figure()
-    plt.errorbar(x=range(101), y=kitt_mnist['acc_mean'], yerr=kitt_mnist['acc_std'], label='kitt on MNIST',
+    plt.errorbar(x=range(101), y=kitt_mnist['acc_mean'], yerr=kitt_mnist['acc_std'], label='kitt_nn on MNIST',
                  color='blue')
-    plt.errorbar(x=range(101), y=kitt_xor['acc_mean'], yerr=kitt_xor['acc_std'], label='kitt on XOR',
+    plt.errorbar(x=range(101), y=kitt_xor['acc_mean'], yerr=kitt_xor['acc_std'], label='kitt_nn on XOR',
                  color='cyan')
     plt.errorbar(x=range(101), y=sknn_mnist['acc_mean'], yerr=sknn_mnist['acc_std'], label='sknn on MNIST',
                  color='green')
@@ -94,8 +102,11 @@ if __name__ == '__main__':
     plt.ylabel('classification accuracy')
     plt.ylim([0, 1])
     plt.grid()
-    plt.legend(loc='best', ncol=2)
-    plt.savefig('../../thesis/img/kitt_verify_acc.eps', bbox_inches='tight', pad_inches=0.1)
+    ax = plt.gca()
+    handles, labels = ax.get_legend_handles_labels()
+    handles = [h[0] for h in handles]
+    plt.legend(handles, labels, loc='best', ncol=2)
+    #plt.savefig('../../thesis/img/kitt_verify_acc.eps', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     ''' Error through epochs '''
@@ -114,18 +125,22 @@ if __name__ == '__main__':
     plt.ylim([0, 1])
     plt.grid()
     plt.legend(loc='best', ncol=2)
-    plt.savefig('../../thesis/img/kitt_verify_err.eps', bbox_inches='tight', pad_inches=0.1)
+    #plt.savefig('../../thesis/img/kitt_verify_err.eps', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     ''' Average epoch time '''
     plt.figure()
-    plt.bar(1, np.mean(kitt_mnist['time_mean']), width=1, color='blue')
-    plt.bar(2, np.mean(sknn_mnist_cpu['training_eval'][2]), width=1, color='green')
-    plt.bar(3, np.mean(sknn_mnist['time_mean']), width=1, color='yellow')
-    plt.xlim([0, 5])
-    plt.xticks([1.5, 2.5, 3.5], ['kitt', 'sknn:cpu', 'sknn:gpu'], ha='center')
+    #plt.bar(1, np.mean(kitt_mnist['time_mean']), width=1, color='blue')
+    bp = plt.boxplot((kitt_mnist['time_mean']), positions=[15], widths=[10])
+    bp = plt.boxplot((sknn_mnist['time_mean']), positions=[35], widths=[10])
+    #plt.bar(2, np.mean(sknn_mnist_cpu['training_eval'][2]), width=1, color='green')
+    #plt.bar(3, np.mean(sknn_mnist['time_mean']), width=1, color='yellow')
+    plt.xlim([0, 50])
+    plt.ylim([0, 10])
+    plt.xticks([15, 35], ['kitt_nn', 'sknn'], ha='center')
     plt.ylabel('average epoch time [s]')
     plt.grid()
-    plt.savefig('../../thesis/img/kitt_verify_time.eps', bbox_inches='tight', pad_inches=0.1)
+    plt.setp(bp['boxes'], color='maroon')
+    #plt.savefig('../../thesis/img/kitt_verify_time.eps', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 

@@ -12,6 +12,7 @@
 """
 
 import argparse
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from random import choice
@@ -363,19 +364,24 @@ if __name__ == '__main__':
 
             # Terrain Noise Analysis : Samples for various terrain noises
 
-            noises_to_use = noise_types
+            mpl.rcParams['axes.labelsize'] = 18
+            mpl.rcParams['xtick.labelsize'] = 15
+            mpl.rcParams['ytick.labelsize'] = 15
+            mpl.rcParams['legend.fontsize'] = 18
+
+            #noises_to_use = noise_types
             samples = dict()
             for noise in noises_to_use:
                 samples[noise] = dict()
                 terrain_noise_std = noise_params[noise][1]
                 for terrain in terrains_to_use:
-                    samples[noise][terrain] = [[] for i in range(len(data['no_noise'][terrain][sensors_to_use[0]]))]
+                    samples[noise][terrain] = [[] for i in range(len(data[noises_to_use[0]][terrain][sensors_to_use[0]]))]
                     for sensor in sensors_to_use:
-                        for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
+                        for i_sample, sample_terrain in enumerate(data[noises_to_use[0]][terrain][sensor]):
                             samples[noise][terrain][i_sample] += prepare_signal(
                                 signal=sample_terrain[10:sample_len + 10], sen=sensor)
 
-            colors = ('#cccccc', 'y', 'g', 'b', 'r', 'm', 'c', 'k')
+            colors = ('r', 'b', 'k', '#cccccc', 'y', 'g', 'm', 'c')
             for terrain in terrains_to_use:
                 fig = plt.figure('signal_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
                 sigs = list()
@@ -396,10 +402,10 @@ if __name__ == '__main__':
                 m = np.max(sigs)
                 for i, sensor in enumerate(sensors_to_use):
                     if r[0] <= (i + 1) * sample_len <= r[1]:
-                        plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, -m / 10.0 + (i % 2) * m / 50.0),
+                        plt.annotate(sensor, xy=(i * sample_len + 0.5 * sample_len, -m / 15.0 + (i % 2) * m / 40.0),
                                      color='#6C0505',
                                      horizontalalignment='center')
-                        plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (-m / 10.0 - m / 50.0, m + m / 50.0),
+                        plt.plot(((i + 1) * sample_len, (i + 1) * sample_len), (-m / 15.0 - m / 40.0, m + m / 40.0),
                                  '-..', color='#6C0505')
                 if save_figure:
                     plt.savefig(

@@ -1,17 +1,15 @@
 \chapter{Experimental Evaluation} \label{chap:results}
-In this chapter the methods introduced in previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}.
-
-Then, modules of the overall terrain classification process are gradually evaluated in (\cref{sec:terrain_processing_results}).
+In this chapter the methods introduced in previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. Results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}. Then, the overall terrain classification process is gradually evaluated in \cref{sec:terrain_processing_results}.
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
-Classification skills of the implemented method \textit{kitt\_nn} are compared to a \textit{Scikit-neuralnetwork} classifier (\textit{sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
+Classification performance of the implemented method \textit{kitt\_nn} is compared to a \textit{Scikit-neuralnetwork} classifier (\citep{misc:sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
-The following figure \ref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations were performed and mean values with standard deviation ranges are shown.
+The following \cref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations were performed and mean values with standard deviation ranges are shown.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{kitt_verify_acc}
-  \caption{Comparison of the learning process to another framework (sknn).}
+  \caption{Learning process compared to another framework (Scikit-neuralnetwork (sknn): \citep{misc:sknn}).}
   \label{fig:kitt_verify_acc}
 \end{figure}
 
@@ -42,30 +40,30 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_sco
 
 In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included to the comparison.
 
-This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples.
+This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples. The average is computed out of $ 1000 $ samples, as we train $ 100 $ epochs in $ 10 $ observations.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{kitt_verify_time}
-  \caption{Comparison of average epoch processing time to another framework (on MNIST).}
+  \caption{Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (sknn): \citep{misc:sknn}), MNIST dataset}
   \label{fig:kitt_verify_time}
 \end{figure}
 
-The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} (see \citep{misc:sknn}) of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
+The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
 
-\section{Pruning Algorithm Results} \label{sec:pruning_algorithm_results}
+\section{Evaluation of the Pruning Algorithm} \label{sec:pruning_algorithm_results}
 This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned network of a minimal structure, but keeping a required classification accuracy, is expected.
 
-The evalutaion of the algorithm is performed on the two datasets described in \cref{ssec:testing_datasets}: XOR and MNIST.
+The evalutaion of the algorithm is performed on the two datasets, XOR and MNIST, described in \cref{ssec:testing_datasets}.
 
 \subsection{Evaluation on XOR Dataset} \label{ssec:evaluation_on_xor}
-The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). It is chosen to use a network with one hidden layer of $ 100 $ neurons as the algorithm input (\cref{img:pa_xor_start}). The desired structure is shown in \cref{img:pa_xor_final}.
+The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). Initially, a network with one hidden layer of $ 100 $ neurons is constructed as the algorithm input (\cref{img:pa_xor_start}). The desired structure is shown in \cref{img:pa_xor_final}.
 
 During the pruning process, three key network properties are observed:
 \begin{enumerate}
-\item network structure
-\item number of synapses in the network
-\item classification accuracy on a chosen dataset
+\item network structure;
+\item number of synapses in the network;
+\item classification accuracy on a chosen dataset.
 \end{enumerate}
 
 Those are shown with respect to the pruning step (see the pruning loop in \cref{img:pruning_algorithm}) all together in \cref{fig:pa_result_xor}.
@@ -73,7 +71,7 @@ Those are shown with respect to the pruning step (see the pruning loop in \cref{
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{pa_result_xor}
-  \caption{Pruning Algorithm Results on the XOR Dataset.}
+  \caption{Results of the pruning algorithm on XOR dataset.}
   \label{fig:pa_result_xor}
 \end{figure}
 
@@ -183,7 +181,7 @@ The following figures (\ref{img:pa_mnist_morph}) illustrate the transformation o
 \label{img:pa_mnist_morph}
 \end{figure}
 
-\subsubsection{Minimal Structure Analysis for MNIST} \label{sssec:mnist_analysis}
+\subsubsection{Minimal Structure in MNIST Dataset} \label{sssec:mnist_analysis}
 As mentioned in \cref{ssec:minimal_structure_util}, minimal structures obtained from the pruning algorithm can be further researched.
 
 For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class or which pixels are totally useless for classification.
@@ -193,16 +191,16 @@ For instance, considering the MNIST dataset, there is an image (meaning a vector
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.7\linewidth]{mnist_interesting_pixels.png}
-  \caption{Pixels of the MNIST samples that are essential for classification}
+  \caption{}
   \label{img:msu_interesting}
 \end{subfigure}%
 \begin{subfigure}{0.45\textwidth}
   \centering
   \includegraphics[width=0.7\linewidth]{mnist_pixels_seven.png}
-  \caption{Pixels of the MNIST samples influencing the class $ 7 $}
+  \caption{}
   \label{img:msu_seven}
 \end{subfigure}
-\caption{Demonstration of the minimal structures utilization on MNIST}
+\caption{Demonstration of the minimal structures utilization on MNIST; (A) Pixels of the MNIST samples that are essential for classification; (B) Pixels of the MNIST samples influencing the class $ 7 $}
 \label{img:pa_xor_morph}
 \end{figure}
 
@@ -220,7 +218,7 @@ intensity = \frac{255 \cdot n\_con}{15}
 
 The results on both figures (\ref{img:msu_interesting} and \ref{img:msu_seven}) make a good sense, as the pixels close to borders are black. One could expect, that these pixels are not important, as the digits are centered in the images.
 
-\section{Terrain Processing Results} \label{sec:terrain_processing_results}
+\section{Results of Terrain Classification} \label{sec:terrain_processing_results}
 In this section, results of the overall terrain classification process are shown. The results are sorted in correspondance to the methods explanation in \cref{chap:terrain_classification}.
 
 \subsection{Analysis of Terrain Similarity} \label{ssec:terrains_analysis}
@@ -248,9 +246,7 @@ The surfaces have been generated virtually and their similarity to real world te
 Surprisingly, a wooden terrain ended up as very similar to gravel and carpet, but a limited number of simulated terrain features has to be considered. 
 On the other hand, rubber results as very different from swamp and snow, which is a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
 
-\subsection{Classification Results} \label{ssec:classification_results}
-
-\subsubsection{Network Learning Parameters} \label{sssec:analysis_of_learning_parameters}
+\subsection{Selection of Learning Parameters} \label{ssec:analysis_of_learning_parameters}
 
 learning rate
 
@@ -263,9 +259,23 @@ learning rate
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr01}
-  \caption{Network structure analysis. Learning rate: 0.1.}
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20_example}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis_example}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05}
+  \caption{Network structure analysis. Learning rate: 0.5.}
   \label{fig:st_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05_example}
+  \caption{Network structure analysis. Learning rate: 0.5.}
+  \label{fig:st_analysis_example}
 \end{figure}
 
 \begin{figure}[H]
@@ -275,16 +285,23 @@ learning rate
   \label{fig:acc_st_lr_mat}
 \end{figure}
 
-\subsubsection{Required Number of Timesteps} \label{sssec:number_of_timesteps}
+\subsection{Required Time for Classification} \label{ssec:number_of_timesteps}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_ts_bar}
+  \includegraphics[width=1.0\textwidth]{cl_ts_acc_boxplot}
   \caption{Number of simulation timesteps: influence on the accuracy and training time}
-  \label{fig:ts_bar}
+  \label{fig:ts_acc_boxplot}
 \end{figure}
 
-\subsection{Allowed Data Noise} \label{ssec:final_configuration}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_ts_time_boxplot}
+  \caption{Number of simulation timesteps: influence on the accuracy and training time}
+  \label{fig:ts_time_boxplot}
+\end{figure}
+
+\subsection{Noise Influence on Classification} \label{ssec:final_configuration}
 
 \begin{figure}[H]
   \centering
@@ -293,10 +310,23 @@ learning rate
   \label{fig:acc_tn_sn_mat}
 \end{figure}
 
-\subsection{Needed Sensors} \label{ssec:final_configuration}
+\subsection{Analysis of Used Sensors} \label{ssec:final_configuration}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_sen_vs_epoch}
+  \caption{bla}
+  \label{fig:sen_vs_epoch}
+\end{figure}
 
-\subsubsection{Results Complete Overview} \label{sssec:results_overview}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_sen_time}
+  \caption{bla}
+  \label{fig:sen_time}
+\end{figure}
+
+\subsection{Classification Performance Overview} \label{ssec:results_overview}
 
 \begin{table}[H]
 \centering
@@ -305,26 +335,54 @@ learning rate
 \resizebox{\textwidth}{!} {
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textit{dataset} & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} & \textit{c. error} & \textit{avg. ep. time {[}s{]}} \\ \hline
-\textbf{ds\_01}  & 0.923             & 0.920              & 0.920           & 0.920             & 0.015             & 0.757                          \\ \hline
-\textbf{ds\_02}  & 0.682             & 0.660              & 0.680           & 0.640             & 0.068             & 0.650                          \\ \hline
-\textbf{ds\_03}  & 0.708             & 0.700              & 0.710           & 0.680             & 0.063             & 0.439                          \\ \hline
-\textbf{ds\_04}  & 0.640             & 0.650              & 0.640           & 0.620             & 0.071             & 0.401                          \\ \hline
-\textbf{ds\_05}  & 0.806             & 0.810              & 0.810           & 0.800             & 0.039             & 0.488                          \\ \hline
-\textbf{ds\_06}  & 0.921             & 0.920              & 0.920           & 0.920             & 0.015             & 1.332                          \\ \hline
-\textbf{ds\_07}  & 0.776             & 0.790              & 0.780           & 0.760             & 0.039             & 0.751                          \\ \hline
-\textbf{ds\_08}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_09}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_10}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_11}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_12}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_13}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_14}  &                   &                    &                 &                   &                   &                                \\ \hline
-\textbf{ds\_15}  &                   &                    &                 &                   &                   &                                \\ \hline
+\textit{dataset} & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} & \textit{error} & \textit{ep. time {[}s{]}} \\
+\hline
+00\_00\_80\_p 	& 0.624 	& 0.596 	& 0.624 	& 0.576 	& 0.072 	& 1.089 	 \\ \hline
+00\_00\_80\_a 	& 0.89 	& 0.888 	& 0.89 	& 0.878 	& 0.02 	& 1.33 	 \\ \hline
+00\_03\_40\_a 	& 0.902 	& 0.9 	& 0.9 	& 0.9 	& 0.019 	& 0.765 	 \\ \hline
+00\_00\_30\_a 	& 0.847 	& 0.84 	& 0.848 	& 0.842 	& 0.03 	& 0.964 	 \\ \hline
+00\_00\_10\_p 	& 0.489 	& 0.468 	& 0.49 	& 0.43 	& 0.089 	& 0.565 	 \\ \hline
+00\_01\_40\_a 	& 0.776 	& 0.79 	& 0.78 	& 0.76 	& 0.04 	& 0.751 	 \\ \hline
+00\_00\_01\_a 	& 0.639 	& 0.646 	& 0.638 	& 0.624 	& 0.073 	& 0.526 	 \\ \hline
+00\_00\_80\_t	& 0.761 	& 0.764 	& 0.76 	& 0.742 	& 0.051 	& 0.715 	 \\ \hline
+00\_00\_20\_a 	& 0.85 	& 0.848 	& 0.85 	& 0.846 	& 0.03 	& 0.894 	 \\ \hline
+00\_05\_40\_a 	& 0.884 	& 0.88 	& 0.88 	& 0.88 	& 0.019 	& 0.76 	 \\ \hline
+00\_00\_40\_a 	& 0.906 	& 0.906 	& 0.906 	& 0.906 	& 0.019 	& 0.865 	 \\ \hline
+00\_00\_10\_a 	& 0.805 	& 0.806 	& 0.804 	& 0.798 	& 0.04 	& 0.526 	 \\ \hline
+00\_00\_40\_p 	& 0.696 	& 0.702 	& 0.694 	& 0.666 	& 0.06 	& 0.707 	 \\ \hline
+00\_00\_10\_t 	& 0.423 	& 0.432 	& 0.424 	& 0.386 	& 0.102 	& 0.469 	 \\ \hline
+00\_10\_40\_a 	& 0.851 	& 0.85 	& 0.85 	& 0.85 	& 0.026 	& 0.792 	 \\ \hline
+00\_00\_40\_t	& 0.701 	& 0.692 	& 0.702 	& 0.67 	& 0.064 	& 0.475 	 \\ \hline
+01\_03\_40\_a 	& 0.772 	& 0.78 	& 0.77 	& 0.76 	& 0.044 	& 1.314 	 \\ \hline
+01\_10\_40\_a 	& 0.639 	& 0.67 	& 0.64 	& 0.63 	& 0.06 	& 0.944 	 \\ \hline
+01\_01\_40\_a 	& 0.759 	& 0.77 	& 0.76 	& 0.75 	& 0.052 	& 1.093 	 \\ \hline
+01\_00\_40\_a 	& 0.815 	& 0.83 	& 0.81 	& 0.82 	& 0.041 	& 0.844 	 \\ \hline
+01\_05\_40\_a 	& 0.78 	& 0.79 	& 0.78 	& 0.77 	& 0.044 	& 0.9 	 \\ \hline
+03\_10\_40\_a 	& 0.565 	& 0.53 	& 0.56 	& 0.54 	& 0.063 	& 0.946 	 \\ \hline
+03\_05\_40\_a 	& 0.645 	& 0.64 	& 0.65 	& 0.63 	& 0.054 	& 0.871 	 \\ \hline
+03\_00\_40\_a 	& 0.714 	& 0.73 	& 0.71 	& 0.7 	& 0.057 	& 0.831 	 \\ \hline
+03\_03\_40\_a 	& 0.719 	& 0.74 	& 0.72 	& 0.72 	& 0.046 	& 0.939 	 \\ \hline
+03\_01\_40\_a 	& 0.779 	& 0.78 	& 0.78 	& 0.78 	& 0.042 	& 1.068 	 \\ \hline
+05\_01\_40\_a	& 0.732 	& 0.74 	& 0.73 	& 0.73 	& 0.052 	& 1.018 	 \\ \hline
+05\_05\_40\_a 	& 0.651 	& 0.66 	& 0.65 	& 0.64 	& 0.056 	& 0.933 	 \\ \hline
+05\_10\_40\_a 	& 0.601 	& 0.61 	& 0.6 	& 0.6 	& 0.062 	& 0.954 	 \\ \hline
+05\_03\_40\_a 	& 0.677 	& 0.71 	& 0.68 	& 0.67 	& 0.052 	& 0.949 	 \\ \hline
+05\_00\_40\_a 	& 0.685 	& 0.72 	& 0.69 	& 0.68 	& 0.055 	& 0.835 	 \\ \hline
+10\_10\_40\_a 	& 0.459 	& 0.46 	& 0.46 	& 0.43 	& 0.087 	& 0.983 	 \\ \hline
+10\_03\_40\_a	& 0.621 	& 0.63 	& 0.62 	& 0.6 	& 0.07 	& 0.824 	 \\ \hline
+10\_01\_40\_a 	& 0.594 	& 0.63 	& 0.59 	& 0.58 	& 0.072 	& 1.131 	 \\ \hline
+10\_00\_40\_a 	& 0.614 	& 0.61 	& 0.61 	& 0.59 	& 0.067 	& 0.822 	 \\ \hline
+10\_05\_40\_a 	& 0.543 	& 0.58 	& 0.54 	& 0.53 	& 0.074 	& 0.875 	 \\ \hline
+20\_01\_40\_a 	& 0.459 	& 0.48 	& 0.46 	& 0.44 	& 0.093 	& 1.071 	 \\ \hline
+20\_00\_40\_a 	& 0.463 	& 0.47 	& 0.46 	& 0.44 	& 0.087 	& 0.827 	 \\ \hline
+20\_05\_40\_a 	& 0.436 	& 0.45 	& 0.44 	& 0.41 	& 0.091 	& 0.947 	 \\ \hline
+20\_10\_40\_a 	& 0.371 	& 0.36 	& 0.37 	& 0.36 	& 0.09 	& 0.993 	 \\ \hline
+20\_03\_40\_a	& 0.439 	& 0.47 	& 0.44 	& 0.42 	& 0.091 	& 0.923 	 \\ \hline
 \end{tabular}
 }
 \end{table}
 
+\subsection{Final Configuration} \label{ssec:results_overview}
 
 evaluation (tables and figures) of classification:
 \begin{itemize}
