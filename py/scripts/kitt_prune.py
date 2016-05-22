@@ -124,8 +124,8 @@ if __name__ == '__main__':
     print '\n\n ## VALIDATION DATA initial prediction...'
     req_accuaracy = report(y_pred=net.predict(dataset['x']['validation']), y_true=np.array(dataset['y']['validation']),
                            labels=net.labels)[0]
-    if args.req_accuracy < req_accuaracy:
-        req_accuaracy = args.req_accuracy
+    #if args.req_accuracy < req_accuaracy:
+    req_accuaracy = args.req_accuracy
     print '\n '+colored('=> @required_accuracy has been set to '+str(req_accuaracy), 'blue')
 
     ''' Pruning '''

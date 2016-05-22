@@ -55,23 +55,22 @@
 \contentsline {subsection}{\numberline {5.2.2}Evaluation on MNIST Dataset}{42}{subsection.158}
 \contentsline {subsubsection}{Minimal Structure in MNIST Dataset}{44}{section*.162}
 \contentsline {section}{\numberline {5.3}Results of Terrain Classification}{45}{section.165}
-\contentsline {subsection}{\numberline {5.3.1}Analysis of Terrain Similarity}{46}{subsection.166}
-\contentsline {subsection}{\numberline {5.3.2}Selection of Learning Parameters}{47}{subsection.169}
-\contentsline {subsection}{\numberline {5.3.3}Required Time for Classification}{49}{subsection.175}
-\contentsline {subsection}{\numberline {5.3.4}Noise Influence on Classification}{50}{subsection.178}
-\contentsline {subsection}{\numberline {5.3.5}Analysis of Used Sensor Types}{51}{subsection.180}
-\contentsline {subsection}{\numberline {5.3.6}Classification Performance Overview}{52}{subsection.183}
-\contentsline {subsection}{\numberline {5.3.7}Final Configuration}{53}{subsection.185}
-\contentsline {section}{\numberline {5.4}Using the Pruning Algorithm on Terrain Classification}{53}{section.186}
-\contentsline {subsection}{\numberline {5.4.1}Feature Selection for Terrain Classification}{58}{subsection.197}
-\contentsline {chapter}{\numberline {6}Discussion}{60}{chapter.198}
-\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{61}{chapter.199}
-\contentsline {chapter}{Bibliography}{62}{chapter*.200}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{64}{appendix.201}
-\contentsline {chapter}{\numberline {A2}Methods Implementation}{65}{appendix.202}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{65}{section.203}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{68}{section.225}
-\contentsline {chapter}{\numberline {A3}Code Documentation}{71}{appendix.240}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{72}{appendix.241}
-\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{72}{section.242}
-\contentsline {section}{\numberline {A4.2}Further Data Analysis}{75}{section.255}
+\contentsline {subsection}{\numberline {5.3.1}Selection of Learning Parameters}{45}{subsection.166}
+\contentsline {subsection}{\numberline {5.3.2}Classification Performance}{49}{subsection.172}
+\contentsline {subsection}{\numberline {5.3.3}Influence of Noise on Classification}{50}{subsection.174}
+\contentsline {subsection}{\numberline {5.3.4}Time Needed for Classification}{51}{subsection.176}
+\contentsline {subsection}{\numberline {5.3.5}Analysis of Used Sensor Types}{52}{subsection.179}
+\contentsline {section}{\numberline {5.4}Terrain Classification Using Network Pruning}{53}{section.182}
+\contentsline {subsection}{\numberline {5.4.1}Feature Selection for Terrain Classification}{58}{subsection.193}
+\contentsline {chapter}{\numberline {6}Discussion}{62}{chapter.200}
+\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{63}{chapter.201}
+\contentsline {chapter}{Bibliography}{64}{chapter*.202}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{66}{appendix.203}
+\contentsline {chapter}{\numberline {A2}Methods Implementation}{67}{appendix.204}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{67}{section.205}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{70}{section.227}
+\contentsline {chapter}{\numberline {A3}Code Documentation}{73}{appendix.242}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{74}{appendix.243}
+\contentsline {section}{\numberline {A4.1}Analysis of Terrain Similarity}{74}{section.244}
+\contentsline {section}{\numberline {A4.2}Complete Sensory Data}{75}{section.247}
+\contentsline {section}{\numberline {A4.3}Further Data Analysis}{79}{section.260}

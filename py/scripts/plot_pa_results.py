@@ -8,7 +8,6 @@ mpl.rcParams['ytick.labelsize'] = 15
 mpl.rcParams['legend.fontsize'] = 18
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 from functions import load_net
 
