@@ -77,15 +77,15 @@ def load_amter(na):
 def load_mnist():
     kitt_mnist = {'acc': list(), 'n_syn': list(), 'structure': list(), 'net': list(), 'acc_mean': None, 'n_syn_mean': None,
                 'acc_std': None, 'n_syn_std': None, 'structure_mean': None}
-    n_obs = 3
+    n_obs = 2
     max_len = 0
     for obs in range(1, n_obs+1):
-        net = load_net('../cache/pruned/kitt_mnist_to_prune_p_89_' + str(obs) + '.net')
+        net = load_net('../cache/pruned/kitt_mnist_to_prune_p_' + str(obs) + '.net')
         if len(net['pruning_eval'][0]) > max_len:
             max_len = len(net['pruning_eval'][0])
 
     for obs in range(1, n_obs+1):
-        net = load_net('../cache/pruned/kitt_mnist_to_prune_p_89_' + str(obs) + '.net')
+        net = load_net('../cache/pruned/kitt_mnist_to_prune_p_' + str(obs) + '.net')
         acc_list = net['pruning_eval'][0]
         while len(acc_list) < max_len:
             acc_list.append(acc_list[-1])
@@ -120,6 +120,18 @@ def load_mnist():
 
 
 if __name__ == '__main__':
+    sensors_ranges, terrain_types, all_sensors = load_params('sensors_ranges', 'terrain_types', 'sensors')
+    # loading examples
+    terrains = [terrain_types[str(i)] for i in [6, 8, 15]]
+    data = read_data(noises=['no_noise'], terrains=terrains, sensors=all_sensors, n_samples=10)
+    samples = dict()
+    for terrain in terrains:
+        samples[terrain] = [[] for i in range(len(data['no_noise'][terrain][all_sensors[0]]))]
+        for sensor in all_sensors:
+            for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
+                samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:40 + 10], sen=sensor)
+
+    #nets = load_amter(na='nn')
     nets = load_mnist()
 
     net = nets['net'][-1]
@@ -127,11 +139,15 @@ if __name__ == '__main__':
     features = range(1, structure[0] + 1)
     classes = range(1, structure[2] + 1)
     syn_exist = net[4]
+    weights = net[1]
+    not_dead_neurons = net[5]
     class_h = dict()
+    io_power = dict()
     for a_class in classes:    # classes: 1 to n
         class_h[a_class] = dict()
         class_h[a_class]['hiddens'] = list()
         class_h[a_class]['inputs'] = list()
+        io_power[a_class] = dict()
         for h_k in range(structure[1]):   # hidden neurons 0 to k
             if bool(syn_exist[1][a_class-1][h_k]):
                 class_h[a_class]['hiddens'].append(h_k)
@@ -143,9 +159,14 @@ if __name__ == '__main__':
             for i_k in range(structure[0]): # input neurons 0 to k
                 if bool(syn_exist[0][h_k][i_k]):
                     class_h[a_class][h_k]['inputs'].append(i_k)
+                    io_power[a_class][i_k] = weights[0][h_k][i_k]+weights[1][a_class-1][h_k]
             class_h[a_class]['inputs'] += class_h[a_class][h_k]['inputs']
             #print 'input neurons for class', a_class, 'and hidden', h_k, ':', class_h[a_class][h_k]['inputs']
         #print 'input neurons for class', a_class, ':', len(class_h[a_class]['inputs']), len(np.unique(class_h[a_class]['inputs']))
+
+        for i_k in range(structure[0]):
+            if i_k not in io_power[a_class].keys():
+                io_power[a_class][i_k] = 0
 
         # count individual inputs for each output
         class_h[a_class]['n_inputs'] = list()
@@ -154,6 +175,34 @@ if __name__ == '__main__':
         print '\n\nclass', a_class, ': n synapses for individual inputs', class_h[a_class]['n_inputs']
 
     '''
+    # IO power
+    plt.figure()
+    mat = list()
+    for a_class in classes:
+        mat.append([io_power[a_class][i_k] for i_k in range(structure[0])])
+    imsh = plt.imshow(mat, aspect='auto')
+
+    plt.ylabel('classes')
+    #plt.xlabel('features : Thoraco-Coxa joint sensors')
+    #plt.xlabel('features : Coxa-Trochanteral joint sensors')
+    #plt.xlabel('features : Femur-Tibia joint sensors')
+    plt.xlabel('features : Tactile sensors')
+    #plt.ylim([-2, len(classes) + 3])
+    plt.yticks([c-1 for c in classes], [terrain_types[str(i)] for i in (1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15)])
+
+    base = 720
+    plt.xlim([base + 1, base + 240])
+    #plt.xticks([base+20+i*40 for i in range(6)], ('atr_f', 'atr_m', 'atr_h', 'atl_f', 'atl_m', 'atl_h'))
+    #plt.xticks([base+20 + i * 40 for i in range(6)], ('acr_f', 'acr_m', 'acr_h', 'acl_f', 'acl_m', 'acl_h'))
+    #plt.xticks([base + 20 + i * 40 for i in range(6)], ('afr_f', 'afr_m', 'afr_h', 'afl_f', 'afl_m', 'afl_h'))
+    plt.xticks([base + 20 + i * 40 for i in range(6)], ('fr_f', 'fr_m', 'fr_h', 'fl_f', 'fl_m', 'fl_h'))
+    plt.grid()
+    plt.colorbar(mappable=imsh)
+    ax = plt.gca()
+    ax.set_aspect('auto')
+    plt.show()
+
+
     # Class vs Feature
     mat = list()
     for a_class in classes:
@@ -172,18 +221,6 @@ if __name__ == '__main__':
 
 
     # features, number of paths, examples
-
-    # loading examples
-    sensors_ranges, terrain_types, all_sensors = load_params('sensors_ranges', 'terrain_types', 'sensors')
-    terrains = [terrain_types[str(i)] for i in [6, 8, 15]]
-    data = read_data(noises=['no_noise'], terrains=terrains, sensors=all_sensors, n_samples=10)
-    samples = dict()
-    for terrain in terrains:
-        samples[terrain] = [[] for i in range(len(data['no_noise'][terrain][all_sensors[0]]))]
-        for sensor in all_sensors:
-            for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
-                samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:40 + 10], sen=sensor)
-
     n_syn_by_feature = list()
     for f in features:
         n_syn_by_feature.append(sum([class_h[a_class]['n_inputs'][f-1] for a_class in classes]))
@@ -255,10 +292,75 @@ if __name__ == '__main__':
     plt.show()
     '''
 
-
     # Evaluation of feature selection on MNIST
-    for a_class in classes:
-        digit_interest_image = [255 if set(hiddens_followed_by_digit[digit]).intersection(data[cutting_steps[-1]]['influenced_neurons_by_i0_neuron'][key]) else 0 for key in neurons_ids_input_layer]
+
+    f, ((ax1, ax2, ax3), (ax4, ax5, ax6), (ax7, ax8, ax9), (ax10, ax11, ax12)) = plt.subplots(4, 3, sharex='col', sharey='row')
+    sp = (ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8, ax9, ax10, ax11, ax12)
+    for c_i, a_class in enumerate(classes):
+        digit_interest_image = [1 if px in np.unique(class_h[a_class]['inputs']).tolist() else 0 for px in range(784)]
         img = Image.new("L", (28, 28), "white")
         img.putdata(digit_interest_image)
-        img.save('results_plots/mnist_pixels_interesting_for_digit_'+str(digit)+'.png')
+        sp[c_i].imshow(img, vmin=0, vmax=1)
+        sp[c_i].set_title(a_class-1)
+        sp[c_i].set_xticks(())
+        sp[c_i].set_yticks(())
+        sp[c_i].set_xlim([0, 27])
+        sp[c_i].set_ylim([0, 27])
+        sp[c_i].set_aspect('auto')
+
+    # active pixels
+    img = Image.new("L", (28, 28), "white")
+    img.putdata([int(not neuron) for neuron in not_dead_neurons[0]])    # active neurons has 1 (red)
+    sp[10].imshow(img)
+    sp[10].set_title('all active pixels')
+    sp[10].set_xlim([0, 27])
+    sp[10].set_ylim([0, 27])
+    sp[10].set_aspect('auto')
+
+    # n connections
+    i_pixels = list()
+    for i_k in range(structure[0]):
+        i_pixels.append(sum([syn_exist[0][h_k][i_k] for h_k in range(structure[1])]))
+
+    img = Image.new("L", (28, 28), "white")
+    img.putdata(i_pixels)  # active neurons has 1 (red)
+    imsh = sp[11].imshow(img, vmin=0, vmax=15)
+    sp[11].set_title('n connections to H')
+    sp[11].set_xlim([0, 27])
+    sp[11].set_ylim([0, 27])
+    sp[11].set_aspect('auto')
+    cb = plt.colorbar(mappable=imsh, )
+    cb.set_ticks([0, 15])
+    cb.set_ticklabels([0, 15])
+    plt.show()
+    exit()
+
+    print 'active neurons in the input layer:', not_dead_neurons[0]
+    print sum([int(not neuron) for neuron in not_dead_neurons[0]]), len(not_dead_neurons[0])
+
+    plt.show()
+    exit()
+
+
+
+
+    print sum([1 if n == 0 else 0 for n in i_pixels])
+    img = Image.new("L", (28, 28), "white")
+    img.putdata(i_pixels)
+    plt.imshow(img, vmin=0, vmax=15)
+    plt.colorbar()
+    plt.show()
+
+    # dead pixels
+    i_pixels = list()
+    for i_k in range(structure[0]):
+        if 1.0 in [syn_exist[0][h_k][i_k] for h_k in range(structure[1])]:
+            i_pixels.append(0)
+        else:
+            i_pixels.append(1)
+
+    img = Image.new("L", (28, 28), "white")
+    img.putdata(i_pixels)
+    plt.imshow(img, vmin=0, vmax=1)
+    plt.colorbar()
+    plt.show()

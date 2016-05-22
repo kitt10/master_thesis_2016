@@ -171,7 +171,9 @@ if __name__ == '__main__':
                 cl_index += 1
 
     print 'Final structure:',
+    final_structure_neurons = list()
     for layer in net.neuronsLP.values():
+        final_structure_neurons.append([neuron.dead for neuron in layer])
         print sum([not neuron.dead for neuron in layer]),
 
     print '\n\n ## TESTING DATA final structure prediction...'
@@ -183,7 +185,7 @@ if __name__ == '__main__':
     ''' Saving trained classifier '''
     print '\n\n ## Saving pruned classifier to', destination, '...'
     clf = open_shelve(destination, 'c')
-    clf['net'] = (net.structure, net.weights, net.biases, net.labels, net.synapses_exist)
+    clf['net'] = (net.structure, net.weights, net.biases, net.labels, net.synapses_exist, final_structure_neurons)
     clf['training_params'] = ([sum([not neuron.dead for neuron in layer]) for layer in net.neuronsLP.values()], learning_rate, max_epochs, n_stable)
     clf['skills'] = (c_accuracy, c_report, cm)
     clf['pruning_eval'] = (acc_list, n_syn_list, structure_list)

@@ -1,4 +1,4 @@
-\chapter{Terrain Classification for hexapod robot AMOS II} \label{chap:terrain_classification}
+\chapter{Terrain Classification for Hexapod Robot AMOS II} \label{chap:terrain_classification}
 
 The classification problem in this thesis relates to AMOS II, an open-source multi sensori-motor robotic platform (see \cref{img:amosii}). The task is to classify various terrain types based on proprioceptive (joint angles) and tactile (ground contact) sensors. The overall process is based on simulation data and as stated in \cref{chap:kitt_nn}, feedforward neural networks are used for classification.
 
@@ -506,8 +506,6 @@ Once there are two ordered lists - a list of samples and a corresponding list of
 
 The workflow of data generation procedure is illustrated in \cref{img:create_dataset}. 
 
-\subsubsection*{Generated Datasets} \label{sssec:generated_datasets}
-
 \begin{table}[H]
 \centering
 \caption{Generated datasets}
@@ -587,6 +585,50 @@ There are several arguments (firstly listed in \cref{sec:overall_process_summary
 
 Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
 
+\subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
+
+learning rate
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20_example}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis_example}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05}
+  \caption{Network structure analysis. Learning rate: 0.5.}
+  \label{fig:st_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05_example}
+  \caption{Network structure analysis. Learning rate: 0.5.}
+  \label{fig:st_analysis_example}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_st_lr_mat}
+  \caption{Learning parameters analysis: Classification accuracy vs. learning rate and network structure}
+  \label{fig:acc_st_lr_mat}
+\end{figure}
+
+\subsection{Other Classification Methods for Comparison} \label{ssec:other_classifiers}
+\textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part
+
+SVM, k-NN, RandomForest
+
 \subsection{Evaluation Measures} \label{ssec:evaluation_measures}
 A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
 
@@ -605,19 +647,3 @@ F1 = \frac{2 * precision * recall}{precision + recall}
 \end{description}
 
 structure, n synapses ?
-
-\subsection{Terrain Classification using Network Pruning} \label{ssec:pruned_net_on_terrains}
-As the overall process diagram (\cref{img:terrain_classification_process}) shows, the developed network pruning algorithm (\cref{chapter:network_pruning_algorithm}) is tested on the terrain datasets. The approach has been already described. 
-
-Evaluation in... \textbf{TODO:} describe the process here and reffer the results after they are gathered.
-
-
-\subsection{Searching for Optimal Configuration (Grid Search)} \label{ssec:grid_search}
-\textbf{TODO :} describe here how the best parameters have been found using GridSearch
-
-datasets implication -> nets based on nets params (learning rate and number of epochs), fixed batch size, number of stable iterations ....
-
-\subsection{Other Classifiers} \label{ssec:other_classifiers}
-\textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part
-
-SVM, k-NN, RandomForest

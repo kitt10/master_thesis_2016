@@ -1,5 +1,5 @@
 \chapter{Classification Method} \label{chap:kitt_nn}
-Principles of feedforward neural networks, based on the perceptron idea (see [ref to lit]), are used for developing the new classification framework.
+Principles of feedforward neural networks, based on the perceptron idea (see [ref to lit]), are used for developing a new classification framework.
 
 As the first part of the study is devoted to the evolution of a new network pruning algorithm, besides some standard functions, the new framework implementation must be capable of:
 
@@ -85,7 +85,7 @@ In this work, the implementation is made to be compatible with the \textit{kitt\
 \subsection{Using Mini-batches} \label{ssec:minibatches}
 The training procedure of multilayer perceptrons ([ref to lit]) is based on propagating one sample at a time through a network. However, more samples can be send to the network, while activities and activations of neurons in one layer are computed at the same time for all of those samples.
 
-This group of samples is called \textit{a mini-batch}. Using mini-batches can speed up the process, however it can bring some problems with finding the right solution by the \textit{Gradient Descent} method (evident from \cref{eq:batch_gd}). Usually, the mini-batch size is left as a training parameter. In this work, it is set to \textit{10}.
+This group of samples is called \textit{a mini-batch}. Using mini-batches can speed up the process, however, it can bring some problems with finding the right solution by the \textit{Gradient Descent} method (evident from \cref{eq:batch_gd}). Usually, the mini-batch size is left as a training parameter. In this work, it is set to \textit{10}.
 
 \subsection{Matrix Notations} \label{ssec:matrix_notation}
 Assuming feedforward neural networks and reffering to \cref{img:model_neuron}, the following notation is used for multiple samples processing.
@@ -102,7 +102,7 @@ Assuming feedforward neural networks and reffering to \cref{img:model_neuron}, t
 \end{description}
 
 \subsection{Forward Propagation} \label{ssec:forward_propagation}
-With reference to previous sections, the following equations are used to propagate a batch of samples $ X $ through a network and get a corresponding matrix of outputs $ \hat{y} $.
+With reference to the previous sections, the following equations are used to propagate a batch of samples $ X $ through a network and get a corresponding matrix of outputs $ \hat{y} $.
 
 \begin{align}
 Z^{(2)} = X \cdot W^{(1)} + B^{(2)}
@@ -236,7 +236,7 @@ Initially, a backup of the current network structure is made by creating a netwo
   \label{img:cut_synapses}
 \end{figure}
 
-As discussed above, an initial weight value had been saved for each synapse before the training. Hence, for $ n $ being the total number of synapses, weight changes $ \Delta w_i $ are known (\ref{eq:weight_change}).
+As discussed above, an initial weight value was saved for each synapse before the training. Hence, for $ n $ being the total number of synapses, weight changes $ \Delta w_i $ are known (\ref{eq:weight_change}).
 
 \begin{align} \label{eq:weight_change}
 \Delta w_i = |w\_init_i - w\_current_i|, \quad i = 1, ..., n
@@ -244,7 +244,7 @@ As discussed above, an initial weight value had been saved for each synapse befo
 
 Based on these changes and on the current $ percentile $ value, a threshold ($ th $ in \cref{img:cut_synapses}) is determined. Then, all synapses with a lower change in weight than this threshold are removed, and, if there is a neuron with no connections left, it is removed as well.
 
-If the $ percentile $ variable has been decreased such that it equals zero, the threshold is set to the minimum of all weight changes. In this case, only one synapse is then removed at a time.
+If the $ percentile $ variable has been decreased so that it equals zero, the threshold is set to the minimum of all weight changes. In this case, only one synapse is then removed at a time.
 
 \begin{figure}[H]
   \centering
@@ -342,9 +342,9 @@ In this case, the minimal network structure is not known. On the other hand, det
 \subsection{Using Network Pruning for Feature Selection} \label{ssec:minimal_structure_util}
 In general, only the number of neurons (inputs and outputs) is determined for a chosen dataset. The pruning algorithm brings an additional information about the hidden part of the network. A minimal network structure is obtained as the PA outcome. This means that all the neurons and synapses contained in the network are important for classification.
 
-Knowing that each of these units takes a part and is not useless, one can ask what role does a single neuron/synapse have with respect to the chosen dataset.
+Knowing that each of these units takes a part and is not useless, one can ask what role a single neuron/synapse has with respect to the chosen dataset.
 
-This can be investigated by tracking the connections from the input to the output layer. Based on this approach, one can find some correlations between feature selection of input vectors and a selected output class (demonstrated on a MNIST example in \cref{img:structure_util}). Evaluation on MNIST dataset is shown in \cref{sssec:mnist_analysis}.
+This can be investigated by tracking the connections from the input to the output layer. Based on this approach, one can find some correlations between the feature selection of input vectors and the selected output class (demonstrated on a MNIST example in \cref{img:structure_util}). Evaluation on MNIST dataset is shown in \cref{sssec:mnist_analysis}.
 
 \begin{figure}[H]
   \centering
@@ -354,7 +354,7 @@ This can be investigated by tracking the connections from the input to the outpu
 \end{figure}
 
 \section{Graphical User Interface} \label{sec:gui}
-The graphical interface has been implemented as an extension for \textit{kitt\_nn} framework. It is actually not strictly needed for this study, but it provides some interesting functions worth of being introduced. Anyway, any type of visualization usually helps to understand a problem better.
+The graphical interface has been implemented as an extension for \textit{kitt\_nn} framework. It is actually not strictly needed for this study, but it provides some interesting functions, which are worth being introduced. Anyway, any type of visualization usually helps to understand a problem better.
 
 \begin{figure}[H]
   \centering

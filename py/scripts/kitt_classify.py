@@ -9,12 +9,19 @@
     @arg clf            : name of the classifier file
 """
 
+import matplotlib as mpl
+mpl.rcParams['axes.labelsize'] = 18
+mpl.rcParams['xtick.labelsize'] = 15
+mpl.rcParams['ytick.labelsize'] = 15
+mpl.rcParams['legend.fontsize'] = 18
 import argparse
 import numpy as np
 from shelve import open as open_shelve
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
 from kitt_nn.nn_structure.kitt_net import NeuralNet
 from kitt_nn.nn_tool.nn_function import print_cm
+from functions import load_params
 from termcolor import colored
 
 
@@ -22,6 +29,8 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Classifies testing data.')
     parser.add_argument('-c', '--clf', type=str, required=True,
                         help='Classifier filename to classify with')
+    parser.add_argument('-ds', '--dataset', type=str, required=True,
+                        help='Dataset to classify on')
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -31,12 +40,12 @@ if __name__ == '__main__':
 
     ''' Loading the classifier and testing data '''
     clf = open_shelve(clf_dir, 'c')
-    nn_classifier = clf['classifier']
+    nn_classifier = clf['net']
     structure = nn_classifier[0]
     weights = nn_classifier[1]
     biases = nn_classifier[2]
     labels = nn_classifier[3]
-    dataset_dir = clf['dataset']
+    dataset_dir = args.dataset
     print '\n\n ## Classification : training parameters:', clf['training_params']
     clf.close()
 
@@ -62,4 +71,18 @@ if __name__ == '__main__':
     print_cm(cm=cm, labels=net.labels)
     print '\n'
     print_cm(cm=cm_normalized, labels=net.labels, normed=True)
+
+    terrain_ids = (1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15)
+    terrain_types = load_params('terrain_types')[0]
+    terrains = [terrain_types[str(t_id)] for t_id in terrain_ids]
+    plt.imshow(cm_normalized, vmin=0, vmax=1)
+    plt.colorbar()
+    plt.xticks(range(14), terrains, rotation=45)
+    plt.yticks(range(14), terrains)
+    for t1_i, terrain1 in enumerate(terrains):
+        for t2_i, terrain2 in enumerate(terrains):
+            if cm_normalized[t1_i][t2_i] >= 0.05:
+                plt.text(t2_i, t1_i, round(cm_normalized[t1_i][t2_i], 2), va='center', ha='center', fontsize=12)
+    plt.show()
+    #plt.savefig('../../thesis/img/amter_classification_noisy_cm.eps', bbox_inches='tight', pad_inches=0.1)
     dataset.close()
