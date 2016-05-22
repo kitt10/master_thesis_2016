@@ -50,7 +50,7 @@
 \contentsline {subsection}{\numberline {4.7.4}Other Classifiers}{39}{subsection.145}
 \contentsline {chapter}{\numberline {5}Experimental Evaluation}{40}{chapter.146}
 \contentsline {section}{\numberline {5.1}Verification of the Network Implementation}{40}{section.147}
-\contentsline {section}{\numberline {5.2}Evaluation of the Pruning Algorithm}{42}{section.151}
+\contentsline {section}{\numberline {5.2}Performance Evaluation of the Pruning Algorithm}{42}{section.151}
 \contentsline {subsection}{\numberline {5.2.1}Evaluation on XOR Dataset}{42}{subsection.152}
 \contentsline {subsection}{\numberline {5.2.2}Evaluation on MNIST Dataset}{43}{subsection.158}
 \contentsline {subsubsection}{Minimal Structure in MNIST Dataset}{45}{section*.162}
@@ -61,15 +61,17 @@
 \contentsline {subsection}{\numberline {5.3.4}Noise Influence on Classification}{51}{subsection.178}
 \contentsline {subsection}{\numberline {5.3.5}Analysis of Used Sensors}{52}{subsection.180}
 \contentsline {subsection}{\numberline {5.3.6}Classification Performance Overview}{53}{subsection.183}
-\contentsline {subsection}{\numberline {5.3.7}Final Configuration}{53}{subsection.185}
-\contentsline {chapter}{\numberline {6}Discussion}{55}{chapter.186}
-\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{56}{chapter.187}
-\contentsline {chapter}{Bibliography}{57}{chapter*.188}
-\contentsline {chapter}{\numberline {A1}Working Directory Structure}{59}{appendix.189}
-\contentsline {chapter}{\numberline {A2}Methods Implementation}{60}{appendix.190}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{60}{section.191}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{63}{section.213}
-\contentsline {chapter}{\numberline {A3}Code Documentation}{66}{appendix.228}
-\contentsline {chapter}{\numberline {A4}Detailed Results}{67}{appendix.229}
-\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{67}{section.230}
-\contentsline {section}{\numberline {A4.2}Further Data Analysis}{70}{section.243}
+\contentsline {subsection}{\numberline {5.3.7}Final Configuration}{54}{subsection.185}
+\contentsline {section}{\numberline {5.4}Using the Pruning Algorithm on Terrain Classification}{54}{section.186}
+\contentsline {subsection}{\numberline {5.4.1}Feature Selection for Terrain Classification}{54}{subsection.188}
+\contentsline {chapter}{\numberline {6}Discussion}{56}{chapter.189}
+\contentsline {chapter}{\numberline {7}Conclussion and Outlook}{57}{chapter.190}
+\contentsline {chapter}{Bibliography}{58}{chapter*.191}
+\contentsline {chapter}{\numberline {A1}Working Directory Structure}{60}{appendix.192}
+\contentsline {chapter}{\numberline {A2}Methods Implementation}{61}{appendix.193}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{61}{section.194}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{64}{section.216}
+\contentsline {chapter}{\numberline {A3}Code Documentation}{67}{appendix.231}
+\contentsline {chapter}{\numberline {A4}Detailed Results}{68}{appendix.232}
+\contentsline {section}{\numberline {A4.1}Complete Sensory Data}{68}{section.233}
+\contentsline {section}{\numberline {A4.2}Further Data Analysis}{71}{section.246}

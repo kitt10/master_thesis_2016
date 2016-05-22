@@ -51,7 +51,7 @@ This evaluation is done on the MNIST dataset only, as the training is quite fast
 
 The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
 
-\section{Evaluation of the Pruning Algorithm} \label{sec:pruning_algorithm_results}
+\section[Performance Evaluation of the Pruning Algorithm]{Performance Evaluation of the Pruning \\Algorithm} \label{sec:pruning_algorithm_results}
 This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned network of a minimal structure, but keeping a required classification accuracy, is expected.
 
 The evalutaion of the algorithm is performed on the two datasets, XOR and MNIST, described in \cref{ssec:testing_datasets}.
@@ -383,6 +383,18 @@ learning rate
 \end{table}
 
 \subsection{Final Configuration} \label{ssec:results_overview}
+
+
+\section[Using the Pruning Algorithm on Terrain Classification]{Using the Pruning Algorithm on Terrain \\Classification} \label{sec:pa_amter}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{pa_result_amter_nn}
+  \caption{Pruning Algorithm Results on AMTER Dataset. No noise.}
+  \label{fig:pa_result_amter}
+\end{figure}
+
+\subsection{Feature Selection for Terrain Classification} \label{ssec:pa_amter_feature_selection}
 
 evaluation (tables and figures) of classification:
 \begin{itemize}

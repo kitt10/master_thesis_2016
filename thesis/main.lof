@@ -57,32 +57,33 @@
 \contentsline {figure}{\numberline {5.16}{\ignorespaces Additive terrain and signal noise: influence on the accuracy\relax }}{51}{figure.caption.179}
 \contentsline {figure}{\numberline {5.17}{\ignorespaces bla\relax }}{52}{figure.caption.181}
 \contentsline {figure}{\numberline {5.18}{\ignorespaces bla\relax }}{52}{figure.caption.182}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. No noise.\relax }}{54}{figure.caption.187}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{60}{figure.caption.192}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{61}{figure.caption.194}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{62}{figure.caption.209}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{62}{figure.caption.210}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{63}{figure.caption.214}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{64}{figure.caption.216}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{65}{figure.caption.219}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{61}{figure.caption.195}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{62}{figure.caption.197}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{63}{figure.caption.212}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{63}{figure.caption.213}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{64}{figure.caption.217}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{65}{figure.caption.219}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{66}{figure.caption.222}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A4.1}{\ignorespaces Thoraco joints on the front legs\relax }}{67}{figure.caption.231}
-\contentsline {figure}{\numberline {A4.2}{\ignorespaces Coxa joints on the front legs\relax }}{67}{figure.caption.232}
-\contentsline {figure}{\numberline {A4.3}{\ignorespaces Femur joints on the front legs\relax }}{67}{figure.caption.233}
-\contentsline {figure}{\numberline {A4.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{68}{figure.caption.234}
-\contentsline {figure}{\numberline {A4.5}{\ignorespaces Coxa joints on the middle legs\relax }}{68}{figure.caption.235}
-\contentsline {figure}{\numberline {A4.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{68}{figure.caption.236}
-\contentsline {figure}{\numberline {A4.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{68}{figure.caption.237}
-\contentsline {figure}{\numberline {A4.8}{\ignorespaces Coxa joints on the hint legs\relax }}{69}{figure.caption.238}
-\contentsline {figure}{\numberline {A4.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{69}{figure.caption.239}
-\contentsline {figure}{\numberline {A4.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{69}{figure.caption.240}
-\contentsline {figure}{\numberline {A4.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{69}{figure.caption.241}
-\contentsline {figure}{\numberline {A4.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{70}{figure.caption.242}
-\contentsline {figure}{\numberline {A4.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{70}{figure.caption.244}
-\contentsline {figure}{\numberline {A4.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{71}{figure.caption.245}
-\contentsline {figure}{\numberline {A4.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{71}{figure.caption.246}
-\contentsline {figure}{\numberline {A4.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{72}{figure.caption.247}
+\contentsline {figure}{\numberline {A4.1}{\ignorespaces Thoraco joints on the front legs\relax }}{68}{figure.caption.234}
+\contentsline {figure}{\numberline {A4.2}{\ignorespaces Coxa joints on the front legs\relax }}{68}{figure.caption.235}
+\contentsline {figure}{\numberline {A4.3}{\ignorespaces Femur joints on the front legs\relax }}{68}{figure.caption.236}
+\contentsline {figure}{\numberline {A4.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{69}{figure.caption.237}
+\contentsline {figure}{\numberline {A4.5}{\ignorespaces Coxa joints on the middle legs\relax }}{69}{figure.caption.238}
+\contentsline {figure}{\numberline {A4.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{69}{figure.caption.239}
+\contentsline {figure}{\numberline {A4.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{69}{figure.caption.240}
+\contentsline {figure}{\numberline {A4.8}{\ignorespaces Coxa joints on the hint legs\relax }}{70}{figure.caption.241}
+\contentsline {figure}{\numberline {A4.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{70}{figure.caption.242}
+\contentsline {figure}{\numberline {A4.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{70}{figure.caption.243}
+\contentsline {figure}{\numberline {A4.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{70}{figure.caption.244}
+\contentsline {figure}{\numberline {A4.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{71}{figure.caption.245}
+\contentsline {figure}{\numberline {A4.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{71}{figure.caption.247}
+\contentsline {figure}{\numberline {A4.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{72}{figure.caption.248}
+\contentsline {figure}{\numberline {A4.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{72}{figure.caption.249}
+\contentsline {figure}{\numberline {A4.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{73}{figure.caption.250}

@@ -133,5 +133,5 @@ if __name__ == '__main__':
     for lr_i, lr in enumerate(lrs):
         for st_i, st in enumerate(sts):
             plt.text(lr_i, st_i, round(mat[st_i][lr_i], 2), va='center', ha='center', fontsize=11)
-    #plt.savefig('../../thesis/img/cl_st_lr_mat.eps', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('../../thesis/img/cl_st_lr_mat.eps', bbox_inches='tight', pad_inches=0.1)
     plt.show()
