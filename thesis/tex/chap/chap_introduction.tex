@@ -1,0 +1,77 @@
+\chapter{Introduction} \label{chapter:01:introduction}
+
+The thesis must clearly state its theme, hypotheses and/or goals (sometimes called “the research question(s)”), and provide sufficient background information to enable a non-specialist researcher to understand them. It must contain a thorough review of relevant literature, perhaps in a separate chapter.
+
+1-2 pages intro
+
+\newpage
+\section{Problem Formulation}
+1 page
+
+\newpage
+\section{State of the Art} \label{sec:soa}
+
+\subsection{Classification Methods Overview} \label{sec:soa_other_classifiers}
+\textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part
+
+SVM, k-NN, RandomForest
+
+\subsubsection*{Neural Networks} \label{ssec:intro_to_nn}
+
+neural networks from the beginning, network types, principles its usage for classification
+
+4-5 pages
+
+Classification, one of the most widely used areas of machine learning, has a broad array of applications. To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The length of feature vectors usually determines an input of a chosen classifier and the number of classes sets an output.
+
+\subsubsection*{Evaluation Measures} \label{ssec:soa_evaluation_measures}
+A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
+
+\begin{description}
+\item[accuracy] : the set of labels predicted for a sample must exactly match the corresponding set of true labels
+\item[precision] : ability of the classifier not to label as positive a sample that is negative
+\item[recall] : the ability of the classifier to find all the positive samples
+\item[F1 score] is interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal. Formula:
+\begin{equation} \label{eq:f1_score}
+F1 = \frac{2 * precision * recall}{precision + recall}
+\end{equation}
+\item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
+\item[classification error] : DESCRIBE (formula).
+\item[average epoch time] : DESCRIBE.
+\item[evarage classification time] : DESCRIBE.
+\end{description}
+
+structure, n synapses ?
+
+\newpage
+\subsection{Pruning Algorithms} \label{sec:soa_pruning_algorithms}
+
+based on the paper Pruning Algorithms - A Survey: a summary of what has been already done, principles 
+1-2 pages
+
+\subsection{Terrain Classification for Legged Robots} \label{sec:soa_terrain_classification}
+
+based on the literature : a summary of what has been already done in terrain classification, summary of different methods (visual, laser, haptic, proprioception, ...)
+
+5-8 pages 
+
+\section{Hypotheses}
+
+1/2 page
+
+\section{Relation to the State of the Art}
+Motivation and Research Questions
+motivation for using proprioception sensing
+motivation for using a neural net as a classifier
+
+in this section you can relate your work to the existing state of the art methods and tell why you have chosen those and what is your contribution to the state of the art
+
+1/2 page
+
+\newpage
+\section{Master Thesis Objectives} \label{sec:goals}
+
+\section{Thesis Outline}
+
+1/2 page
+

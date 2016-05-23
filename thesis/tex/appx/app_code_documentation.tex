@@ -1,0 +1,83 @@
+\chapter{Code Documentation} \label{app:code_documentation}
+A documentation for the \textit{kitt\_nn} framework implementation is provided in \cref{app:sec:api_kitt_nn}. The API for the implementation of the terrain classification process is in \cref{app:sec:api_scripts}.
+
+\section{API for Neural Network Framework} \label{app:sec:api_kitt_nn}
+
+\section{API for Terrain Classification Scripts} \label{app:sec:api_scripts}
+\noindent\fcolorbox{lightblue}{lightblue}{
+\begin{minipage}{\textwidth}
+  \large {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  Runs the Amos II simulation and saves sensory data as .txt files.
+\\
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{@}] \textbf{nj} (--n\_jobs) : Number of simulation runs.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int
+\item[-] default \hspace{4pt} 	: 500 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\end{itemize}
+\item[\textbf{@}] \textbf{t} (--terrains) : Terrain (id) to be generated.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 14]
+\end{itemize}
+\item[\textbf{@}] \textbf{n} (--noise) : Terrain noise level to be generated.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string 
+\item[-] default \hspace{4pt} 	: 'nn' 
+\item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\end{itemize}
+\item[\textbf{@}] \textbf{nt} (--n\_timesteps) : Number of simulation timesteps.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] default \hspace{4pt} 	: 100 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\end{itemize}
+\end{itemize}
+\end{tcolorbox}
+\end{minipage}}
+
+\noindent\fcolorbox{lightblue}{lightblue}{
+\begin{minipage}{\textwidth}
+  \large {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  Runs the Amos II simulation and saves sensory data as .txt files.
+\\
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{@}] \textbf{nj} (--n\_jobs) : Number of simulation runs.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int
+\item[-] default \hspace{4pt} 	: 500 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\end{itemize}
+\item[\textbf{@}] \textbf{t} (--terrains) : Terrain (id) to be generated.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 14]
+\end{itemize}
+\item[\textbf{@}] \textbf{n} (--noise) : Terrain noise level to be generated.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string 
+\item[-] default \hspace{4pt} 	: 'nn' 
+\item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\end{itemize}
+\item[\textbf{@}] \textbf{nt} (--n\_timesteps) : Number of simulation timesteps.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] default \hspace{4pt} 	: 100 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\end{itemize}
+\end{itemize}
+\end{tcolorbox}
+\end{minipage}}

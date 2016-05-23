@@ -1,35 +1,34 @@
 % ------------------------------------------------------------------------------------------------------
-\input{tex/preamble}
-\input{tex/thesis_info}
+\input{tex/sett/preamble}
+\input{tex/sett/thesis_info}
 % ------------------------------------------------------------------------------------------------------
 \begin{document}
 % ------------------------------------------------------------------------------------------------------
-\input{tex/title_page}
-\input{tex/declaration_page}
-%\input{tex/quotation_page}
-\input{tex/abstract}
-\input{tex/acknowledgements_page}
-\input{tex/lists}
-%\input{tex/dedication_page} 
+\input{tex/sett/title_page}
+\input{tex/sett/declaration_of_authorship}
+%\input{tex/sett/quotation}
+\input{tex/sett/abstract}
+\input{tex/sett/acknowledgements}
+\input{tex/sett/lists}
+%\input{tex/sett/dedication} 
 % ------------------------------------------------------------------------------------------------------
 \mainmatter 							% Begin numeric (1,2,3...) page numbering
 \pagestyle{thesis} 						% Return the page headers back to the "thesis" style
-\include{tex/ch_introduction}
-\include{tex/ch_state_of_the_art}
-\include{tex/ch_kitt_nn}
-\include{tex/ch_terrain_classification}
-\include{tex/ch_results}
-\include{tex/ch_discussion}
-\include{tex/ch_conclussion}
+\include{tex/chap/chap_introduction}
+\include{tex/chap/chap_kitt_nn}
+\include{tex/chap/chap_terrain_classification}
+\include{tex/chap/chap_results}
+\include{tex/chap/chap_discussion}
+\include{tex/chap/chap_conclussion}
 % ------------------------------------------------------------------------------------------------------
-\input{tex/bibliography}
+\input{tex/sett/bibliography}
 % ------------------------------------------------------------------------------------------------------
 \appendix 								% Cue to tell LaTeX that the following "chapters" are Appendices
 \renewcommand{\thechapter}{A\arabic{chapter}}
-\include{tex/app_implementation_details}
-\include{tex/app_detailed_results}
-\include{tex/app_working_dir_structure}
-\include{tex/app_code_documentation}
+\include{tex/appx/app_supplementary_data}
+\include{tex/appx/app_method_implementation}
+\include{tex/appx/app_working_dir_structure}
+\include{tex/appx/app_code_documentation}
 % ------------------------------------------------------------------------------------------------------
 \end{document}  
 % ------------------------------------------------------------------------------------------------------
