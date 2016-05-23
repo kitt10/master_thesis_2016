@@ -143,6 +143,50 @@ def load_amter(na):
     return kitt_amter
 
 
+def load_xor_comp(na):
+    kitt_xor_comp = {'acc': list(), 'n_syn': list(), 'structure': list(), 'acc_mean': None, 'n_syn_mean': None,
+                'acc_std': None, 'n_syn_std': None, 'structure_mean': None}
+    n_obs = 10
+    max_len = 0
+    for obs in range(1, n_obs+1):
+        net = load_net('../cache/pruned/kitt_mnist_to_prune_'+na+'_p_' + str(obs) + '.net')
+        if len(net['pruning_eval'][0]) > max_len:
+            max_len = len(net['pruning_eval'][0])
+
+    for obs in range(1, n_obs+1):
+        net = load_net('../cache/pruned/kitt_xor_to_prune_'+na+'_p_' + str(obs) + '.net')
+        acc_list = net['pruning_eval'][0]
+        while len(acc_list) < max_len:
+            acc_list.append(acc_list[-1])
+        kitt_xor_comp['acc'].append(acc_list)
+        n_syn_list = net['pruning_eval'][1]
+        while len(n_syn_list) < max_len:
+            n_syn_list.append(n_syn_list[-1])
+        kitt_xor_comp['n_syn'].append(n_syn_list)
+        structure_list = net['pruning_eval'][2]
+        while len(structure_list) < max_len:
+            structure_list.append(structure_list[-1])
+        kitt_xor_comp['structure'].append(structure_list)
+
+    kitt_xor_comp['acc_mean'] = np.mean(kitt_xor_comp['acc'], axis=0)
+    kitt_xor_comp['acc_std'] = np.std(kitt_xor_comp['acc'], axis=0)
+    kitt_xor_comp['n_syn_mean'] = np.mean(kitt_xor_comp['n_syn'], axis=0)
+    kitt_xor_comp['n_syn_std'] = np.std(kitt_xor_comp['n_syn'], axis=0)
+    kitt_xor_comp['structure_mean'] = np.mean([structure for structure in kitt_xor_comp['structure']], axis=0)
+
+    for i, structure in enumerate(kitt_xor_comp['structure_mean']):
+        kitt_xor_comp['structure_mean'][i] = [int(nn) for nn in structure.tolist()]
+
+    print '\n ## Loaded XOR pruned nets ## --------------------'
+    print '@ Pruning steps:\t', max_len
+    print '@ Mean n synapses:\t', kitt_xor_comp['n_syn_mean'][-1]
+    print '@ Mean structure:\t', kitt_xor_comp['structure_mean'][-1]
+    print '@ Mean accuracy:\t', kitt_xor_comp['acc_mean'][-1]
+    print '----------------------------------------------------'
+
+    return kitt_xor_comp
+
+
 def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None, label=None):
     ax = ax if ax is not None else plt.gca()
     if color is None:
@@ -221,7 +265,7 @@ if __name__ == '__main__':
     plt.xticks([15, 25, 35, 55, 65, 75, 95, 105, 115, 135, 145, 155], ['I', 'H', 'O', 'I', 'H', 'O', 'I', 'H', 'O', 'I', 'H', 'O'])
     plt.grid()
     plt.show()
-    '''
+
 
     # synapses reduction over pruning steps
 
@@ -249,5 +293,32 @@ if __name__ == '__main__':
     ax = plt.gca()
     handles, labels = ax.get_legend_handles_labels()
     #handles = [h[0] for h in handles]
+    plt.legend(handles, labels, loc='best')
+    plt.show()
+
+    '''
+
+    # comparison to other pruning steps, synapses reduction over pruning step
+
+    name_dict = {'kitt': 'weight changes', 'zero': 'weights close to zero',
+                  'reed': 'brute force'}
+    net_names = ('kitt', 'zero', 'reed')
+    inits = {'kitt': 300, 'zero': 300, 'reed': 300}
+    accs = {'kitt': 0.99, 'zero': 0.99, 'reed': 0.99}
+    nets = list()
+    for net_name in net_names:
+        nets.append(load_xor_comp(na=net_name))
+    colors = ('red', 'green', 'blue', 'black', 'magenta', 'yellow', 'orange', 'brown')
+    for n_i, (net, net_name) in enumerate(zip(nets, net_names)):
+        errorfill(x=range(len(net['n_syn_mean'])), y=net['n_syn_mean'], yerr=net['n_syn_std'], color=colors[n_i],
+                  label=name_dict[net_name])
+    plt.xlabel('pruning step')
+    plt.ylabel('number of synapses')
+    plt.xlim([0, 200])
+    plt.ylim([0, 400])
+    plt.grid()
+    ax = plt.gca()
+    handles, labels = ax.get_legend_handles_labels()
+    # handles = [h[0] for h in handles]
     plt.legend(handles, labels, loc='best')
     plt.show()

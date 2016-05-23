@@ -11,6 +11,11 @@
     @arg noises         : Terrain noises to be involved.
 """
 
+import matplotlib as mpl
+mpl.rcParams['axes.labelsize'] = 18
+mpl.rcParams['xtick.labelsize'] = 15
+mpl.rcParams['ytick.labelsize'] = 15
+mpl.rcParams['legend.fontsize'] = 18
 import argparse
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -128,12 +133,12 @@ if __name__ == '__main__':
             plt.xlabel('timesteps sensor by sensor')
             plt.ylabel('sensor values')
             plt.grid()
-            plt.legend(loc='lower left', prop={'size': 12}, ncol=5)
+            plt.legend(loc='lower left', ncol=5)
             ax = fig.add_subplot(111)
             for i, sensor in enumerate(sensors_to_use):
                 if r[0] <= (i+1)*sample_len <= r[1]:
-                    plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.1-(i%2)*0.15), color='#6C0505', horizontalalignment='center')
-                    plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.5, 1), '-..', color='#6C0505')
+                    plt.annotate(sensor, xy=(i*sample_len+0.5*sample_len, -0.1-(i%2)*0.15), color='#6C0505', horizontalalignment='center', fontsize=15)
+                    plt.plot(((i+1)*sample_len, (i+1)*sample_len), (-0.5, 1), '-..', color='gray')
             if save_figure:
                 plt.savefig('../../results/png/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.png', bbox_inches='tight', pad_inches=0.1)
                 plt.savefig('../../results/eps/plot_sample_'+noise+'_'+str(signal_noise_std)+'_'+str(sample_len)+'_'+str(r)+'.eps', bbox_inches='tight', pad_inches=0.1)
@@ -381,7 +386,7 @@ if __name__ == '__main__':
                             samples[noise][terrain][i_sample] += prepare_signal(
                                 signal=sample_terrain[10:sample_len + 10], sen=sensor)
 
-            colors = ('r', 'b', 'k', '#cccccc', 'y', 'g', 'm', 'c')
+            colors = ('k', 'b', 'r', '#cccccc', 'y', 'g', 'm', 'c')
             for terrain in terrains_to_use:
                 fig = plt.figure('signal_noise_analysis_' + terrain + '_' + str(sample_len), figsize=(12, 7))
                 sigs = list()
@@ -395,7 +400,7 @@ if __name__ == '__main__':
                     'timesteps: ' + str(sample_len) + ', no terrain noise, 500 samples, feature vector zoom: ' + str(
                         r) + ' => angle sensors')'''
                 plt.xlabel('timesteps sensor by sensor')
-                plt.ylabel('mean sensor value')
+                plt.ylabel('examples')
                 plt.legend(loc='best')
                 plt.grid()
                 ax = fig.add_subplot(111)

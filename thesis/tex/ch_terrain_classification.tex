@@ -506,58 +506,6 @@ Once there are two ordered lists - a list of samples and a corresponding list of
 
 The workflow of data generation procedure is illustrated in \cref{img:create_dataset}. 
 
-\begin{table}[H]
-\centering
-\caption{Generated datasets}
-\label{tab:generated_datasets}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\multicolumn{1}{|l|}{\textit{name}} & \multicolumn{1}{l|}{\textit{ter. noise}} & \multicolumn{1}{l|}{\textit{sig. noise}} & \multicolumn{1}{l|}{\textit{timesteps}} & \multicolumn{1}{l|}{\textit{sensors}} \\ \hline
-00\_00\_80\_p	& 0.00	& 0.00	& 80	& proprioceptive	 \\ \hline
-00\_00\_80\_a	& 0.00	& 0.00	& 80	& all	 \\ \hline
-00\_03\_40\_a	& 0.00	& 0.03	& 40	& all	 \\ \hline
-00\_00\_30\_a	& 0.00	& 0.00	& 30	& all	 \\ \hline
-00\_00\_10\_p	& 0.00	& 0.00	& 10	& proprioceptive	 \\ \hline
-00\_01\_40\_a	& 0.00	& 0.01	& 40	& all	 \\ \hline
-00\_00\_01\_a	& 0.00	& 0.00	& 01	& all	 \\ \hline
-00\_00\_80\_t	& 0.00	& 0.00	& 80	& tactile	 \\ \hline
-00\_00\_20\_a	& 0.00	& 0.00	& 20	& all	 \\ \hline
-00\_05\_40\_a	& 0.00	& 0.05	& 40	& all	 \\ \hline
-00\_00\_40\_a	& 0.00	& 0.00	& 40	& all	 \\ \hline
-00\_00\_10\_a	& 0.00	& 0.00	& 10	& all	 \\ \hline
-00\_00\_40\_p	& 0.00	& 0.00	& 40	& proprioceptive	 \\ \hline
-00\_00\_10\_t	& 0.00	& 0.00	& 10	& tactile	 \\ \hline
-00\_10\_40\_a	& 0.00	& 0.10	& 40	& all	 \\ \hline
-00\_00\_40\_t	& 0.00	& 0.00	& 40	& tactile	 \\ \hline
-01\_03\_40\_a	& 0.01	& 0.03	& 40	& all	 \\ \hline
-01\_10\_40\_a	& 0.01	& 0.10	& 40	& all	 \\ \hline
-01\_01\_40\_a	& 0.01	& 0.01	& 40	& all	 \\ \hline
-01\_00\_40\_a	& 0.01	& 0.00	& 40	& all	 \\ \hline
-01\_05\_40\_a	& 0.01	& 0.05	& 40	& all	 \\ \hline
-03\_10\_40\_a	& 0.03	& 0.10	& 40	& all	 \\ \hline
-03\_05\_40\_a	& 0.03	& 0.05	& 40	& all	 \\ \hline
-03\_00\_40\_a	& 0.03	& 0.00	& 40	& all	 \\ \hline
-03\_03\_40\_a	& 0.03	& 0.03	& 40	& all	 \\ \hline
-03\_01\_40\_a	& 0.03	& 0.01	& 40	& all	 \\ \hline
-05\_01\_40\_a	& 0.05	& 0.01	& 40	& all	 \\ \hline
-05\_05\_40\_a	& 0.05	& 0.05	& 40	& all	 \\ \hline
-05\_10\_40\_a	& 0.05	& 0.10	& 40	& all	 \\ \hline
-05\_03\_40\_a	& 0.05	& 0.03	& 40	& all	 \\ \hline
-05\_00\_40\_a	& 0.05	& 0.00	& 40	& all	 \\ \hline
-10\_10\_40\_a	& 0.10	& 0.10	& 40	& all	 \\ \hline
-10\_03\_40\_a	& 0.10	& 0.03	& 40	& all	 \\ \hline
-10\_01\_40\_a	& 0.10	& 0.01	& 40	& all	 \\ \hline
-10\_00\_40\_a	& 0.10	& 0.00	& 40	& all	 \\ \hline
-10\_05\_40\_a	& 0.10	& 0.05	& 40	& all	 \\ \hline
-20\_01\_40\_a	& 0.20	& 0.01	& 40	& all	 \\ \hline
-20\_00\_40\_a	& 0.20	& 0.00	& 40	& all	 \\ \hline
-20\_05\_40\_a	& 0.20	& 0.05	& 40	& all	 \\ \hline
-20\_10\_40\_a	& 0.20	& 0.10	& 40	& all	 \\ \hline
-20\_03\_40\_a	& 0.20	& 0.03	& 40	& all	 \\ \hline
-
-\end{tabular}
-\end{table}
-
 \section{Training and Classification}
 Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
 
@@ -584,45 +532,6 @@ This workflow is performed by the implemented framework \textit{kitt\_nn} (\cref
 There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
 
 Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
-
-\subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
-
-learning rate
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20}
-  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
-  \label{fig:lr_analysis}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20_example}
-  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
-  \label{fig:lr_analysis_example}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05}
-  \caption{Network structure analysis. Learning rate: 0.5.}
-  \label{fig:st_analysis}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05_example}
-  \caption{Network structure analysis. Learning rate: 0.5.}
-  \label{fig:st_analysis_example}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{cl_st_lr_mat}
-  \caption{Learning parameters analysis: Classification accuracy vs. learning rate and network structure}
-  \label{fig:acc_st_lr_mat}
-\end{figure}
 
 \subsection{Other Classification Methods for Comparison} \label{ssec:other_classifiers}
 \textbf{TODO :} describe here how other classifiers have been tested and reffer to the results part

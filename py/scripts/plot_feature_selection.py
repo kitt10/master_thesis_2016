@@ -131,8 +131,8 @@ if __name__ == '__main__':
             for i_sample, sample_terrain in enumerate(data['no_noise'][terrain][sensor]):
                 samples[terrain][i_sample] += prepare_signal(signal=sample_terrain[10:40 + 10], sen=sensor)
 
-    #nets = load_amter(na='nn')
-    nets = load_mnist()
+    nets = load_amter(na='nn')
+    #nets = load_mnist()
 
     net = nets['net'][-1]
     structure = net[0]
@@ -140,7 +140,7 @@ if __name__ == '__main__':
     classes = range(1, structure[2] + 1)
     syn_exist = net[4]
     weights = net[1]
-    not_dead_neurons = net[5]
+    #not_dead_neurons = net[5]
     class_h = dict()
     io_power = dict()
     for a_class in classes:    # classes: 1 to n
@@ -174,7 +174,7 @@ if __name__ == '__main__':
             class_h[a_class]['n_inputs'].append(class_h[a_class]['inputs'].count(i_k))
         print '\n\nclass', a_class, ': n synapses for individual inputs', class_h[a_class]['n_inputs']
 
-    '''
+
     # IO power
     plt.figure()
     mat = list()
@@ -209,7 +209,7 @@ if __name__ == '__main__':
         mat.append(class_h[a_class]['n_inputs'])
     plt.imshow(mat, vmin=0, vmax=structure[1], aspect='auto')
     #plt.ylim([0, len(features)])
-    plt.yticks([c-1 for c in classes], classes)
+    plt.yticks([c-1 for c in classes], [terrain_types[str(i)] for i in [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]])
     plt.xlabel('features')
     plt.ylabel('classes')
     plt.colorbar()
@@ -219,7 +219,7 @@ if __name__ == '__main__':
     #plt.savefig('../../thesis/img/fs_mat.eps', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
-
+    '''
     # features, number of paths, examples
     n_syn_by_feature = list()
     for f in features:

@@ -75,14 +75,14 @@ if __name__ == '__main__':
     terrain_ids = (1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15)
     terrain_types = load_params('terrain_types')[0]
     terrains = [terrain_types[str(t_id)] for t_id in terrain_ids]
-    plt.imshow(cm_normalized, vmin=0, vmax=1)
+    plt.matshow(cm_normalized, vmin=0, vmax=1)
     plt.colorbar()
     plt.xticks(range(14), terrains, rotation=45)
     plt.yticks(range(14), terrains)
     for t1_i, terrain1 in enumerate(terrains):
         for t2_i, terrain2 in enumerate(terrains):
-            if cm_normalized[t1_i][t2_i] >= 0.05:
+            if cm_normalized[t1_i][t2_i] >= 0.01:
                 plt.text(t2_i, t1_i, round(cm_normalized[t1_i][t2_i], 2), va='center', ha='center', fontsize=12)
     plt.show()
-    #plt.savefig('../../thesis/img/amter_classification_noisy_cm.eps', bbox_inches='tight', pad_inches=0.1)
+    #plt.savefig('../../thesis/img/amter_classification_nn_cm.eps', bbox_inches='tight', pad_inches=0.1)
     dataset.close()

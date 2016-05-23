@@ -10,7 +10,11 @@
     @arg terrains       : Terrains to be involved.
     @arg noises         : Terrain noises to be involved.
 """
-
+import matplotlib as mpl
+mpl.rcParams['axes.labelsize'] = 18
+mpl.rcParams['xtick.labelsize'] = 15
+mpl.rcParams['ytick.labelsize'] = 15
+mpl.rcParams['legend.fontsize'] = 18
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
@@ -48,7 +52,7 @@ if __name__ == '__main__':
 
     data = read_data(noises=noises_to_use, terrains=terrains_to_use, sensors=sensors_to_use, n_samples=n_samples)
 
-    sensors_to_use = ['fl_h']
+    sensors_to_use = ['fr_f']
     for sensor in sensors_to_use:
         for noise in noises_to_use:
             plt.figure('plot_sensor_'+sensor+'_'+noise, figsize=(10, 5))
@@ -63,11 +67,12 @@ if __name__ == '__main__':
 
             #plt.suptitle('sensor: '+sensor+', terrain noise: '+noise+', no signal noise, 14 terrains, random sample')
             #plt.title('AMOS II Terrain Classification : Simulated Sensory Output')
-            plt.xlabel('timesteps')
-            plt.ylabel('sensor values')
+            plt.xlabel('timestep')
+            plt.ylabel('sensor value')
+            plt.ylim([-0.5, 1])
             plt.grid()
-            plt.ylim(sensors_ranges[sensor])
-            #plt.legend(loc='best', prop={'size': 12}, ncol=5)
+            #plt.ylim(sensors_ranges[sensor])
+            plt.legend(loc='best', prop={'size': 15}, ncol=5)
             if save_figure:
                 '''
                 plt.savefig('../../results/png/plot_sensor_' + sensor + '_' + noise + '.png', bbox_inches='tight',

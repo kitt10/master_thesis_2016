@@ -186,24 +186,6 @@ As mentioned in \cref{ssec:minimal_structure_util}, minimal structures obtained 
 
 For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class or which pixels are totally useless for classification.
 
-%\begin{figure}[H]
-%\centering
-%\begin{subfigure}{0.4\textwidth}
-%  \centering
-%  \includegraphics[width=0.7\linewidth]{mnist_interesting_pixels.png}
-%  \caption{}
-%  \label{img:msu_interesting}
-%\end{subfigure}%
-%\begin{subfigure}{0.4\textwidth}
-%  \centering
-%  \includegraphics[width=0.7\linewidth]{mnist_pixels_seven.png}
-%  \caption{}
-%  \label{img:msu_seven}
-%\end{subfigure}
-%\caption{Demonstration of the minimal structures utilization on MNIST; (A) Pixels of the MNIST samples that are essential for classification; (B) Pixels of the MNIST samples influencing the class $ 7 $}
-%\label{img:pa_xor_morph}
-%\end{figure}
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{fs_mnist_analysis}
@@ -224,6 +206,21 @@ intensity = \frac{255 \cdot n\_con}{15}
 \cref{img:msu_interesting} shows the number of connections to the hidden layer $ n\_con $ as a greyscale value ($ intensity $) for every pixel of input samples. The more bright the pixel is, the more connections it has. Black pixels have no connections to the hidden layer and so they are not used for classification at all.
 
 The results on both figures (\ref{img:msu_interesting} and \ref{img:msu_seven}) make a good sense, as the pixels close to borders are black. One could expect, that these pixels are not important, as the digits are centered in the images.
+
+\subsection{Comparison to Other Pruning Methods} \label{comparison_to_other_pa}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{pa_comparison_to_others_xor.png}
+  \caption{Pruning Algorithm Comparison to other methods. on xor}
+  \label{fig:pa_comparison_to_other_xor}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{pa_comparison_to_others_mnist.png}
+  \caption{Pruning Algorithm Comparison to other methods. on mnist}
+  \label{fig:pa_comparison_to_other_mnist}
+\end{figure}
 
 \section{Results of Terrain Classification} \label{sec:terrain_processing_results}
 In this section, results of the overall terrain classification process (see \cref{chap:terrain_classification}) are presented.  
@@ -354,6 +351,45 @@ method & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-s
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
+
+learning rate
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20_example}
+  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \label{fig:lr_analysis_example}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05}
+  \caption{Network structure analysis. Learning rate: 0.5.}
+  \label{fig:st_analysis}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05_example}
+  \caption{Network structure analysis. Learning rate: 0.5.}
+  \label{fig:st_analysis_example}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{cl_st_lr_mat}
+  \caption{Learning parameters analysis: Classification accuracy vs. learning rate and network structure}
+  \label{fig:acc_st_lr_mat}
+\end{figure}
 
 \subsection{Influence of Noise on Classification} \label{ssec:final_configuration}
 

@@ -61,24 +61,6 @@ def report(y_pred, y_true, labels):
     return c_accuracy, c_report, cm
 
 
-def cut_synapses(net, level):
-    """ cuts synapses """
-    if level > 0:
-        th_change = np.percentile([abs(synapse.get_weight()-synapse.init_weight) for synapse in net.synapsesG], level)
-    else:
-        th_change = min([abs(synapse.get_weight()-synapse.init_weight) for synapse in net.synapsesG])
-
-    c = 0
-    for synapse in net.synapsesG[:]:
-        synapse.set_weight()
-        if abs(synapse.weight-synapse.init_weight) <= th_change:
-            synapse.remove_self()
-            c += 1
-    n_to_remove = c
-    print ' Trying to remove', n_to_remove, 'synapses. May I? Percentile:', level
-    return net, n_to_remove
-
-
 def able_to_learn(tested_net):
     tested_net.learning = BackPropagation(program=None, net=tested_net, learning_rate=learning_rate, n_iter=max_epochs,
                                           n_stable=n_stable)
