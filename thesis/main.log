@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  25 MAY 2016 00:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  25 MAY 2016 01:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1745,13 +1745,121 @@ Package: stringenc 2011/12/02 v1.10 Convert strings between diff. encodings (HO
 Library (tcolorbox): 'tcblistings.code.tex' version '2.70'
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
 Library (tcolorbox): 'tcblistingscore.code.tex' version '2.70'
-))))) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+)))) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip111
 \enit@outerparindent=\dimen300
 \enit@toks=\toks42
 \enit@inbox=\box80
 \enitdp@description=\count408
+))
+(/usr/share/texlive/texmf-dist/tex/latex/forest/forest.sty
+Package: forest 2013/10/17 v1.04 Drawing (linguistic) trees
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.code.tex
+File: tikzlibraryshapes.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.c
+ode.tex
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.t
+ex
+File: pgflibraryshapes.misc.code.tex 2008/10/07 v2.10 (rcs-revision 1.3)
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.cod
+e.tex
+File: pgflibraryshapes.symbols.code.tex 2009/10/27 v2.10 (rcs-revision 1.3)
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code
+.tex
+File: pgflibraryshapes.arrows.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.callouts.code.tex
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.co
+de.tex))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
+s.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.c
+ode.tex
+File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
+\pgfnodepartlowerbox=\box81
+\pgfnodeparttwobox=\box82
+\pgfnodepartthreebox=\box83
+\pgfnodepartfourbox=\box84
+\pgfnodeparttwentybox=\box85
+\pgfnodepartnineteenbox=\box86
+\pgfnodeparteighteenbox=\box87
+\pgfnodepartseventeenbox=\box88
+\pgfnodepartsixteenbox=\box89
+\pgfnodepartfifteenbox=\box90
+\pgfnodepartfourteenbox=\box91
+\pgfnodepartthirteenbox=\box92
+\pgfnodeparttwelvebox=\box93
+\pgfnodepartelevenbox=\box94
+\pgfnodeparttenbox=\box95
+\pgfnodepartninebox=\box96
+\pgfnodeparteightbox=\box97
+\pgfnodepartsevenbox=\box98
+\pgfnodepartsixbox=\box99
+\pgfnodepartfivebox=\box100
+)))
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.c
+ode.tex
+File: tikzlibraryfit.code.tex 2008/06/21 v2.10 (rcs-revision 1.3)
+)
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.
+code.tex
+File: tikzlibrarycalc.code.tex 2009/09/04 v2.10 (rcs-revision 1.6)
+)
+(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryintersections.code.tex
+\pgf@intersect@solutions=\count409
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+Package: pgfopts 2011/06/02 v2.1 LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks43
+\pgfopts@list@add@b@toks=\toks44
+)
+\forest@temp@dimen=\dimen301
+\forest@temp@count=\count410
+\forest@n=\count411
+\forest@temp@global@count=\count412
+\forest@sort@m=\count413
+\forest@sort@k=\count414
+\forest@sort@p=\count415
+\bracket@content=\toks45
+\bracket@afterthought=\toks46
+\forest@node@maxid=\count416
+\forest@temp@toks=\toks47
+\forest@repeat@key@depth=\count417
+\forest@do@dynamics=\toks48
+\forest@box=\box101
+\forest@xg=\dimen302
+\forest@yg=\dimen303
+\forest@xs=\dimen304
+\forest@ys=\dimen305
+\forest@externalize@max@outer@n=\count418
+\forest@externalize@inner@n=\count419
 )
 (./tex/sett/thesis_info.tex)
 Package biblatex Info: Trying to load language 'english'...
@@ -1877,17 +1985,17 @@ fg
 File: siunitx-abbreviations.cfg 2013/07/31 v2.5s siunitx: Abbreviated units
 ) (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count409
-\scratchdimen=\dimen301
-\scratchbox=\box81
-\nofMPsegments=\count410
-\nofMParguments=\count411
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count412
-\MPscratchDim=\dimen302
-\MPnumerator=\count413
-\makeMPintoPDFobject=\count414
-\everyMPtoPDFconversion=\toks44
+\scratchcounter=\count420
+\scratchdimen=\dimen306
+\scratchbox=\box102
+\nofMPsegments=\count421
+\nofMParguments=\count422
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count423
+\MPscratchDim=\dimen307
+\MPnumerator=\count424
+\makeMPintoPDFobject=\count425
+\everyMPtoPDFconversion=\toks50
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
@@ -1948,19 +2056,19 @@ Package biblatex Warning: Data encoding is 'utf8'.
 \openout3 = `main-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' found.
-(./main.bbl)
+Package biblatex Info: ... file 'main.bbl' not found.
+No file main.bbl.
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
-\AtBeginShipoutBox=\box82
+\AtBeginShipoutBox=\box103
 Package hyperref Info: Link coloring OFF on input line 5.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count415
+\c@section@level=\count426
 )
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
@@ -1970,10 +2078,10 @@ LaTeX Info: Redefining \nameref on input line 5.
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
-\c@lstlisting=\count416
+\c@lstlisting=\count427
 Package scrhack Info: undefining \float@addtolists on input line 5.
  ABD: EveryShipout initializing macros
-\c__siunitx_mathsf_int=\count417
+\c__siunitx_mathsf_int=\count428
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 5.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
@@ -2005,14 +2113,14 @@ LaTeX Font Info:    Try loading font information for OT1+lmss on input line 5.
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\c__siunitx_mathtt_int=\count418
+\c__siunitx_mathtt_int=\count429
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 5.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) (./tex/sett/title_page.tex
 1: section
-<img/sdu_logo.png, id=304, 398.4486pt x 106.4778pt>
+<img/sdu_logo.png, id=300, 398.4486pt x 106.4778pt>
 File: img/sdu_logo.png Graphic file (type png)
  <use img/sdu_logo.png>
 Package pdftex.def Info: img/sdu_logo.png used on input line 11.
@@ -2074,18 +2182,18 @@ Overfull \hbox (2.20453pt too wide) in paragraph at lines 24--24
 
 1: section
 [6]
-Overfull \hbox (6.81244pt too wide) in paragraph at lines 42--42
- \T1/lmr/m/n/10.95 neuralnetwork (sknn): (Cham-pan-dard and Samoth-rakis, []201
-5[])).[] [][]  
- []
-
-
 Overfull \hbox (24.66527pt too wide) in paragraph at lines 61--61
  [][] [][]\T1/lmr/m/n/10.95 Synaptic prun-ing of con-fig-u-ra-tions A (ref-er-e
 nce), B (80 timesteps) 
  []
 
-[7])
+[7]
+Overfull \hbox (44.00421pt too wide) in paragraph at lines 96--96
+ [][] [][]\T1/lmr/m/n/10.95 Software ar-chi-tec-ture for LPZRobots and GoRobots
+. ([])[] [][]  
+ []
+
+)
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
@@ -2126,8 +2234,12 @@ Chapter 1.
 ]
 Package cleveref Info: loaded `english' language definitions on input line 11.
  [2]
+
+LaTeX Warning: Citation 'article:scikit-learn' on page 3 undefined on input lin
+e 28.
+
 Package cleveref Info: loaded `english' language definitions on input line 46.
- [3]
+[3]
 Package cleveref Info: loaded `english' language definitions on input line 71.
  [4])
 Package cleveref Info: loaded `english' language definitions on input line 17.
@@ -2136,7 +2248,7 @@ Package cleveref Info: loaded `english' language definitions on input line 17.
 
  (./tex/chap/chap_kitt_nn.tex
 Chapter 2.
-<img/neural_net.png, id=760, 425.59pt x 201.75375pt>
+<img/neural_net.png, id=732, 425.59pt x 201.75375pt>
 File: img/neural_net.png Graphic file (type png)
  <use img/neural_net.png>
 Package pdftex.def Info: img/neural_net.png used on input line 18.
@@ -2148,7 +2260,7 @@ Package pdftex.def Info: img/neural_net.png used on input line 18.
 
 
  <./img/neural_net.png>]
-<img/neuron_principle.png, id=772, 414.54875pt x 183.68625pt>
+<img/neuron_principle.png, id=744, 414.54875pt x 183.68625pt>
 File: img/neuron_principle.png Graphic file (type png)
 
 <use img/neuron_principle.png>
@@ -2166,7 +2278,7 @@ f>
 (epstopdf)             \includegraphics on input line 64.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/transfer_functions-eps-converted-to.pdf, id=776, 551.05875pt x 424.58624pt
+<img/transfer_functions-eps-converted-to.pdf, id=748, 551.05875pt x 424.58624pt
 >
 File: img/transfer_functions-eps-converted-to.pdf Graphic file (type pdf)
  <use img/transfer_functions-eps-converted-to.pdf>
@@ -2174,7 +2286,7 @@ Package pdftex.def Info: img/transfer_functions-eps-converted-to.pdf used on in
 put line 64.
 (pdftex.def)             Requested size: 180.67497pt x 139.20688pt.
 Package cleveref Info: loaded `english' language definitions on input line 67.
- [7 <./img/neuron_principle.png>] <img/backpropagation.png, id=786, 425.59pt x 
+ [7 <./img/neuron_principle.png>] <img/backpropagation.png, id=758, 425.59pt x 
 374.39874pt>
 File: img/backpropagation.png Graphic file (type png)
 
@@ -2194,6 +2306,10 @@ LaTeX Warning: Reference `sec:intro_to_nn' on page 1 undefined on input line 79
 
 Package cleveref Info: loaded `english' language definitions on input line 81.
 [8 <./img/transfer_functions-eps-converted-to.pdf> <./img/backpropagation.png>]
+
+LaTeX Warning: Citation 'online:nn_demystified' on page 9 undefined on input li
+ne 83.
+
 Package cleveref Info: loaded `english' language definitions on input line 106.
 
 [9]
@@ -2211,7 +2327,7 @@ LaTeX Warning: Reference `sec:intro_to_nn' on page 1 undefined on input line 17
 
 Package cleveref Info: loaded `english' language definitions on input line 177.
 
-[11] <img/pruning_problem_formulation.png, id=871, 888.31876pt x 290.08376pt>
+[11] <img/pruning_problem_formulation.png, id=841, 888.31876pt x 290.08376pt>
 File: img/pruning_problem_formulation.png Graphic file (type png)
 
 <use img/pruning_problem_formulation.png>
@@ -2219,7 +2335,7 @@ Package pdftex.def Info: img/pruning_problem_formulation.png used on input line
  183.
 (pdftex.def)             Requested size: 361.34995pt x 117.99672pt.
 
-<img/pa_flowchart.png, id=873, 364.36125pt x 53.19875pt>
+<img/pa_flowchart.png, id=843, 364.36125pt x 53.19875pt>
 File: img/pa_flowchart.png Graphic file (type png)
 
 <use img/pa_flowchart.png>
@@ -2233,7 +2349,7 @@ Overfull \hbox (0.97758pt too wide) in paragraph at lines 212--213
 T1/lmr/m/n/10.95 with an over-sized struc-ture (many
  []
 
-<img/pruning_algorithm.png, id=883, 421.575pt x 309.155pt>
+<img/pruning_algorithm.png, id=853, 421.575pt x 309.155pt>
 File: img/pruning_algorithm.png Graphic file (type png)
 
 <use img/pruning_algorithm.png>
@@ -2242,14 +2358,14 @@ Package pdftex.def Info: img/pruning_algorithm.png used on input line 225.
 Package cleveref Info: loaded `english' language definitions on input line 231.
 
  [13 <./img/pa_flowchart.png> <./img/pruning_algorithm.png>] <img/cut_synapses.
-png, id=895, 394.47375pt x 210.7875pt>
+png, id=865, 394.47375pt x 210.7875pt>
 File: img/cut_synapses.png Graphic file (type png)
 
 <use img/cut_synapses.png>
 Package pdftex.def Info: img/cut_synapses.png used on input line 234.
 (pdftex.def)             Requested size: 271.01245pt x 144.81635pt.
 
-<img/accuracy_kept.png, id=898, 394.47375pt x 272.01625pt>
+<img/accuracy_kept.png, id=868, 394.47375pt x 272.01625pt>
 File: img/accuracy_kept.png Graphic file (type png)
 
 <use img/accuracy_kept.png>
@@ -2259,39 +2375,52 @@ Package cleveref Info: loaded `english' language definitions on input line 258.
 
  [14 <./img/cut_synapses.png> <./img/accuracy_kept.png>]
 
+LaTeX Warning: Citation 'article:10:pa' on page 15 undefined on input line 271.
+
+
+
 LaTeX Warning: Reference `sec:pruning_algorithms' on page 1 undefined on input 
 line 271.
 
 Package cleveref Info: loaded `english' language definitions on input line 296.
 
-[15] <img/data_xor.png, id=923, 455.7025pt x 453.695pt>
+[15] <img/data_xor.png, id=891, 455.7025pt x 453.695pt>
 File: img/data_xor.png Graphic file (type png)
  <use img/data_xor.png>
 Package pdftex.def Info: img/data_xor.png used on input line 299.
 (pdftex.def)             Requested size: 180.67497pt x 179.88254pt.
 
-<img/xor_min1.png, id=927, 203.76125pt x 83.31125pt>
+<img/xor_min1.png, id=895, 203.76125pt x 83.31125pt>
 File: img/xor_min1.png Graphic file (type png)
  <use img/xor_min1.png>
 Package pdftex.def Info: img/xor_min1.png used on input line 312.
 (pdftex.def)             Requested size: 144.54053pt x 59.10054pt.
 
-<img/xor_min2.png, id=928, 203.76125pt x 123.46124pt>
+<img/xor_min2.png, id=896, 203.76125pt x 123.46124pt>
 File: img/xor_min2.png Graphic file (type png)
  <use img/xor_min2.png>
 Package pdftex.def Info: img/xor_min2.png used on input line 318.
 (pdftex.def)             Requested size: 144.54053pt x 87.58272pt.
+
+
+LaTeX Warning: Citation 'online:mnist' on page 16 undefined on input line 329.
+
 Package cleveref Info: loaded `english' language definitions on input line 330.
 
-
 [16 <./img/data_xor.png> <./img/xor_min1.png> <./img/xor_min2.png>]
-<img/data_mnist.png, id=940, 481.8pt x 175.65625pt>
+<img/data_mnist.png, id=907, 481.8pt x 175.65625pt>
 File: img/data_mnist.png Graphic file (type png)
  <use img/data_mnist.png>
 Package pdftex.def Info: img/data_mnist.png used on input line 333.
 (pdftex.def)             Requested size: 144.53777pt x 52.6946pt.
 
-<img/min_structure_analysis.png, id=945, 251.94125pt x 163.61125pt>
+
+LaTeX Warning: Citation 'online:mnist' on page 17 undefined on input line 334.
+
+
+LaTeX Warning: Citation 'online:mnist' on page 17 undefined on input line 334.
+
+<img/min_structure_analysis.png, id=910, 251.94125pt x 163.61125pt>
 File: img/min_structure_analysis.png Graphic file (type png)
 
 <use img/min_structure_analysis.png>
@@ -2301,7 +2430,7 @@ Package pdftex.def Info: img/min_structure_analysis.png used on input line 351.
 Package cleveref Info: loaded `english' language definitions on input line 358.
 
  [17 <./img/data_mnist.png (PNG copy)> <./img/min_structure_analysis.png>]
-<img/gui_screen.png, id=953, 1301.86375pt x 659.46375pt>
+<img/gui_screen.png, id=917, 1301.86375pt x 659.46375pt>
 File: img/gui_screen.png Graphic file (type png)
 
 <use img/gui_screen.png>
@@ -2315,7 +2444,7 @@ Package cleveref Info: loaded `english' language definitions on input line 18.
 
 (./tex/chap/chap_terrain_classification.tex
 Chapter 3.
-<img/terrains_overall_simple.png, id=971, 226.8475pt x 359.3425pt>
+<img/terrains_overall_simple.png, id=935, 226.8475pt x 359.3425pt>
 File: img/terrains_overall_simple.png Graphic file (type png)
 
 <use img/terrains_overall_simple.png>
@@ -2333,32 +2462,65 @@ line 15.
 
 
  <./img/terrains_overall_simple.png>]
+
+LaTeX Warning: Citation 'misc:sknn' on page 20 undefined on input line 39.
+
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 20 undefined on input line 44.
+
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 20 undefined on input line 47.
+
 Package cleveref Info: loaded `english' language definitions on input line 48.
- [20]
-<img/amosii.png, id=994, 344.28625pt x 315.1775pt>
+[20] <img/amosii.png, id=956, 344.28625pt x 315.1775pt>
 File: img/amosii.png Graphic file (type png)
  <use img/amosii.png>
 Package pdftex.def Info: img/amosii.png used on input line 51.
 (pdftex.def)             Requested size: 344.2875pt x 315.18153pt.
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 21 undefined on input line 52.
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 21 undefined on input line 52.
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 21 undefined on input line 56.
+
 
 Overfull \hbox (14.90294pt too wide) in paragraph at lines 56--57
 []\T1/lmr/m/n/10.95 A wide range of sen-sors (for in-stance infra-red, re-flex-
 ive op-ti-cal, light-dependent,
  []
 
-<img/amosii_leg.png, id=999, 167.87718pt x 173.89969pt>
+<img/amosii_leg.png, id=958, 167.87718pt x 173.89969pt>
 File: img/amosii_leg.png Graphic file (type png)
 
 <use img/amosii_leg.png>
 Package pdftex.def Info: img/amosii_leg.png used on input line 60.
 (pdftex.def)             Requested size: 180.67497pt x 187.15608pt.
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 21 undefined on input line 61.
+
+
+LaTeX Warning: Citation 'misc:amosii' on page 21 undefined on input line 61.
+
 Package cleveref Info: loaded `english' language definitions on input line 64.
- [21 <./img/amosii.png (PNG copy)>]
+[21 <./img/amosii.png (PNG copy)>]
+
+LaTeX Warning: Citation 'misc:amosii' on page 22 undefined on input line 73.
+
 Package cleveref Info: loaded `english' language definitions on input line 108.
 
- [22 <./img/amosii_leg.png>]
+[22 <./img/amosii_leg.png>]
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 23 undefined on input line 112
+.
+
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 114.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Overfull \hbox (0.3917pt too wide) in paragraph at lines 114--115
@@ -2366,16 +2528,24 @@ Overfull \hbox (0.3917pt too wide) in paragraph at lines 114--115
 T1/lmr/m/n/10.95 di-rec-tory
  []
 
-<img/lpzrobots_repos.png, id=1026, 484.81125pt x 213.79875pt>
+<img/lpzrobots_repos.png, id=977, 484.81125pt x 213.79875pt>
 File: img/lpzrobots_repos.png Graphic file (type png)
 
 <use img/lpzrobots_repos.png>
 Package pdftex.def Info: img/lpzrobots_repos.png used on input line 125.
 (pdftex.def)             Requested size: 361.34995pt x 159.36018pt.
+
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 23 undefined on input line 126
+.
+
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 23 undefined on input line 126
+.
+
 Package cleveref Info: loaded `english' language definitions on input line 129.
 
- [23]
-<img/amosii_sim.png, id=1037, 418.56375pt x 201.75375pt>
+[23] <img/amosii_sim.png, id=986, 418.56375pt x 201.75375pt>
 File: img/amosii_sim.png Graphic file (type png)
 
 <use img/amosii_sim.png>
@@ -2383,25 +2553,48 @@ Package pdftex.def Info: img/amosii_sim.png used on input line 140.
 (pdftex.def)             Requested size: 289.08105pt x 139.33952pt.
 Package cleveref Info: loaded `english' language definitions on input line 149.
 
- [24 <./img/lpzrobots_repos.png> <./img/amosii_sim.png>] <img/two_neuron_networ
-k.png, id=1047, 355.3275pt x 183.68625pt>
+ [24 <./img/lpzrobots_repos.png> <./img/amosii_sim.png>]
+
+LaTeX Warning: Citation 'unpub:ai3_lec3' on page 25 undefined on input line 150
+.
+
+<img/two_neuron_network.png, id=994, 355.3275pt x 183.68625pt>
 File: img/two_neuron_network.png Graphic file (type png)
 
 <use img/two_neuron_network.png>
 Package pdftex.def Info: img/two_neuron_network.png used on input line 154.
 (pdftex.def)             Requested size: 180.67497pt x 93.40125pt.
+
+
+LaTeX Warning: Citation 'unpub:ai3_lec3' on page 25 undefined on input line 155
+.
+
+
+LaTeX Warning: Citation 'unpub:ai3_lec3' on page 25 undefined on input line 155
+.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--155
+ []\T1/lmr/m/sc/10 Figure 3.6: |\T1/lmr/m/n/10 2-neuron net-work os-cil-la-tor 
+
+ []
+
 Package cleveref Info: loaded `english' language definitions on input line 194.
 
- [25 <./img/two_neuron_network.png>]
-<img/tripod_illustration.png, id=1063, 300.12125pt x 326.21875pt>
+[25 <./img/two_neuron_network.png>]
+<img/tripod_illustration.png, id=1006, 300.12125pt x 326.21875pt>
 File: img/tripod_illustration.png Graphic file (type png)
 
 <use img/tripod_illustration.png>
 Package pdftex.def Info: img/tripod_illustration.png used on input line 202.
 (pdftex.def)             Requested size: 200.75073pt x 218.212pt.
-Package cleveref Info: loaded `english' language definitions on input line 221.
 
- [26 <./img/tripod_illustration.png>]
+
+LaTeX Warning: Citation 'misc:ppm' on page 26 undefined on input line 217.
+
+Package cleveref Info: loaded `english' language definitions on input line 222.
+
+[26 <./img/tripod_illustration.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 227.
 
@@ -2428,7 +2621,7 @@ ps-converted-to.pdf img/terrains_variability.eps>
 (epstopdf)             \includegraphics on input line 289.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/terrains_variability-eps-converted-to.pdf, id=1096, 394.47375pt x 370.3837
+<img/terrains_variability-eps-converted-to.pdf, id=1037, 394.47375pt x 370.3837
 4pt>
 File: img/terrains_variability-eps-converted-to.pdf Graphic file (type pdf)
  <use img/terrains_variability-eps-converted-to.pdf>
@@ -2453,7 +2646,7 @@ ock-eps-converted-to.pdf img/tn_influence_samples_rock.eps>
 (epstopdf)             \includegraphics on input line 338.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/tn_influence_samples_rock-eps-converted-to.pdf, id=1157, 875.27pt x 514.92
+<img/tn_influence_samples_rock-eps-converted-to.pdf, id=1099, 875.27pt x 514.92
 375pt>
 File: img/tn_influence_samples_rock-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -2476,7 +2669,7 @@ eps-converted-to.pdf img/sensor_atr_f_no_noise.eps>
 (epstopdf)             \includegraphics on input line 358.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sensor_atr_f_no_noise-eps-converted-to.pdf, id=1205, 730.73pt x 370.38374p
+<img/sensor_atr_f_no_noise-eps-converted-to.pdf, id=1147, 730.73pt x 370.38374p
 t>
 File: img/sensor_atr_f_no_noise-eps-converted-to.pdf Graphic file (type pdf)
  <use img/sensor_atr_f_no_noise-eps-converted-to.pdf>
@@ -2495,7 +2688,7 @@ eps-converted-to.pdf img/sensor_acr_m_no_noise.eps>
 (epstopdf)             \includegraphics on input line 367.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sensor_acr_m_no_noise-eps-converted-to.pdf, id=1207, 730.73pt x 370.38374p
+<img/sensor_acr_m_no_noise-eps-converted-to.pdf, id=1149, 730.73pt x 370.38374p
 t>
 File: img/sensor_acr_m_no_noise-eps-converted-to.pdf Graphic file (type pdf)
  <use img/sensor_acr_m_no_noise-eps-converted-to.pdf>
@@ -2518,7 +2711,7 @@ eps-converted-to.pdf img/sensor_afr_h_no_noise.eps>
 (epstopdf)             \includegraphics on input line 376.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sensor_afr_h_no_noise-eps-converted-to.pdf, id=1282, 730.73pt x 370.38374p
+<img/sensor_afr_h_no_noise-eps-converted-to.pdf, id=1224, 730.73pt x 370.38374p
 t>
 File: img/sensor_afr_h_no_noise-eps-converted-to.pdf Graphic file (type pdf)
  <use img/sensor_afr_h_no_noise-eps-converted-to.pdf>
@@ -2537,7 +2730,7 @@ ps-converted-to.pdf img/sensor_fr_f_no_noise.eps>
 (epstopdf)             \includegraphics on input line 385.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sensor_fr_f_no_noise-eps-converted-to.pdf, id=1284, 736.7525pt x 376.40625
+<img/sensor_fr_f_no_noise-eps-converted-to.pdf, id=1226, 736.7525pt x 376.40625
 pt>
 File: img/sensor_fr_f_no_noise-eps-converted-to.pdf Graphic file (type pdf)
  <use img/sensor_fr_f_no_noise-eps-converted-to.pdf>
@@ -2553,7 +2746,7 @@ Package cleveref Info: loaded `english' language definitions on input line 398.
 
 [32 <./img/sensor_afr_h_no_noise-eps-converted-to.pdf> <./img/sensor_fr_f_no_no
 ise-eps-converted-to.pdf>]
-<img/feature_vector_forming.png, id=1366, 515.9275pt x 279.0425pt>
+<img/feature_vector_forming.png, id=1307, 515.9275pt x 279.0425pt>
 File: img/feature_vector_forming.png Graphic file (type png)
 
 <use img/feature_vector_forming.png>
@@ -2575,7 +2768,7 @@ eps-converted-to.pdf img/sample_example_normed.eps>
 (epstopdf)             \includegraphics on input line 453.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sample_example_normed-eps-converted-to.pdf, id=1380, 875.27pt x 514.92375p
+<img/sample_example_normed-eps-converted-to.pdf, id=1321, 875.27pt x 514.92375p
 t>
 File: img/sample_example_normed-eps-converted-to.pdf Graphic file (type pdf)
  <use img/sample_example_normed-eps-converted-to.pdf>
@@ -2600,7 +2793,7 @@ oncrete-eps-converted-to.pdf img/sn_influence_samples_concrete.eps>
 (epstopdf)             \includegraphics on input line 494.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sn_influence_samples_concrete-eps-converted-to.pdf, id=1438, 875.27pt x 51
+<img/sn_influence_samples_concrete-eps-converted-to.pdf, id=1380, 875.27pt x 51
 4.92375pt>
 File: img/sn_influence_samples_concrete-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -2609,7 +2802,7 @@ Package pdftex.def Info: img/sn_influence_samples_concrete-eps-converted-to.pdf
  used on input line 494.
 (pdftex.def)             Requested size: 361.34995pt x 212.58151pt.
 
-<img/three_sets.png, id=1439, 384.43625pt x 173.64874pt>
+<img/three_sets.png, id=1381, 384.43625pt x 173.64874pt>
 File: img/three_sets.png Graphic file (type png)
 
 <use img/three_sets.png>
@@ -2618,7 +2811,7 @@ Package pdftex.def Info: img/three_sets.png used on input line 504.
 Package cleveref Info: loaded `english' language definitions on input line 508.
 
  [36 <./img/sn_influence_samples_concrete-eps-converted-to.pdf>] <img/target_ve
-ctor_concrete.png, id=1488, 228.855pt x 304.13625pt>
+ctor_concrete.png, id=1430, 228.855pt x 304.13625pt>
 File: img/target_vector_concrete.png Graphic file (type png)
 
 <use img/target_vector_concrete.png>
@@ -2626,7 +2819,7 @@ Package pdftex.def Info: img/target_vector_concrete.png used on input line 515.
 
 (pdftex.def)             Requested size: 144.53777pt x 192.08948pt.
 
-<img/create_dataset.png, id=1490, 454.69875pt x 354.32375pt>
+<img/create_dataset.png, id=1432, 454.69875pt x 354.32375pt>
 File: img/create_dataset.png Graphic file (type png)
 
 <use img/create_dataset.png>
@@ -2644,7 +2837,7 @@ ath-e-mat-i-cal back-grounds
 LaTeX Warning: Reference `ssec:other_classifiers' on page 38 undefined on input
  line 541.
 
-<img/train_and_test_network.png, id=1503, 424.58624pt x 223.83624pt>
+<img/train_and_test_network.png, id=1445, 424.58624pt x 223.83624pt>
 File: img/train_and_test_network.png Graphic file (type png)
 
 <use img/train_and_test_network.png>
@@ -2665,6 +2858,15 @@ Package cleveref Info: loaded `english' language definitions on input line 19.
 
  (./tex/chap/chap_results.tex
 Chapter 4.
+
+LaTeX Warning: Citation 'misc:sknn' on page 40 undefined on input line 5.
+
+
+Overfull \hbox (6.05006pt too wide) in paragraph at lines 5--6
+\T1/lmr/m/n/10.95 to a \T1/lmr/m/it/10.95 Scikit-neuralnetwork \T1/lmr/m/n/10.9
+5 clas-si-fier (([])) pre-sented in ap-pendix []A2.2[].
+ []
+
 Package epstopdf Info: Source file: <img/kitt_verify_acc.eps>
 (epstopdf)                    date: 2016-05-21 13:21:58
 (epstopdf)                    size: 106214 bytes
@@ -2676,7 +2878,7 @@ nverted-to.pdf img/kitt_verify_acc.eps>
 (epstopdf)             \includegraphics on input line 11.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/kitt_verify_acc-eps-converted-to.pdf, id=1529, 518.93875pt x 410.53375pt>
+<img/kitt_verify_acc-eps-converted-to.pdf, id=1470, 518.93875pt x 410.53375pt>
 File: img/kitt_verify_acc-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/kitt_verify_acc-eps-converted-to.pdf>
@@ -2684,9 +2886,11 @@ Package pdftex.def Info: img/kitt_verify_acc-eps-converted-to.pdf used on input
  line 11.
 (pdftex.def)             Requested size: 289.08105pt x 228.70087pt.
 
-Underfull \hbox (badness 1122) in paragraph at lines 12--12
- \T1/lmr/m/n/10 work (Scikit-neuralnetwork (sknn): (Cham-pan-dard and 
- []
+
+LaTeX Warning: Citation 'misc:sknn' on page 40 undefined on input line 12.
+
+
+LaTeX Warning: Citation 'misc:sknn' on page 40 undefined on input line 12.
 
 1: section
 [40
@@ -2710,14 +2914,21 @@ onverted-to.pdf img/kitt_verify_time.eps>
 (epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/kitt_verify_time-eps-converted-to.pdf, id=1579, 504.88625pt x 388.45125pt>
+<img/kitt_verify_time-eps-converted-to.pdf, id=1517, 504.88625pt x 388.45125pt>
 File: img/kitt_verify_time-eps-converted-to.pdf Graphic file (type pdf)
 <use img/kitt_verify_time-eps-converted-to.pdf>
 Package pdftex.def Info: img/kitt_verify_time-eps-converted-to.pdf used on inpu
 t line 47.
 (pdftex.def)             Requested size: 289.08105pt x 222.41528pt.
+
+
+LaTeX Warning: Citation 'misc:sknn' on page 41 undefined on input line 48.
+
+
+LaTeX Warning: Citation 'misc:sknn' on page 41 undefined on input line 48.
+
 Package cleveref Info: loaded `english' language definitions on input line 56.
- [41 <./img/kitt_verify_time-eps-converted-to.pdf>]
+[41 <./img/kitt_verify_time-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/pa_result_xor.eps>
 (epstopdf)                    date: 2016-05-18 15:54:34
 (epstopdf)                    size: 36763 bytes
@@ -2729,7 +2940,7 @@ erted-to.pdf img/pa_result_xor.eps>
 (epstopdf)             \includegraphics on input line 73.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/pa_result_xor-eps-converted-to.pdf, id=1621, 587.19376pt x 346.29375pt>
+<img/pa_result_xor-eps-converted-to.pdf, id=1557, 587.19376pt x 346.29375pt>
 File: img/pa_result_xor-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/pa_result_xor-eps-converted-to.pdf>
@@ -2737,7 +2948,7 @@ Package pdftex.def Info: img/pa_result_xor-eps-converted-to.pdf used on input l
 ine 73.
 (pdftex.def)             Requested size: 361.34995pt x 213.10413pt.
 Package cleveref Info: loaded `english' language definitions on input line 79.
- [42 <./img/pa_result_xor-eps-converted-to.pdf>] <img/pa_xor_start.png, id=1664
+ [42 <./img/pa_result_xor-eps-converted-to.pdf>] <img/pa_xor_start.png, id=1600
 , 213.79875pt x 213.79875pt>
 File: img/pa_xor_start.png Graphic file (type png)
 
@@ -2749,7 +2960,7 @@ Underfull \hbox (badness 1308) in paragraph at lines 101--101
  []\T1/lmr/m/sc/10 (a) |\T1/lmr/m/n/10 PA in-put: over-sized and 
  []
 
-<img/pa_xor_final.png, id=1665, 213.79875pt x 213.79875pt>
+<img/pa_xor_final.png, id=1601, 213.79875pt x 213.79875pt>
 File: img/pa_xor_final.png Graphic file (type png)
 
 <use img/pa_xor_final.png>
@@ -2766,7 +2977,7 @@ nverted-to.pdf img/pa_result_mnist.eps>
 (epstopdf)             \includegraphics on input line 127.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/pa_result_mnist-eps-converted-to.pdf, id=1668, 587.19376pt x 442.65375pt>
+<img/pa_result_mnist-eps-converted-to.pdf, id=1604, 587.19376pt x 442.65375pt>
 File: img/pa_result_mnist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/pa_result_mnist-eps-converted-to.pdf>
@@ -2785,7 +2996,7 @@ Package cleveref Info: loaded `english' language definitions on input line 131.
 Package cleveref Info: loaded `english' language definitions on input line 164.
 
  [44 <./img/pa_result_mnist-eps-converted-to.pdf>]
-<img/pa_mnist_start.png, id=1721, 213.79875pt x 213.79875pt>
+<img/pa_mnist_start.png, id=1658, 213.79875pt x 213.79875pt>
 File: img/pa_mnist_start.png Graphic file (type png)
 
 <use img/pa_mnist_start.png>
@@ -2796,7 +3007,7 @@ Underfull \hbox (badness 1308) in paragraph at lines 171--171
  []\T1/lmr/m/sc/10 (a) |\T1/lmr/m/n/10 PA in-put: over-sized and 
  []
 
-<img/pa_mnist_final.png, id=1722, 213.79875pt x 213.79875pt>
+<img/pa_mnist_final.png, id=1659, 213.79875pt x 213.79875pt>
 File: img/pa_mnist_final.png Graphic file (type png)
 
 <use img/pa_mnist_final.png>
@@ -2814,7 +3025,7 @@ converted-to.pdf img/fs_mnist_analysis.eps>
 (epstopdf)             \includegraphics on input line 197.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_mnist_analysis-eps-converted-to.pdf, id=1728, 626.34pt x 689.57625pt>
+<img/fs_mnist_analysis-eps-converted-to.pdf, id=1665, 626.34pt x 689.57625pt>
 File: img/fs_mnist_analysis-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/fs_mnist_analysis-eps-converted-to.pdf>
@@ -2824,7 +3035,7 @@ ut line 197.
 Package cleveref Info: loaded `english' language definitions on input line 201.
 
  [45 <./img/pa_mnist_start.png> <./img/pa_mnist_final.png>]
-<img/pa_comparison_to_others_xor.png, id=1739, 635.976pt x 470.4777pt>
+<img/pa_comparison_to_others_xor.png, id=1676, 635.976pt x 470.4777pt>
 File: img/pa_comparison_to_others_xor.png Graphic file (type png)
 
 <use img/pa_comparison_to_others_xor.png>
@@ -2832,7 +3043,7 @@ Package pdftex.def Info: img/pa_comparison_to_others_xor.png used on input line
  215.
 (pdftex.def)             Requested size: 177.06345pt x 130.98625pt.
 
-<img/pa_comparison_to_others_mnist.png, id=1740, 586.8324pt x 442.2924pt>
+<img/pa_comparison_to_others_mnist.png, id=1677, 586.8324pt x 442.2924pt>
 File: img/pa_comparison_to_others_mnist.png Graphic file (type png)
 
 <use img/pa_comparison_to_others_mnist.png>
@@ -2861,7 +3072,7 @@ n_cm-eps-converted-to.pdf img/amter_classification_nn_cm.eps>
 (epstopdf)             \includegraphics on input line 320.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/amter_classification_nn_cm-eps-converted-to.pdf, id=1826, 609.27625pt x 52
+<img/amter_classification_nn_cm-eps-converted-to.pdf, id=1762, 609.27625pt x 52
 4.96124pt>
 File: img/amter_classification_nn_cm-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -2888,7 +3099,7 @@ oisy_cm-eps-converted-to.pdf img/amter_classification_noisy_cm.eps>
 (epstopdf)             \includegraphics on input line 329.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/amter_classification_noisy_cm-eps-converted-to.pdf, id=1829, 597.23125pt x
+<img/amter_classification_noisy_cm-eps-converted-to.pdf, id=1765, 597.23125pt x
  510.90875pt>
 File: img/amter_classification_noisy_cm-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -2922,7 +3133,7 @@ s-converted-to.pdf img/cl_lr_vs_epoch_st20.eps>
 (epstopdf)             \includegraphics on input line 402.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_lr_vs_epoch_st20-eps-converted-to.pdf, id=1919, 587.19376pt x 442.65375
+<img/cl_lr_vs_epoch_st20-eps-converted-to.pdf, id=1856, 587.19376pt x 442.65375
 pt>
 File: img/cl_lr_vs_epoch_st20-eps-converted-to.pdf Graphic file (type pdf)
  <use img/cl_lr_vs_epoch_st20-eps-converted-to.pdf>
@@ -2941,7 +3152,7 @@ s-converted-to.pdf img/cl_st_vs_epoch_lr05.eps>
 (epstopdf)             \includegraphics on input line 411.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_st_vs_epoch_lr05-eps-converted-to.pdf, id=1921, 587.19376pt x 442.65375
+<img/cl_st_vs_epoch_lr05-eps-converted-to.pdf, id=1858, 587.19376pt x 442.65375
 pt>
 File: img/cl_st_vs_epoch_lr05-eps-converted-to.pdf Graphic file (type pdf)
  <use img/cl_st_vs_epoch_lr05-eps-converted-to.pdf>
@@ -2963,7 +3174,7 @@ rted-to.pdf img/cl_st_lr_mat.eps>
 (epstopdf)             \includegraphics on input line 420.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_st_lr_mat-eps-converted-to.pdf, id=1993, 510.90875pt x 364.36125pt>
+<img/cl_st_lr_mat-eps-converted-to.pdf, id=1930, 510.90875pt x 364.36125pt>
 File: img/cl_st_lr_mat-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/cl_st_lr_mat-eps-converted-to.pdf>
@@ -2982,7 +3193,7 @@ onverted-to.pdf img/cl_acc_tn_sn_mat.eps>
 (epstopdf)             \includegraphics on input line 432.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_acc_tn_sn_mat-eps-converted-to.pdf, id=1999, 526.96875pt x 356.33125pt>
+<img/cl_acc_tn_sn_mat-eps-converted-to.pdf, id=1936, 526.96875pt x 356.33125pt>
 File: img/cl_acc_tn_sn_mat-eps-converted-to.pdf Graphic file (type pdf)
 <use img/cl_acc_tn_sn_mat-eps-converted-to.pdf>
 Package pdftex.def Info: img/cl_acc_tn_sn_mat-eps-converted-to.pdf used on inpu
@@ -3004,7 +3215,7 @@ converted-to.pdf img/cl_ts_acc_boxplot.eps>
 (epstopdf)             \includegraphics on input line 442.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_ts_acc_boxplot-eps-converted-to.pdf, id=2071, 587.19376pt x 442.65375pt
+<img/cl_ts_acc_boxplot-eps-converted-to.pdf, id=2008, 587.19376pt x 442.65375pt
 >
 File: img/cl_ts_acc_boxplot-eps-converted-to.pdf Graphic file (type pdf)
  <use img/cl_ts_acc_boxplot-eps-converted-to.pdf>
@@ -3023,7 +3234,7 @@ f>
 (epstopdf)             \includegraphics on input line 451.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_ts_time_boxplot-eps-converted-to.pdf, id=2072, 587.19376pt x 442.65375p
+<img/cl_ts_time_boxplot-eps-converted-to.pdf, id=2009, 587.19376pt x 442.65375p
 t>
 File: img/cl_ts_time_boxplot-eps-converted-to.pdf Graphic file (type pdf)
  <use img/cl_ts_time_boxplot-eps-converted-to.pdf>
@@ -3045,7 +3256,7 @@ nverted-to.pdf img/cl_sen_vs_epoch.eps>
 (epstopdf)             \includegraphics on input line 470.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_sen_vs_epoch-eps-converted-to.pdf, id=2143, 587.19376pt x 442.65375pt>
+<img/cl_sen_vs_epoch-eps-converted-to.pdf, id=2079, 587.19376pt x 442.65375pt>
 File: img/cl_sen_vs_epoch-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/cl_sen_vs_epoch-eps-converted-to.pdf>
@@ -3066,7 +3277,7 @@ ted-to.pdf img/cl_sen_time.eps>
 (epstopdf)             \includegraphics on input line 481.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/cl_sen_time-eps-converted-to.pdf, id=2184, 587.19376pt x 442.65375pt>
+<img/cl_sen_time-eps-converted-to.pdf, id=2120, 587.19376pt x 442.65375pt>
 File: img/cl_sen_time-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/cl_sen_time-eps-converted-to.pdf>
@@ -3088,7 +3299,7 @@ f>
 (epstopdf)             \includegraphics on input line 515.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/pa_result_amter_nn-eps-converted-to.pdf, id=2225, 798.985pt x 532.99126pt>
+<img/pa_result_amter_nn-eps-converted-to.pdf, id=2161, 798.985pt x 532.99126pt>
 File: img/pa_result_amter_nn-eps-converted-to.pdf Graphic file (type pdf)
 <use img/pa_result_amter_nn-eps-converted-to.pdf>
 Package pdftex.def Info: img/pa_result_amter_nn-eps-converted-to.pdf used on in
@@ -3097,7 +3308,7 @@ put line 515.
 Package cleveref Info: loaded `english' language definitions on input line 539.
 
  [56 <./img/pa_result_amter_nn-eps-converted-to.pdf>]
-<img/pa_amter_synapses_acc90.png, id=2270, 586.8324pt x 442.2924pt>
+<img/pa_amter_synapses_acc90.png, id=2207, 586.8324pt x 442.2924pt>
 File: img/pa_amter_synapses_acc90.png Graphic file (type png)
 
 <use img/pa_amter_synapses_acc90.png>
@@ -3105,7 +3316,7 @@ Package pdftex.def Info: img/pa_amter_synapses_acc90.png used on input line 544
 .
 (pdftex.def)             Requested size: 325.21274pt x 245.1175pt.
 
-<img/pa_amter_synapses_acc65.png, id=2274, 586.8324pt x 442.2924pt>
+<img/pa_amter_synapses_acc65.png, id=2211, 586.8324pt x 442.2924pt>
 File: img/pa_amter_synapses_acc65.png Graphic file (type png)
 
 <use img/pa_amter_synapses_acc65.png>
@@ -3115,7 +3326,7 @@ Package pdftex.def Info: img/pa_amter_synapses_acc65.png used on input line 555
 Package cleveref Info: loaded `english' language definitions on input line 559.
 
  [57 <./img/pa_amter_synapses_acc90.png>]
-<img/pa_result_amter_used_neurons_90.png, id=2281, 586.8324pt x 442.2924pt>
+<img/pa_result_amter_used_neurons_90.png, id=2218, 586.8324pt x 442.2924pt>
 File: img/pa_result_amter_used_neurons_90.png Graphic file (type png)
 
 <use img/pa_result_amter_used_neurons_90.png>
@@ -3123,7 +3334,7 @@ Package pdftex.def Info: img/pa_result_amter_used_neurons_90.png used on input
 line 564.
 (pdftex.def)             Requested size: 289.08105pt x 217.87923pt.
 
-<img/pa_result_amter_used_neurons_65.png, id=2283, 586.8324pt x 442.2924pt>
+<img/pa_result_amter_used_neurons_65.png, id=2220, 586.8324pt x 442.2924pt>
 File: img/pa_result_amter_used_neurons_65.png Graphic file (type png)
 
 <use img/pa_result_amter_used_neurons_65.png>
@@ -3146,7 +3357,7 @@ ps-converted-to.pdf img/fs_n_paths_to_output.eps>
 (epstopdf)             \includegraphics on input line 585.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_n_paths_to_output-eps-converted-to.pdf, id=2294, 587.19376pt x 442.6537
+<img/fs_n_paths_to_output-eps-converted-to.pdf, id=2231, 587.19376pt x 442.6537
 5pt>
 File: img/fs_n_paths_to_output-eps-converted-to.pdf Graphic file (type pdf)
  <use img/fs_n_paths_to_output-eps-converted-to.pdf>
@@ -3154,7 +3365,7 @@ Package pdftex.def Info: img/fs_n_paths_to_output-eps-converted-to.pdf used on
 input line 585.
 (pdftex.def)             Requested size: 289.08105pt x 217.92213pt.
 
-<img/path_explanation.png, id=2296, 265.99374pt x 136.51pt>
+<img/path_explanation.png, id=2233, 265.99374pt x 136.51pt>
 File: img/path_explanation.png Graphic file (type png)
 
 <use img/path_explanation.png>
@@ -3176,7 +3387,7 @@ co-eps-converted-to.pdf img/fs_used_features_thoraco.eps>
 (epstopdf)             \includegraphics on input line 603.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_used_features_thoraco-eps-converted-to.pdf, id=2338, 616.3025pt x 442.6
+<img/fs_used_features_thoraco-eps-converted-to.pdf, id=2275, 616.3025pt x 442.6
 5375pt>
 File: img/fs_used_features_thoraco-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -3196,7 +3407,7 @@ le-eps-converted-to.pdf img/fs_used_features_tactile.eps>
 (epstopdf)             \includegraphics on input line 616.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_used_features_tactile-eps-converted-to.pdf, id=2342, 618.31pt x 442.653
+<img/fs_used_features_tactile-eps-converted-to.pdf, id=2279, 618.31pt x 442.653
 75pt>
 File: img/fs_used_features_tactile-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -3220,7 +3431,7 @@ ile-eps-converted-to.pdf img/fs_amter_io_power_tactile.eps>
 (epstopdf)             \includegraphics on input line 629.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_amter_io_power_tactile-eps-converted-to.pdf, id=2384, 660.4675pt x 462.
+<img/fs_amter_io_power_tactile-eps-converted-to.pdf, id=2321, 660.4675pt x 462.
 72874pt>
 File: img/fs_amter_io_power_tactile-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -3251,8 +3462,67 @@ Package cleveref Info: loaded `english' language definitions on input line 21.
  (./tex/chap/chap_conclussion.tex
 Chapter 6.
 
+LaTeX Warning: Citation 'article:01:visual' on page 65 undefined on input line 
+17.
+
+
+LaTeX Warning: Citation 'article:02:laser' on page 65 undefined on input line 1
+7.
+
+
+LaTeX Warning: Citation 'article:03:motorsignals' on page 65 undefined on input
+ line 17.
+
+
+LaTeX Warning: Citation 'article:04:onlinelearning' on page 65 undefined on inp
+ut line 17.
+
+
+LaTeX Warning: Citation 'thesis:05:proprioception' on page 65 undefined on inpu
+t line 17.
+
+
+LaTeX Warning: Citation 'article:06:haptic' on page 65 undefined on input line 
+17.
+
+
+LaTeX Warning: Citation 'thesis:07:proprioception' on page 65 undefined on inpu
+t line 17.
+
+
+LaTeX Warning: Citation 'article:08:rhex' on page 65 undefined on input line 17
+.
+
+
+LaTeX Warning: Citation 'article:09:roughterrain' on page 65 undefined on input
+ line 17.
+
+
 LaTeX Warning: Citation 'article:10:pruningalgs' on page 65 undefined on input 
 line 17.
+
+
+LaTeX Warning: Citation 'book:11:scorpion' on page 65 undefined on input line 1
+7.
+
+
+LaTeX Warning: Citation 'thesis:12:gaitcontrol' on page 65 undefined on input l
+ine 17.
+
+
+Overfull \hbox (80.66742pt too wide) in paragraph at lines 17--18
+\T1/lmr/m/n/10.95 and ([]) and ([]) and ([])
+ []
+
+
+Overfull \hbox (62.82005pt too wide) in paragraph at lines 17--18
+\T1/lmr/m/n/10.95 and ([]) and ([]) and ([])
+ []
+
+
+Overfull \hbox (49.56123pt too wide) in paragraph at lines 17--18
+\T1/lmr/m/n/10.95 and ([]) and ([]) and ([]) 
+ []
 
 1: section
 [65
@@ -3262,36 +3532,10 @@ line 17.
 ])
 Package cleveref Info: loaded `english' language definitions on input line 22.
  [66] (./tex/sett/bibliography.tex
-Overfull \hbox (1.79778pt too wide) in paragraph at lines 1--1
-\T1/lmr/m/it/10.95 Robot: De-sign, Con-trol and Lessons Learned, Climb-ing and 
-Walk-
- []
 
-
-Overfull \hbox (44.34766pt too wide) in paragraph at lines 1--1
-[]$\T1/pcr/m/n/10.95 http : / / proceedings . spiedigitallibrary . org / procee
-ding .
- []
-
-1: section
-[67
-
-
-]
-Overfull \hbox (12.86153pt too wide) in paragraph at lines 1--1
-[][]\T1/lmr/m/it/10.95 Open-source multi sensori-motor robotic plat-form AMOS I
-I\T1/lmr/m/n/10.95 . []$\T1/pcr/m/n/10.95 http :
- []
-
-
-Overfull \hbox (6.80716pt too wide) in paragraph at lines 1--1
-[][]\T1/lmr/m/it/10.95 Research Net-work for Self-Organization of Robot Be-hav-
-ior\T1/lmr/m/n/10.95 . []$\T1/pcr/m/n/10.95 http :
- []
+LaTeX Warning: Empty bibliography on input line 1.
 
 )
-Package cleveref Info: loaded `english' language definitions on input line 28.
- [68]
 \openout2 = `tex/appx/app_supplementary_data.aux'.
 
  (./tex/appx/app_supplementary_data.tex
@@ -3308,7 +3552,7 @@ onverted-to.pdf img/app_sensor_atr_f.eps>
 (epstopdf)             \includegraphics on input line 9.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atr_f-eps-converted-to.pdf, id=2546, 632.3625pt x 300.12125pt>
+<img/app_sensor_atr_f-eps-converted-to.pdf, id=2421, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atr_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atr_f-eps-converted-to.pdf>
@@ -3327,7 +3571,7 @@ onverted-to.pdf img/app_sensor_atl_f.eps>
 (epstopdf)             \includegraphics on input line 15.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atl_f-eps-converted-to.pdf, id=2547, 632.3625pt x 300.12125pt>
+<img/app_sensor_atl_f-eps-converted-to.pdf, id=2422, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atl_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atl_f-eps-converted-to.pdf>
@@ -3346,7 +3590,7 @@ onverted-to.pdf img/app_sensor_acr_f.eps>
 (epstopdf)             \includegraphics on input line 27.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acr_f-eps-converted-to.pdf, id=2548, 632.3625pt x 300.12125pt>
+<img/app_sensor_acr_f-eps-converted-to.pdf, id=2423, 632.3625pt x 300.12125pt>
 File: img/app_sensor_acr_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acr_f-eps-converted-to.pdf>
@@ -3365,7 +3609,7 @@ onverted-to.pdf img/app_sensor_acl_f.eps>
 (epstopdf)             \includegraphics on input line 33.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acl_f-eps-converted-to.pdf, id=2549, 632.3625pt x 306.14375pt>
+<img/app_sensor_acl_f-eps-converted-to.pdf, id=2424, 632.3625pt x 306.14375pt>
 File: img/app_sensor_acl_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acl_f-eps-converted-to.pdf>
@@ -3384,7 +3628,7 @@ onverted-to.pdf img/app_sensor_afr_f.eps>
 (epstopdf)             \includegraphics on input line 45.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afr_f-eps-converted-to.pdf, id=2550, 632.3625pt x 300.12125pt>
+<img/app_sensor_afr_f-eps-converted-to.pdf, id=2425, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afr_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afr_f-eps-converted-to.pdf>
@@ -3403,7 +3647,7 @@ onverted-to.pdf img/app_sensor_afl_f.eps>
 (epstopdf)             \includegraphics on input line 51.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afl_f-eps-converted-to.pdf, id=2551, 632.3625pt x 300.12125pt>
+<img/app_sensor_afl_f-eps-converted-to.pdf, id=2426, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afl_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afl_f-eps-converted-to.pdf>
@@ -3422,7 +3666,7 @@ onverted-to.pdf img/app_sensor_atr_m.eps>
 (epstopdf)             \includegraphics on input line 63.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atr_m-eps-converted-to.pdf, id=2552, 632.3625pt x 300.12125pt>
+<img/app_sensor_atr_m-eps-converted-to.pdf, id=2427, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atr_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atr_m-eps-converted-to.pdf>
@@ -3441,7 +3685,7 @@ onverted-to.pdf img/app_sensor_atl_m.eps>
 (epstopdf)             \includegraphics on input line 69.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atl_m-eps-converted-to.pdf, id=2553, 632.3625pt x 300.12125pt>
+<img/app_sensor_atl_m-eps-converted-to.pdf, id=2428, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atl_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atl_m-eps-converted-to.pdf>
@@ -3450,7 +3694,8 @@ t line 69.
 (pdftex.def)             Requested size: 173.44643pt x 82.31607pt.
 
 1: section
-[69
+[67
+
 
 
  <./img/app_sensor_atr_f-eps-converted-to.pdf> <./img/app_sensor_atl_f-eps-conv
@@ -3469,7 +3714,7 @@ onverted-to.pdf img/app_sensor_acr_m.eps>
 (epstopdf)             \includegraphics on input line 81.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acr_m-eps-converted-to.pdf, id=2722, 632.3625pt x 300.12125pt>
+<img/app_sensor_acr_m-eps-converted-to.pdf, id=2597, 632.3625pt x 300.12125pt>
 File: img/app_sensor_acr_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acr_m-eps-converted-to.pdf>
@@ -3488,7 +3733,7 @@ onverted-to.pdf img/app_sensor_acl_m.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acl_m-eps-converted-to.pdf, id=2723, 632.3625pt x 306.14375pt>
+<img/app_sensor_acl_m-eps-converted-to.pdf, id=2598, 632.3625pt x 306.14375pt>
 File: img/app_sensor_acl_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acl_m-eps-converted-to.pdf>
@@ -3507,7 +3752,7 @@ onverted-to.pdf img/app_sensor_afr_m.eps>
 (epstopdf)             \includegraphics on input line 99.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afr_m-eps-converted-to.pdf, id=2724, 632.3625pt x 300.12125pt>
+<img/app_sensor_afr_m-eps-converted-to.pdf, id=2599, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afr_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afr_m-eps-converted-to.pdf>
@@ -3526,7 +3771,7 @@ onverted-to.pdf img/app_sensor_afl_m.eps>
 (epstopdf)             \includegraphics on input line 105.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afl_m-eps-converted-to.pdf, id=2725, 632.3625pt x 300.12125pt>
+<img/app_sensor_afl_m-eps-converted-to.pdf, id=2600, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afl_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afl_m-eps-converted-to.pdf>
@@ -3545,7 +3790,7 @@ onverted-to.pdf img/app_sensor_atr_h.eps>
 (epstopdf)             \includegraphics on input line 117.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atr_h-eps-converted-to.pdf, id=2726, 632.3625pt x 300.12125pt>
+<img/app_sensor_atr_h-eps-converted-to.pdf, id=2601, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atr_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atr_h-eps-converted-to.pdf>
@@ -3564,7 +3809,7 @@ onverted-to.pdf img/app_sensor_atl_h.eps>
 (epstopdf)             \includegraphics on input line 123.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_atl_h-eps-converted-to.pdf, id=2727, 632.3625pt x 300.12125pt>
+<img/app_sensor_atl_h-eps-converted-to.pdf, id=2602, 632.3625pt x 300.12125pt>
 File: img/app_sensor_atl_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_atl_h-eps-converted-to.pdf>
@@ -3583,7 +3828,7 @@ onverted-to.pdf img/app_sensor_acr_h.eps>
 (epstopdf)             \includegraphics on input line 135.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acr_h-eps-converted-to.pdf, id=2728, 632.3625pt x 300.12125pt>
+<img/app_sensor_acr_h-eps-converted-to.pdf, id=2603, 632.3625pt x 300.12125pt>
 File: img/app_sensor_acr_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acr_h-eps-converted-to.pdf>
@@ -3602,7 +3847,7 @@ onverted-to.pdf img/app_sensor_acl_h.eps>
 (epstopdf)             \includegraphics on input line 141.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_acl_h-eps-converted-to.pdf, id=2729, 632.3625pt x 306.14375pt>
+<img/app_sensor_acl_h-eps-converted-to.pdf, id=2604, 632.3625pt x 306.14375pt>
 File: img/app_sensor_acl_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_acl_h-eps-converted-to.pdf>
@@ -3611,7 +3856,7 @@ t line 141.
 (pdftex.def)             Requested size: 173.44643pt x 83.9679pt.
 Package cleveref Info: loaded `english' language definitions on input line 148.
 
- [70 <./img/app_sensor_atr_m-eps-converted-to.pdf> <./img/app_sensor_atl_m-eps-
+ [68 <./img/app_sensor_atr_m-eps-converted-to.pdf> <./img/app_sensor_atl_m-eps-
 converted-to.pdf> <./img/app_sensor_acr_m-eps-converted-to.pdf> <./img/app_sens
 or_acl_m-eps-converted-to.pdf> <./img/app_sensor_afr_m-eps-converted-to.pdf> <.
 /img/app_sensor_afl_m-eps-converted-to.pdf> <./img/app_sensor_atr_h-eps-convert
@@ -3628,7 +3873,7 @@ onverted-to.pdf img/app_sensor_afr_h.eps>
 (epstopdf)             \includegraphics on input line 153.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afr_h-eps-converted-to.pdf, id=2951, 632.3625pt x 300.12125pt>
+<img/app_sensor_afr_h-eps-converted-to.pdf, id=2827, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afr_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afr_h-eps-converted-to.pdf>
@@ -3647,7 +3892,7 @@ onverted-to.pdf img/app_sensor_afl_h.eps>
 (epstopdf)             \includegraphics on input line 159.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_afl_h-eps-converted-to.pdf, id=2952, 632.3625pt x 300.12125pt>
+<img/app_sensor_afl_h-eps-converted-to.pdf, id=2828, 632.3625pt x 300.12125pt>
 File: img/app_sensor_afl_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_afl_h-eps-converted-to.pdf>
@@ -3665,7 +3910,7 @@ nverted-to.pdf img/app_sensor_fr_f.eps>
 (epstopdf)             \includegraphics on input line 171.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fr_f-eps-converted-to.pdf, id=2953, 622.325pt x 306.14375pt>
+<img/app_sensor_fr_f-eps-converted-to.pdf, id=2829, 622.325pt x 306.14375pt>
 File: img/app_sensor_fr_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fr_f-eps-converted-to.pdf>
@@ -3683,7 +3928,7 @@ nverted-to.pdf img/app_sensor_fl_f.eps>
 (epstopdf)             \includegraphics on input line 177.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fl_f-eps-converted-to.pdf, id=2954, 622.325pt x 306.14375pt>
+<img/app_sensor_fl_f-eps-converted-to.pdf, id=2830, 622.325pt x 306.14375pt>
 File: img/app_sensor_fl_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fl_f-eps-converted-to.pdf>
@@ -3701,7 +3946,7 @@ nverted-to.pdf img/app_sensor_fr_m.eps>
 (epstopdf)             \includegraphics on input line 189.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fr_m-eps-converted-to.pdf, id=2955, 622.325pt x 306.14375pt>
+<img/app_sensor_fr_m-eps-converted-to.pdf, id=2831, 622.325pt x 306.14375pt>
 File: img/app_sensor_fr_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fr_m-eps-converted-to.pdf>
@@ -3719,7 +3964,7 @@ nverted-to.pdf img/app_sensor_fl_m.eps>
 (epstopdf)             \includegraphics on input line 195.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fl_m-eps-converted-to.pdf, id=2956, 622.325pt x 306.14375pt>
+<img/app_sensor_fl_m-eps-converted-to.pdf, id=2832, 622.325pt x 306.14375pt>
 File: img/app_sensor_fl_m-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fl_m-eps-converted-to.pdf>
@@ -3737,7 +3982,7 @@ nverted-to.pdf img/app_sensor_fr_h.eps>
 (epstopdf)             \includegraphics on input line 207.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fr_h-eps-converted-to.pdf, id=2957, 622.325pt x 306.14375pt>
+<img/app_sensor_fr_h-eps-converted-to.pdf, id=2833, 622.325pt x 306.14375pt>
 File: img/app_sensor_fr_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fr_h-eps-converted-to.pdf>
@@ -3755,7 +4000,7 @@ nverted-to.pdf img/app_sensor_fl_h.eps>
 (epstopdf)             \includegraphics on input line 213.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/app_sensor_fl_h-eps-converted-to.pdf, id=2958, 622.325pt x 306.14375pt>
+<img/app_sensor_fl_h-eps-converted-to.pdf, id=2834, 622.325pt x 306.14375pt>
 File: img/app_sensor_fl_h-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/app_sensor_fl_h-eps-converted-to.pdf>
@@ -3764,14 +4009,14 @@ Package pdftex.def Info: img/app_sensor_fl_h-eps-converted-to.pdf used on input
 (pdftex.def)             Requested size: 173.44643pt x 85.32259pt.
 Package cleveref Info: loaded `english' language definitions on input line 220.
 
- [71 <./img/app_sensor_acr_h-eps-converted-to.pdf> <./img/app_sensor_acl_h-eps-
+ [69 <./img/app_sensor_acr_h-eps-converted-to.pdf> <./img/app_sensor_acl_h-eps-
 converted-to.pdf> <./img/app_sensor_afr_h-eps-converted-to.pdf> <./img/app_sens
 or_afl_h-eps-converted-to.pdf> <./img/app_sensor_fr_f-eps-converted-to.pdf> <./
 img/app_sensor_fl_f-eps-converted-to.pdf> <./img/app_sensor_fr_m-eps-converted-
 to.pdf> <./img/app_sensor_fl_m-eps-converted-to.pdf>]
 Package cleveref Info: loaded `english' language definitions on input line 273.
 
- [72 <./img/app_sensor_fr_h-eps-converted-to.pdf> <./img/app_sensor_fl_h-eps-co
+ [70 <./img/app_sensor_fr_h-eps-converted-to.pdf> <./img/app_sensor_fl_h-eps-co
 nverted-to.pdf>]
 Package epstopdf Info: Source file: <img/fs_used_features_coxa.eps>
 (epstopdf)                    date: 2016-05-24 23:23:15
@@ -3785,7 +4030,7 @@ eps-converted-to.pdf img/fs_used_features_coxa.eps>
 (epstopdf)             \includegraphics on input line 277.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_used_features_coxa-eps-converted-to.pdf, id=3227, 613.29124pt x 442.653
+<img/fs_used_features_coxa-eps-converted-to.pdf, id=3103, 613.29124pt x 442.653
 75pt>
 File: img/fs_used_features_coxa-eps-converted-to.pdf Graphic file (type pdf)
  <use img/fs_used_features_coxa-eps-converted-to.pdf>
@@ -3794,7 +4039,7 @@ Package pdftex.def Info: img/fs_used_features_coxa-eps-converted-to.pdf used on
 (pdftex.def)             Requested size: 361.34995pt x 260.81221pt.
 Package cleveref Info: loaded `english' language definitions on input line 281.
 
- [73]
+ [71]
 Package epstopdf Info: Source file: <img/fs_used_features_femur.eps>
 (epstopdf)                    date: 2016-05-24 23:22:20
 (epstopdf)                    size: 113721 bytes
@@ -3807,7 +4052,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_used_features_femur-eps-converted-to.pdf, id=3232, 618.31pt x 442.65375
+<img/fs_used_features_femur-eps-converted-to.pdf, id=3108, 618.31pt x 442.65375
 pt>
 File: img/fs_used_features_femur-eps-converted-to.pdf Graphic file (type pdf)
  <use img/fs_used_features_femur-eps-converted-to.pdf>
@@ -3826,7 +4071,7 @@ aco-eps-converted-to.pdf img/fs_amter_io_power_thoraco.eps>
 (epstopdf)             \includegraphics on input line 291.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_amter_io_power_thoraco-eps-converted-to.pdf, id=3233, 587.19376pt x 442
+<img/fs_amter_io_power_thoraco-eps-converted-to.pdf, id=3109, 587.19376pt x 442
 .65375pt>
 File: img/fs_amter_io_power_thoraco-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -3836,7 +4081,7 @@ d on input line 291.
 (pdftex.def)             Requested size: 271.01245pt x 204.29861pt.
 Package cleveref Info: loaded `english' language definitions on input line 295.
 
- [74 <./img/fs_used_features_coxa-eps-converted-to.pdf> <./img/fs_used_features
+ [72 <./img/fs_used_features_coxa-eps-converted-to.pdf> <./img/fs_used_features
 _femur-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/fs_amter_io_power_coxa.eps>
 (epstopdf)                    date: 2016-05-24 23:14:44
@@ -3850,7 +4095,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 298.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_amter_io_power_coxa-eps-converted-to.pdf, id=3309, 700.6175pt x 442.653
+<img/fs_amter_io_power_coxa-eps-converted-to.pdf, id=3184, 700.6175pt x 442.653
 75pt>
 File: img/fs_amter_io_power_coxa-eps-converted-to.pdf Graphic file (type pdf)
  <use img/fs_amter_io_power_coxa-eps-converted-to.pdf>
@@ -3869,7 +4114,7 @@ r-eps-converted-to.pdf img/fs_amter_io_power_femur.eps>
 (epstopdf)             \includegraphics on input line 305.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/fs_amter_io_power_femur-eps-converted-to.pdf, id=3310, 702.625pt x 424.586
+<img/fs_amter_io_power_femur-eps-converted-to.pdf, id=3185, 702.625pt x 424.586
 24pt>
 File: img/fs_amter_io_power_femur-eps-converted-to.pdf Graphic file (type pdf)
  <use img/fs_amter_io_power_femur-eps-converted-to.pdf>
@@ -3889,7 +4134,7 @@ ntact_gravel-eps-converted-to.pdf img/tn_analysis_40_foot_contact_gravel.eps>
 (epstopdf)             \includegraphics on input line 314.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/tn_analysis_40_foot_contact_gravel-eps-converted-to.pdf, id=3311, 875.27pt
+<img/tn_analysis_40_foot_contact_gravel-eps-converted-to.pdf, id=3186, 875.27pt
  x 514.92375pt>
 File: img/tn_analysis_40_foot_contact_gravel-eps-converted-to.pdf Graphic file 
 (type pdf)
@@ -3900,7 +4145,7 @@ o.pdf used on input line 314.
 (pdftex.def)             Requested size: 361.34995pt x 212.58151pt.
 Package cleveref Info: loaded `english' language definitions on input line 318.
 
- [75 <./img/fs_amter_io_power_thoraco-eps-converted-to.pdf> <./img/fs_amter_io_
+ [73 <./img/fs_amter_io_power_thoraco-eps-converted-to.pdf> <./img/fs_amter_io_
 power_coxa-eps-converted-to.pdf> <./img/fs_amter_io_power_femur-eps-converted-t
 o.pdf>]
 Package epstopdf Info: Source file: <img/tn_analysis_40_angle.eps>
@@ -3915,7 +4160,7 @@ ps-converted-to.pdf img/tn_analysis_40_angle.eps>
 (epstopdf)             \includegraphics on input line 321.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/tn_analysis_40_angle-eps-converted-to.pdf, id=3444, 756.8275pt x 492.84125
+<img/tn_analysis_40_angle-eps-converted-to.pdf, id=3319, 756.8275pt x 492.84125
 pt>
 File: img/tn_analysis_40_angle-eps-converted-to.pdf Graphic file (type pdf)
  <use img/tn_analysis_40_angle-eps-converted-to.pdf>
@@ -3934,7 +4179,7 @@ ntact-eps-converted-to.pdf img/tn_analysis_40_foot_contact.eps>
 (epstopdf)             \includegraphics on input line 328.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/tn_analysis_40_foot_contact-eps-converted-to.pdf, id=3445, 744.7825pt x 49
+<img/tn_analysis_40_foot_contact-eps-converted-to.pdf, id=3320, 744.7825pt x 49
 2.84125pt>
 File: img/tn_analysis_40_foot_contact-eps-converted-to.pdf Graphic file (type p
 df)
@@ -3944,7 +4189,7 @@ sed on input line 328.
 (pdftex.def)             Requested size: 361.34995pt x 239.11795pt.
 Package cleveref Info: loaded `english' language definitions on input line 332.
 
- [76 <./img/tn_analysis_40_foot_contact_gravel-eps-converted-to.pdf> <./img/tn_
+ [74 <./img/tn_analysis_40_foot_contact_gravel-eps-converted-to.pdf> <./img/tn_
 analysis_40_angle-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/sn_influence_samples_concrete_fc.eps>
 (epstopdf)                    date: 2016-05-19 15:15:05
@@ -3958,7 +4203,7 @@ oncrete_fc-eps-converted-to.pdf img/sn_influence_samples_concrete_fc.eps>
 (epstopdf)             \includegraphics on input line 335.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/sn_influence_samples_concrete_fc-eps-converted-to.pdf, id=3535, 875.27pt x
+<img/sn_influence_samples_concrete_fc-eps-converted-to.pdf, id=3411, 875.27pt x
  514.92375pt>
 File: img/sn_influence_samples_concrete_fc-eps-converted-to.pdf Graphic file (t
 ype pdf)
@@ -3969,14 +4214,14 @@ pdf used on input line 335.
 )
 Package cleveref Info: loaded `english' language definitions on input line 28.
 
-[77 <./img/tn_analysis_40_foot_contact-eps-converted-to.pdf> <./img/sn_influenc
+[75 <./img/tn_analysis_40_foot_contact-eps-converted-to.pdf> <./img/sn_influenc
 e_samples_concrete_fc-eps-converted-to.pdf>]
 \openout2 = `tex/appx/app_method_implementation.aux'.
 
 
 (./tex/appx/app_method_implementation.tex
 Appendix A2.
-<img/terrain_classification_process.png, id=3630, 534.99875pt x 595.22375pt>
+<img/terrain_classification_process.png, id=3506, 534.99875pt x 595.22375pt>
 File: img/terrain_classification_process.png Graphic file (type png)
 
 <use img/terrain_classification_process.png>
@@ -3985,17 +4230,25 @@ ine 7.
 (pdftex.def)             Requested size: 361.34995pt x 402.04025pt.
 
 1: section
-[78
+[76
 
 
 
  <./img/terrain_classification_process.png>]
-<img/lpzrobots_architecture.png, id=3637, 299.1175pt x 159.59625pt>
+<img/lpzrobots_architecture.png, id=3513, 299.1175pt x 159.59625pt>
 File: img/lpzrobots_architecture.png Graphic file (type png)
 
 <use img/lpzrobots_architecture.png>
 Package pdftex.def Info: img/lpzrobots_architecture.png used on input line 24.
 (pdftex.def)             Requested size: 180.67497pt x 96.40137pt.
+
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 77 undefined on input line 25.
+
+
+
+LaTeX Warning: Citation 'misc:lpzrobots' on page 77 undefined on input line 25.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
@@ -4017,32 +4270,37 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
-Package cleveref Info: loaded `english' language definitions on input line 47.
- [79 <./img/lpzrobots_architecture.png>]
-<img/generating_data.png, id=3661, 429.605pt x 193.72375pt>
+Package cleveref Info: loaded `english' language definitions on input line 48.
+ [77 <./img/lpzrobots_architecture.png>]
+<img/generating_data.png, id=3533, 429.605pt x 193.72375pt>
 File: img/generating_data.png Graphic file (type png)
 
 <use img/generating_data.png>
 Package pdftex.def Info: img/generating_data.png used on input line 59.
 (pdftex.def)             Requested size: 289.08105pt x 130.35883pt.
 
-<img/data_dir_structure.png, id=3664, 494.84875pt x 186.6975pt>
+<img/data_dir_structure.png, id=3536, 494.84875pt x 186.6975pt>
 File: img/data_dir_structure.png Graphic file (type png)
 
 <use img/data_dir_structure.png>
 Package pdftex.def Info: img/data_dir_structure.png used on input line 68.
 (pdftex.def)             Requested size: 289.08105pt x 109.06519pt.
 Package cleveref Info: loaded `english' language definitions on input line 74.
- [80 <./img/generating_data.png> <./img/data_dir_structure.png>]
-<img/kitt_nn_package.png, id=3680, 384.43625pt x 253.94875pt>
+ [78 <./img/generating_data.png> <./img/data_dir_structure.png>]
+<img/kitt_nn_package.png, id=3552, 384.43625pt x 253.94875pt>
 File: img/kitt_nn_package.png Graphic file (type png)
 
 <use img/kitt_nn_package.png>
 Package pdftex.def Info: img/kitt_nn_package.png used on input line 88.
 (pdftex.def)             Requested size: 271.01245pt x 179.03387pt.
+
+
+LaTeX Warning: Citation 'online:nn_demystified' on page 79 undefined on input l
+ine 93.
+
 Package cleveref Info: loaded `english' language definitions on input line 96.
- [81 <./img/kitt_nn_package.png>]
-<img/kitt_neuron.png, id=3690, 274.02374pt x 183.68625pt>
+[79 <./img/kitt_nn_package.png>]
+<img/kitt_neuron.png, id=3561, 274.02374pt x 183.68625pt>
 File: img/kitt_neuron.png Graphic file (type png)
 
 <use img/kitt_neuron.png>
@@ -4050,8 +4308,8 @@ Package pdftex.def Info: img/kitt_neuron.png used on input line 102.
 (pdftex.def)             Requested size: 216.81216pt x 145.33755pt.
 Package cleveref Info: loaded `english' language definitions on input line 118.
 
- [82 <./img/kitt_neuron.png>]
-<img/kitt_net.png, id=3701, 334.24875pt x 233.87375pt>
+ [80 <./img/kitt_neuron.png>]
+<img/kitt_net.png, id=3573, 334.24875pt x 233.87375pt>
 File: img/kitt_net.png Graphic file (type png)
  <use img/kitt_net.png>
 Package pdftex.def Info: img/kitt_net.png used on input line 121.
@@ -4061,18 +4319,63 @@ Package pdftex.def Info: img/kitt_net.png used on input line 121.
 LaTeX Warning: Reference `chapter:04:neural_net_implementation' on page 1 undef
 ined on input line 129.
 
+
+LaTeX Warning: Citation 'misc:sknn' on page 81 undefined on input line 129.
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
-))
+)
+
+LaTeX Warning: Citation 'misc:sknn' on page 81 undefined on input line 133.
+
+
+LaTeX Warning: Citation 'misc:sknn' on page 81 undefined on input line 133.
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 133--133
+ []\T1/lmr/m/sc/10 Part of Code A2.3: |\T1/lmr/m/n/10 Sknn clas-si-fier spec-i-
+fi-ca-tion 
+ []
+
+)
 Package cleveref Info: loaded `english' language definitions on input line 29.
- [83 <./img/kitt_net.png>]
+ [81 <./img/kitt_net.png>]
 \openout2 = `tex/appx/app_working_dir_structure.aux'.
 
  (./tex/appx/app_working_dir_structure.tex
 Appendix A3.
+\forest@temp@box=\box32767 (local)
+\forest@temp@box=\box32766 (local)
+\forest@temp@box=\box32765 (local)
+\forest@temp@box=\box32764 (local)
+\forest@temp@box=\box32763 (local)
+\forest@temp@box=\box32762 (local)
+\forest@temp@box=\box32761 (local)
+\forest@temp@box=\box32760 (local)
+\forest@temp@box=\box32759 (local)
+\forest@temp@box=\box32758 (local)
+\forest@temp@box=\box32757 (local)
+\forest@temp@box=\box32756 (local)
+\forest@temp@box=\box32755 (local)
+\forest@temp@box=\box32754 (local)
+\forest@temp@box=\box32753 (local)
+\forest@temp@box=\box32752 (local)
+\forest@temp@box=\box32751 (local)
+\forest@temp@box=\box32750 (local)
+\forest@temp@box=\box32749 (local)
+\forest@temp@box=\box32748 (local)
+\forest@temp@box=\box32747 (local)
+\forest@temp@box=\box32746 (local)
+\forest@temp@box=\box32745 (local)
+\forest@temp@box=\box32744 (local)
+\forest@temp@box=\box32743 (local)
+\forest@temp@box=\box32742 (local)
+\forest@temp@box=\box32741 (local)
+\forest@temp@box=\box32740 (local)
+\forest@temp@box=\box32739 (local)
 )
 1: section
-[84
+[82
 
 
 
@@ -4114,7 +4417,7 @@ Overfull \hbox (9.8833pt too wide) in paragraph at lines 72--97
  []
 
 1: section
-[85
+[83
 
 
 
@@ -4150,7 +4453,7 @@ Overfull \hbox (9.8833pt too wide) in paragraph at lines 173--206
 
 Package cleveref Info: loaded `english' language definitions on input line 208.
 
-[86]
+[84]
 Overfull \hbox (9.8833pt too wide) in paragraph at lines 208--265
 [][][]
  []
@@ -4172,7 +4475,7 @@ Overfull \hbox (9.8833pt too wide) in paragraph at lines 267--306
 
 Package cleveref Info: loaded `english' language definitions on input line 308.
 
-[87]
+[85]
 Overfull \hbox (9.8833pt too wide) in paragraph at lines 308--353
 [][][]
  []
@@ -4211,7 +4514,7 @@ $\T1/pcr/m/n/9 set _ and _ store _ params . py$[]\T1/lmr/m/n/9 ,
  []
 
 Package cleveref Info: loaded `english' language definitions on input line 31.
-[88]
+[86]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 33.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 33.
  (./main.aux
@@ -4226,7 +4529,7 @@ Package cleveref Info: loaded `english' language definitions on input line 25.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 33.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 33.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 46A63FA2CE5ECF2EE6FCF87ECD70564D;14380.
+(rerunfilecheck)             Checksum: 312C1D23EDDA80B9302E2F6C1813280A;14271.
 
 
 LaTeX Warning: There were undefined references.
@@ -4241,13 +4544,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45972 strings out of 493304
- 928852 string characters out of 6139872
- 1086264 words of memory out of 5000000
- 48116 multiletter control sequences out of 15000+600000
- 154419 words of font info for 99 fonts, out of 8000000 for 9000
+ 52865 strings out of 493304
+ 1129313 string characters out of 6139872
+ 1222347 words of memory out of 5000000
+ 54977 multiletter control sequences out of 15000+600000
+ 157414 words of font info for 100 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 66i,21n,101p,10428b,3589s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 110i,21n,138p,10428b,3628s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist
 /fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
 }{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvi
@@ -4268,10 +4571,10 @@ s/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb>
 1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (99 pages, 6133907 bytes).
+Output written on main.pdf (97 pages, 6092290 bytes).
 PDF statistics:
- 3937 PDF objects out of 4296 (max. 8388607)
- 1867 compressed objects within 19 object streams
- 395 named destinations out of 1000 (max. 500000)
- 1140 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3802 PDF objects out of 4296 (max. 8388607)
+ 1744 compressed objects within 18 object streams
+ 372 named destinations out of 1000 (max. 500000)
+ 1132 words of extra memory for PDF output out of 10000 (max. 10000000)
 

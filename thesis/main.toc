@@ -62,16 +62,15 @@
 \contentsline {subsection}{\numberline {4.4.1}Feature Selection for Terrain Classification}{59}{subsection.197}
 \contentsline {chapter}{\numberline {5}Discussion}{62}{chapter.204}
 \contentsline {chapter}{\numberline {6}Conclussion and Outlook}{65}{chapter.205}
-\contentsline {chapter}{Bibliography}{67}{chapter*.206}
-\contentsline {chapter}{\numberline {A1}Supplementary Data}{69}{appendix.207}
-\contentsline {section}{\numberline {A1.1}Complete Sensory Data}{69}{section.208}
-\contentsline {section}{\numberline {A1.2}Generated Datasets}{73}{section.221}
-\contentsline {section}{\numberline {A1.3}Complete Feature Analysis for Terrains}{74}{section.223}
-\contentsline {section}{\numberline {A1.4}Further Data Analysis}{76}{section.229}
-\contentsline {chapter}{\numberline {A2}Method Implementation}{78}{appendix.234}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{78}{section.235}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{81}{section.257}
-\contentsline {chapter}{\numberline {A3}Working Directory Structure}{84}{appendix.272}
-\contentsline {chapter}{\numberline {A4}Code Documentation}{85}{appendix.273}
-\contentsline {section}{\numberline {A4.1}Neural Network Framework KITTNN (API)}{85}{section.274}
-\contentsline {section}{\numberline {A4.2}Terrain Classification Scripts (API)}{86}{section.275}
+\contentsline {chapter}{\numberline {A1}Supplementary Data}{67}{appendix.206}
+\contentsline {section}{\numberline {A1.1}Complete Sensory Data}{67}{section.207}
+\contentsline {section}{\numberline {A1.2}Generated Datasets}{71}{section.220}
+\contentsline {section}{\numberline {A1.3}Complete Feature Analysis for Terrains}{72}{section.222}
+\contentsline {section}{\numberline {A1.4}Further Data Analysis}{74}{section.228}
+\contentsline {chapter}{\numberline {A2}Method Implementation}{76}{appendix.233}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{76}{section.234}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{79}{section.256}
+\contentsline {chapter}{\numberline {A3}Structure of the Workspace}{82}{appendix.271}
+\contentsline {chapter}{\numberline {A4}Code Documentation}{83}{appendix.272}
+\contentsline {section}{\numberline {A4.1}Neural Network Framework KITTNN (API)}{83}{section.273}
+\contentsline {section}{\numberline {A4.2}Terrain Classification Scripts (API)}{84}{section.274}
