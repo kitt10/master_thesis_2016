@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  24 MAY 2016 23:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  25 MAY 2016 00:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1272,7 +1272,7 @@ File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
-Package scrhack Info: loading listings hack on input line 77.
+Package scrhack Info: loading listings hack on input line 78.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/listings.hak
 File: listings.hak 2013/12/19 v3.12 KOMA-Script package (hacking package listin
@@ -1359,7 +1359,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks29
 \@floatcapt=\box57
 )
-Package scrhack Info: loading float hack on input line 89.
+Package scrhack Info: loading float hack on input line 90.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/float.hak
 File: float.hak 2013/12/19 v3.12 KOMA-Script package (hacking package float)
@@ -4081,25 +4081,35 @@ Appendix A3.
 
  (./tex/appx/app_code_documentation.tex
 Appendix A4.
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 12.
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 10.
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 9--47
+Overfull \hbox (10.44998pt too wide) in paragraph at lines 7--42
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 9--47
+Overfull \hbox (10.44998pt too wide) in paragraph at lines 7--42
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 49--81
+Overfull \hbox (10.44998pt too wide) in paragraph at lines 44--70
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 44--70
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 49--81
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 72--97
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 72--97
 [][][] 
  []
 
@@ -4109,39 +4119,99 @@ Overfull \hbox (10.44998pt too wide) in paragraph at lines 49--81
 
 
 ]
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 83--139
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 99--128
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 99--128
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 83--139
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 132--171
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 132--171
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 141--179
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 173--206
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 173--206
+[][][] 
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 208.
+
+[86]
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 208--265
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 208--265
 [][][] 
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 141--179
-[][][] 
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 181.
-
-[86])
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 181--31
-[][][] 
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 267--306
+[][][]
  []
 
 
-Overfull \hbox (10.44998pt too wide) in paragraph at lines 181--31
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 267--306
 [][][] 
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 308.
+
+[87]
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 308--353
+[][][]
+ []
+
+
+Overfull \hbox (9.8833pt too wide) in paragraph at lines 308--353
+[][][] 
+ []
+
+)
+Overfull \hbox (15.51086pt too wide) in paragraph at lines 356--31
+[][]$\T1/pcr/m/n/9 create _ mnist _ dataset . py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m
+/n/9 create _ xor _ dataset . py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 list _ gene
+rated _ datasets .
+ []
+
+
+Overfull \hbox (1.311pt too wide) in paragraph at lines 356--31
+\T1/pcr/m/n/9 py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 plot _ cl _ results . py$[]
+\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 plot _ feature _ selection . py$[]\T1/lmr/m/n/
+9 , []$\T1/pcr/m/n/9 plot _ grid _ search . py$[]\T1/lmr/m/n/9 ,
+ []
+
+
+Overfull \hbox (14.94148pt too wide) in paragraph at lines 356--31
+[]$\T1/pcr/m/n/9 plot _ nn _ verification . py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n
+/9 plot _ pa _ results . py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 plot _ sample . 
+py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 plot _ sensor .
+ []
+
+
+Overfull \hbox (1.311pt too wide) in paragraph at lines 356--31
+\T1/pcr/m/n/9 py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 plot _ transfer _ functions
+ . py$[]\T1/lmr/m/n/9 , []$\T1/pcr/m/n/9 reed _ prune . py$[]\T1/lmr/m/n/9 , []
+$\T1/pcr/m/n/9 set _ and _ store _ params . py$[]\T1/lmr/m/n/9 ,
  []
 
 Package cleveref Info: loaded `english' language definitions on input line 31.
-[87]
+[88]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 33.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 33.
  (./main.aux
@@ -4156,13 +4226,10 @@ Package cleveref Info: loaded `english' language definitions on input line 25.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 33.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 33.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 00C1C7EB3AFBFFB96DA7A7C0170C2E2F;14356.
+(rerunfilecheck)             Checksum: 46A63FA2CE5ECF2EE6FCF87ECD70564D;14380.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
@@ -4174,36 +4241,37 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45961 strings out of 493304
- 928701 string characters out of 6139872
- 1086211 words of memory out of 5000000
- 48109 multiletter control sequences out of 15000+600000
- 146539 words of font info for 95 fonts, out of 8000000 for 9000
+ 45972 strings out of 493304
+ 928852 string characters out of 6139872
+ 1086264 words of memory out of 5000000
+ 48116 multiletter control sequences out of 15000+600000
+ 154419 words of font info for 99 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  66i,21n,101p,10428b,3589s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
-fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist
+/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
 }{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvi
 ps/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/sh
 are/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (98 pages, 6081245 bytes).
+xmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmc
+sc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (99 pages, 6133907 bytes).
 PDF statistics:
- 3907 PDF objects out of 4296 (max. 8388607)
- 1840 compressed objects within 19 object streams
- 394 named destinations out of 1000 (max. 500000)
+ 3937 PDF objects out of 4296 (max. 8388607)
+ 1867 compressed objects within 19 object streams
+ 395 named destinations out of 1000 (max. 500000)
  1140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

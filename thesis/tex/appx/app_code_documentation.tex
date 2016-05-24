@@ -1,16 +1,139 @@
 \chapter{Code Documentation} \label{app:code_documentation}
 A documentation for the \textit{kitt\_nn} framework implementation is provided in \cref{app:sec:api_kitt_nn}. The API for the implementation of the terrain classification process is in \cref{app:sec:api_scripts}.
 
-\section{API for Neural Network Framework} \label{app:sec:api_kitt_nn}
+\section{Neural Network Framework KITTNN (API)} \label{app:sec:api_kitt_nn}
 
-\section{API for Terrain Classification Scripts} \label{app:sec:api_scripts}
+% NeuralNetwork
+\noindent\fcolorbox{lightblue}{lightyellow}{
+\begin{minipage}{\textwidth}
+  \small {\fontfamily{pcr}\selectfont class kitt\_nn.nn\_structure.kitt\_net.\textbf{NeuralNetwork(structure)}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\footnotesize
+\begin{minipage}{\textwidth}
+  The main class representing an artificial neural network.
+\begin{itemize}
+\item[\textbf{@}] \textbf{structure} (array-like) : len: number of layers; items: number of neurons per layer
+\end{itemize}
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{def}] \textbf{init} : Creates neurons and makes a fully-connected structure.
+\item[\textbf{def}] \textbf{fit} : Feeds the input with samples and trains the model.
+\begin{itemize}
+\item[@] train\_X    \hspace{15pt}	: array-like, shape (n\_samples, n\_inputs)
+\item[@] train\_y    \hspace{18pt}	: array-like, shape (n\_samples, n\_outputs)
+\item[@] val\_X      \hspace{25pt}	: array-like, shape (n\_samples, n\_inputs)
+\item[@] val\_y      \hspace{28pt}	: array-like, shape (n\_samples, n\_outputs)
+\end{itemize}
+\item[\textbf{def}] \textbf{predict} : Predicts the output.
+\begin{itemize}
+\item[@] test\_X    	\hspace{22pt}	: array-like, shape (n\_samples, n\_inputs)  
+\item[returns] y\_pred \hspace{23pt}	: array, shape (n\_samples, n\_outputs)
+\end{itemize}
+\item[\textbf{def}] \textbf{copy} : Creates a copy of self.
+\begin{itemize} 
+\item[returns] net\_copy \hspace{15pt}	: kitt\_net.NeuralNetwork
+\end{itemize}
+\end{itemize}
+\normalsize
+\end{tcolorbox}
+\end{minipage}}
+
+% Neuron
+\noindent\fcolorbox{lightblue}{lightyellow}{
+\begin{minipage}{\textwidth}
+  \small {\fontfamily{pcr}\selectfont class kitt\_nn.nn\_structure.kitt\_neuron.\textbf{Neuron(net,layer,id)}}
+\end{minipage}}
+\footnotesize
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  The class representing a single neuron unit.
+\begin{itemize}
+\item[\textbf{@}] \textbf{net} (kitt\_nn.NeuralNetwork) : mother network
+\item[\textbf{@}] \textbf{layer} (int) : mother's layer id in the network
+\item[\textbf{@}] \textbf{id} (int) : position in the layer
+\end{itemize}
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{def}] \textbf{activate} : Activates the neuron axon by the transfer function.
+\item[\textbf{def}] \textbf{set\_bias} : Sets the bias value from the bias matrix hold by the network.
+\item[\textbf{def}] \textbf{get\_bias} : Returns current bias value.
+\begin{itemize}
+\item[returns] b \hspace{23pt}	: float
+\end{itemize}
+\item[\textbf{def}] \textbf{set\_dead} : Removes the neuron from the net.
+\end{itemize}
+\normalsize
+\end{tcolorbox}
+\end{minipage}}
+
+% Synapse
+\noindent\fcolorbox{lightblue}{lightyellow}{
+\begin{minipage}{\textwidth}
+  \small {\fontfamily{pcr}\selectfont class kitt\_nn.nn\_structure.kitt\_synapse.\textbf{Synapse(net,from,to)}}
+\end{minipage}}
+\footnotesize
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  The class representing a single synapse.
+\begin{itemize}
+\item[\textbf{@}] \textbf{net} (kitt\_nn.NeuralNetwork) : mother network
+\item[\textbf{@}] \textbf{from} (kitt\_nn.Neuron) : Neuron, where the synapse comes from
+\item[\textbf{@}] \textbf{to} (kitt\_nn.Neuron) : Neuron, where the synapse goes to
+\end{itemize}
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{def}] \textbf{set\_weight} : Sets the weight value from the weight matrix hold by the network.
+\item[\textbf{def}] \textbf{get\_weight} : Returns current weight value.
+\begin{itemize}
+\item[returns] w \hspace{23pt}	: float
+\end{itemize}
+\item[\textbf{def}] \textbf{remove\_self} : Removes the synapse from the net.
+\end{itemize}
+\normalsize
+\end{tcolorbox}
+\end{minipage}}
+
+% Neuron
+\noindent\fcolorbox{lightblue}{lightyellow}{
+\begin{minipage}{\textwidth}
+  \small {\fontfamily{pcr}\selectfont class kitt\_nn.nn\_tool.nn\_learning.\textbf{BackPropagation(net)}}
+\end{minipage}}
+\footnotesize
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  The class representing the backpropagation learning algorithm.
+\begin{itemize}
+\item[\textbf{@}] \textbf{net} (kitt\_nn.NeuralNetwork) : mother network
+\end{itemize}
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{def}] \textbf{train} : Trains the mother network.
+\begin{itemize}
+\item[@] train\_data    \hspace{15pt}	: array-like, shape (n\_samples, 2) [X, y]
+\item[@] val\_data    \hspace{25pt}	: array-like, shape (n\_samples, 2) [X, y]
+\end{itemize}
+\item[\textbf{def}] \textbf{try\_to\_train} : Tries to retrain the mother network.
+\begin{itemize}
+\item[@] train\_data    \hspace{16pt}	: array-like, shape (n\_samples, 2) [X, y]
+\item[@] val\_data    \hspace{25pt}	: array-like, shape (n\_samples, 2) [X, y]
+\item[@] req\_accuracy    \hspace{7pt}	: float
+\item[returns] retrained \hspace{25pt}	: bool
+\end{itemize}
+\end{itemize}
+\normalsize
+\end{tcolorbox}
+\end{minipage}}
+
+\section{Terrain Classification Scripts (API)} \label{app:sec:api_scripts}
 
 % generate_txt_data.py
 \noindent\fcolorbox{lightblue}{lightblue}{
 \begin{minipage}{\textwidth}
   {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
 \end{minipage}}
-\\
+\footnotesize
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Runs the Amos II simulation and saves sensory data as .txt files.
@@ -42,6 +165,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \item[-] default \hspace{4pt} 	: 100 
 \end{itemize}
 \end{itemize}
+\normalsize
 \end{tcolorbox}
 \end{minipage}}
 
@@ -50,7 +174,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \begin{minipage}{\textwidth}
   {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{clean\_txt\_data.py}}
 \end{minipage}}
-\\
+\footnotesize
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Checks generated .txt files and remove bad/incomplete ones.
@@ -76,6 +200,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \item[-] default \hspace{4pt} 	: 95 
 \end{itemize}
 \end{itemize}
+\normalsize
 \end{tcolorbox}
 \end{minipage}}
 
@@ -84,7 +209,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \begin{minipage}{\textwidth}
   {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{create\_terrain\_dataset.py}}
 \end{minipage}}
-\\
+\footnotesize
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Creates a dataset out of the cleaned .txt data files and saves it using \textit{cPickle}.
@@ -134,6 +259,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \item[-] default \hspace{4pt} 	: 500
 \end{itemize}
 \end{itemize}
+\normalsize
 \end{tcolorbox}
 \end{minipage}}
 
@@ -142,7 +268,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \begin{minipage}{\textwidth}
   {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{kitt\_train.py}}
 \end{minipage}}
-\\
+\footnotesize
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Trains a \textit{kitt\_nn} neural network on the given dataset and saves it using \textit{cPickle}.
@@ -174,6 +300,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \item[-] default \hspace{4pt} 	: 500 
 \end{itemize} 
 \end{itemize}
+\normalsize
 \end{tcolorbox}
 \end{minipage}}
 
@@ -182,7 +309,7 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \begin{minipage}{\textwidth}
   {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{kitt\_prune.py}}
 \end{minipage}}
-\\
+\footnotesize
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Prunes the given trained network and finds a minimal structure of it with respect to the given dataset.
@@ -220,5 +347,10 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \item[-] default \hspace{4pt} 	: 15 
 \end{itemize} 
 \end{itemize}
+\normalsize
 \end{tcolorbox}
 \end{minipage}}
+
+\textbf{List of Supplementary Scripts}
+
+\url{create\_mnist\_dataset.py}, \url{create\_xor\_dataset.py}, \url{list\_generated\_datasets.py}, \url{plot\_cl\_results.py}, \url{plot\_feature\_selection.py}, \url{plot\_grid\_search.py}, \url{plot\_nn\_verification.py}, \url{plot\_pa\_results.py}, \url{plot\_sample.py}, \url{plot\_sensor.py}, \url{plot\_transfer\_functions.py}, \url{reed\_prune.py}, \url{set\_and\_store\_params.py}, \url{sknn\_train.py}, \url{terrain\_analysis.py}, \url{zero\_prune.py}

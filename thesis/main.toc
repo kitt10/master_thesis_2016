@@ -73,5 +73,5 @@
 \contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{81}{section.257}
 \contentsline {chapter}{\numberline {A3}Working Directory Structure}{84}{appendix.272}
 \contentsline {chapter}{\numberline {A4}Code Documentation}{85}{appendix.273}
-\contentsline {section}{\numberline {A4.1}API for Neural Network Framework}{85}{section.274}
-\contentsline {section}{\numberline {A4.2}API for Terrain Classification Scripts}{85}{section.275}
+\contentsline {section}{\numberline {A4.1}Neural Network Framework KITTNN (API)}{85}{section.274}
+\contentsline {section}{\numberline {A4.2}Terrain Classification Scripts (API)}{86}{section.275}
