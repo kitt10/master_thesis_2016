@@ -4,80 +4,221 @@ A documentation for the \textit{kitt\_nn} framework implementation is provided i
 \section{API for Neural Network Framework} \label{app:sec:api_kitt_nn}
 
 \section{API for Terrain Classification Scripts} \label{app:sec:api_scripts}
+
+% generate_txt_data.py
 \noindent\fcolorbox{lightblue}{lightblue}{
 \begin{minipage}{\textwidth}
-  \large {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
+  {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
 \end{minipage}}
 \\
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
   Runs the Amos II simulation and saves sensory data as .txt files.
-\\
+
 \begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
 \begin{itemize}
 \item[\textbf{@}] \textbf{nj} (--n\_jobs) : Number of simulation runs.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: int
-\item[-] default \hspace{4pt} 	: 500 
 \item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\item[-] default \hspace{4pt} 	: 500 
 \end{itemize}
 \item[\textbf{@}] \textbf{t} (--terrains) : Terrain (id) to be generated.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: int 
-\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
 \item[-] choices \hspace{4pt} 	: [1, 2, ... 14]
+\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
 \end{itemize}
 \item[\textbf{@}] \textbf{n} (--noise) : Terrain noise level to be generated.
 \begin{itemize}
-\item[-] type    \hspace{15pt}	: string 
-\item[-] default \hspace{4pt} 	: 'nn' 
+\item[-] type    \hspace{15pt}	: string  
 \item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\item[-] default \hspace{4pt} 	: 'nn'
 \end{itemize}
 \item[\textbf{@}] \textbf{nt} (--n\_timesteps) : Number of simulation timesteps.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: int 
-\item[-] default \hspace{4pt} 	: 100 
 \item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\item[-] default \hspace{4pt} 	: 100 
 \end{itemize}
 \end{itemize}
 \end{tcolorbox}
 \end{minipage}}
 
+% clean_txt_data.py
 \noindent\fcolorbox{lightblue}{lightblue}{
 \begin{minipage}{\textwidth}
-  \large {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{generate\_txt\_data.py}}
+  {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{clean\_txt\_data.py}}
 \end{minipage}}
 \\
 \noindent\fcolorbox{lightblue}{lightgray}{
 \begin{minipage}{\textwidth}
-  Runs the Amos II simulation and saves sensory data as .txt files.
-\\
+  Checks generated .txt files and remove bad/incomplete ones.
+
 \begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
 \begin{itemize}
-\item[\textbf{@}] \textbf{nj} (--n\_jobs) : Number of simulation runs.
-\begin{itemize}
-\item[-] type    \hspace{15pt}	: int
-\item[-] default \hspace{4pt} 	: 500 
-\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
-\end{itemize}
-\item[\textbf{@}] \textbf{t} (--terrains) : Terrain (id) to be generated.
+\item[\textbf{@}] \textbf{t} (--terrains) : Terrain (id) to be checked.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: int 
-\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
 \item[-] choices \hspace{4pt} 	: [1, 2, ... 14]
+\item[-] default \hspace{4pt} 	: [1, 2, ... 14] 
 \end{itemize}
-\item[\textbf{@}] \textbf{n} (--noise) : Terrain noise level to be generated.
+\item[\textbf{@}] \textbf{n} (--noise) : Terrain noise levels to be checked.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string  
+\item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\item[-] default \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\end{itemize}
+\item[\textbf{@}] \textbf{sl} (--sample\_len) : Minimum required sample length.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\item[-] default \hspace{4pt} 	: 95 
+\end{itemize}
+\end{itemize}
+\end{tcolorbox}
+\end{minipage}}
+
+% create_terrains_dataset.py
+\noindent\fcolorbox{lightblue}{lightblue}{
+\begin{minipage}{\textwidth}
+  {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{create\_terrain\_dataset.py}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  Creates a dataset out of the cleaned .txt data files and saves it using \textit{cPickle}.
+
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{@}] \textbf{rt} (--rem\_terrains) : Terrain (id) to be avoided from the dataset.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 14]
+\item[-] default \hspace{4pt} 	: [] 
+\end{itemize}
+\item[\textbf{@}] \textbf{tn} (--terrain\_noise) : Terrain noise level.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string  
+\item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\item[-] default \hspace{4pt} 	: 'nn'
+\end{itemize}
+\item[\textbf{@}] \textbf{sn} (--signal\_noise) : Signal noise level.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: float 
+\item[-] choices \hspace{4pt} 	: [0.0, 0.01, 0.03, 0.05, 0.1]
+\item[-] default \hspace{4pt} 	: 0.0
+\end{itemize}
+\item[\textbf{@}] \textbf{s} (--sensors) : Sensors to be included.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: string 
-\item[-] default \hspace{4pt} 	: 'nn' 
-\item[-] choices \hspace{4pt} 	: ['nn', 'n1p', 'n3p', 'n5p', 'n10p', 'n20p']
+\item[-] choices \hspace{4pt} 	: [atr\_f, atr\_m, ..., fl\_h]
+\item[-] default \hspace{4pt} 	: [atr\_f, atr\_m, ..., fl\_h] 
 \end{itemize}
-\item[\textbf{@}] \textbf{nt} (--n\_timesteps) : Number of simulation timesteps.
+\item[\textbf{@}] \textbf{ts} (--timesteps) : Number of timesteps per sensor.
 \begin{itemize}
 \item[-] type    \hspace{15pt}	: int 
-\item[-] default \hspace{4pt} 	: 100 
-\item[-] choices \hspace{4pt} 	: [1, 2, ... 1000]
+\item[-] choices \hspace{4pt} 	: [1, 2, ... 80]
+\item[-] default \hspace{4pt} 	: 40
 \end{itemize}
+\item[\textbf{@}] \textbf{ds} (--data\_split) : Ratio for train/val/test splitting.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: array-like of int ,s.t. sum = 1 
+\item[-] choices \hspace{4pt} 	: [0.0, 0.01, ..., 0.99]
+\item[-] default \hspace{4pt} 	: [0.7, 0.1, 0.2]
+\end{itemize}
+\item[\textbf{@}] \textbf{ns} (--n\_samples) : Number of samples per terrain.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int 
+\item[-] choices \hspace{4pt} 	: [0, 1, ..., 500]
+\item[-] default \hspace{4pt} 	: 500
+\end{itemize}
+\end{itemize}
+\end{tcolorbox}
+\end{minipage}}
+
+% kitt_train.py
+\noindent\fcolorbox{lightblue}{lightblue}{
+\begin{minipage}{\textwidth}
+  {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{kitt\_train.py}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  Trains a \textit{kitt\_nn} neural network on the given dataset and saves it using \textit{cPickle}.
+
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{@}] \textbf{ds} (--dataset) : Dataset file name.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string 
+\item[-] choices \hspace{4pt} 	: {any string}
+\item[-] default \hspace{4pt} 	: '' 
+\end{itemize}
+\item[\textbf{@}] \textbf{s} (--structure) : Hidden structure of the neural network.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: array-like of int
+\item[-] choices \hspace{4pt} 	: [1, 2, ..., 1000]
+\item[-] default \hspace{4pt} 	: [20] 
+\end{itemize}
+\item[\textbf{@}] \textbf{lr} (--learning\_rate) : Learning rate for network training.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: float
+\item[-] choices \hspace{4pt} 	: [0.01, 0.02, ..., 1.0]
+\item[-] default \hspace{4pt} 	: 0.03
+\end{itemize}
+\item[\textbf{@}] \textbf{ni} (--n\_iter) : Number of training epochs.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int
+\item[-] choices \hspace{4pt} 	: [1, 2, ..., 1000]
+\item[-] default \hspace{4pt} 	: 500 
+\end{itemize} 
+\end{itemize}
+\end{tcolorbox}
+\end{minipage}}
+
+% kitt_train.py
+\noindent\fcolorbox{lightblue}{lightblue}{
+\begin{minipage}{\textwidth}
+  {\fontfamily{pcr}\selectfont \textasciitilde /py/scripts/\textbf{kitt\_prune.py}}
+\end{minipage}}
+\\
+\noindent\fcolorbox{lightblue}{lightgray}{
+\begin{minipage}{\textwidth}
+  Prunes the given trained network and finds a minimal structure of it with respect to the given dataset.
+
+\begin{tcolorbox}[boxsep=0pt,top=10pt,left=10pt,right=10pt, bottom=10pt, arc=0pt, auto outer arc, colback=white, colframe=lightgray]
+\begin{itemize}
+\item[\textbf{@}] \textbf{n} (--net) : Trained network file name.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: string 
+\item[-] choices \hspace{4pt} 	: {any string}
+\item[-] default \hspace{4pt} 	: '' 
+\end{itemize}
+\item[\textbf{@}] \textbf{ra} (--req\_accuracy) : Required classification accuracy of the pruned network.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: float
+\item[-] choices \hspace{4pt} 	: [0.0, 0.01, 1.0]
+\item[-] default \hspace{4pt} 	: [0.99] 
+\end{itemize}
+\item[\textbf{@}] \textbf{lr} (--learning\_rate) : Learning rate for network re-training.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: float
+\item[-] choices \hspace{4pt} 	: [0.01, 0.02, ..., 1.0]
+\item[-] default \hspace{4pt} 	: 0.03
+\end{itemize}
+\item[\textbf{@}] \textbf{mi} (--max\_iter) : Maximum number of re-training epochs.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int
+\item[-] choices \hspace{4pt} 	: [1, 2, ..., 1000]
+\item[-] default \hspace{4pt} 	: 100 
+\end{itemize}
+\item[\textbf{@}] \textbf{ns} (--n\_stable) : Number of stable epochs for termination.
+\begin{itemize}
+\item[-] type    \hspace{15pt}	: int
+\item[-] choices \hspace{4pt} 	: [1, 2, ..., 1000]
+\item[-] default \hspace{4pt} 	: 15 
+\end{itemize} 
 \end{itemize}
 \end{tcolorbox}
 \end{minipage}}

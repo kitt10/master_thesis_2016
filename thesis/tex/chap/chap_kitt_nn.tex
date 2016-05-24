@@ -57,13 +57,13 @@ The sigmoid function given as in \cref{eq:nn_transfer_function} is used as the t
 f(z) = \frac{1}{1 + e^{-z}}
 \end{align}
 
-The sigmoid function maps neuron activations into $ [0.0, 1.0] $ interval. This approach is used for most of the work in this study. Additionaly, the \textit{tanh(z)} function is implemented (compared to \textit{sigmoid(z)} in \cref{img:sigmoid}), in order to test one of the pruning methods based on weights sensitivity (discussed later). The \textit{tanh(z)} function maps the input \textit{z} into $ [-1.0, 1.0] $ interval.
+The sigmoid function maps neuron activations into $ [0.0, 1.0] $ interval. This approach is used for most of the work in this study. Additionaly, the \textit{tanh(z)} function is implemented (compared to \textit{sigmoid(z)} in \cref{fig:transfer_functions}), in order to test one of the pruning methods based on weights sensitivity (discussed later). The \textit{tanh(z)} function maps the input \textit{z} into $ [-1.0, 1.0] $ interval.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{transfer_functions}
   \caption{Used transfer functions: sigmoid and tanh}
-  \label{img:sigmoid}
+  \label{fig:transfer_functions}
 \end{figure}
 
 \section{Learning Algorithm for Network Training} \label{sec:learning_algorithm}

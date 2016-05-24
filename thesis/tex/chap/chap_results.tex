@@ -89,25 +89,25 @@ Algorithm outcomes:
 \begin{itemize}
 \item pruning steps: $ 10 $;
 \item final structure: $ [2, 2, 1] $;
-\item number of removed synapses: $ 294 $ ($ 300 $ -> $ 6 $);
+\item number of removed synapses: $ 294 $ (initially: $ 300 $, finally: $ 6 $);
 \item classification accuracy on testing data: $ 0.99 $.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{0.45\textwidth}
+\begin{subfigure}{0.4\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_xor_start.png}
-  \caption{PA input: oversized and fully-connected network (XOR)}
+  \caption{PA input: oversized and fully-connected network}
   \label{img:pa_xor_start}
 \end{subfigure}%
-\begin{subfigure}{0.45\textwidth}
+\begin{subfigure}{0.4\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_xor_final.png}
-  \caption{PA output: minimal network structure (XOR)}
+  \caption{PA output: minimal network structure}
   \label{img:pa_xor_final}
 \end{subfigure}
-\caption{Application of the pruning algorithm on XOR}
+\caption{PA process illustration on XOR}
 \label{img:pa_xor_morph}
 \end{figure}
 
@@ -133,7 +133,7 @@ Results of the pruning algorithm on MNIST:
 \begin{itemize}
 \item pruning steps: $ 76 $;
 \item final structure: $ [495, 15, 10] $;
-\item number of removed synapses: $ 11075 $ ($ 11910 $ -> $ 835 $ : $ 92.9\% $);
+\item number of removed synapses: $ 11075 $ (initially: $ 11910 $, finally: $ 835 $, reduction: $ 92.9\% $);
 \item classification accuracy on testing data: $ 0.88776 $.
 \end{itemize}
 
@@ -165,79 +165,103 @@ In this example, the algorithm uses the percentile level of $ 50 $ in the first 
 The following figures (\ref{img:pa_mnist_morph}) illustrate the transformation of the network.
 \begin{figure}[H]
 \centering
-\begin{subfigure}{0.45\textwidth}
+\begin{subfigure}{0.4\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_mnist_start.png}
-  \caption{PA input: oversized and fully-connected network (MNIST)}
+  \caption{PA input: oversized and fully-connected network}
   \label{img:pa_mnist_start}
 \end{subfigure}%
-\begin{subfigure}{0.45\textwidth}
+\begin{subfigure}{0.4\textwidth}
   \centering
   \includegraphics[width=0.8\linewidth]{pa_mnist_final.png}
-  \caption{PA output: minimal network structure (MNIST)}
+  \caption{PA output: minimal network structure}
   \label{img:pa_mnist_final}
 \end{subfigure}
-\caption{Application of the pruning algorithm on MNIST}
+\caption{PA process illustration on MNIST}
 \label{img:pa_mnist_morph}
 \end{figure}
 
-\subsubsection{Minimal Structure in MNIST Dataset} \label{sssec:mnist_analysis}
+\subsubsection{Analysis of Minimal Structure in MNIST Dataset} \label{sssec:mnist_analysis}
 As mentioned in \cref{ssec:minimal_structure_util}, minimal structures obtained from the pruning algorithm can be further researched.
 
 For instance, considering the MNIST dataset, there is an image (meaning a vector of pixels) as the network input. As the output, there are $ 10 $ classes corresponding to digits. Having the minimal structure, one can find out which pixels are related to e.g. digit $ 7 $ class or which pixels are totally useless for classification.
 
+As illustrated in \cref{img:structure_util}, paths from the input to the output layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected to it. Individual subpanels (a-j) in \cref{fig:mnist_analysis} show in red all input neurons (pixels of the $ 28x28 $ input images) that are connected to the corresponding output neuron (digit 0-9). Pixels having no path to the corresponding output neuron are in blue.
+
+Subpanel (k) in \cref{fig:mnist_analysis} shows in red all pixels that have at least one path to the output layer. The blue pixels have no connection and hence do not contribute to classification.
+
+As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ connections and, naturally, minimally $ 0 $ connections in the final structure. The subpanel (l) in \cref{fig:mnist_analysis} presents the number of connections to the hidden layer for each input neuron. The results indicate that one neuron has $ 3 $ connections to the hidden layer at most. 
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{fs_mnist_analysis}
+  \includegraphics[width=0.6\textwidth]{fs_mnist_analysis}
   \caption{Feature Selection : MNIST Analysis.}
-  \label{fig:amter_cm_noisy}
+  \label{fig:mnist_analysis}
 \end{figure}
-
-As illustrated in \cref{img:structure_util}, paths from the input to the output layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected with it. \cref{img:msu_seven} shows in white all input neurons (pixels of the $ 28x28 $ input images) that are connected to output neuron $ 7 $.
-
-In \cref{img:msu_interesting}, an analysis of all $ 784 $ input neurons is presented. As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ connections and, naturally, minimally $ 0 $ connections in the final structure. 
-
-The number of remaining connections $ n\_con $ is mapped into $ [0, 255] $ range, in order to be represented as a greyscale color, using the following equation:
-
-\begin{align} \label{eq:grayscale_mapping}
-intensity = \frac{255 \cdot n\_con}{15}
-\end{align}
-
-\cref{img:msu_interesting} shows the number of connections to the hidden layer $ n\_con $ as a greyscale value ($ intensity $) for every pixel of input samples. The more bright the pixel is, the more connections it has. Black pixels have no connections to the hidden layer and so they are not used for classification at all.
-
-The results on both figures (\ref{img:msu_interesting} and \ref{img:msu_seven}) make a good sense, as the pixels close to borders are black. One could expect, that these pixels are not important, as the digits are centered in the images.
 
 \subsection{Comparison to Other Pruning Methods} \label{comparison_to_other_pa}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{pa_comparison_to_others_xor.png}
-  \caption{Pruning Algorithm Comparison to other methods. on xor}
-  \label{fig:pa_comparison_to_other_xor}
-\end{figure}
+In \cref{sec:soa_pruning_algorithms}, a few approaches of network pruning are discussed. In this section, the developed pruning algorithm (PA) based on weight changes during network training (see \cref{sec:network_pruning_algorithm}) is compared to two different methods:
+
+\begin{enumerate}[label=\Alph*]
+\item \textit{pruning based on actual weight values}: The learning algorithm uses the \textit{tanh} transfer function (see \cref{fig:transfer_functions}). The pruning approach from \cref{sec:network_pruning_algorithm} is used, however, the removed synapses are chosen based on actual weight values. Synapses with weight closest to zero are removed;
+\item \textit{brute force pruning algorithm}: 
+In every pruning step, one synapse is removed and the network is retrained. If the retraining was unsuccessful, the synapse is put back to the network;
+\end{enumerate}
 
 \begin{figure}[H]
+\centering
+\begin{subfigure}{0.49\textwidth}
   \centering
-  \includegraphics[width=1.0\textwidth]{pa_comparison_to_others_mnist.png}
-  \caption{Pruning Algorithm Comparison to other methods. on mnist}
-  \label{fig:pa_comparison_to_other_mnist}
+  \includegraphics[width=1.0\linewidth]{pa_comparison_to_others_xor.png}
+  \caption{comparison on XOR}
+  \label{fig:pa_comparison_xor}
+\end{subfigure}%
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{pa_comparison_to_others_mnist.png}
+  \caption{comparison on MNIST}
+  \label{fig:pa_comparison_mnist}
+\end{subfigure}
+\caption{Comparison of the developed PA to other pruning methods (10 observations).}
+\label{fig:pa_comparison}
 \end{figure}
 
-\section{Results of Terrain Classification} \label{sec:terrain_processing_results}
-In this section, results of the overall terrain classification process (see \cref{chap:terrain_classification}) are presented.  
+The comparison was performed on XOR and on MNIST (see \cref{ssec:testing_datasets}) by averaging results of 10 observations. The brute force approach (B) was only done on XOR as it would take up to 11910 pruning steps and a long evaluation time on MNIST. Regarding its performance on XOR, only one synapse is removed in each of the first $ 98 $ steps. Then, removing also the second synapse coming to a hidden neuron, this neuron dies as it has no input, hence also synapses on its output are removed. Therefore more synapses are removed per step after $ 98^{th} $ iteration as shown in \cref{fig:pa_comparison_xor}. The minimal structure is always found by the brute force approach.
 
-First of all, based on the analysis from \cref{ssec:selection_of_learning_parameters}, the following learning parameters have been determined:
-
-\begin{itemize}
-\item learning rate: $ 0.5 $
-\item number of neurons in the only one hidden layer: $ 20 $
-\item number of training epochs: $ 500 $
-\end{itemize}
-
-\subsection{Classification Performance} \label{ssec:classification_performance}
+Regarding the approach (A), finding the minimal structure is not guaranteed (see \cref{tab:pa_comparison}). Apparently, the way of selecting removed synapses is not correct, which indicates that even synapses with a low weight may be important. 
 
 \begin{table}[H]
 \centering
-\caption{Classification results}
+\caption{Comparison of the developed PA to other pruning methods (10 observations). Required accuracy on validation data: XOR: 0.99, MNIST: 0.85.}
+\label{tab:pa_comparison}
+\resizebox{\textwidth}{!} {
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{4}{c|}{\textit{XOR}}                                           & \multicolumn{4}{c|}{\textit{MNIST}}                      \\ \cline{2-9} 
+                  & \textit{steps} & \textit{synapses} & \textit{structure} & \textit{accuracy} & \textit{steps} & synapses & structure         & accuracy \\ \hline
+PA                & 10             & 6                 & {[}2, 2, 1{]}      & 0.9795            & 16             & 377      & {[}252, 15, 10{]} & 0.8396   \\ \hline
+A                 & 34             & 27                & {[}2, 8, 1{]}      & 0.9875            & 18             & 7269     & {[}784, 15, 10{]} & 0.6471   \\ \hline
+B                 & 218            & 6                 & {[}2, 2, 1{]}      & 0.9685            & \multicolumn{4}{c|}{X}                                   \\ \hline
+\end{tabular}}
+\end{table}
+
+\section{Results of Terrain Classification} \label{sec:terrain_processing_results}
+In this section, results of the overall terrain classification process (see \cref{chap:terrain_classification}) are presented and the global process parameters are analysed.  
+
+First of all, complete classification results based on the generated datasets are listed and more detailed results of a configuration with no noise are  compared to a realistic noisy configuration. The noisy dataset is also classified by other classification methods for comparison.
+
+In \cref{ssec:selection_of_learning_parameters}, the way of finding optimal learning parameters is presented. Then, an analysis of terrain noise and signal noise influence is done in \cref{ssec:influence_of_noise_on_classification} and time needed for classification is determined in \cref{ssec:number_of_timesteps}. Classification using separately different sensor types is evaluated in \cref{ssec:analysis_of_used_sensor_types}. Finally, terrain classification results based on proprioception and tactile sensing are compared to vision-based methods in \cref{ssec:terrain_classification_vs_soa}.
+
+\subsection{Classification Performance} \label{ssec:classification_performance}
+The generated datasets, differing one from each other in the global process parameters, are listed in \cref{app:tab:generated_datasets}. For each of them, $ 10 $ observations of the classification process were performed and the classification results presented in \cref{tab:classification_results} were computed by averaging these observations.
+
+Based on the analysis in \cref{ssec:selection_of_learning_parameters}, the network hidden structure consisted of $ 1 $ layer with $ 20 $ neurons. The backpropagation learning rate was $ 0.5 $ and the training process lasted for $ 500 $ learning epochs.
+
+With reference to \cref{app:tab:generated_datasets}, dataset $ 00\_00\_40\_a $ (meaning no terrain noise, no signal noise, 40 timesteps and all sensors) was selected for more detailed analysis. Classification results on this dataset are considered as a reference, because the data is deterministic and the results best possible.
+
+\begin{table}[H]
+\centering
+\caption{Classification results on generated datasets (see dataset parameters in \cref{app:tab:generated_datasets}).}
 \label{tab:classification_results}
 \resizebox{\textwidth}{!} {
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -289,13 +313,35 @@ First of all, based on the analysis from \cref{ssec:selection_of_learning_parame
 }
 \end{table}
 
+The following \cref{fig:amter_cm_nn} illustrates a confusion matrix (see \cref{ssec:evaluation_measures}) for classification on the reference deterministic dataset ($ 00\_00\_40\_a $). The recall rate for all terrains is shown on the diagonal. Additionally, we can see that $ 15\% $ of carpet samples was mistakenly labeled as grass and $ 10\% $ of grass samples as carpet. Similarly, the network had difficulties to distuinguish rock from grass and wood or foam from swamp. However, in general, the classification on the deterministic dataset was successful.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{amter_classification_nn_cm}
+  \caption{Confusion matrix of classification results on a deterministic dataset.}
+  \label{fig:amter_cm_nn}
+\end{figure}
+
+\cref{fig:amter_cm_noisy} shows a confusion matrix of classification results on a noisy dataset $ 03\_03\_40\_a $ ($ 3\% $ relative terrain noise, $ 3\% $ relative signal noise, 40 timesteps and all sensors - see \cref{app:tab:generated_datasets}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{amter_classification_noisy_cm}
+  \caption{Confusion matrix of classification results on a noisy dataset.}
+  \label{fig:amter_cm_noisy}
+\end{figure}
+
+A complete analysis of the relation between noise level and classification performance is presented in \cref{ssec:influence_of_noise_on_classification}. However, assuming that the chosen noise level simulates a real environment, \cref{fig:amter_cm_noisy} predicts results of the method on the real platform.
+
+In this case, grass ($ 44\% $) and rubber ($ 49\% $) result with the worst recall. On the other hand, samples of mud, plastic or sand are classified very well. A complete classification report comparing the deterministic results to noisy results is shown in \cref{tab:amter_classification_report}.
+
 \begin{table}[H]
 \centering
-\caption{Classification report : raw data}
-\label{tab:classification_report_noisy}
+\caption{Classification report for a deterministic dataset and a noisy dataset.}
+\label{tab:amter_classification_report}
 \begin{tabular}{|l|c|c|c|c|c|} 
 \hline
-\multirow{2}{*}{} & \multicolumn{2}{c |}{raw data} & \multicolumn{2}{c |}{noisy data} & \multirow{2}{*}{\textit{support}} \\ \cline{2-5} 
+\multirow{2}{*}{} & \multicolumn{2}{c |}{deterministic data} & \multicolumn{2}{c |}{noisy data} & \multirow{2}{*}{\textit{support}} \\ \cline{2-5} 
 & \textit{precision} & \textit{recall} & \textit{precision} & \textit{recall} & \\
 \hline
      carpet &      0.88 &      0.75 &     0.75 &       0.70 &       100 \\ \hline
@@ -318,39 +364,27 @@ avg / total &      0.92 &      0.92 &     0.74  &      0.72 & 		1400\\
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{amter_classification_nn_cm}
-  \caption{Pruning Algorithm Results on AMTER Dataset. classification no noise cm.}
-  \label{fig:amter_cm_noisy}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{amter_classification_noisy_cm}
-  \caption{Pruning Algorithm Results on AMTER Dataset. classification noisy cm.}
-  \label{fig:amter_cm_noisy}
-\end{figure}
-
-
 \subsubsection{Comparison to Other Classification Methods}
+Using the noisy dataset $ 03\_03\_40\_a $, the classification performance of the developed framework \textit{KITTNN} was compared to other classification approaches presented in \cref{sec:soa_other_classifiers} (\cref{tab:tc_comparison_to_other_classification_methods}).
 
 \begin{table}[H]
 \centering
-\caption{Classification report : noisy data}
-\label{tab:classification_report_noisy}
-\begin{tabular}{|l|c|c|c|c|} 
+\caption{Comparison to other classification methods (presented in \cref{sec:soa_other_classifiers})}
+\label{tab:tc_comparison_to_other_classification_methods}
+\begin{tabular}{|l|l|c|c|c|c|} 
 \hline
-method & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} \\
+method & method param & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} \\
 \hline \hline
-   kitt\_nn &       0.719 &      0.740 &      0.720 &   0.720\\ \hline
-   sknn     &       0.812 &      0.820 &      0.810 &   0.810\\ \hline
-   RF       &       0.647 &      0.650 &      0.650 &   0.640\\ \hline
-   SVM      &       0.545 &      0.570 &      0.550 &   0.500\\ \hline
-   k-NN     &       0.733 &      0.740 &      0.730 &   0.720\\ \hline
+   KITTNN 	&  hidden neurons: 20 	 &     0.719 &      0.740 &      0.720 &   0.720\\ \hline
+   SKNN     &  hidden neurons: 20 	 &     0.812 &      0.820 &      0.810 &   0.810\\ \hline
+   RF       &  estimators: 10		 &     0.647 &      0.650 &      0.650 &   0.640\\ \hline
+   SVM      &  penalty: 1.0			 &     0.545 &      0.570 &      0.550 &   0.500\\ \hline
+   k-NN     &  neighbours: 10	 	 &     0.733 &      0.740 &      0.730 &   0.720\\ \hline
 \hline
 \end{tabular}
 \end{table}
+
+The comparison to \textit{SKNN} indicates that the \textit{KITTNN} implementation might be optimizable. However, in general, the results prooved the suitability of using neural networks.
 
 \subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
 
@@ -391,7 +425,7 @@ learning rate
   \label{fig:acc_st_lr_mat}
 \end{figure}
 
-\subsection{Influence of Noise on Classification} \label{ssec:final_configuration}
+\subsection{Influence of Noise on Classification} \label{ssec:influence_of_noise_on_classification}
 
 \begin{figure}[H]
   \centering
@@ -432,7 +466,7 @@ learning rate
   \label{fig:sen_time}
 \end{figure}
 
-\subsection{Comparison to SOA Methods} \label{ssec:comparison_to_soa}
+\subsection{Comparison to SOA Methods} \label{ssec:terrain_classification_vs_soa}
 TODO: brief comparison to results of the vison-based method
 
 \section[Terrain Classification Using Network Pruning]{Terrain Classification Using Network Pruning} \label{sec:pa_amter}

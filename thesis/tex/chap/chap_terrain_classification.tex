@@ -291,10 +291,7 @@ The following \cref{fig:terrain_similarity_measures} shows the similarity measur
   \label{fig:terrain_similarity_measures}
 \end{figure}
 
-The surfaces have been generated virtually and their similarity to real world terrains has not been verified. However, the results demonstrate that foam is very different from ice or, for instance, sand is quite similar to mud. A low similarity measure can be seen among concrete, carpet and rubber as all of them are moreless flat.
-
-Surprisingly, a wooden terrain ended up as very similar to gravel and carpet, but a limited number of simulated terrain features have to be considered. 
-On the other hand, rubber seems to be very different from swamp and snow, which is a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
+The surfaces have been generated virtually and their similarity to real world terrains has not been verified. However, the results demonstrate that foam is very different from ice or, for instance, sand is quite similar to mud. A low similarity measure can be seen among concrete, carpet and rubber as all of them are moreless flat. Rubber seems to be very different from swamp or snow, which is also a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
 
 \subsection{Terrain Noise} \label{ssec:terrain_noise}
 In general simulations are widely used coming with many benefits and being usually the right way to start, however, the real world is always different from the simulated one and these differences may influence the results significantly.
@@ -395,12 +392,12 @@ Examples of signals from all 24 sensors can be found in \cref{sec:complete_senso
 As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter have been generated. The simulation has been gradually run for:
 
 \begin{itemize}
-\item $ \sigma_p = 0.0 $ (no noise)
-\item $ \sigma_p = 0.01 $ (1\% relative noise)
-\item $ \sigma_p = 0.03 $ (3\% relative noise)
-\item $ \sigma_p = 0.05 $ (5\% relative noise)
-\item $ \sigma_p = 0.1 $ (10\% relative noise)
-\item $ \sigma_p = 0.2 $ (20\% relative noise)
+\item $ \sigma_p = 0.0 $ (no noise);
+\item $ \sigma_p = 0.01 $ (1\% relative noise);
+\item $ \sigma_p = 0.03 $ (3\% relative noise);
+\item $ \sigma_p = 0.05 $ (5\% relative noise);
+\item $ \sigma_p = 0.1 $ (10\% relative noise);
+\item $ \sigma_p = 0.2 $ (20\% relative noise).
 \end{itemize}
 
 The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analyzed in \cref{sssec:terrain_noise_influence}.
