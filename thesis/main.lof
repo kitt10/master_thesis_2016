@@ -57,49 +57,44 @@
 \contentsline {figure}{\numberline {4.16}{\ignorespaces Average epoch time (10 observations) with respect to number of simulation timesteps.\relax }}{53}{figure.caption.182}
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Evaluation of different sensor types separately (average of 10 observations, timesteps: 10, 40, 80).\relax }}{54}{figure.caption.186}
 \contentsline {figure}{\numberline {4.18}{\ignorespaces Average epoch time for different sensor types.\relax }}{55}{figure.caption.187}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. No noise.\relax }}{56}{figure.caption.190}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Noisy.\relax }}{56}{figure.caption.191}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. 80 timesteps.\relax }}{57}{figure.caption.192}
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. 100 hidden neurons.\relax }}{57}{figure.caption.193}
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Proprioceptive sensors only.\relax }}{58}{figure.caption.194}
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Tactile sensors only.\relax }}{58}{figure.caption.195}
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used neurons allsen.\relax }}{59}{figure.caption.196}
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used neurons ptasen.\relax }}{59}{figure.caption.197}
-\contentsline {figure}{\numberline {4.27}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Synapses allsen.\relax }}{60}{figure.caption.198}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Synapses ptasen.\relax }}{60}{figure.caption.199}
-\contentsline {figure}{\numberline {4.29}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.\relax }}{61}{figure.caption.201}
-\contentsline {figure}{\numberline {4.30}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.\relax }}{61}{figure.caption.202}
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features thoraco.\relax }}{62}{figure.caption.203}
-\contentsline {figure}{\numberline {4.32}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features coxa.\relax }}{62}{figure.caption.204}
-\contentsline {figure}{\numberline {4.33}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features femur.\relax }}{63}{figure.caption.205}
-\contentsline {figure}{\numberline {4.34}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features tactile.\relax }}{63}{figure.caption.206}
-\contentsline {figure}{\numberline {4.35}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power.\relax }}{64}{figure.caption.207}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. No noise.\relax }}{56}{figure.caption.191}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Synaptic pruning of configurations A (reference), B (80 timesteps) and D (noisy data).\relax }}{57}{figure.caption.193}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Synaptic pruning of configurations A* (reference), C (100 hidden neurons), E (proprioceptive sensors) and F (tactile sensors).\relax }}{58}{figure.caption.194}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A, B, D (10 observations)\relax }}{58}{figure.caption.195}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A*, C, E, F (10 observations)\relax }}{59}{figure.caption.196}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.\relax }}{59}{figure.caption.198}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.\relax }}{60}{figure.caption.199}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features thoraco.\relax }}{60}{figure.caption.200}
+\contentsline {figure}{\numberline {4.27}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features coxa.\relax }}{61}{figure.caption.201}
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features femur.\relax }}{61}{figure.caption.202}
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features tactile.\relax }}{62}{figure.caption.203}
+\contentsline {figure}{\numberline {4.30}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power.\relax }}{62}{figure.caption.204}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco joints on the front legs\relax }}{73}{figure.caption.213}
-\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa joints on the front legs\relax }}{73}{figure.caption.214}
-\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur joints on the front legs\relax }}{73}{figure.caption.215}
-\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{74}{figure.caption.216}
-\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa joints on the middle legs\relax }}{74}{figure.caption.217}
-\contentsline {figure}{\numberline {A1.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{74}{figure.caption.218}
-\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{74}{figure.caption.219}
-\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa joints on the hint legs\relax }}{75}{figure.caption.220}
-\contentsline {figure}{\numberline {A1.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{75}{figure.caption.221}
-\contentsline {figure}{\numberline {A1.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{75}{figure.caption.222}
-\contentsline {figure}{\numberline {A1.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{75}{figure.caption.223}
-\contentsline {figure}{\numberline {A1.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{76}{figure.caption.224}
-\contentsline {figure}{\numberline {A1.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{78}{figure.caption.228}
-\contentsline {figure}{\numberline {A1.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{78}{figure.caption.229}
-\contentsline {figure}{\numberline {A1.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{79}{figure.caption.230}
-\contentsline {figure}{\numberline {A1.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{79}{figure.caption.231}
+\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco joints on the front legs\relax }}{71}{figure.caption.210}
+\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa joints on the front legs\relax }}{71}{figure.caption.211}
+\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur joints on the front legs\relax }}{71}{figure.caption.212}
+\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{72}{figure.caption.213}
+\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa joints on the middle legs\relax }}{72}{figure.caption.214}
+\contentsline {figure}{\numberline {A1.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{72}{figure.caption.215}
+\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{72}{figure.caption.216}
+\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa joints on the hint legs\relax }}{73}{figure.caption.217}
+\contentsline {figure}{\numberline {A1.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{73}{figure.caption.218}
+\contentsline {figure}{\numberline {A1.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{73}{figure.caption.219}
+\contentsline {figure}{\numberline {A1.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{73}{figure.caption.220}
+\contentsline {figure}{\numberline {A1.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{74}{figure.caption.221}
+\contentsline {figure}{\numberline {A1.13}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{76}{figure.caption.225}
+\contentsline {figure}{\numberline {A1.14}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{76}{figure.caption.226}
+\contentsline {figure}{\numberline {A1.15}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{77}{figure.caption.227}
+\contentsline {figure}{\numberline {A1.16}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{77}{figure.caption.228}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{80}{figure.caption.234}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{81}{figure.caption.236}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{82}{figure.caption.251}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{82}{figure.caption.252}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{83}{figure.caption.256}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{84}{figure.caption.258}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{85}{figure.caption.261}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{78}{figure.caption.231}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{79}{figure.caption.233}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{80}{figure.caption.248}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{80}{figure.caption.249}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{81}{figure.caption.253}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{82}{figure.caption.255}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{83}{figure.caption.258}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

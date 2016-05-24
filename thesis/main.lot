@@ -16,10 +16,12 @@
 \contentsline {table}{\numberline {4.4}{\ignorespaces Classification results on generated datasets (see dataset parameters in \cref {app:tab:generated_datasets}).\relax }}{48}{table.caption.165}
 \contentsline {table}{\numberline {4.5}{\ignorespaces Classification report for a deterministic dataset and a noisy dataset.\relax }}{50}{table.caption.168}
 \contentsline {table}{\numberline {4.6}{\ignorespaces Comparison to other classification methods (presented in \cref {sec:soa_other_classifiers})\relax }}{50}{table.caption.170}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Chosen configurations for PA demonstration.\relax }}{56}{table.caption.190}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Results of the PA on terrain datasets.\relax }}{57}{table.caption.192}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A1.1}{\ignorespaces Generated datasets\relax }}{77}{table.caption.226}
+\contentsline {table}{\numberline {A1.1}{\ignorespaces Generated datasets\relax }}{75}{table.caption.223}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
