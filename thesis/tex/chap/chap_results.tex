@@ -561,7 +561,7 @@ The following \cref{fig:pa_amter_used_neurons_90} shows a relative amount of act
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{pa_result_amter_used_neurons_90.png}
+  \includegraphics[width=0.8\textwidth]{pa_result_amter_used_neurons_90.png}
   \caption{Active neurons in the network after pruning [\%]: configurations A, B, D (10 observations)}
   \label{fig:pa_amter_used_neurons_90}
 \end{figure}
@@ -576,90 +576,61 @@ In \cref{fig:pa_amter_used_neurons_65}, the same statistics for configurations \
 \end{figure}
 
 \subsection{Feature Selection for Terrain Classification} \label{ssec:pa_amter_feature_selection}
+Section \ref{ssec:minimal_structure_util} presents an idea of using minimal structures for feature selection. The idea is based on tracking paths from input neurons representing individual features to output neurons (classes). This approach was applied on the minimal structure of the \textit{A} configuration from \cref{tab:amter_pa_results}, hence tha analysis is performed on a network of structure $ [330, 16, 14] $ with $ 516 $ synapses.
+
+\cref{fig:pa_amter_n_paths_to_output} shows three sample examples (right y-axis). On the left y-axis, number of paths (see \cref{img:path_explanation}) to the output layer is counted for each feature.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{fs_n_syn_to_hidden_by_class}
-  \caption{Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.}
-  \label{fig:pa_amter_n_syn_to_hidden_by_class}
+  \includegraphics[width=0.8\textwidth]{fs_n_paths_to_output}
+  \caption{Number of paths to the output layer for every feature of the input example.}
+  \label{fig:pa_amter_n_paths_to_output}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{fs_n_paths_to_output}
-  \caption{Pruning Algorithm Results on AMTER Dataset. N synapses connected to the hidden layer, by class.}
-  \label{fig:pa_amter_n_syn_to_hidden_by_class}
-\end{figure}
+\cref{img:path_explanation} explains the meaning of a path in this context.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{fs_used_features_thoraco}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features thoraco.}
+  \includegraphics[width=0.5\textwidth]{path_explanation.png}
+  \caption{Explanation of a path from input to output layer in a minimal structure.}
+  \label{img:path_explanation}
+\end{figure}
+
+Having these paths, we can distinguish features important for individual classes. In \cref{fig:pa_amter_used_features_thoraco}, the analysis is done for every feature of the Thoraco-Coxa joint angle sensors. Red dots means that the feature has a path to the corresponding class (terrain).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{fs_used_features_thoraco}
+  \caption{Used features of thoraco-coxa proprioceptive sensors for individual classes.}
   \label{fig:pa_amter_used_features_thoraco}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{fs_used_features_coxa}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features coxa.}
-  \label{fig:pa_amter_used_features_coxa}
-\end{figure}
+The same analysis for tactile sensors is shown in \cref{fig:pa_amter_used_features_tactile}. Similar figures for \textit{coxa} and \textit{femur} joint angle sensors can be found in \cref{app:sec:complete_feature_analysis_for_terrains}.
+
+Using this analysis, one might find the redundant parts of the feature vector, as some of the features are unimportant for any of the classes. Moreover, we can make statements about single features based on the classes it is connected to. For instance, if a feature, belonging to the foot contact sensor on the right front leg, fires for foam and does not fire for the other classes, we might assume that this sensor is important if we want to classify foam properly.
+
+To go even further with this analysis, also weights of the minimal network structure can be used. \cref{fig:pa_amter_io_power_tactile} shows \textit{powers}, which a single feature contributes with, to forming values on individual classes. 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{fs_used_features_femur}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features femur.}
-  \label{fig:pa_amter_used_features_femur}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{fs_used_features_tactile}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features tactile.}
+  \includegraphics[width=0.75\textwidth]{fs_used_features_tactile}
+  \caption{Used features of tactile sensors for individual classes.}
   \label{fig:pa_amter_used_features_tactile}
 \end{figure}
 
+The \textit{power} of feature \textit{f}, corresponding to input neuron $ i_r $, and class \textit{c}, represented by output neuron $ o_q $, is computed as given in \cref{eq:io_power}; (assuming one hidden layer).
+\noindent
+\begin{align} \label{eq:io_power}
+power_{r,q} = \displaystyle{\sum_{k=1}^{N_{hidden}} w_{r, k} + w_{k, q}}
+\end{align}
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{fs_amter_io_power_tactile}
+  \includegraphics[width=0.75\textwidth]{fs_amter_io_power_tactile}
   \caption{Pruning Algorithm Results on AMTER Dataset. IO power.}
   \label{fig:pa_amter_io_power_tactile}
 \end{figure}
 
+Based on the results in \cref{fig:pa_amter_io_power_tactile}, besides the knowledge if a feature affects a particular class, we can also see the direction (positive/negative) and a power of this influence. For instance, we can find a feature affecting plastic or concrete positively and snow or mud negatively at the same time. 
 
-
-evaluation (tables and figures) of classification:
-\begin{itemize}
-\item various terrain noise standard deviation values
-\item various signal noise standard deviation values
-\item various sensors on network input (only foot, only angle...)
-\item various timesteps used as one sample (-> time needed for detection)
-\item various number of detected terrains as outputs
-\item various network structures
-\item various training parameters (epochs, learning rate, batch size...)
-\end{itemize}
-
-
-evaluation of neural nets as a classifier:
-\begin{itemize}
-\item comparison to other classifiers on the same data, classifiers are ready provided by sknn library
-\end{itemize}
-
-evaluation of proprioception sensing against other methods (visual, haptic, laser...):
-\begin{itemize}
-\item comparison to the results from the literature
-\end{itemize}
-
-evaluation of the pruning algorithm:
-\begin{itemize}
-\item various starting structures, ends up with the same minimal-optimal structure?
-\item various noise types, same minimal structure?
-\item speed comparisons of the fully-connected vs. pruned structure
-\item further analysis:
- \begin{itemize}
- \item which sensors are redundant/crucial
- \item which sensors are important for which terrain
- \item comments on the minimal structure and benefits of having it
- \end{itemize}
-\end{itemize}
-10-15 pages (many figures, tables)
+Results for the proprioceptive sensors were generated in the same manner and can be found in \cref{app:sec:complete_feature_analysis_for_terrains}.
