@@ -387,82 +387,99 @@ method & method param & \textit{accuracy} & \textit{precision} & \textit{recall}
 The comparison to \textit{SKNN} indicates that the \textit{KITTNN} implementation might be optimizable. However, in general, the results prooved the suitability of using neural networks.
 
 \subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
+This section is devoted to an analysis of parameters belonging to the network and the learning process. The goal was to determine:
 
-learning rate
+\begin{enumerate}
+\item hidden structure of the network;
+\item learning rate for the backpropagation;
+\item number of learning epochs (iterations).
+\end{enumerate}
+
+To perform the analysis, the deterministic dataset ($ 00\_00\_40\_a $ - see \cref{app:tab:generated_datasets}) was used.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20}
-  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
+  \includegraphics[width=0.7\textwidth]{cl_lr_vs_epoch_st20}
+  \caption{Training process with various learning rates.}
   \label{fig:lr_analysis}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_lr_vs_epoch_st20_example}
-  \caption{Learning rate analysis. Net structure: [960, 20, 14].}
-  \label{fig:lr_analysis_example}
-\end{figure}
+In \cref{fig:lr_analysis}, the training process (progress of accuracy over iterations) is illustrated for five learning rates. The results are obtained by averaging $ 10 $ observations and (standard deviation) error bars are shown. The experiment was performed using a network with $ 20 $ hidden neurons.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05}
-  \caption{Network structure analysis. Learning rate: 0.5.}
+  \includegraphics[width=0.7\textwidth]{cl_st_vs_epoch_lr05}
+  \caption{Training process with various networks differing in the number of hidden neurons.}
   \label{fig:st_analysis}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{cl_st_vs_epoch_lr05_example}
-  \caption{Network structure analysis. Learning rate: 0.5.}
-  \label{fig:st_analysis_example}
-\end{figure}
+It was determined to use one hidden layer. The accuracy progress over training epochs for six networks differing in the number of hidden neurons is shown in \cref{fig:st_analysis}. An overall analysis for these two parameters (learning rate and hidden structure) is performed in \cref{fig:acc_st_lr_mat}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_st_lr_mat}
-  \caption{Learning parameters analysis: Classification accuracy vs. learning rate and network structure}
+  \includegraphics[width=0.8\textwidth]{cl_st_lr_mat}
+  \caption{Classification accuracy vs. learning rate and network structure (10 observations)}
   \label{fig:acc_st_lr_mat}
 \end{figure}
 
+Based on the results, $ 20 $ neurons in one layer were chosen to form the hidden structure of the network. The learning rate was set to $ 0.5 $. The number of training epochs (based on \cref{fig:lr_analysis} and \cref{fig:st_analysis}) was set to $ 500 $.
+
 \subsection{Influence of Noise on Classification} \label{ssec:influence_of_noise_on_classification}
+Two types of noise were added to the deterministic data during the process: a terrain noise (described in \cref{ssec:terrain_noise}) and a signal noise (\cref{ssec:signal_noise}). Both were parametrized by a standard deviation value. \cref{fig:acc_tn_sn_mat} shows the influence of these values on classification performance.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_acc_tn_sn_mat}
+  \includegraphics[width=0.7\textwidth]{cl_acc_tn_sn_mat}
   \caption{Additive terrain and signal noise: influence on the accuracy}
   \label{fig:acc_tn_sn_mat}
 \end{figure}
 
 \subsection{Time Needed for Classification} \label{ssec:number_of_timesteps}
+As discussed in \cref{sec:data_acquisition}, the assumption is that the robot needs to make several steps and record the sensory data over a period of time, to classify the terrain with proprioceptive and tactile sensors. In this section, the period of time needed for proper classification is analysed. Assuming that one second in reality is equal to $ 10 $ simulation steps, \cref{fig:ts_acc_boxplot} shows the classification accuracy for six different numbers of simulation steps. The classification was performed on the deterministic dataset ($ 00\_00\_40\_a $ - see \cref{app:tab:generated_datasets}).
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_ts_acc_boxplot}
-  \caption{Number of simulation timesteps: influence on the accuracy and training time}
+  \includegraphics[width=0.75\textwidth]{cl_ts_acc_boxplot}
+  \caption{Analysis of time needed for proper classification.}
   \label{fig:ts_acc_boxplot}
 \end{figure}
 
+Surprisingly, the classification result based on a single timestep is not bad. In other words, the robot will be able to classify the terrain in real time with more than $ 0.6 $ probability of success. In general, the more timesteps are used, the better the result is.
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_ts_time_boxplot}
-  \caption{Number of simulation timesteps: influence on the accuracy and training time}
+  \includegraphics[width=0.7\textwidth]{cl_ts_time_boxplot}
+  \caption{Average epoch time (10 observations) with respect to number of simulation timesteps.}
   \label{fig:ts_time_boxplot}
 \end{figure}
 
+However, the equally good results for $ 40 $ and $ 80 $ timesteps indicates, that one period of the tripod gait will be enough (see the periodic sensory signals in \cref{app:sec:complete_sensory_data}). Moreover, with the increasing number of timesteps, also the feature vector size and network dimensionality increase, and, as shown in \cref{fig:ts_time_boxplot}, also the processing time. Based on this analysis, $ 40 $ was chosen as the default number of timesteps in this study. 
+
 \subsection{Analysis of Used Sensor Types} \label{ssec:analysis_of_used_sensor_types}
+Two types of sensors are used for terrain classification for the hexapod robot AMOS II:
+
+\begin{enumerate}
+\item proprioceptive sensors (3 on each leg, 18 in total);
+\item tactile sensors (1 on each leg, 6 in total).
+\end{enumerate}
+
+The results presented so far are obtained using both of these two types together. In this section, the sensor types are evaluated separately. \cref{fig:sen_vs_epoch} illustrates the training process using the sensor types one by one and compares their classification performance to a combined configuration. The evaluation is performed for three values of simulation timesteps (see \cref{ssec:number_of_timesteps}): $ 10 $, $ 40 $, $ 80 $.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_sen_vs_epoch}
-  \caption{bla}
+  \includegraphics[width=0.9\textwidth]{cl_sen_vs_epoch}
+  \caption{Evaluation of different sensor types separately (average of 10 observations, timesteps: 10, 40, 80).}
   \label{fig:sen_vs_epoch}
 \end{figure}
 
+\cref{fig:sen_vs_epoch} shows that the combination of the two types results with the highest classification accuracy, namely even with $ 10 $ simulation steps (1 second of real time) compared to $ 40 $ (4 seconds), resp. $ 80 $ (8 seconds), for only one of the sensor types. Having more time for classification ($ 4 $ or $ 8 $ seconds), the six tactile sensors are more successful than proprioceptive, however, they fail when the classification needs to be fast ($ 1 $ second). Complete classification results for all of these configurations can be found in \cref{tab:classification_results}.
+
+Number of used sensors affects the size of the feature vector and hence also the size of the network input layer. The dimensionality of the network mattrices influence the processing time. An average epoch time out of 10 observations is shown for the two sensor types in \cref{fig:sen_time}. 
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{cl_sen_time}
-  \caption{bla}
+  \includegraphics[width=0.8\textwidth]{cl_sen_time}
+  \caption{Average epoch time for different sensor types.}
   \label{fig:sen_time}
 \end{figure}
 

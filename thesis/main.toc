@@ -54,23 +54,23 @@
 \contentsline {subsection}{\numberline {4.3.1}Classification Performance}{47}{subsection.164}
 \contentsline {subsubsection}{Comparison to Other Classification Methods}{50}{section*.169}
 \contentsline {subsection}{\numberline {4.3.2}Selection of Learning Parameters}{51}{subsection.171}
-\contentsline {subsection}{\numberline {4.3.3}Influence of Noise on Classification}{53}{subsection.177}
-\contentsline {subsection}{\numberline {4.3.4}Time Needed for Classification}{54}{subsection.179}
-\contentsline {subsection}{\numberline {4.3.5}Analysis of Used Sensor Types}{55}{subsection.182}
-\contentsline {subsection}{\numberline {4.3.6}Comparison to SOA Methods}{56}{subsection.185}
-\contentsline {section}{\numberline {4.4}Terrain Classification Using Network Pruning}{56}{section.186}
-\contentsline {subsection}{\numberline {4.4.1}Feature Selection for Terrain Classification}{61}{subsection.197}
-\contentsline {chapter}{\numberline {5}Discussion}{66}{chapter.205}
-\contentsline {chapter}{\numberline {6}Conclussion and Outlook}{69}{chapter.206}
-\contentsline {chapter}{Bibliography}{71}{chapter*.207}
-\contentsline {chapter}{\numberline {A1}Supplementary Data}{73}{appendix.208}
-\contentsline {section}{\numberline {A1.1}Complete Sensory Data}{73}{section.209}
-\contentsline {section}{\numberline {A1.2}Generated Datasets}{77}{section.222}
-\contentsline {section}{\numberline {A1.3}Further Data Analysis}{78}{section.224}
-\contentsline {chapter}{\numberline {A2}Method Implementation}{80}{appendix.229}
-\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{80}{section.230}
-\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{83}{section.252}
-\contentsline {chapter}{\numberline {A3}Working Directory Structure}{86}{appendix.267}
-\contentsline {chapter}{\numberline {A4}Code Documentation}{87}{appendix.268}
-\contentsline {section}{\numberline {A4.1}API for Neural Network Framework}{87}{section.269}
-\contentsline {section}{\numberline {A4.2}API for Terrain Classification Scripts}{87}{section.270}
+\contentsline {subsection}{\numberline {4.3.3}Influence of Noise on Classification}{52}{subsection.178}
+\contentsline {subsection}{\numberline {4.3.4}Time Needed for Classification}{53}{subsection.180}
+\contentsline {subsection}{\numberline {4.3.5}Analysis of Used Sensor Types}{54}{subsection.183}
+\contentsline {subsection}{\numberline {4.3.6}Comparison to SOA Methods}{55}{subsection.188}
+\contentsline {section}{\numberline {4.4}Terrain Classification Using Network Pruning}{56}{section.189}
+\contentsline {subsection}{\numberline {4.4.1}Feature Selection for Terrain Classification}{61}{subsection.200}
+\contentsline {chapter}{\numberline {5}Discussion}{66}{chapter.208}
+\contentsline {chapter}{\numberline {6}Conclussion and Outlook}{69}{chapter.209}
+\contentsline {chapter}{Bibliography}{71}{chapter*.210}
+\contentsline {chapter}{\numberline {A1}Supplementary Data}{73}{appendix.211}
+\contentsline {section}{\numberline {A1.1}Complete Sensory Data}{73}{section.212}
+\contentsline {section}{\numberline {A1.2}Generated Datasets}{77}{section.225}
+\contentsline {section}{\numberline {A1.3}Further Data Analysis}{78}{section.227}
+\contentsline {chapter}{\numberline {A2}Method Implementation}{80}{appendix.232}
+\contentsline {section}{\numberline {A2.1}Implementation of the Terrain Classification}{80}{section.233}
+\contentsline {section}{\numberline {A2.2}Implementation of the Neural Network}{83}{section.255}
+\contentsline {chapter}{\numberline {A3}Working Directory Structure}{86}{appendix.270}
+\contentsline {chapter}{\numberline {A4}Code Documentation}{87}{appendix.271}
+\contentsline {section}{\numberline {A4.1}API for Neural Network Framework}{87}{section.272}
+\contentsline {section}{\numberline {A4.2}API for Terrain Classification Scripts}{87}{section.273}
