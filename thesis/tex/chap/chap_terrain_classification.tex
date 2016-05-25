@@ -496,12 +496,13 @@ Naturally, the higher the standard deviation of additive Gaussian noise is, the 
   \label{fig:sn_influence_samples_concrete}
 \end{figure}
 
+\newpage
 \section{Generation of Datasets} \label{sec:dataset_creation}
 In this section, the task is to transform all the data into so called datasets. There are usually three sets of data used for classification tasks - training, validation and testing data. These three sets must be disjunctive, meaning they cannot have a single element in common. All these three sets together form a dataset.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{three_sets}
+  \includegraphics[width=0.65\textwidth]{three_sets}
   \caption{Three sets of data in a dataset.}
   \label{img:three_sets}
 \end{figure}
@@ -512,7 +513,7 @@ The target vector is of length 14, as there are 14 terrain types. Every terrain 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{target_vector_concrete}
+  \includegraphics[width=0.35\textwidth]{target_vector_concrete}
   \caption{Target vector for concrete}
   \label{img:target_vector_concrete}
 \end{figure}
@@ -521,7 +522,7 @@ Once there are two ordered lists - a list of samples and a corresponding list of
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{create_dataset}
+  \includegraphics[width=0.7\textwidth]{create_dataset}
   \caption{Workflow of generating a dataset}
   \label{img:create_dataset}
 \end{figure}
@@ -544,7 +545,7 @@ In the overall process diagram (\cref{img:terrain_overall_simple}) there is a bo
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{train_and_test_network}
+  \includegraphics[width=0.7\textwidth]{train_and_test_network}
   \caption{Procedure of training and testing a network}
   \label{img:train_and_test_network}
 \end{figure}
@@ -554,3 +555,22 @@ This workflow is performed by the implemented framework \textit{kitt\_nn} (\cref
 There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
 
 Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
+
+\subsection{Evaluation Measures} \label{ssec:evaluation_measures}
+A trained network is evaluated on testing data. This evaluation provides a set of the most important classification metrics \citep{article:scikit-learn}.
+
+\begin{description}
+\item[accuracy] : the set of labels predicted for a sample must exactly match the corresponding set of true labels
+\item[precision] : ability of the classifier not to label as positive a sample that is negative
+\item[recall] : the ability of the classifier to find all the positive samples
+\item[F1 score] is interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal. Formula:
+\begin{equation} \label{eq:f1_score}
+F1 = \frac{2 * precision * recall}{precision + recall}
+\end{equation}
+\item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
+\item[classification error] : DESCRIBE (formula).
+\item[average epoch time] : DESCRIBE.
+\item[evarage classification time] : DESCRIBE.
+\end{description}
+
+structure, n synapses ?

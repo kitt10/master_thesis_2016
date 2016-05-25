@@ -319,6 +319,7 @@ KOMA-script documentation for details.}]{fancyhdr}
 	{\huge\textit{\abstractname} \par}
 	\bigskip
 	{\normalsize \facname \par} % Faculty name
+	{\normalsize \deptname \par} % Department name
 	{\normalsize \groupname \par} % Group name
 	\bigskip
 	{\normalsize \degreename\par} % Degree name
