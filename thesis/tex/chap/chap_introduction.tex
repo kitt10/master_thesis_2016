@@ -1,4 +1,4 @@
-\chapter{Introduction} \label{chapter:01:introduction}
+\chapter{Introduction} \label{chap:introduction}
 
 The thesis must clearly state its theme, hypotheses and/or goals (sometimes called “the research question(s)”), and provide sufficient background information to enable a non-specialist researcher to understand them. It must contain a thorough review of relevant literature, perhaps in a separate chapter.
 
@@ -12,11 +12,14 @@ whatever is possible
 
 1-2 pages intro
 
-\section{Problem Formulation}
+Problem Formulation
 - may be not a subsection?
 
+Hypotheses
+The proprioception and tactile sensing
+
 \newpage
-\section{Classification} \label{sec:soa_other_classifiers}
+\section{State of the Art} \label{sec:soa}
 Classification is one of the most widely used areas of machine learning. The idea is based on training a model on a set of data by setting some model parameters. A wide range of classification methods, differing one from each other in their mathematical backgrounds, are provided nowadays, however, the classification procedure follows a conventional line:
 
 \begin{enumerate}
@@ -25,11 +28,11 @@ Classification is one of the most widely used areas of machine learning. The ide
 \item prediction (using never-seen data B).
 \end{enumerate}
 
-To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The length of feature vectors usually determines an input of a chosen classifier and the number of classes sets an output.
+To fit a classifier to a problem, one needs to define a problem data structure. Data consists of samples and discrete targets, often called classes. The samples are sooner or later converted into so called feature vectors of a fixed length. The length of feature vectors usually determines an input of a chosen classifier and the number of classes set an output.
 
 Basically, any kind of problem, ordinarily being solved by a human, can be transformed to a classification task for an artificial agent, if we define classes and find a numerical representation.
 
-\subsection*{Overview of Classification Methods} \label{ssec:other_classification_methods}
+\subsubsection*{Overview of Classification Methods} \label{ssec:other_classification_methods}
 The data samples usually consist of multiple features and the classes are linearly inseparable in most of the cases. The goal is to separate the classes in a high-dimensional space (illustrated in \cref{img:classification_problem_formulation}).
 
 \begin{figure}[H]
@@ -39,22 +42,20 @@ The data samples usually consist of multiple features and the classes are linear
   \label{img:classification_problem_formulation}
 \end{figure}
 
-\textit{Support Vector Machines} (\textit{SVMs}) [give cite] construct a set of hyperplanes in the high dimensional space to separate the classes. The position of the hyperplanes is based on so-called support vectors, which define distances to the nearest training-data points. Using the support vectors, a hyperplane with the largest margin between two classes is created and used for classification. The linear inseparability is solved by a kernel trick, which maps the original finite-dimensional space into a much higher-dimensional space.
+\textit{Support Vector Machines} (\textit{SVMs}); \citep{article:svm} construct a set of hyperplanes in the high dimensional space to separate the classes. The position of the hyperplanes is based on so-called support vectors, which define distances to the nearest training-data points. Using the support vectors, a hyperplane with the largest margin between two classes is created and used for classification. The linear inseparability is solved by a kernel trick, which maps the original finite-dimensional space into a much higher-dimensional space.
 
-The \textit{k-Nearest Neighbours} (\textit{k-NN}) algorithm [give cite] uses a more straightforward way to classify samples into classes. Instead of finding the separation planes, this approach computes distances from the classified sample to $ k $ nearest samples of the training data. Then the class is determined by the majority vote of those known samples. This approach skips the training process, however, the prediction is computationally expensive.
+The commonly known \textit{k-Nearest Neighbours} (\textit{k-NN}) algorithm uses a more straightforward way to classify samples into classes. Instead of finding the separation planes, this approach computes distances from the classified sample to $ k $ nearest samples of the training data. Then the class is determined by the majority vote of those known samples. This approach skips the training process, however, the prediction is computationally expensive.
 
-The \textit{Random Forest} (\textit{RF}) approach [give cite] is based on decision trees, which learn simple decision rules inferred from the data features. Decision trees are known for having troubles with over-fitting, therefore the Random Forest uses many decision trees and finds a classification result by averaging their outputs (bagging).
-
-Additionally, the \textit{Naive Bayes} approach [give cite] is based on statistical analysis and uses a likelihood to predict classes. 
+The \textit{Random Forest} (\textit{RF}) approach \citep{article:rf} is based on decision trees, which learn simple decision rules inferred from the data features. Decision trees are known for having troubles with over-fitting, therefore the Random Forest uses many decision trees and finds a classification result by averaging their outputs (bagging).
 
 Each of those methods has some adventages and disadvantages on a particular type of data and its distribution. For instance, \textit{SVMs} are a powerful tool for binary problems with an outlier free distribution. For a multiclass data, where many outliers are expected, one might want to choose Random Forest, however, the decision trees usually take a longer time in classification.
 
-To summarize, a best classification method has not been prooved yet. However, \textit{neural networks} (\textit{NN}) are being used for more and more fields nowadays.  
+To summarize, the best classification method has not been prooved yet. However, \textit{neural networks} (\textit{NN}) are being used in more and more fields nowadays.  
 
-\subsection*{Feedforward Neural Networks} \label{ssec:intro_to_nn}
-Classification algorithms are often considered as they behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human's behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most exact imitation of a human brain out of the proposed methods.
+\subsubsection*{Feedforward Neural Networks} \label{ssec:intro_to_nn}
+Classification algorithms are often considered to behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human's behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most accurate imitation of a human brain out of the proposed methods.
 
-In 1957, Frank Rosenblatt presented his perceptron model, a binary classifier mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
+In 1957, Frank Rosenblatt presented his perceptron model, a binary classifier, mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
 
 \begin{align} \label{eq:perceptron}
 f_p(X) = 
@@ -66,71 +67,95 @@ f_p(X) =
 
 where $ W = [w_1, w_2, ..., w_n]^T $ is a vector of weights and $ b $ is a bias, which shifts the decision boundary away from the origin.
 
-These parameters ($ W $ and $ b $) are considered as a memory. Finding their optimal values, a single perceptron is capable of classifying linearly separable samples of two classes. This searching for the parameter values, based on some labeled data, is considered as learning.
+These parameters ($ W $ and $ b $) are considered as perceptron's memory. Finding their optimal values, a single perceptron is capable of classifying linearly separable samples of two classes. This searching for the parameter values, based on some labeled data, is considered as learning.
 
-To shake of the limitation of classes linear separability, multiple perceptrons are connected into a directed graph, which forms a multilayer perceptron. Then, replacing the $ f_p() $ by another function, so-called transfer function (e.g. \textit{sigmoid} or \textit{tanh} - see \cref{fig:transfer_functions}), every unit generates a continuous output. This structure is called a \textit{feedforward neural network} (see \cref{img:neural_net}), which is generally capable of multiclass classification of lineraly inseparable classes.
+To avoid the requirment of linear separability, multiple perceptrons are connected into a directed graph, which forms a multilayer perceptron. Then, replacing the $ f_p() $ by another function, so-called transfer function (e.g. \textit{sigmoid} or \textit{tanh} - see \cref{fig:transfer_functions}), every unit generates a continuous output. The resulting structure is then called a \textit{feedforward neural network} (see \cref{img:neural_net}), which is generally capable of multiclass classification of linearly inseparable classes.
 
-\section{Network Pruning Algorithms} \label{sec:soa_pruning_algorithms}
-In general, increasing number of neurons in the network helps to deal with outliers and improves the classification. On the other hand, to obtain generalization in systems trained by examples, the smallest system that will fit the data should be used. Moreover, increasing number of synapses increases also the dimensionality of weight mattrices and so slows down the training process as well as the prediction. The aim of a network designer should be to find a minimal structure, where only connections important for classification remain, while the classification accuracy requirement is met. Two basic approaches of getting such structure are available:
+\subsection*{Network Pruning Algorithms} \label{sec:soa_pruning_algorithms}
+In general, increasing number of neurons in the network helps to deal with outliers and improves the classification. On the other hand, to obtain generalization in systems trained by examples, the smallest system that will fit the data should be used. Moreover, increasing number of synapses increases the dimensionality of weight mattrices and so slows down the training process as well as the prediction. The aim of a network designer should be to find a minimal structure, where only connections important for classification remain, while the classification accuracy requirement is met. Two basic approaches of getting such structure are available:
 
 \begin{enumerate}
 \item train a network that is larger than necessary and then remove the parts that are not needed;
-\item start from a small structure and then add neurons and synapses until the network will be capable of learning.
+\item start from a small structure, then keep adding neurons and synapses until the network is capable of learning.
 \end{enumerate}
 
 In \citep{article:10:pa}, the author makes a good overview of proposed pruning algorithms. Pruning algorithms remove some of the synapses from a fully-connected network, which complies with our option $ 1 $. The research question is to distinguish synapses that are important for classification from those that are not used.
 
-A brute force pruning, meaning removing the synapses one by one with an accuracy check after every iteration, results in $ O(MW^2) $ time for each pruning pass, being $ W $ the number of weights (synapses), $ M $ the number of training patters and $ O(W) $ the forward propagation time. This can be slow for larger networks, most of the pruning algorithms take less direct approaches, generally split into two groups:
+A brute force pruning, meaning removing the synapses one by one with an accuracy check after every iteration, results in $ O(MW^2) $ time for each pruning pass, where $ W $ is the number of weights (synapses), $ M $ is the number of training patters and $ O(W) $ is the forward propagation time. As this can be slow for larger networks, most of the pruning algorithms take less direct approaches, generally split into two groups:
 
 \begin{enumerate}
 \item[1.a] sensitivity calculation methods;
 \item[1.b] penalty-term methods.
 \end{enumerate}
 
-The first group (1.a) is based on estimating the sensitivity of the error function to removal of an element. In general, a network is trained, sensitivities are estimated and then weights and nodes are removed. The disadvantage of this group is that correlated elements are not detected. This means that after removal of one synapse, weights of the remaining synapses might not be valid for the smaller network.
+The first group (1.a) is based on estimating the sensitivity of the error function to removal of an element. In general, a network is trained, sensitivities are estimated and then weights and nodes are removed. The disadvantage of this approach is that correlated elements are not detected. This means that after removal of one synapse, weights of the remaining synapses might not be valid for the smaller network.
 
 The penalty-term methods (1.b) reward the network for choosing an efficient solution by adding terms to the objective function. For instance, weights close to zero are not likely to influence the output much and so can be eliminated. Hence the cost function is modified so that backpropagation drives unnecessary weights to zero and, in effect, removes them during training. In this manner, the training and pruning are effectively done in parallel.
 
-Moreover, having the minimal network structure, features important for classification can be effectively selected and analysed (see \cref{ssec:minimal_structure_util}).
+A performance evaluation of the brute force algorithm and an algorithm presuming that zero weights do not influence the output, is presented in \cref{ssec:comparison_to_other_pa} of this study.
 
-\section{Terrain Classification for Legged Robots} \label{sec:soa_terrain_classification}
-Multilegged autonomous robots have become popular for their ability to deal with various terrain types, which might be impassable for wheeled robots. Terrain classification helps them to adapt their gait and so to optimize the walking performance. In general, legged robots are equipped by a broad range of sensors. Several studies have been developed regarding the terrain recognition task, when each of them is based on a specific sensor type:
+Moreover, having the minimal network structure, features important for classification can be effectively selected and analysed (see \cref{ssec:minimal_structure_util}). 
 
-\begin{enumerate}
-\item \textit{vision-based classification}: In \citep{article:01:visual}, the authors present an online terrain classification system based on a monocular camera. The classification algorithm is based on extracting features from images using either \textit{SIFT} or \textit{SURF} and the classification is performed by \textit{SVMs}. The performance is evaluated on $ 8 $ terrain types with the accuracy of $ 90\% $. This approach is currently used on the hexapod robot AMOS II, which is also the target platform of this study.
+\subsection*{Terrain Classification for Legged Robots} \label{sec:soa_terrain_classification}
+Multilegged autonomous robots have become popular for their ability to deal with various terrain types, which might be impassable for wheeled robots. Terrain classification helps to adapt their gait and so to optimize the walking performance. In general, legged robots are equipped by a broad range of sensors. Several studies have been done on the terrain classification topic, where each of them is based on a specific sensor type:
 
-Besides the fact the Matilda platform in \citep{article:04:onlinelearning} moves on belts instead of leggs, the topic is similar. Vision is used in combination with laser and vibration readings to classify terrain for online adapting robot velocities. The final classification result is provided as a combination of single classifiers. The final classifier is robust towards changing illumination and able to recognize $ 5 $ different terrains with an accuracy rate close to $ 100\% $.
+Starting with the \textit{vision-based classification} methods, in \citep{article:01:visual}, the authors present an online terrain classification system based on a monocular camera. The classification algorithm is based on extracting features from images using either \textit{SIFT} \citep{article:sift} or \textit{SURF} \citep{article:surf} and the classification is performed by \textit{SVMs}. The performance is evaluated on $ 8 $ terrain types with the accuracy of $ 90\% $. This approach is currently used on the hexapod robot AMOS II, which is also the target platform of this study.
 
-\item \textit{classification based on laser sensors}: The laser range finder in \citep{article:02:laser} provides some information about terrain roughness. In this case, it is not a terrain what is actually classified, but just a roughness factor is computed and a proper gait with corresponding behaviour (also on the AMOS II platform) is selected based on the roughness estimation.
+In spite of the fact that the Matilda platform in \citep{article:04:onlinelearning} uses belts, not leggs, the topic is similar. Vision is used in combination with laser and vibration readings to classify terrain for online adapting robot velocities. The final classification result is provided as a combination of single classifiers. The final classifier is robust towards changing illumination and able to recognize $ 5 $ different terrains with an accuracy rate close to $ 100\% $.
 
-\item \textit{classification based on tactile (haptic) sensing}: In \citep{article:06:haptic}, a force sensing device was integrated in a robotic leg to obtain haptic feedback from a prescribed knee joint actuation. The results of a multiclass AdaBoost classifier showed that tactile sensors are capable of recognizing ground shapes, however, the algorithm performed slightly worse when classifying different surface types.
+Regarding a \textit{classification based on laser sensors}, the laser range finder in \citep{article:02:laser} provides some information about terrain roughness. In this case, it is not a terrain what is actually classified, but just a roughness factor is computed and a proper gait with corresponding behaviour (also on the AMOS II platform) is selected, based on the roughness estimation.
 
-\item \textit{classification based on proprioceptive sensing}: \citep{thesis:05:proprioception} Proprioceptive sensors detect the internal state of the platform, which is modelled out angles of individual robot joints, or, as in \citep{article:08:rhex} using internal vibration data. In \citep{article:09:roughterrain}, the author uses vibration data from the on-board inertial measurement unit to classify three types of rough terrain for a legged robot and reaches an accuracy over $ 90\% $.
+In \citep{article:06:haptic}, the author writes about \textit{classification based on tactile (haptic) sensing}. A force sensing device was integrated in a robotic leg to obtain haptic feedback from a prescribed knee joint actuation. The results of a multiclass AdaBoost classifier showed that tactile sensors are capable of recognizing ground shapes, however, the algorithm performed slightly worse when classifying different surface types.
+
+The author of \citep{thesis:05:proprioception} devoted his thesis to proprioceptive sensors of a vehicle. In \citep{article:08:rhex} using internal vibration data is also considered as proprioception sensing. In \citep{article:09:roughterrain}, the author uses vibration data from the on-board inertial measurement unit to classify three types of rough terrain for a legged robot and reaches an accuracy over $ 90\% $.
 
 In \citep{article:03:motorsignals}, the authors use observations of the motor signals, generated by the controller, to classify six surfaces with a high accuracy.
-\end{enumerate} 
 
-Based on the related study, a combination of more sensor types seems to be the best choice regarding the accuracy. However, more requirements might arise depending on the platform, purpose of the terrain classification and other conditions. For instance, vision-based sensors can hardly be used at night. Moreover, processing of data from more sensors might exceed time limitations for classification.
+Based on the related study, a combination of more sensor types seems to be the best choice regarding the classification accuracy. However, some requirements regarding the target platform, initial purpose of classifying the terrain or another conditions. For instance, vision-based sensors can hardly be used at night. Moreover, processing of data from more sensors might exceed time limitations for classification. An interesting observation from the literature is that terrain classification results are mostly successful, however, in most of the studies, only a little number ($ 3 $, $ 6 $, maximally $ 8 $ in \citep{article:01:visual}) kinds of terrains are used for classification.
+
+\section{Master Thesis Objectives} \label{sec:goals}
+The main objectives of this study are:
+
+\begin{enumerate}
+\item To implement a general classification framework using feedforward neural networks;
+\item To develop a new network pruning algorithm capable of finding the minimal network structure for a given dataset;
+\item To generate a dataset of several terrain types using the AMOS II simulation;
+\item To classify generated terrain types using proprioceptive and tactile sensing.
+\end{enumerate}
+
+The implemented classification method will be capable of learning and classification of commonly known datasets as well as the terrain dataset. It will also be compatible with the needs of the new pruning algorithm.
+
+The pruning algorithm will be evaluated on commonly known datasets to check the functionality. Then, it will be applied on the terrain classification problem.
+
+The terrain classification will be evaluated on the simulation data. As a reference, deterministic data will be classified. Then a Gaussian signal noise will be added to simulate a real world environment and the classification performance on the noisy data will be compared to the reference.
 
 \section{Relation to the State of the Art}
-a lot of work has been already done in the field of terrain classification for legged robots. However, 
+The target platform, hexapod robot AMOS II (see \cref{ssec:amosii}), is equipped with a wide range of sensor types. However, in this study, we use only proprioceptive and tactile sensing for the terrain classification and in the following lines the reasons for this choice are listed: 
 
-Motivation and Research Questions
-motivation for using proprioception sensing
-motivation for using a neural net as a classifier
+\begin{enumerate}
+\item \textit{Biological inspiration}. Based on \citep{article:insect}, in insects, the cell bodies of the sensory neurons are located in the pheriphery, close to the site of stimulus reception. It is presumed that these neurons help the insect to sense the position of its legs and so to perceive the shape of the surface. Proprioceptive sensors simulated as joint angles exploit the same idea.
 
-in this section you can relate your work to the existing state of the art methods and tell why you have chosen those and what is your contribution to the state of the art
+Tactile sensors are considered as a channel of communication for many insects, as they have poor vision and sound perception \citep{misc:insect_tactile}. 
 
-1/2 page
+\item \textit{Insensitivity to light conditions}. Vision-based classification methods are proven to be accurate and very powerful, but those fail completely in dark and must deal with illumination changes. Proprioceptive and tactile sensing works in any light conditions.
 
-\section{Hypotheses}
+\item \textit{Proprioception sensing is general}. Although the evaluation is performed on a hexapod robot in this study, proprioception sensing results can be applied on any kind of robot with joints. In the future, possibly, for two-legged walking humanoids.
 
-1/2 page
+\item \textit{Fast processing}. The sensory data evaluation is presumed to be incomparably faster to the vision method, as no further processing, but a direct classification, is performed on the data.
+\end{enumerate}
 
-\newpage
-\section{Master Thesis Objectives} \label{sec:goals}
+Secondly, a feedforward neural network was chosen as a classification method. Besides a biological inspiration, neural networks were chosen as the most mysterical approach, which still contains many research questions to be answered. 
+
+One of them relates to searching and utilization of network minimal structures. Using a powerful pruning algorithm may contribute to optimization of the network in terms of size and prediction time. As we want to classify the terrain online on a real platform, a minimal model fitting the data will be a great benefit. Using neural networks, the minimal model might be later combined with the central neural controller \citep{misc:amosii}, which drives the target platform, AMOS II, and manages its behaviour.
 
 \section{Thesis Outline}
+The thesis consists of 6 chapters in total. The \cref{chap:kitt_nn} is devoted to the developed classification framework. In \cref{sec:learning_algorithm}, the learning algorithm is described. Then, \cref{sec:network_pruning_algorithm} introduces the new network pruning algorithm.
 
-1/2 page
+Chapter \ref{chap:terrain_classification} contains the process of terrain classification. Firstly, in \cref{sec:experimental_environment}, the experimental environment is specified. Next, \cref{sec:generation_of_virtual_terrains} shows, how the virtual terrains were created. Sections \ref{sec:data_acquisition} and \ref{sec:feature_vector_compilation} are devoted to the data acquisition and forming a feature vector. Generation of terrain datasets is shown in \cref{sec:dataset_creation}. Finally, the training and classification process is described in \cref{sec:training_and_classification}.
+
+Results are presented in \cref{chap:results}. First of all, the classification framework is verified on well-known datasets in \cref{sec:verification_of_nn}. Then the performance of the pruning algorithm is evaluated in \cref{sec:pruning_algorithm_results}. Results of the terrain classification are put in \cref{sec:terrain_processing_results}. Finally, the pruning algorithm is applied on the networks trained on terrain datasets and the results are shown in \cref{sec:pa_amter}.
+
+The methods are recapitulated and the results compared in discussion (\cref{chap:discussion}). The study is concluded and an outlook is provided in \cref{chap:conclussion}.
+
+Appendix \ref{app:supp_data} contains some supplementary data and results. In \cref{app:implementation_details}, on can find implementation details of the performed methods, while a complete code documentation is in \cref{app:code_documentation}. Appendix \ref{app:workspace_structure} shows a tree directory structure of the workspace.
 

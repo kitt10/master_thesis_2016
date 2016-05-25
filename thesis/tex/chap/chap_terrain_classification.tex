@@ -38,7 +38,7 @@ The trained networks may differ in the following parameters:
 
 Finally, an optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
 
-\section{Experimental Environment Specification}
+\section{Experimental Environment Specification} \label{sec:experimental_environment}
 The final objective of this thesis was to implement an online terrain classifier for selection of optimal walking gait on real hexapod robot AMOS II. Therefore the real hexapod robot is presented in the following section \ref{ssec:amosii}.
 
 However, as already stated above, the proposed approach will be evaluated using simulated robot in a virtual environment. In this case, \textit{LPZ Robots simulator} \citep{misc:lpzrobots} was used and a description is given in section 6.2.2.
@@ -529,7 +529,7 @@ Once there are two ordered lists - a list of samples and a corresponding list of
 
 The workflow of data generation procedure is illustrated in \cref{img:create_dataset}. 
 
-\section{Training and Classification}
+\section{Training and Classification} \label{sec:training_and_classification}
 Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
 
 There are many classification methods differing in mathematical backgrounds and each of them has some adventages and disadvantages on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two procedures that every classifier should be capable of:

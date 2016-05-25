@@ -16,6 +16,29 @@
   {}
 \endgroup
 
+\entry{article:insect}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Bräunig}{B.}%
+     {Peter}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hustert}{H.}%
+     {Reinhold}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BPHR1}
+  \strng{fullhash}{BPHR1}
+  \field{labelyear}{1980}
+  \field{sortinit}{1}
+  \field{pages}{768\bibrangedash 770}
+  \field{title}{Proprioceptors with central cell bodies in insects}
+  \field{journaltitle}{Nature}
+  \field{year}{1980}
+\endentry
+
 \entry{article:10:pa}{article}{}
   \name{author}{1}{}{%
     {{}%
@@ -26,7 +49,6 @@
   }
   \strng{namehash}{RR1}
   \strng{fullhash}{RR1}
-  \field{labelalpha}{Ree93}
   \field{labelyear}{1993}
   \field{sortinit}{1}
   \field{abstract}{%
@@ -51,6 +73,50 @@
   \field{year}{1993}
 \endentry
 
+\entry{article:svm}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Cortes}{C.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vapnik}{V.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CCVV1}
+  \strng{fullhash}{CCVV1}
+  \field{labelyear}{1995}
+  \field{sortinit}{1}
+  \field{pages}{273\bibrangedash 297}
+  \field{title}{Support-vector networks}
+  \field{volume}{20}
+  \field{journaltitle}{Machine Learning}
+  \field{year}{1995}
+\endentry
+
+\entry{article:rf}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Ho}{H.}%
+     {Tin~Kam}{T.~K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HTK1}
+  \strng{fullhash}{HTK1}
+  \field{labelyear}{1995}
+  \field{sortinit}{1}
+  \field{pages}{278\bibrangedash 282}
+  \field{title}{Random Decision Forests}
+  \field{volume}{1}
+  \field{journaltitle}{Document Analysis and Recognition, 1995., Proceedings of
+  the Third International Conference on}
+  \field{year}{1995}
+\endentry
+
 \entry{online:mnist}{online}{}
   \name{author}{2}{}{%
     {{}%
@@ -66,7 +132,6 @@
   }
   \strng{namehash}{LYCC1}
   \strng{fullhash}{LYCC1}
-  \field{labelalpha}{LC98}
   \field{labelyear}{1998}
   \field{sortinit}{1}
   \field{title}{The MNIST database of handwritten digits}
@@ -74,6 +139,74 @@
   \verb http://yann.lecun.com/exdb/mnist/
   \endverb
   \field{year}{1998}
+\endentry
+
+\entry{article:sift}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Lowe}{L.}%
+     {D.~G.}{D.~G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LDG1}
+  \strng{fullhash}{LDG1}
+  \field{labelyear}{2004}
+  \field{sortinit}{2}
+  \field{pages}{91\bibrangedash 110}
+  \field{title}{Distinctive image features from scale-invariant keypoints}
+  \field{volume}{60}
+  \field{journaltitle}{International Journal Computer Vision}
+  \field{year}{2004}
+\endentry
+
+\entry{article:surf}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Bay}{B.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tuytelaars}{T.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gool}{G.}%
+     {L.~V.}{L.~V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BHTTGLV1}
+  \strng{fullhash}{BHTTGLV1}
+  \field{labelyear}{2006}
+  \field{sortinit}{2}
+  \field{pages}{404\bibrangedash 417}
+  \field{title}{Surf: Speeded up robust features}
+  \field{journaltitle}{ECCV}
+  \field{year}{2006}
+\endentry
+
+\entry{misc:insect_tactile}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Meyer}{M.}%
+     {John~R.}{J.~R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MJR1}
+  \strng{fullhash}{MJR1}
+  \field{labelyear}{2006}
+  \field{sortinit}{2}
+  \field{note}{[Online; accessed 25-May-2016; General Entomology, ENT 425]}
+  \field{title}{Tactile Communication}
+  \verb{url}
+  \verb \url{https://www.cals.ncsu.edu/course/ent425/tutorial/Communication/tac
+  \verb tcomm.html}
+  \endverb
+  \field{year}{2006}
 \endentry
 
 \entry{thesis:05:proprioception}{thesis}{}
@@ -86,7 +219,6 @@
   }
   \strng{namehash}{CE1}
   \strng{fullhash}{CE1}
-  \field{labelalpha}{Coy10}
   \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{title}{Fundamentals and Methods of Terrain Classification Using
@@ -128,7 +260,6 @@
   }
   \strng{namehash}{HMA+1}
   \strng{fullhash}{HMARCDHMSLSR1}
-  \field{labelalpha}{Hoe+10}
   \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -172,7 +303,6 @@
   \keyw{HRI, SVM, Self-supervised Learning, Terrain Classification}
   \strng{namehash}{MWKA1}
   \strng{fullhash}{MWKA1}
-  \field{labelalpha}{MK10}
   \field{labelyear}{2010}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -288,7 +418,6 @@
   }
   \strng{namehash}{PF+1}
   \strng{fullhash}{PFVGGAMVTBGOBMPPWRDVVJPACDBMPMDE1}
-  \field{labelalpha}{Ped+11}
   \field{labelyear}{2011}
   \field{sortinit}{2}
   \field{pages}{2825\bibrangedash 2830}
@@ -328,7 +457,6 @@
   }
   \strng{namehash}{BFLG+1}
   \strng{fullhash}{BFLGJRCHDWAPFRS1}
-  \field{labelalpha}{Ber+12}
   \field{labelyear}{2012}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -384,7 +512,6 @@
   }
   \strng{namehash}{KP+1}
   \strng{fullhash}{KPGEHFWFMP1}
-  \field{labelalpha}{Kes+12}
   \field{labelyear}{2012}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -441,7 +568,6 @@
   \keyw{Leged robots, terrain identification}
   \strng{namehash}{OC+1}
   \strng{fullhash}{OCSJJACJCE1}
-  \field{labelalpha}{Ord+13}
   \field{labelyear}{2013}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -504,7 +630,6 @@
   }
   \strng{namehash}{ZS+1}
   \strng{fullhash}{ZSAEEGDWFMP1}
-  \field{labelalpha}{Zen+13}
   \field{labelyear}{2013}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -557,7 +682,6 @@
   }
   \strng{namehash}{LW1}
   \strng{fullhash}{LW1}
-  \field{labelalpha}{Lab14}
   \field{labelyear}{2014}
   \field{sortinit}{2}
   \field{title}{Neural Networks Demystified}
@@ -589,7 +713,6 @@
   inspired locomotion, Hexapod robot}
   \strng{namehash}{XXWFMP1}
   \strng{fullhash}{XXWFMP1}
-  \field{labelalpha}{XWM14}
   \field{labelyear}{2014}
   \field{sortinit}{2}
   \field{abstract}{%
@@ -635,7 +758,6 @@
   }
   \strng{namehash}{CAJSS1}
   \strng{fullhash}{CAJSS1}
-  \field{labelalpha}{CS15}
   \field{labelyear}{2015}
   \field{sortinit}{2}
   \field{note}{[Online; accessed 06-May-2016; nucl.ai Conference 2015]}
@@ -656,23 +778,18 @@
   }
   \strng{namehash}{MP1}
   \strng{fullhash}{MP1}
-  \field{labelalpha}{Man}
   \field{sortinit}{9}
   \field{note}{Lecutre 3 - page 133 - Tripod Gait}
   \field{title}{Adaptive Embodied Locomotion Control Systems}
 \endentry
 
 \entry{misc:amosii}{misc}{}
-  \field{labelalpha}{Mis}
-  \field{extraalpha}{1}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://manoonpong.com/AMOSII.html}}
   \field{title}{Open-source multi sensori-motor robotic platform AMOS II}
 \endentry
 
 \entry{misc:ppm}{misc}{}
-  \field{labelalpha}{Mis}
-  \field{extraalpha}{2}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://netpbm.sourceforge.net/doc/ppm.html}}
   \field{note}{Updated: 02 November 2013}
@@ -680,8 +797,6 @@
 \endentry
 
 \entry{misc:lpzrobots}{misc}{}
-  \field{labelalpha}{Mis}
-  \field{extraalpha}{3}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://robot.informatik.uni-leipzig.de/software/}}
   \field{note}{last modified: 06. July 2015}
