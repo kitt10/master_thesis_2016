@@ -25,49 +25,47 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: main-blx.bib
 Database file #2: bib/thesis_bibliography.bib
-Warning--I didn't find a database entry for "article:10:pruningalgs"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 21 entries,
+You've used 18 entries,
             6047 wiz_defined-function locations,
-            1259 strings with 20289 characters,
-and the built_in function-call counts, 74846 in all, are:
-= -- 2528
-> -- 3171
-< -- 919
-+ -- 1633
-- -- 1695
-* -- 5761
-:= -- 5100
+            1244 strings with 19699 characters,
+and the built_in function-call counts, 63105 in all, are:
+= -- 1954
+> -- 2784
+< -- 722
++ -- 1492
+- -- 1595
+* -- 5052
+:= -- 4489
 add.period$ -- 0
-call.type$ -- 21
-change.case$ -- 372
-chr.to.int$ -- 184
-cite$ -- 46
-duplicate$ -- 8302
-empty$ -- 7724
-format.name$ -- 1436
-if$ -- 15990
+call.type$ -- 18
+change.case$ -- 257
+chr.to.int$ -- 163
+cite$ -- 40
+duplicate$ -- 6988
+empty$ -- 6538
+format.name$ -- 1256
+if$ -- 13223
 int.to.chr$ -- 0
-int.to.str$ -- 44
+int.to.str$ -- 35
 missing$ -- 0
-newline$ -- 654
-num.names$ -- 896
-pop$ -- 6754
+newline$ -- 585
+num.names$ -- 679
+pop$ -- 5766
 preamble$ -- 1
-purify$ -- 403
+purify$ -- 286
 quote$ -- 0
-skip$ -- 3841
+skip$ -- 3095
 stack$ -- 0
-substring$ -- 1788
-swap$ -- 2937
-text.length$ -- 716
-text.prefix$ -- 32
+substring$ -- 1299
+swap$ -- 2493
+text.length$ -- 615
+text.prefix$ -- 27
 top$ -- 1
-type$ -- 783
+type$ -- 671
 warning$ -- 0
-while$ -- 482
+while$ -- 415
 width$ -- 0
-write$ -- 632
-(There was 1 warning)
+write$ -- 566

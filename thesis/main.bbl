@@ -76,32 +76,6 @@
   \field{year}{1998}
 \endentry
 
-\entry{book:11:scorpion}{book}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Spenneberg}{S.}%
-     {D.}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Kirchner}{K.}%
-     {F.}{F.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {ISBN 978-3-902613-16-5}%
-  }
-  \strng{namehash}{SDKF1}
-  \strng{fullhash}{SDKF1}
-  \field{labelalpha}{SK07}
-  \field{labelyear}{2007}
-  \field{sortinit}{2}
-  \field{title}{The Bio-Inspired SCORPION Robot: Design, Control and Lessons
-  Learned, Climbing and Walking Robots: towards New Applications}
-  \field{year}{2007}
-\endentry
-
 \entry{thesis:05:proprioception}{thesis}{}
   \name{author}{1}{}{%
     {{}%
@@ -227,29 +201,6 @@
   \field{journaltitle}{Safety Security and Rescue Robotics}
   \field{month}{07}
   \field{year}{2010}
-\endentry
-
-\entry{thesis:12:gaitcontrol}{thesis}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Belter}{B.}%
-     {Dominik}{D.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{BD1}
-  \strng{fullhash}{BD1}
-  \field{labelalpha}{Bel11}
-  \field{labelyear}{2011}
-  \field{sortinit}{2}
-  \field{title}{Gait control of the six-legged robot on a rough terrain using
-  computational intelligence learning and optimization methods}
-  \list{institution}{1}{%
-    {Poznan University of Technology}%
-  }
-  \field{type}{phdthesis}
-  \field{month}{11}
-  \field{year}{2011}
 \endentry
 
 \entry{article:scikit-learn}{article}{}
@@ -667,29 +618,6 @@
   \field{journaltitle}{Robotics and Autonomous Systems}
   \field{month}{08}
   \field{year}{2014}
-\endentry
-
-\entry{thesis:07:proprioception}{thesis}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Ahmed}{A.}%
-     {Mohammed Nour Abdel~Gwad}{M.~N. A.~G.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{AMNAG1}
-  \strng{fullhash}{AMNAG1}
-  \field{labelalpha}{Ahm15}
-  \field{labelyear}{2015}
-  \field{sortinit}{2}
-  \field{title}{An Intelligent Architecture for Legged Robot Terrain
-  Classification Using Proprioceptive and Exteroceptive Data}
-  \list{institution}{1}{%
-    {University of Bremen}%
-  }
-  \field{type}{phdthesis}
-  \field{month}{06}
-  \field{year}{2015}
 \endentry
 
 \entry{misc:sknn}{misc}{}

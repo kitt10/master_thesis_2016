@@ -3,25 +3,25 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces XOR problem definition\relax }}{17}{table.caption.71}
+\contentsline {table}{\numberline {2.1}{\ignorespaces XOR problem definition\relax }}{17}{table.caption.75}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{25}{table.caption.93}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{27}{table.caption.99}
-\contentsline {table}{\numberline {3.3}{\ignorespaces Terrain features and their ranges\relax }}{29}{table.caption.109}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Parameters of virtual terrain types\relax }}{29}{table.caption.111}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of proprioceptive sensors of AMOS II hexapod robot\relax }}{25}{table.caption.97}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Initialization of \textit {tripod\_controller.h} (see \cref {app:code_documentation})\relax }}{27}{table.caption.103}
+\contentsline {table}{\numberline {3.3}{\ignorespaces Terrain features and their ranges\relax }}{29}{table.caption.113}
+\contentsline {table}{\numberline {3.4}{\ignorespaces Parameters of virtual terrain types\relax }}{29}{table.caption.115}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of f1-score on MNIST to another framework (sknn)\relax }}{44}{table.caption.150}
-\contentsline {table}{\numberline {4.2}{\ignorespaces PA progress example on MNIST\relax }}{47}{table.caption.161}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of the developed PA to other pruning methods (10 observations). Required accuracy on validation data: XOR: 0.99, MNIST: 0.85.\relax }}{50}{table.caption.169}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Classification results on generated datasets (see dataset parameters in \cref {app:tab:generated_datasets}).\relax }}{51}{table.caption.172}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Classification report for a deterministic dataset and a noisy dataset.\relax }}{53}{table.caption.175}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Comparison to other classification methods (presented in \cref {sec:soa_other_classifiers})\relax }}{53}{table.caption.177}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Chosen configurations for PA demonstration.\relax }}{59}{table.caption.197}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Results of the PA on terrain datasets.\relax }}{60}{table.caption.199}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of f1-score on MNIST to another framework (sknn)\relax }}{44}{table.caption.154}
+\contentsline {table}{\numberline {4.2}{\ignorespaces PA progress example on MNIST\relax }}{47}{table.caption.165}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of the developed PA to other pruning methods (10 observations). Required accuracy on validation data: XOR: 0.99, MNIST: 0.85.\relax }}{50}{table.caption.173}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Classification results on generated datasets (see dataset parameters in \cref {app:tab:generated_datasets}).\relax }}{51}{table.caption.176}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Classification report for a deterministic dataset and a noisy dataset.\relax }}{53}{table.caption.179}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Comparison to other classification methods (presented in \cref {sec:soa_other_classifiers})\relax }}{53}{table.caption.181}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Chosen configurations for PA demonstration.\relax }}{59}{table.caption.201}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Results of the PA on terrain datasets.\relax }}{60}{table.caption.203}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A1.1}{\ignorespaces Generated datasets\relax }}{75}{table.caption.229}
+\contentsline {table}{\numberline {A1.1}{\ignorespaces Generated datasets\relax }}{75}{table.caption.233}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
