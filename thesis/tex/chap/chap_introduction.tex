@@ -6,13 +6,14 @@ previously unsolved problems
 
 name machine learning applications
 
+deep learning
+
 whatever is possible
 
 1-2 pages intro
 
-\newpage
 \section{Problem Formulation}
-1 page
+- may be not a subsection?
 
 \newpage
 \section{Classification} \label{sec:soa_other_classifiers}
@@ -38,33 +39,65 @@ The data samples usually consist of multiple features and the classes are linear
   \label{img:classification_problem_formulation}
 \end{figure}
 
-\textit{Support Vector Machines} (\textit{SVMs}) construct a set of hyperplanes in the high dimensional space to separate the classes. The position of the hyperplanes is based on so-called support vectors, which define distances to the nearest training-data points. Using the support vectors, a hyperplane with the largest margin between two classes is created and used for classification. The linear inseparability is solved by a kernel trick, which maps the original finite-dimensional space into a much higher-dimensional space.
+\textit{Support Vector Machines} (\textit{SVMs}) [give cite] construct a set of hyperplanes in the high dimensional space to separate the classes. The position of the hyperplanes is based on so-called support vectors, which define distances to the nearest training-data points. Using the support vectors, a hyperplane with the largest margin between two classes is created and used for classification. The linear inseparability is solved by a kernel trick, which maps the original finite-dimensional space into a much higher-dimensional space.
 
-The \textit{k-Nearest Neighbours} (\textit{k-NN}) algorithm uses a more straightforward way to classify samples into classes. Instead of finding the separation planes, this approach computes distances from the classified sample to $ k $ nearest samples of the training data. Then the class is determined by the majority vote of those known samples. This approach skips the training process, however, the prediction is computationally expensive.
+The \textit{k-Nearest Neighbours} (\textit{k-NN}) algorithm [give cite] uses a more straightforward way to classify samples into classes. Instead of finding the separation planes, this approach computes distances from the classified sample to $ k $ nearest samples of the training data. Then the class is determined by the majority vote of those known samples. This approach skips the training process, however, the prediction is computationally expensive.
 
-The \textit{Random Forest} (\textit{RF}) approach is based on decision trees, which learn simple decision rules inferred from the data features. Decision trees are known for having troubles with over-fitting, therefore the random forest uses many decision trees and finds a classification result by averaging their outputs (bagging).
+The \textit{Random Forest} (\textit{RF}) approach [give cite] is based on decision trees, which learn simple decision rules inferred from the data features. Decision trees are known for having troubles with over-fitting, therefore the Random Forest uses many decision trees and finds a classification result by averaging their outputs (bagging).
 
-Additionaly, the \textit{Naive Bayes} approach is based on statistical analysis and uses a likelihood to predict classes. Each of those methods has some adventages and disadvantages on a particular type of data and its distribution. For instance, \textit{SVMs} are a powerful tool for binary problems with an outlier free distributions. For a multiclass data, where many outliers are expected, one should choose Random Forest, however, the decision trees usually need a longer classification time.
+Additionally, the \textit{Naive Bayes} approach [give cite] is based on statistical analysis and uses a likelihood to predict classes. 
+
+Each of those methods has some adventages and disadvantages on a particular type of data and its distribution. For instance, \textit{SVMs} are a powerful tool for binary problems with an outlier free distribution. For a multiclass data, where many outliers are expected, one might want to choose Random Forest, however, the decision trees usually take a longer time in classification.
 
 To summarize, a best classification method has not been prooved yet. However, \textit{neural networks} (\textit{NN}) are being used for more and more fields nowadays.  
 
 \subsection*{Feedforward Neural Networks} \label{ssec:intro_to_nn}
+Classification algorithms are often considered as they behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human's behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most exact imitation of a human brain out of the proposed methods.
 
-perceptron, MLP, neural networks from the beginning, network types, principles its usage for classification
+In 1957, Frank Rosenblatt presented his perceptron model, a binary classifier mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
 
+\begin{align} \label{eq:perceptron}
+f_p(X) = 
+\begin{cases}
+    1, & \text{if }  W \cdot X + b > 0\\
+    0,              & \text{otherwise}
+\end{cases}
+\end{align}
 
-\section{Pruning Algorithms} \label{sec:soa_pruning_algorithms}
+where $ W = [w_1, w_2, ..., w_n]^T $ is a vector of weights and $ b $ is a bias, which shifts the decision boundary away from the origin.
 
-based on the paper Pruning Algorithms - A Survey: a summary of what has been already done, principles 
-1-2 pages
+These parameters ($ W $ and $ b $) are considered as a memory. Finding their optimal values, a single perceptron is capable of classifying linearly separable samples of two classes. This searching for the parameter values, based on some labeled data, is considered as learning.
+
+To shake of the limitation of classes linear separability, multiple perceptrons are connected into a directed graph, which forms a multilayer perceptron. Then, replacing the $ f_p() $ by another function, so-called transfer function (e.g. \textit{sigmoid} or \textit{tanh} - see \cref{fig:transfer_functions}), every unit generates a continuous output. This structure is called a \textit{feedforward neural network} (see \cref{img:neural_net}), which is generally capable of multiclass classification of lineraly inseparable classes.
+
+\section{Network Pruning Algorithms} \label{sec:soa_pruning_algorithms}
+In general, increasing number of neurons in the network helps to deal with outliers and improves the classification. On the other hand, to obtain generalization in systems trained by examples, the smallest system that will fit the data should be used. Moreover, increasing number of synapses increases also the dimensionality of weight mattrices and so slows down the training process as well as the prediction. The aim of a network designer should be to find a minimal structure, where only connections important for classification remain, while the classification accuracy requirement is met. Two basic approaches of getting such structure are available:
+
+\begin{enumerate}
+\item train a network that is larger than necessary and then remove the parts that are not needed;
+\item start from a small structure and then add neurons and synapses until the network will be capable of learning.
+\end{enumerate}
+
+In \citep{article:10:pa}, the author makes a good overview of proposed pruning algorithms. Pruning algorithms remove some of the synapses from a fully-connected network, which complies with our option $ 1 $. The research question is to distinguish synapses that are important for classification from those that are not used.
+
+A brute force pruning, meaning removing the synapses one by one with an accuracy check after every iteration, results in $ O(MW^2) $ time for each pruning pass, being $ W $ the number of weights (synapses), $ M $ the number of training patters and $ O(W) $ the forward propagation time. This can be slow for larger networks, most of the pruning algorithms take less direct approaches, generally split into two groups:
+
+\begin{enumerate}
+\item[1.a] sensitivity calculation methods;
+\item[1.b] penalty-term methods.
+\end{enumerate}
+
+The first group (1.a) is based on estimating the sensitivity of the error function to removal of an element. In general, a network is trained, sensitivities are estimated and then weights and nodes are removed. The disadvantage of this group is that correlated elements are not detected. This means that after removal of one synapse, weights of the remaining synapses might not be valid for the smaller network.
+
+The penalty-term methods (1.b) reward the network for choosing an efficient solution by adding terms to the objective function. For instance, weights close to zero are not likely to influence the output much and so can be eliminated. Hence the cost function is modified so that backpropagation drives unnecessary weights to zero and, in effect, removes them during training. In this manner, the training and pruning are effectively done in parallel.
+
+Moreover, having the minimal network structure, features important for classification can be effectively selected and analysed (see \cref{ssec:minimal_structure_util}).
 
 \section{Terrain Classification for Legged Robots} \label{sec:soa_terrain_classification}
 
 based on the literature : a summary of what has been already done in terrain classification, summary of different methods (visual, laser, haptic, proprioception, ...)
 
-5-8 pages 
-
-
+\newpage
 \section{Relation to the State of the Art}
 Motivation and Research Questions
 motivation for using proprioception sensing

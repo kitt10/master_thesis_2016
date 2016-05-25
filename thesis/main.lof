@@ -2,99 +2,99 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Formulation of a classification problem.\relax }}{3}{figure.caption.13}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Formulation of a classification problem.\relax }}{2}{figure.caption.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Structure of a feedforward neural network\relax }}{7}{figure.caption.25}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces A model neuron\relax }}{8}{figure.caption.29}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Used transfer functions: sigmoid and tanh\relax }}{9}{figure.caption.32}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Training process flowchart. $ T_1 $: Threshold for a terminating condition based on a learning error. If the error is reduced to be lower than this threshold, the learning process is stopped. $ T_2 $: Threshold for a terminating condition based on number of iterations (epochs). The learning process is stopped after a specified number of epochs, no matter how successful the training has been.\relax }}{9}{figure.caption.34}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{13}{figure.caption.54}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Overall flowchart of the pruning process\relax }}{14}{figure.caption.59}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{14}{figure.caption.60}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Synaptic pruning based on weight changes and current percentile value\relax }}{15}{figure.caption.61}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Evaluation of the classification accuracy after pruning\relax }}{15}{figure.caption.63}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces 2D XOR Data illustration\relax }}{17}{figure.caption.69}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces XOR Dataset: minimal network structures\relax }}{17}{figure.caption.70}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces MNIST Data illustration \citep {online:mnist}\relax }}{18}{figure.caption.72}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Analysis of the minimal structure examplified on digit 5 (MNIST dataset)\relax }}{18}{figure.caption.74}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Screenshot of the graphical user interface\relax }}{19}{figure.caption.76}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Structure of a feedforward neural network\relax }}{8}{figure.caption.28}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces A model neuron\relax }}{9}{figure.caption.32}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Used transfer functions: sigmoid and tanh\relax }}{10}{figure.caption.35}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Training process flowchart. $ T_1 $: Threshold for a terminating condition based on a learning error. If the error is reduced to be lower than this threshold, the learning process is stopped. $ T_2 $: Threshold for a terminating condition based on number of iterations (epochs). The learning process is stopped after a specified number of epochs, no matter how successful the training has been.\relax }}{10}{figure.caption.37}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{14}{figure.caption.57}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Overall flowchart of the pruning process\relax }}{15}{figure.caption.62}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{15}{figure.caption.63}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Synaptic pruning based on weight changes and current percentile value\relax }}{16}{figure.caption.64}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Evaluation of the classification accuracy after pruning\relax }}{16}{figure.caption.66}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces 2D XOR Data illustration\relax }}{18}{figure.caption.72}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces XOR Dataset: minimal network structures\relax }}{18}{figure.caption.73}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces MNIST Data illustration \citep {online:mnist}\relax }}{19}{figure.caption.75}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Analysis of the minimal structure examplified on digit 5 (MNIST dataset)\relax }}{19}{figure.caption.77}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Screenshot of the graphical user interface\relax }}{20}{figure.caption.79}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Terrain Classification: overall process diagram\relax }}{20}{figure.caption.85}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{22}{figure.caption.88}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Structure of the AMOS's leg. \citep {misc:amosii}\relax }}{23}{figure.caption.89}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Structure of the two repositories: LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{25}{figure.caption.92}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Virtual alternative for AMOS II.\relax }}{25}{figure.caption.93}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces 2-neuron network oscillator \citep {unpub:ai3_lec3}\relax }}{26}{figure.caption.95}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Schematic diagram of tripod gait controller\relax }}{27}{figure.caption.102}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Similarity measures among various terrain types.\relax }}{29}{figure.caption.111}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Examples of noisy terrains: terrain rock, angle sensors\relax }}{31}{figure.caption.117}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Thoraco Sensor (ATRf) output examples, 14 terrains\relax }}{32}{figure.caption.119}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Coxa Sensor (ACRm) output examples, 14 terrains\relax }}{32}{figure.caption.120}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Femur Sensor (AFRh) output examples, 14 terrains\relax }}{33}{figure.caption.121}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Foot Contact Sensor (FRf) output examples, 14 terrains\relax }}{33}{figure.caption.122}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Forming a feature vector out of a data file.\relax }}{34}{figure.caption.124}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Normalised feature vector examples\relax }}{36}{figure.caption.128}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Examples of noisy signals: concrete, angle sensors\relax }}{37}{figure.caption.135}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Three sets of data in a dataset.\relax }}{38}{figure.caption.137}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Target vector for concrete\relax }}{38}{figure.caption.138}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Workflow of generating a dataset\relax }}{39}{figure.caption.139}
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Procedure of training and testing a network\relax }}{40}{figure.caption.141}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Terrain Classification: overall process diagram\relax }}{21}{figure.caption.88}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces AMOS II. \citep {misc:amosii}\relax }}{23}{figure.caption.91}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Structure of the AMOS's leg. \citep {misc:amosii}\relax }}{24}{figure.caption.92}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Structure of the two repositories: LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{26}{figure.caption.95}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Virtual alternative for AMOS II.\relax }}{26}{figure.caption.96}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 2-neuron network oscillator \citep {unpub:ai3_lec3}\relax }}{27}{figure.caption.98}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Schematic diagram of tripod gait controller\relax }}{28}{figure.caption.105}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Similarity measures among various terrain types.\relax }}{30}{figure.caption.114}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Examples of noisy terrains: terrain rock, angle sensors\relax }}{32}{figure.caption.120}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Thoraco Sensor (ATRf) output examples, 14 terrains\relax }}{33}{figure.caption.122}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Coxa Sensor (ACRm) output examples, 14 terrains\relax }}{33}{figure.caption.123}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Femur Sensor (AFRh) output examples, 14 terrains\relax }}{34}{figure.caption.124}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Foot Contact Sensor (FRf) output examples, 14 terrains\relax }}{34}{figure.caption.125}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Forming a feature vector out of a data file.\relax }}{35}{figure.caption.127}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Normalised feature vector examples\relax }}{37}{figure.caption.131}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Examples of noisy signals: concrete, angle sensors\relax }}{38}{figure.caption.138}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Three sets of data in a dataset.\relax }}{39}{figure.caption.140}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Target vector for concrete\relax }}{39}{figure.caption.141}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Workflow of generating a dataset\relax }}{40}{figure.caption.142}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Procedure of training and testing a network\relax }}{41}{figure.caption.144}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Learning process compared to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}).\relax }}{42}{figure.caption.146}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}), MNIST dataset\relax }}{43}{figure.caption.148}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Results of the pruning algorithm on XOR dataset.\relax }}{44}{figure.caption.154}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces PA process illustration on XOR\relax }}{45}{figure.caption.155}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Pruning Algorithm Results on MNIST Dataset.\relax }}{46}{figure.caption.157}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces PA process illustration on MNIST\relax }}{47}{figure.caption.159}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Feature Selection : MNIST Analysis.\relax }}{48}{figure.caption.161}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Comparison of the developed PA to other pruning methods (10 observations).\relax }}{48}{figure.caption.165}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Confusion matrix of classification results on a deterministic dataset.\relax }}{51}{figure.caption.170}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Confusion matrix of classification results on a noisy dataset.\relax }}{51}{figure.caption.171}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Training process with various learning rates.\relax }}{53}{figure.caption.179}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Training process with various networks differing in the number of hidden neurons.\relax }}{53}{figure.caption.180}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Classification accuracy vs. learning rate and network structure (10 observations)\relax }}{54}{figure.caption.181}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Additive terrain and signal noise: influence on the accuracy\relax }}{54}{figure.caption.183}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Analysis of time needed for proper classification.\relax }}{55}{figure.caption.185}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Average epoch time (10 observations) with respect to number of simulation timesteps.\relax }}{55}{figure.caption.186}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Evaluation of different sensor types separately (average of 10 observations, timesteps: 10, 40, 80).\relax }}{56}{figure.caption.190}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Average epoch time for different sensor types.\relax }}{57}{figure.caption.191}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. No noise.\relax }}{58}{figure.caption.195}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Synaptic pruning of configurations A (reference), B (80 timesteps) and D (noisy data).\relax }}{59}{figure.caption.197}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Synaptic pruning of configurations A* (reference), C (100 hidden neurons), E (proprioceptive sensors) and F (tactile sensors).\relax }}{60}{figure.caption.198}
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A, B, D (10 observations)\relax }}{60}{figure.caption.199}
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A*, C, E, F (10 observations)\relax }}{61}{figure.caption.200}
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Number of paths to the output layer for every feature of the input example.\relax }}{61}{figure.caption.202}
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Explanation of a path from input to output layer in a minimal structure.\relax }}{62}{figure.caption.203}
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Used features of thoraco-coxa proprioceptive sensors for individual classes.\relax }}{62}{figure.caption.204}
-\contentsline {figure}{\numberline {4.27}{\ignorespaces Used features of tactile sensors for individual classes.\relax }}{63}{figure.caption.205}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Influence power of single features on classes: tactile sensors\relax }}{63}{figure.caption.207}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Learning process compared to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}).\relax }}{43}{figure.caption.149}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}), MNIST dataset\relax }}{44}{figure.caption.151}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Results of the pruning algorithm on XOR dataset.\relax }}{45}{figure.caption.157}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces PA process illustration on XOR\relax }}{46}{figure.caption.158}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Pruning Algorithm Results on MNIST Dataset.\relax }}{47}{figure.caption.160}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces PA process illustration on MNIST\relax }}{48}{figure.caption.162}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Feature Selection : MNIST Analysis.\relax }}{49}{figure.caption.164}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Comparison of the developed PA to other pruning methods (10 observations).\relax }}{49}{figure.caption.168}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Confusion matrix of classification results on a deterministic dataset.\relax }}{52}{figure.caption.173}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Confusion matrix of classification results on a noisy dataset.\relax }}{52}{figure.caption.174}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Training process with various learning rates.\relax }}{54}{figure.caption.182}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Training process with various networks differing in the number of hidden neurons.\relax }}{54}{figure.caption.183}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Classification accuracy vs. learning rate and network structure (10 observations)\relax }}{55}{figure.caption.184}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Additive terrain and signal noise: influence on the accuracy\relax }}{55}{figure.caption.186}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Analysis of time needed for proper classification.\relax }}{56}{figure.caption.188}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Average epoch time (10 observations) with respect to number of simulation timesteps.\relax }}{56}{figure.caption.189}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Evaluation of different sensor types separately (average of 10 observations, timesteps: 10, 40, 80).\relax }}{57}{figure.caption.193}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Average epoch time for different sensor types.\relax }}{58}{figure.caption.194}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. No noise.\relax }}{59}{figure.caption.198}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Synaptic pruning of configurations A (reference), B (80 timesteps) and D (noisy data).\relax }}{60}{figure.caption.200}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Synaptic pruning of configurations A* (reference), C (100 hidden neurons), E (proprioceptive sensors) and F (tactile sensors).\relax }}{61}{figure.caption.201}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A, B, D (10 observations)\relax }}{61}{figure.caption.202}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Active neurons in the network after pruning [\%]: configurations A*, C, E, F (10 observations)\relax }}{62}{figure.caption.203}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Number of paths to the output layer for every feature of the input example.\relax }}{62}{figure.caption.205}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Explanation of a path from input to output layer in a minimal structure.\relax }}{63}{figure.caption.206}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Used features of thoraco-coxa proprioceptive sensors for individual classes.\relax }}{63}{figure.caption.207}
+\contentsline {figure}{\numberline {4.27}{\ignorespaces Used features of tactile sensors for individual classes.\relax }}{64}{figure.caption.208}
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Influence power of single features on classes: tactile sensors\relax }}{64}{figure.caption.210}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco proprioceptive sensors, front legs\relax }}{71}{figure.caption.213}
-\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa proprioceptive sensors, front legs\relax }}{71}{figure.caption.214}
-\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur proprioceptive sensors, front legs\relax }}{71}{figure.caption.215}
-\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco proprioceptive sensors, middle legs\relax }}{72}{figure.caption.216}
-\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa proprioceptive sensors, middle legs\relax }}{72}{figure.caption.217}
-\contentsline {figure}{\numberline {A1.6}{\ignorespaces Femur proprioceptive sensors, middle legs\relax }}{72}{figure.caption.218}
-\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco proprioceptive sensors, hint legs\relax }}{72}{figure.caption.219}
-\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa proprioceptive sensors, hint legs\relax }}{72}{figure.caption.220}
-\contentsline {figure}{\numberline {A1.9}{\ignorespaces Femur proprioceptive sensors, hint legs\relax }}{73}{figure.caption.221}
-\contentsline {figure}{\numberline {A1.10}{\ignorespaces Tactile sensors, front legs\relax }}{73}{figure.caption.222}
-\contentsline {figure}{\numberline {A1.11}{\ignorespaces Tactile sensors, middle legs\relax }}{73}{figure.caption.223}
-\contentsline {figure}{\numberline {A1.12}{\ignorespaces Tactile sensors, hint legs\relax }}{73}{figure.caption.224}
-\contentsline {figure}{\numberline {A1.13}{\ignorespaces Used features of coxa-trochanteral proprioceptive sensors for individual classes.\relax }}{75}{figure.caption.228}
-\contentsline {figure}{\numberline {A1.14}{\ignorespaces Used features of femur-tibia proprioceptive sensors for individual classes.\relax }}{75}{figure.caption.229}
-\contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{76}{figure.caption.230}
-\contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: coxa-trochanteral sensors\relax }}{76}{figure.caption.231}
-\contentsline {figure}{\numberline {A1.17}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{76}{figure.caption.232}
+\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco proprioceptive sensors, front legs\relax }}{72}{figure.caption.216}
+\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa proprioceptive sensors, front legs\relax }}{72}{figure.caption.217}
+\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur proprioceptive sensors, front legs\relax }}{72}{figure.caption.218}
+\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco proprioceptive sensors, middle legs\relax }}{73}{figure.caption.219}
+\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa proprioceptive sensors, middle legs\relax }}{73}{figure.caption.220}
+\contentsline {figure}{\numberline {A1.6}{\ignorespaces Femur proprioceptive sensors, middle legs\relax }}{73}{figure.caption.221}
+\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco proprioceptive sensors, hint legs\relax }}{73}{figure.caption.222}
+\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa proprioceptive sensors, hint legs\relax }}{73}{figure.caption.223}
+\contentsline {figure}{\numberline {A1.9}{\ignorespaces Femur proprioceptive sensors, hint legs\relax }}{74}{figure.caption.224}
+\contentsline {figure}{\numberline {A1.10}{\ignorespaces Tactile sensors, front legs\relax }}{74}{figure.caption.225}
+\contentsline {figure}{\numberline {A1.11}{\ignorespaces Tactile sensors, middle legs\relax }}{74}{figure.caption.226}
+\contentsline {figure}{\numberline {A1.12}{\ignorespaces Tactile sensors, hint legs\relax }}{74}{figure.caption.227}
+\contentsline {figure}{\numberline {A1.13}{\ignorespaces Used features of coxa-trochanteral proprioceptive sensors for individual classes.\relax }}{76}{figure.caption.231}
+\contentsline {figure}{\numberline {A1.14}{\ignorespaces Used features of femur-tibia proprioceptive sensors for individual classes.\relax }}{76}{figure.caption.232}
+\contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{77}{figure.caption.233}
+\contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: coxa-trochanteral sensors\relax }}{77}{figure.caption.234}
+\contentsline {figure}{\numberline {A1.17}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{77}{figure.caption.235}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{77}{figure.caption.235}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{78}{figure.caption.237}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{79}{figure.caption.240}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{80}{figure.caption.250}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{81}{figure.caption.252}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces The process of data acquisition from the simulation.\relax }}{82}{figure.caption.267}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces The structure of rough data directory.\relax }}{82}{figure.caption.268}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{78}{figure.caption.238}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{79}{figure.caption.240}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{80}{figure.caption.243}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{81}{figure.caption.253}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{82}{figure.caption.255}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces The process of data acquisition from the simulation.\relax }}{83}{figure.caption.270}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces The structure of rough data directory.\relax }}{83}{figure.caption.271}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
