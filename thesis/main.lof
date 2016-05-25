@@ -66,38 +66,34 @@
 \contentsline {figure}{\numberline {4.25}{\ignorespaces Explanation of a path from input to output layer in a minimal structure.\relax }}{60}{figure.caption.199}
 \contentsline {figure}{\numberline {4.26}{\ignorespaces Used features of thoraco-coxa proprioceptive sensors for individual classes.\relax }}{60}{figure.caption.200}
 \contentsline {figure}{\numberline {4.27}{\ignorespaces Used features of tactile sensors for individual classes.\relax }}{61}{figure.caption.201}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power.\relax }}{61}{figure.caption.203}
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Influence power of single features on classes: tactile sensors\relax }}{61}{figure.caption.203}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco joints on the front legs\relax }}{67}{figure.caption.208}
-\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa joints on the front legs\relax }}{67}{figure.caption.209}
-\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur joints on the front legs\relax }}{67}{figure.caption.210}
-\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco joints on the middle legs\relax }}{68}{figure.caption.211}
-\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa joints on the middle legs\relax }}{68}{figure.caption.212}
-\contentsline {figure}{\numberline {A1.6}{\ignorespaces Thoraco joints on the middle legs\relax }}{68}{figure.caption.213}
-\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco joints on the hint legs\relax }}{68}{figure.caption.214}
-\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa joints on the hint legs\relax }}{69}{figure.caption.215}
-\contentsline {figure}{\numberline {A1.9}{\ignorespaces Thoraco joints on the hint legs\relax }}{69}{figure.caption.216}
-\contentsline {figure}{\numberline {A1.10}{\ignorespaces Foot contact sensors on the front legs\relax }}{69}{figure.caption.217}
-\contentsline {figure}{\numberline {A1.11}{\ignorespaces Foot contact sensors on the middle legs\relax }}{69}{figure.caption.218}
-\contentsline {figure}{\numberline {A1.12}{\ignorespaces Foot contact sensors on the hint legs\relax }}{70}{figure.caption.219}
-\contentsline {figure}{\numberline {A1.13}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features coxa.\relax }}{72}{figure.caption.223}
-\contentsline {figure}{\numberline {A1.14}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. Used features femur.\relax }}{72}{figure.caption.224}
-\contentsline {figure}{\numberline {A1.15}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power: thoraco.\relax }}{73}{figure.caption.225}
-\contentsline {figure}{\numberline {A1.16}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power: coxa.\relax }}{73}{figure.caption.226}
-\contentsline {figure}{\numberline {A1.17}{\ignorespaces Pruning Algorithm Results on AMTER Dataset. IO power: femur.\relax }}{73}{figure.caption.227}
-\contentsline {figure}{\numberline {A1.18}{\ignorespaces Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)\relax }}{74}{figure.caption.229}
-\contentsline {figure}{\numberline {A1.19}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors\relax }}{74}{figure.caption.230}
-\contentsline {figure}{\numberline {A1.20}{\ignorespaces Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors\relax }}{75}{figure.caption.231}
-\contentsline {figure}{\numberline {A1.21}{\ignorespaces Signal noise influence on one sample, terrain: concrete, foot contact sensors\relax }}{75}{figure.caption.232}
+\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco proprioceptive sensors, front legs\relax }}{69}{figure.caption.209}
+\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa proprioceptive sensors, front legs\relax }}{69}{figure.caption.210}
+\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur proprioceptive sensors, front legs\relax }}{69}{figure.caption.211}
+\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco proprioceptive sensors, middle legs\relax }}{70}{figure.caption.212}
+\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa proprioceptive sensors, middle legs\relax }}{70}{figure.caption.213}
+\contentsline {figure}{\numberline {A1.6}{\ignorespaces Femur proprioceptive sensors, middle legs\relax }}{70}{figure.caption.214}
+\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco proprioceptive sensors, hint legs\relax }}{70}{figure.caption.215}
+\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa proprioceptive sensors, hint legs\relax }}{70}{figure.caption.216}
+\contentsline {figure}{\numberline {A1.9}{\ignorespaces Femur proprioceptive sensors, hint legs\relax }}{71}{figure.caption.217}
+\contentsline {figure}{\numberline {A1.10}{\ignorespaces Tactile sensors, front legs\relax }}{71}{figure.caption.218}
+\contentsline {figure}{\numberline {A1.11}{\ignorespaces Tactile sensors, middle legs\relax }}{71}{figure.caption.219}
+\contentsline {figure}{\numberline {A1.12}{\ignorespaces Tactile sensors, hint legs\relax }}{71}{figure.caption.220}
+\contentsline {figure}{\numberline {A1.13}{\ignorespaces Used features of coxa-trochanteral proprioceptive sensors for individual classes.\relax }}{73}{figure.caption.224}
+\contentsline {figure}{\numberline {A1.14}{\ignorespaces Used features of femur-tibia proprioceptive sensors for individual classes.\relax }}{73}{figure.caption.225}
+\contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{74}{figure.caption.226}
+\contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: coxa-trochanteral sensors\relax }}{74}{figure.caption.227}
+\contentsline {figure}{\numberline {A1.17}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{74}{figure.caption.228}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces Terrain classification process - overall diagram.\relax }}{76}{figure.caption.235}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{77}{figure.caption.237}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces The process of data acquisition from the simulation.\relax }}{78}{figure.caption.252}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces The structure of rough data directory.\relax }}{78}{figure.caption.253}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{79}{figure.caption.257}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{80}{figure.caption.259}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{81}{figure.caption.262}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{75}{figure.caption.231}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{76}{figure.caption.233}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{77}{figure.caption.236}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{78}{figure.caption.246}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{79}{figure.caption.248}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces The process of data acquisition from the simulation.\relax }}{80}{figure.caption.263}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces The structure of rough data directory.\relax }}{80}{figure.caption.264}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

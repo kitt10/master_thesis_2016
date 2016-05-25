@@ -1,7 +1,8 @@
 \chapter{Supplementary Data} \label{app:supp_data}
+This section contains data and results, which complement the information presented in previous sections. 
 
-\section{Complete Sensory Data} \label{app:sec:complete_sensory_data}
-
+\section{Sensory Data Examples} \label{app:sec:complete_sensory_data}
+The following figures show signal examples for all $ 24 $ sensors (see \cref{tab:proprioceptors}).
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.48\textwidth}
@@ -16,7 +17,7 @@
   \caption{ATLf}
   \label{fig:app_atl_f}
 \end{subfigure}
-\caption{Thoraco joints on the front legs}
+\caption{Thoraco proprioceptive sensors, front legs}
 \label{fig:app_at_f}
 \end{figure}
 
@@ -34,7 +35,7 @@
   \caption{ACLf}
   \label{fig:app_acl_f}
 \end{subfigure}
-\caption{Coxa joints on the front legs}
+\caption{Coxa proprioceptive sensors, front legs}
 \label{fig:app_ac_f}
 \end{figure}
 
@@ -52,7 +53,7 @@
   \caption{AFLf}
   \label{fig:app_afl_f}
 \end{subfigure}
-\caption{Femur joints on the front legs}
+\caption{Femur proprioceptive sensors, front legs}
 \label{fig:app_af_f}
 \end{figure}
 
@@ -70,7 +71,7 @@
   \caption{ATLm}
   \label{fig:app_atl_m}
 \end{subfigure}
-\caption{Thoraco joints on the middle legs}
+\caption{Thoraco proprioceptive sensors, middle legs}
 \label{fig:app_at_m}
 \end{figure}
 
@@ -88,7 +89,7 @@
   \caption{ACLm}
   \label{fig:app_acl_m}
 \end{subfigure}
-\caption{Coxa joints on the middle legs}
+\caption{Coxa proprioceptive sensors, middle legs}
 \label{fig:app_ac_m}
 \end{figure}
 
@@ -106,7 +107,7 @@
   \caption{AFLm}
   \label{fig:app_afl_m}
 \end{subfigure}
-\caption{Thoraco joints on the middle legs}
+\caption{Femur proprioceptive sensors, middle legs}
 \label{fig:app_af_m}
 \end{figure}
 
@@ -124,7 +125,7 @@
   \caption{ATLh}
   \label{fig:app_atl_h}
 \end{subfigure}
-\caption{Thoraco joints on the hint legs}
+\caption{Thoraco proprioceptive sensors, hint legs}
 \label{fig:app_at_h}
 \end{figure}
 
@@ -142,7 +143,7 @@
   \caption{ACLh}
   \label{fig:app_acl_h}
 \end{subfigure}
-\caption{Coxa joints on the hint legs}
+\caption{Coxa proprioceptive sensors, hint legs}
 \label{fig:app_ac_h}
 \end{figure}
 
@@ -160,7 +161,7 @@
   \caption{AFLh}
   \label{fig:app_afl_h}
 \end{subfigure}
-\caption{Thoraco joints on the hint legs}
+\caption{Femur proprioceptive sensors, hint legs}
 \label{fig:app_af_h}
 \end{figure}
 
@@ -178,7 +179,7 @@
   \caption{FLf}
   \label{fig:app_fl_f}
 \end{subfigure}
-\caption{Foot contact sensors on the front legs}
+\caption{Tactile sensors, front legs}
 \label{fig:app_f_f}
 \end{figure}
 
@@ -196,7 +197,7 @@
   \caption{FLm}
   \label{fig:app_fl_m}
 \end{subfigure}
-\caption{Foot contact sensors on the middle legs}
+\caption{Tactile sensors, middle legs}
 \label{fig:app_f_m}
 \end{figure}
 
@@ -214,11 +215,14 @@
   \caption{FLh}
   \label{fig:app_fl_h}
 \end{subfigure}
-\caption{Foot contact sensors on the hint legs}
+\caption{Tactile sensors, hint legs}
 \label{fig:app_f_h}
 \end{figure}
 
+\newpage
 \section{Generated Datasets} \label{app:sec:generated_datasets}
+The following \cref{app:tab:generated_datasets} presents all generated datasets (see \cref{sec:dataset_creation}) used for terrain classification analysis (in \cref{sec:terrain_processing_results}).
+
 \begin{table}[H]
 \centering
 \caption{Generated datasets}
@@ -271,71 +275,73 @@
 \end{tabular}
 \end{table}
 
-\section{Complete Feature Analysis for Terrains} \label{app:sec:complete_feature_analysis_for_terrains}
+\section{Supplementary Figures for Feature Analysis} \label{app:sec:supplementary_figures_for_feature_analysis}
+Figures from this section complements the analysis of feature selection from \cref{ssec:pa_amter_feature_selection}.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{fs_used_features_coxa}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features coxa.}
+  \caption{Used features of coxa-trochanteral proprioceptive sensors for individual classes.}
   \label{fig:pa_amter_used_features_coxa}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1.0\textwidth]{fs_used_features_femur}
-  \caption{Pruning Algorithm Results on AMTER Dataset. Used features femur.}
+  \caption{Used features of femur-tibia proprioceptive sensors for individual classes.}
   \label{fig:pa_amter_used_features_femur}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{fs_amter_io_power_thoraco}
-  \caption{Pruning Algorithm Results on AMTER Dataset. IO power: thoraco.}
+  \caption{Influence power of single features on classes: thoraco-coxa sensors}
   \label{fig:pa_amter_io_power_thoraco}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{fs_amter_io_power_coxa}
-  \caption{Pruning Algorithm Results on AMTER Dataset. IO power: coxa.}
+  \caption{Influence power of single features on classes: coxa-trochanteral sensors}
   \label{fig:pa_amter_io_power_coxa}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{fs_amter_io_power_femur}
-  \caption{Pruning Algorithm Results on AMTER Dataset. IO power: femur.}
+  \caption{Influence power of single features on classes: femur-tibia sensors}
   \label{fig:pa_amter_io_power_femur}
 \end{figure}
 
-\section{Further Data Analysis} \label{sec:further_data_analysis}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact_gravel}
-  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)}
-  \label{fig:tn_analysis_foot_contact_gravel}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle}
-  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors}
-  \label{fig:tn_analysis_angle}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact}
-  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors}
-  \label{fig:tn_analysis_foot_contact}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{sn_influence_samples_concrete_fc}
-  \caption{Signal noise influence on one sample, terrain: concrete, foot contact sensors}
-  \label{fig:sn_influence_samples_concrete_fc}
-\end{figure}
+%\section{Further Data Analysis} \label{sec:further_data_analysis}
+%
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact_gravel}
+%  \caption{Terrain Noise Analysis (samples variance): 500 samples, terrain gravel, foot contact sensors (feature vector [720:960] for 40 timesteps)}
+%  \label{fig:tn_analysis_foot_contact_gravel}
+%\end{figure}
+%
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=1.0\textwidth]{tn_analysis_40_angle}
+%  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, angle sensors}
+%  \label{fig:tn_analysis_angle}
+%\end{figure}
+%
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=1.0\textwidth]{tn_analysis_40_foot_contact}
+%  \caption{Terrain Noise Analysis (classes variance): means of 500 samples, 14 terrains, foot contact sensors}
+%  \label{fig:tn_analysis_foot_contact}
+%\end{figure}
+%
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=1.0\textwidth]{sn_influence_samples_concrete_fc}
+%  \caption{Signal noise influence on one sample, terrain: concrete, foot contact sensors}
+%  \label{fig:sn_influence_samples_concrete_fc}
+%\end{figure}
 
 % samples variances for signal noise
 %\begin{figure}[H]
