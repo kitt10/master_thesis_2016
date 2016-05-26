@@ -2,7 +2,7 @@
 In this chapter the methods introduced in the previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{KITTNN} (see \cref{chap:kitt_nn} and API in \cref{app:sec:api_kitt_nn}) is verified by comparing to a publicly provided framework. The results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}. Then, the overall terrain classification process is gradually evaluated in \cref{sec:terrain_processing_results}.
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
-Classification performance of the implemented method \textit{kitt\_nn} is compared to a \textit{Scikit-neuralnetwork} classifier (\citep{misc:sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
+Classification performance of the implemented method \textit{KITTNN} is compared to a \textit{Scikit-neuralnetwork} classifier (\citep{misc:sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
 The following \cref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations were performed and mean values with standard deviation ranges are shown.
 
@@ -26,7 +26,7 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} (see \cref{eq:f1_score} in \
 
 \begin{table}[H]
 \centering
-\caption{Comparison of f1-score on MNIST to another framework (sknn)}
+\caption{Comparison of f1-score on MNIST to another framework (\textit{SKNN})}
 \label{tab:kitt_verify_f1}
 \resizebox{\textwidth}{!} {
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -38,18 +38,18 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} (see \cref{eq:f1_score} in \
 }
 \end{table}
 
-In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{sknn} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included to the comparison.
+In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{SKNN} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included to the comparison.
 
 This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples. The average is computed out of $ 1000 $ samples, as we train $ 100 $ epochs in $ 10 $ observations.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{kitt_verify_time}
-  \caption{Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (sknn): \citep{misc:sknn}), MNIST dataset}
+  \caption{Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (\textit{SKNN}): \citep{misc:sknn}), MNIST dataset}
   \label{fig:kitt_verify_time}
 \end{figure}
 
-The implemented \textit{kitt\_nn} framework cannot compete in speed with the optimized stochastic \textit{GDA} of \textit{sknn} library. However, importantly for this study, the classification abilities have been verified.
+The implemented \textit{KITTNN} framework cannot compete in speed with the optimized stochastic \textit{GDA} of \textit{SKNN} library. However, importantly for this study, the classification abilities have been verified.
 
 \section[Performance Evaluation of the Pruning Algorithm]{Performance Evaluation of the Pruning \\Algorithm} \label{sec:pruning_algorithm_results}
 This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned network of a minimal structure, but keeping a required classification accuracy, is expected.
@@ -250,7 +250,7 @@ In this section, results of the overall terrain classification process (see \cre
 
 First of all, complete classification results based on the generated datasets are listed. Then, more detailed results of a deterministic configuration are  compared to a realistic noisy configuration. Different classification methods are also applied on the noisy dataset for comparison.
 
-In \cref{ssec:selection_of_learning_parameters}, the way of finding optimal learning parameters is presented. Then, an analysis of terrain noise and signal noise influence is done in \cref{ssec:influence_of_noise_on_classification} and the time needed for classification is determined in \cref{ssec:number_of_timesteps}. Classification using separately different sensor types is evaluated in \cref{ssec:analysis_of_used_sensor_types}. Finally, terrain classification results based on proprioceptive and tactile sensing are compared to vision-based methods in \cref{ssec:terrain_classification_vs_soa}.
+In \cref{ssec:selection_of_learning_parameters}, the way of finding optimal learning parameters is presented. Then, an analysis of terrain noise and signal noise influence is done in \cref{ssec:influence_of_noise_on_classification} and the time needed for classification is determined in \cref{ssec:number_of_timesteps}. Classification using separately different sensor types is evaluated in \cref{ssec:analysis_of_used_sensor_types}.
 
 \subsection{Classification Performance} \label{ssec:classification_performance}
 The generated datasets, differing from each other in the global process parameters, are listed in \cref{app:tab:generated_datasets}. For each of them, $ 10 $ observations of the classification process were performed and the classification results presented in \cref{tab:classification_results} were computed by averaging these observations.

@@ -1,26 +1,20 @@
 \chapter{Introduction} \label{chap:introduction}
+The question of how information about the physical world is sensed motivated Frank Rosenblatt in 1958, when he presented his perceptron, a model capable of learning and pattern recognition. 
 
-The thesis must clearly state its theme, hypotheses and/or goals (sometimes called “the research question(s)”), and provide sufficient background information to enable a non-specialist researcher to understand them. It must contain a thorough review of relevant literature, perhaps in a separate chapter.
+His invention has been evolved over half a century in the field of machine learning, resulting in different kinds of artifical neural networks and deep learning methods. Out of the broad array of applications, we can mention the face recognition helping to find criminals, weather forecasting, searching engines or self-driving cars. People from the Cornell University in New York used deep learning to locate whales in the ocean so that ships can avoid hitting them \citep{misc:whales}.    
 
-previously unsolved problems
+In this thesis, I focus on classification, a widely used area of machine learning, using feedforward neural networks. The first part of the study is devoted to developing a working classification framework, based on a fully-connected network structure, which is commonly being used nowadays. 
 
-name machine learning applications
+The novelty of the work consists of invention of a network pruning algorithm that will find a minimal network structure needed for classification. The hypothesis is that some of the synapses are unimportant in the fully-connected network and hence the classification accuracy will not drop significantly after their removal.
 
-deep learning
+In the second part of the study, the developed neural network framework is used for terrain classification for a hexapod robot AMOS II \citep{misc:amosii}. The classification is based on proprioceptive (joint angles) and tactile (ground contacts) sensors of the hexapod and the classification data is virtually generated using the \textit{LpzRobots} simulator \citep{misc:lpzrobots}.
 
-whatever is possible
+The hypothesis is that using proprioceptive and tactile sensors, sensory data, gathered in a period of time, will be needed for terrain classification, however, then, the prediction will be performed instantly, as no further data processing is required. In general, the combination of both sensor types is presumed to give the best classification performance, compared to using each of them separately.
 
-1-2 pages intro
+Finally, the invented pruning algorithm is used to find a minimal network structure for the terrain classification problem. Additionally, based on the found minimal structure, features of the input vector are analysed in terms of their contribution to classification.
 
-Problem Formulation
-- may be not a subsection?
-
-Hypotheses
-The proprioception and tactile sensing
-
-\newpage
 \section{State of the Art} \label{sec:soa}
-Classification is one of the most widely used areas of machine learning. The idea is based on training a model on a set of data by setting some model parameters. A wide range of classification methods, differing one from each other in their mathematical backgrounds, are provided nowadays, however, the classification procedure follows a conventional line:
+The idea of classification is based on training a model on a set of data by setting some model parameters. A wide range of classification methods, differing one from each other in their mathematical backgrounds, are provided nowadays, however, the classification procedure follows a conventional line:
 
 \begin{enumerate}
 \item model initialization;
@@ -37,8 +31,8 @@ The data samples usually consist of multiple features and the classes are linear
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{classification_problem_formulation.png}
-  \caption{Formulation of a classification problem.}
+  \includegraphics[width=0.35\textwidth]{classification_problem_formulation.png}
+  \caption{Illustration of a classification problem.}
   \label{img:classification_problem_formulation}
 \end{figure}
 
@@ -55,8 +49,8 @@ To summarize, the best classification method has not been prooved yet. However, 
 \subsubsection*{Feedforward Neural Networks} \label{ssec:intro_to_nn}
 Classification algorithms are often considered to behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human's behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most accurate imitation of a human brain out of the proposed methods.
 
-In 1957, Frank Rosenblatt presented his perceptron model, a binary classifier, mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
-
+The perceptron \citep{article:perceptron} is a binary classifier mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
+\noindent
 \begin{align} \label{eq:perceptron}
 f_p(X) = 
 \begin{cases}
@@ -119,8 +113,8 @@ The main objectives of this study are:
 \begin{enumerate}
 \item To implement a general classification framework using feedforward neural networks;
 \item To develop a new network pruning algorithm capable of finding the minimal network structure for a given dataset;
-\item To generate a dataset of several terrain types using the AMOS II simulation;
-\item To classify generated terrain types using proprioceptive and tactile sensing.
+\item To generate a dataset of virtual terrain types using the AMOS II simulation;
+\item To classify the virtually generated terrain types using proprioceptive and tactile sensing.
 \end{enumerate}
 
 The implemented classification method will be capable of learning and classification of commonly known datasets as well as the terrain dataset. It will also be compatible with the needs of the new pruning algorithm.
@@ -155,7 +149,7 @@ Chapter \ref{chap:terrain_classification} contains the process of terrain classi
 
 Results are presented in \cref{chap:results}. First of all, the classification framework is verified on well-known datasets in \cref{sec:verification_of_nn}. Then the performance of the pruning algorithm is evaluated in \cref{sec:pruning_algorithm_results}. Results of the terrain classification are put in \cref{sec:terrain_processing_results}. Finally, the pruning algorithm is applied on the networks trained on terrain datasets and the results are shown in \cref{sec:pa_amter}.
 
-The methods are recapitulated and the results compared in discussion (\cref{chap:discussion}). The study is concluded and an outlook is provided in \cref{chap:conclussion}.
+The methods are recapitulated and the results compared in discussion (\cref{chap:discussion}). The study is concluded and an outlook is provided in \cref{chap:conclusion}.
 
 Appendix \ref{app:supp_data} contains some supplementary data and results. In \cref{app:implementation_details}, on can find implementation details of the performed methods, while a complete code documentation is in \cref{app:code_documentation}. Appendix \ref{app:workspace_structure} shows a tree directory structure of the workspace.
 

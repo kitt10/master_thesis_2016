@@ -2,7 +2,7 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Formulation of a classification problem.\relax }}{2}{figure.caption.12}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Illustration of a classification problem.\relax }}{2}{figure.caption.12}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Structure of a feedforward neural network\relax }}{8}{figure.caption.34}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces A model neuron\relax }}{9}{figure.caption.38}
@@ -40,7 +40,7 @@
 \contentsline {figure}{\numberline {3.19}{\ignorespaces Procedure of training and testing a network\relax }}{40}{figure.caption.157}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Learning process compared to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}).\relax }}{42}{figure.caption.162}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (sknn): \citep {misc:sknn}), MNIST dataset\relax }}{43}{figure.caption.164}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparison of average epoch processing time (1000 samples) to another framework (Scikit-neuralnetwork (\textit {SKNN}): \citep {misc:sknn}), MNIST dataset\relax }}{43}{figure.caption.164}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Results of the pruning algorithm on XOR dataset.\relax }}{44}{figure.caption.170}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces PA process illustration on XOR\relax }}{45}{figure.caption.171}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Pruning Algorithm Results on MNIST Dataset.\relax }}{46}{figure.caption.173}
@@ -88,7 +88,7 @@
 \contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{76}{figure.caption.246}
 \contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{76}{figure.caption.247}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces kitt\_nn package : Implemented neural network framework\relax }}{77}{figure.caption.250}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces \textit {KITTNN} package : Implemented neural network framework\relax }}{77}{figure.caption.250}
 \contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{78}{figure.caption.252}
 \contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{79}{figure.caption.255}
 \contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{80}{figure.caption.265}

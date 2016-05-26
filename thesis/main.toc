@@ -56,7 +56,7 @@
 \contentsline {section}{\numberline {4.4}Terrain Classification Using Network Pruning}{57}{section.208}
 \contentsline {subsection}{\numberline {4.4.1}Feature Selection for Terrain Classification}{61}{subsection.216}
 \contentsline {chapter}{\numberline {5}Discussion}{64}{chapter.224}
-\contentsline {chapter}{\numberline {6}Conclussion and Outlook}{67}{chapter.225}
+\contentsline {chapter}{\numberline {6}Conclusion and Outlook}{67}{chapter.225}
 \contentsline {chapter}{Bibliography}{69}{chapter*.226}
 \contentsline {chapter}{\numberline {A1}Supplementary Data}{71}{appendix.227}
 \contentsline {section}{\numberline {A1.1}Sensory Data Examples}{71}{section.228}

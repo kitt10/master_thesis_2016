@@ -16,6 +16,26 @@
   {}
 \endgroup
 
+\entry{article:perceptron}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Rosenblatt}{R.}%
+     {Frank}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RF1}
+  \strng{fullhash}{RF1}
+  \field{labelyear}{1958}
+  \field{sortinit}{1}
+  \field{pages}{386\bibrangedash 408}
+  \field{title}{The perceptron: A probabilistic model for information storage
+  and organization in the brain}
+  \field{volume}{65}
+  \field{journaltitle}{Psychological Review}
+  \field{year}{1958}
+\endentry
+
 \entry{article:insect}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -209,6 +229,45 @@
   \field{year}{2006}
 \endentry
 
+\entry{misc:lpzrobots}{misc}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Martius}{M.}%
+     {Georg}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Der}{D.}%
+     {Ralf}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hesse}{H.}%
+     {Frank}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gẗtler}{G.}%
+     {Frank}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hoffmann}{H.}%
+     {Jörn}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MG+1}
+  \strng{fullhash}{MGDRHFGFHJ1}
+  \field{labelyear}{2009}
+  \field{sortinit}{2}
+  \field{howpublished}{\url{http://robot.informatik.uni-leipzig.de/software/}}
+  \field{note}{last modified: 06. July 2015}
+  \field{title}{Robot Simulator of the Robotics Group for Self-Organization of
+  Control}
+  \field{year}{2009}
+\endentry
+
 \entry{thesis:05:proprioception}{thesis}{}
   \name{author}{1}{}{%
     {{}%
@@ -331,6 +390,23 @@
   \field{journaltitle}{Safety Security and Rescue Robotics}
   \field{month}{07}
   \field{year}{2010}
+\endentry
+
+\entry{misc:amosii}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Manoonpong}{M.}%
+     {Poramate}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MP1}
+  \strng{fullhash}{MP1}
+  \field{labelyear}{2011}
+  \field{sortinit}{2}
+  \field{howpublished}{\url{http://manoonpong.com/AMOSII.html}}
+  \field{title}{Open-source multi sensori-motor robotic platform AMOS II}
+  \field{year}{2011}
 \endentry
 
 \entry{article:scikit-learn}{article}{}
@@ -535,6 +611,28 @@
   \endverb
   \field{journaltitle}{Nature-inspired Mobile Robotics}
   \field{year}{2012}
+\endentry
+
+\entry{misc:whales}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kaggle}{K.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{K1}
+  \strng{fullhash}{K1}
+  \field{labelyear}{2013}
+  \field{sortinit}{2}
+  \field{note}{[Online; accessed 26-May-2016]}
+  \field{title}{The Marinexplore and Cornell University Whale Detection
+  Challenge}
+  \verb{url}
+  \verb \url{http://www.lauradhamilton.com/10-surprising-machine-learning-appli
+  \verb cations}
+  \endverb
+  \field{year}{2013}
 \endentry
 
 \entry{article:08:rhex}{article}{}
@@ -783,24 +881,11 @@
   \field{title}{Adaptive Embodied Locomotion Control Systems}
 \endentry
 
-\entry{misc:amosii}{misc}{}
-  \field{sortinit}{9}
-  \field{howpublished}{\url{http://manoonpong.com/AMOSII.html}}
-  \field{title}{Open-source multi sensori-motor robotic platform AMOS II}
-\endentry
-
 \entry{misc:ppm}{misc}{}
   \field{sortinit}{9}
   \field{howpublished}{\url{http://netpbm.sourceforge.net/doc/ppm.html}}
   \field{note}{Updated: 02 November 2013}
   \field{title}{PPM Format Specification}
-\endentry
-
-\entry{misc:lpzrobots}{misc}{}
-  \field{sortinit}{9}
-  \field{howpublished}{\url{http://robot.informatik.uni-leipzig.de/software/}}
-  \field{note}{last modified: 06. July 2015}
-  \field{title}{Research Network for Self-Organization of Robot Behavior}
 \endentry
 
 \lossort

@@ -7,7 +7,7 @@ A level-1 auxiliary file: tex/chap/chap_kitt_nn.aux
 A level-1 auxiliary file: tex/chap/chap_terrain_classification.aux
 A level-1 auxiliary file: tex/chap/chap_results.aux
 A level-1 auxiliary file: tex/chap/chap_discussion.aux
-A level-1 auxiliary file: tex/chap/chap_conclussion.aux
+A level-1 auxiliary file: tex/chap/chap_conclusion.aux
 A level-1 auxiliary file: tex/appx/app_supplementary_data.aux
 A level-1 auxiliary file: tex/appx/app_method_implementation.aux
 A level-1 auxiliary file: tex/appx/app_working_dir_structure.aux
@@ -28,44 +28,44 @@ Database file #2: bib/thesis_bibliography.bib
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 24 entries,
+You've used 26 entries,
             6047 wiz_defined-function locations,
-            1279 strings with 20468 characters,
-and the built_in function-call counts, 77793 in all, are:
-= -- 2432
-> -- 3328
-< -- 791
-+ -- 1627
-- -- 1816
-* -- 6038
-:= -- 5378
+            1293 strings with 20915 characters,
+and the built_in function-call counts, 86273 in all, are:
+= -- 2727
+> -- 3699
+< -- 877
++ -- 1707
+- -- 1940
+* -- 6790
+:= -- 5990
 add.period$ -- 0
-call.type$ -- 24
-change.case$ -- 263
-chr.to.int$ -- 187
-cite$ -- 46
-duplicate$ -- 8585
-empty$ -- 8183
-format.name$ -- 1571
-if$ -- 16586
+call.type$ -- 26
+change.case$ -- 294
+chr.to.int$ -- 203
+cite$ -- 50
+duplicate$ -- 9526
+empty$ -- 8996
+format.name$ -- 1817
+if$ -- 18449
 int.to.chr$ -- 0
-int.to.str$ -- 45
+int.to.str$ -- 53
 missing$ -- 0
-newline$ -- 699
-num.names$ -- 869
-pop$ -- 7610
+newline$ -- 781
+num.names$ -- 1039
+pop$ -- 8271
 preamble$ -- 1
-purify$ -- 352
+purify$ -- 397
 quote$ -- 0
-skip$ -- 4098
+skip$ -- 4617
 stack$ -- 0
-substring$ -- 1497
-swap$ -- 2997
-text.length$ -- 669
-text.prefix$ -- 23
+substring$ -- 1625
+swap$ -- 3329
+text.length$ -- 741
+text.prefix$ -- 25
 top$ -- 1
-type$ -- 899
+type$ -- 975
 warning$ -- 0
-while$ -- 504
+while$ -- 573
 width$ -- 0
-write$ -- 674
+write$ -- 754
