@@ -12,31 +12,38 @@ The overall process consists of several modules. The workflow is illustrated in 
   \label{img:terrain_overall_simple}
 \end{figure}
 
-The very first step is to make the AMOS II simulation run (\cref{ssec:app:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain features and their ranges are determined (\cref{ssec:terrain_features}). Based on these features (parameters), a number of virtual terrains is defined (\cref{ssec:features_determination}) and an optimality of these parameters is briefly analysed (\cref{ssec:terrains_analysis}).
+The very first step is to make the AMOS II simulation run (\cref{ssec:app:lpzrobots_sim}). Then a simple tripod gait controller is implemented (\cref{ssec:tripod_gait_controller}). To generate various terrain types, the number of variable terrain features and their ranges are determined (\cref{ssec:terrain_features}). Based on these features (parameters), a number of virtual terrains is defined (\cref{ssec:features_determination}) and an optimality of these parameters is briefly analysed.
 
-Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and the data from all proprioceptors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of an additive (Guassian) terrain noise and is run for several values.
+Next, AMOS II (its simulation alternative) is forced to walk on every defined terrain type several times and for a sufficiently long period of time and the data from all sensors are saved. This data is then verified and failing experiments are removed. The data acquisition step is parameterized by a standard deviation of an additive (Guassian) terrain noise and is run for several values.
 
 Having the clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. 
 
-Finally, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:app:terrain_classification_process}, several datesets and several classifiers are generated during the process. 
+Next, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:app:terrain_classification_process}, several datesets are generated and several networks trained during the process. 
 
 The dataset packages may differ in these parameters:
-\begin{itemize}
-\item terrain types included (number of classes)
-\item sensors on input
-\item samples length (number of simulation timesteps)
-\item terrain noise and signal noise
-\item number of samples
-\end{itemize}
+
+\begin{enumerate}
+\item standard deviation of terrain noise; 
+\item standard deviation of signal noise;
+\item number of simulation timesteps;
+\item used sensors.
+\end{enumerate}
+
+The number of samples is set to $ 500 $ and all terrain types are used for classification (resulting in $ 14 $ classes, see \cref{tab:terrains_parameters}). An analysis of the dataset parameters is presented in \cref{sec:terrain_processing_results}.
 
 The trained networks may differ in the following parameters:
-\begin{itemize}
-\item dataset that the network has been tested on
-\item neural network structure
-\item learning parameters: learning rate and number of epochs
-\end{itemize}
+\begin{enumerate}
+\item dataset the network has been trained on;
+\item neural network hidden structure;
+\item learning rate;
+\item number of training epochs.
+\end{enumerate}
 
-Finally, an optimal neural network classifier is found. The optimal network is then pruned by the algorithm developed in \cref{sec:network_pruning_algorithm}. The classification performance of developed tools is compared to \textit{Scikitlearn-neuralnetwork} classification library \citep{misc:sknn}.
+The parameters of the learning process are evaluated in \cref{ssec:selection_of_learning_parameters}.
+
+A dataset with no additive noise is chosen and the classification performance of a neural network trained on this deterministic dataset is considered as a reference. Then, another network is trained on a noisy dataset, to simulate the conditions of real environment, and the classification results are compared to the reference in \cref{ssec:classification_performance}.
+
+Finally, a trained network is pruned by the algorithm introduced in \cref{sec:network_pruning_algorithm}. Using the network minimal structure, an analysis of feature selection for terrain classification is performed in \cref{ssec:pa_amter_feature_selection}.
 
 \section{Experimental Environment Specification} \label{sec:experimental_environment}
 The final objective of this thesis was to implement an online terrain classifier for selection of optimal walking gait on real hexapod robot AMOS II. Therefore the real hexapod robot is presented in the following section \ref{ssec:amosii}.
@@ -269,7 +276,7 @@ In this work we use 14 terrain types. Their parameters (shown in \cref{tab:terra
 \end{tabular}
 \end{table}
 
-A brief analysis of this setting has been performed in \cref{ssec:terrains_analysis}.
+A brief analysis of this setting has been performed in the following section.
 
 \subsubsection*{Analysis of Terrain Similarity} \label{sssec:terrains_analysis}
 In the following, a brief analysis of terrain similarities is presented. In general, a (dis-)similarity between terrains should correlate with classification results, i.e., the more two terrains differ from each other the better classification results are expected, and vice versa.
@@ -387,9 +394,9 @@ The biggest variance among signals for various terrains is obtained from the foo
   \label{fig:sensor_fr_f_no_noise}
 \end{figure}
 
-Examples of signals from all 24 sensors can be found in \cref{sec:complete_sensory_data}.
+Examples of signals for all 24 sensors can be found in \cref{app:sec:complete_sensory_data}.
 
-As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter have been generated. The simulation has been gradually run for:
+As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter were generated. The simulation was gradually run for:
 
 \begin{itemize}
 \item $ \sigma_p = 0.0 $ (no noise);
@@ -485,9 +492,9 @@ noised\_signal_i = min(max(noised\_signal_i , 0), 1), \quad i = 1, 2, ..., n
 Also in this case, it is difficult to estimate an optimal signal noise power (standard deviation of the normal distribution). Therefore it is left as another global process parameter and its influence is discussed in the results part. It is defined as a percentage of the $ [0.0, 1.0] $ interval and as the signals are normed in advance, there is no need for another processing of this parameter.
 
 \subsubsection*{Influence of Signal Noise} \label{sssec:signal_noise_influence}
-\cref{fig:sn_influence_samples_concrete} shows the influence of the signal noise on one sample of \textit{concrete} for joint angle sensors. A similar figure for foot contact sensors is put in \cref{sec:further_data_analysis} (\cref{fig:sn_influence_samples_concrete_fc}).
+\cref{fig:sn_influence_samples_concrete} shows the influence of the signal noise on one sample of \textit{concrete} for joint angle sensors.
 
-Naturally, the higher the standard deviation of additive Gaussian noise is, the more a corresponding signal fluctuates around the \textit{red signal} representing no signal noise.
+As expected, the higher the standard deviation of additive Gaussian noise is, the more a corresponding signal fluctuates around the \textit{red signal} representing no signal noise.
 
 \begin{figure}[H]
   \centering
@@ -520,14 +527,7 @@ The target vector is of length 14, as there are 14 terrain types. Every terrain 
 
 Once there are two ordered lists - a list of samples and a corresponding list of targets, these lists are split into the three sets shown in \cref{img:three_sets}. There is a parameter called \textit{data\_split\_ratio} defining the proportions among the sets sizes. By default the ratio is set to generate 80\% training, 10\% validation and 10\% of testing data.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{create_dataset}
-  \caption{Workflow of generating a dataset}
-  \label{img:create_dataset}
-\end{figure}
-
-The workflow of data generation procedure is illustrated in \cref{img:create_dataset}. 
+The workflow of data generation procedure is illustrated in \cref{app:img:create_dataset}. 
 
 \section{Training and Classification} \label{sec:training_and_classification}
 Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
@@ -539,7 +539,7 @@ There are many classification methods differing in mathematical backgrounds and 
 \item[unlabeled observation prediction] : Once the model is trained, it is capable of predicting classes of unlabeled samples. It takes one or more samples of testing data and returns the predicted target(s).
 \end{description}
 
-This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{kitt\_nn} (see \cref{chap:kitt_nn}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (discussed in sections \ref{ssec:sknn} and \ref{ssec:other_classifiers}).
+This convention enables testing different classification approaches on the same data in the same way. Therefore also the implemented network library \textit{KITTNN} (see \cref{chap:kitt_nn}) provides these functions and is capable of working with datasets of the same structure as the public \textit{.py} classifiers (see API in \cref{app:sec:api_kitt_nn}).
 
 In the overall process diagram (\cref{img:terrain_overall_simple}) there is a box called \textit{classification with full networks}. The procedure behind this box is illustrated on \cref{img:train_and_test_network}.
 
@@ -550,9 +550,9 @@ In the overall process diagram (\cref{img:terrain_overall_simple}) there is a bo
   \label{img:train_and_test_network}
 \end{figure}
 
-This workflow is performed by the implemented framework \textit{kitt\_nn} (\cref{chap:kitt_nn}, as well as by other provided classifiers (discussed in \cref{ssec:other_classifiers}) for comparison. It is adventageous, that each of these tools can use the same workflow and so the comparison is fair.
+This workflow is performed by the implemented framework \textit{KITTNN} (\cref{chap:kitt_nn}, as well as by other classification methods (discussed in \cref{sec:soa}) for comparison. It is adventageous, that each of these tools can use the same workflow and so the comparison is fair.
 
-There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{img:create_dataset}) and so its setting parametrizes the classifier as well.
+There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{app:img:create_dataset}) and so its setting parametrizes the classifier as well.
 
 Next, one needs to define the network initial structure in sense of number of hidden layers and number of neurons in each of these layers. The input and output layers are determined by the dataset. There are many parameters to be defined for learning like \textit{batch size}, \textit{initial random state} etc. In this work, only the learning rate and the number of epochs are used as training parameters. The learning process follows the implemented backpropagation algorithm described in \cref{sec:learning_algorithm}.
 
@@ -568,9 +568,7 @@ A trained network is evaluated on testing data. This evaluation provides a set o
 F1 = \frac{2 * precision * recall}{precision + recall}
 \end{equation}
 \item[confusion matrix] : a confusion matrix $ C $ is such that $ C_{i, j} $ is equal to the number of observations known to be in group $ i $ but predicted to be in group $ j $.
-\item[classification error] : DESCRIBE (formula).
-\item[average epoch time] : DESCRIBE.
-\item[evarage classification time] : DESCRIBE.
+\item[classification error] : given as the cost function $ J $ in \cref{eq:cost_function}.
+\item[average epoch time] : processing time of one training epoch, computed as an average out of more observations (usually $ 10 $)
+\item[average classification time] : processing time of propagating one sample through the network (also an average out of more observations)
 \end{description}
-
-structure, n synapses ?

@@ -1,5 +1,5 @@
 \chapter{Experimental Evaluation} \label{chap:results}
-In this chapter the methods introduced in the previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{kitt\_nn} (see \cref{chap:kitt_nn} and details in \cref{sec:implementation_of_nn}) is verified by comparing to a publicly provided framework. The results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}. Then, the overall terrain classification process is gradually evaluated in \cref{sec:terrain_processing_results}.
+In this chapter the methods introduced in the previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{KITTNN} (see \cref{chap:kitt_nn} and API in \cref{app:sec:api_kitt_nn}) is verified by comparing to a publicly provided framework. The results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}. Then, the overall terrain classification process is gradually evaluated in \cref{sec:terrain_processing_results}.
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
 Classification performance of the implemented method \textit{kitt\_nn} is compared to a \textit{Scikit-neuralnetwork} classifier (\citep{misc:sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
@@ -22,7 +22,7 @@ Regarding the XOR dataset, both nets start with the accuracy of about $ 0.5 $, a
 %  \label{fig:kitt_verify_err}
 %\end{figure}
 
-In \cref{tab:kitt_verify_f1}, the \textit{f1-score} measure (see \cref{eq:f1_score} in \cref{ssec:evaluation_methods}) is shown for individual classes (digits) of the MNIST dataset. This evaluation is done on the testing data.
+In \cref{tab:kitt_verify_f1}, the \textit{f1-score} (see \cref{eq:f1_score} in \cref{ssec:evaluation_measures}) is shown for individual classes (digits) of the MNIST dataset. This evaluation is done on the testing data.
 
 \begin{table}[H]
 \centering
@@ -79,7 +79,7 @@ The results are obtained by averaging $ 10 $ observations, so the outcome is ind
 
 Algorithm parameters:
 \begin{itemize}
-\item initial network structure: $ [2, 100, 1] $;
+\item initial network structure: $ [2, 100, 2] $;
 \item required classification accuracy on validation data: $ 0.9 $;
 \item learning rate: $ 0.5 $;
 \item percentile levels: $ [50, 20, 5, 0] $.
@@ -89,7 +89,7 @@ Algorithm outcomes:
 \begin{itemize}
 \item pruning steps: $ 10 $;
 \item final structure: $ [2, 2, 1] $;
-\item number of removed synapses: $ 294 $ (initially: $ 300 $, finally: $ 6 $);
+\item number of removed synapses: $ 294 $ (initially: $ 400 $, finally: $ 6 $);
 \item classification accuracy on testing data: $ 0.99 $.
 \end{itemize}
 
@@ -112,7 +112,7 @@ Algorithm outcomes:
 \end{figure}
 
 \subsection{Evaluation on MNIST Dataset} \label{ssec:evaluation_on_mnist}
-Similarly, the algorithm is evaluated on the MNIST dataset. In this case, the minimal structure is not known. The recommended size of the hidden layer for MNIST classification is $ 15 $. In \cref{fig:kitt_verify_acc} the classification accuracy of \textit{kitt\_nn} framework on this dataset is presented. Apparently, it is possible to reach a success rate around $ 90\% $. Hence these parameters are used:
+Similarly, the algorithm is evaluated on the MNIST dataset. In this case, the minimal structure is not known. The recommended size of the hidden layer for MNIST classification is $ 15 $. In \cref{fig:kitt_verify_acc} the classification accuracy of \textit{KITTNN} framework on this dataset is presented. Apparently, it is possible to reach a success rate around $ 90\% $. Hence these parameters are used:
 
 \begin{itemize}
 \item initial network structure: $ [784, 15, 10] $ ($ 784 $, because the samples are images of size $ 28x28 $, and $ 10 $, because we have ten digits);
@@ -160,7 +160,7 @@ epochs to retrain                   & X                    & 0                  
 }
 \end{table}
 
-In this example, the algorithm uses the percentile level of $ 50 $ in the first three steps, meaning it cuts out the half of the synapses each time. In the fourth step, the network is not able to retrain after cutting half of the remaining synapses, hence the percentile level is decreased to $ 35 $ and less synapses are tried to be removed in the fifth step. However, the retraining is not successful again (the accuracy of $ 0.89 $ is not reached in $ 100 $ epochs), so the percentile level is decreased to $ 20 $. This time the pruned network is able to retrain, so a new structure is saved and the algorithm continues with the percentile level of $ 20 $ in the next steps.
+In this example, the algorithm uses the percentile level of $ 50 $ in the first three steps, meaning it cuts out a half of the synapses each time. In the fourth step, the network is not able to retrain after cutting a half of the remaining synapses, hence the percentile level is decreased to $ 35 $ and less synapses are tried to be removed in the fifth step. However, the retraining is not successful again (the accuracy of $ 0.89 $ is not reached in $ 100 $ epochs), so the percentile level is decreased to $ 20 $. This time the pruned network is able to retrain, so a new structure is saved and the algorithm continues with the percentile level of $ 20 $ in the next steps.
 
 The following figures (\ref{img:pa_mnist_morph}) illustrate the transformation of the network.
 \begin{figure}[H]
@@ -188,7 +188,7 @@ For instance, considering the MNIST dataset, there is an image (meaning a vector
 
 As illustrated in \cref{img:structure_util}, paths from the input to the output layer can be tracked. This way we can find paths for every output neuron and see which input neurons are connected to it. Individual subpanels (a-j) in \cref{fig:mnist_analysis} show in red all input neurons (pixels of the $ 28x28 $ input images) that are connected to the corresponding output neuron (digit 0-9). Pixels having no path to the corresponding output neuron are in blue.
 
-Subpanel (k) in \cref{fig:mnist_analysis} shows in red all pixels that have at least one path to the output layer. The blue pixels have no connection and hence do not contribute to classification.
+The subpanel (k) in \cref{fig:mnist_analysis} shows in red all pixels that have at least one path to the output layer. The blue pixels have no connection and hence do not contribute to classification.
 
 As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ connections and, naturally, minimally $ 0 $ connections in the final structure. The subpanel (l) in \cref{fig:mnist_analysis} presents the number of connections to the hidden layer for each input neuron. The results indicate that one neuron has $ 3 $ connections to the hidden layer at most. 
 
@@ -203,7 +203,7 @@ As there are $ 15 $ hidden neurons, each input neuron can have maximally $ 15 $ 
 In \cref{sec:soa_pruning_algorithms}, a few approaches of network pruning are discussed. In this section, the developed pruning algorithm (PA) based on weight changes during network training (see \cref{sec:network_pruning_algorithm}) is compared to two different methods:
 
 \begin{enumerate}[label=\Alph*]
-\item \textit{pruning based on actual weight values}: The learning algorithm uses the \textit{tanh} transfer function (see \cref{fig:transfer_functions}). The pruning approach from \cref{sec:network_pruning_algorithm} is used, however, the removed synapses are chosen based on actual weight values. Synapses with weight closest to zero are removed;
+\item \textit{pruning based on actual weight values}: The learning algorithm uses the \textit{tanh} transfer function (see \cref{fig:transfer_functions}). The pruning approach from \cref{sec:network_pruning_algorithm} is used, however, the removed synapses are chosen based on actual weight values. Synapses with the weight closest to zero are removed;
 \item \textit{brute force pruning algorithm}: 
 In every pruning step, one synapse is removed and the network is retrained. If the retraining was unsuccessful, the synapse is put back to the network;
 \end{enumerate}
@@ -248,12 +248,12 @@ B                 & 218            & 6                 & {[}2, 2, 1{]}      & 0.
 \section{Results of Terrain Classification} \label{sec:terrain_processing_results}
 In this section, results of the overall terrain classification process (see \cref{chap:terrain_classification}) are presented and the global process parameters are analysed.  
 
-First of all, complete classification results based on the generated datasets are listed and more detailed results of a deterministic configuration (with no noise) are  compared to a realistic noisy configuration. Different classification methods are also applied on the noisy dataset for comparison.
+First of all, complete classification results based on the generated datasets are listed. Then, more detailed results of a deterministic configuration are  compared to a realistic noisy configuration. Different classification methods are also applied on the noisy dataset for comparison.
 
-In \cref{ssec:selection_of_learning_parameters}, the way of finding optimal learning parameters is presented. Then, an analysis of terrain noise and signal noise influence is done in \cref{ssec:influence_of_noise_on_classification} and time needed for classification is determined in \cref{ssec:number_of_timesteps}. Classification using separately different sensor types is evaluated in \cref{ssec:analysis_of_used_sensor_types}. Finally, terrain classification results based on proprioceptive and tactile sensing are compared to vision-based methods in \cref{ssec:terrain_classification_vs_soa}.
+In \cref{ssec:selection_of_learning_parameters}, the way of finding optimal learning parameters is presented. Then, an analysis of terrain noise and signal noise influence is done in \cref{ssec:influence_of_noise_on_classification} and the time needed for classification is determined in \cref{ssec:number_of_timesteps}. Classification using separately different sensor types is evaluated in \cref{ssec:analysis_of_used_sensor_types}. Finally, terrain classification results based on proprioceptive and tactile sensing are compared to vision-based methods in \cref{ssec:terrain_classification_vs_soa}.
 
 \subsection{Classification Performance} \label{ssec:classification_performance}
-The generated datasets, differing one from each other in the global process parameters, are listed in \cref{app:tab:generated_datasets}. For each of them, $ 10 $ observations of the classification process were performed and the classification results presented in \cref{tab:classification_results} were computed by averaging these observations.
+The generated datasets, differing from each other in the global process parameters, are listed in \cref{app:tab:generated_datasets}. For each of them, $ 10 $ observations of the classification process were performed and the classification results presented in \cref{tab:classification_results} were computed by averaging these observations.
 
 Based on the analysis in \cref{ssec:selection_of_learning_parameters}, the network hidden structure consisted of $ 1 $ layer with $ 20 $ neurons. The backpropagation learning rate was $ 0.5 $ and the training process lasted for $ 500 $ learning epochs.
 
@@ -278,7 +278,7 @@ With reference to \cref{app:tab:generated_datasets}, dataset $ 00\_00\_40\_a $ (
 00\_00\_80\_t	& 0.761 	& 0.764 	& 0.760 	& 0.742 	& 0.051 	& 0.715 	 \\ \hline
 00\_00\_20\_a 	& 0.850 	& 0.848 	& 0.850 	& 0.846 	& 0.030 	& 0.894 	 \\ \hline
 00\_05\_40\_a 	& 0.884 	& 0.880 	& 0.880 	& 0.880 	& 0.019 	& 0.760 	 \\ \hline
-00\_00\_40\_a 	& 0.923 	& 0.920 	& 0.920 	& 0.920 	& 0.019 	& 0.865 	 \\ \hline
+\textbf{00\_00\_40\_a} 	& 0.923 	& 0.920 	& 0.920 	& 0.920 	& 0.019 	& 0.865 	 \\ \hline
 00\_00\_10\_a 	& 0.805 	& 0.806 	& 0.804 	& 0.798 	& 0.040 	& 0.526 	 \\ \hline
 00\_00\_40\_p 	& 0.696 	& 0.702 	& 0.694 	& 0.666 	& 0.060 	& 0.707 	 \\ \hline
 00\_00\_10\_t 	& 0.423 	& 0.432 	& 0.424 	& 0.386 	& 0.102 	& 0.469 	 \\ \hline
@@ -292,7 +292,7 @@ With reference to \cref{app:tab:generated_datasets}, dataset $ 00\_00\_40\_a $ (
 03\_10\_40\_a 	& 0.565 	& 0.530 	& 0.560 	& 0.540 	& 0.063 	& 0.946 	 \\ \hline
 03\_05\_40\_a 	& 0.645 	& 0.640 	& 0.650 	& 0.630 	& 0.054 	& 0.871 	 \\ \hline
 03\_00\_40\_a 	& 0.714 	& 0.730 	& 0.710 	& 0.700 	& 0.057 	& 0.831 	 \\ \hline
-03\_03\_40\_a 	& 0.719 	& 0.740 	& 0.720 	& 0.720 	& 0.046 	& 0.939 	 \\ \hline
+\textbf{03\_03\_40\_a} 	& 0.719 	& 0.740 	& 0.720 	& 0.720 	& 0.046 	& 0.939 	 \\ \hline
 03\_01\_40\_a 	& 0.779 	& 0.780 	& 0.780 	& 0.780 	& 0.042 	& 1.068 	 \\ \hline
 05\_01\_40\_a	& 0.732 	& 0.740 	& 0.730 	& 0.730 	& 0.052 	& 1.018 	 \\ \hline
 05\_05\_40\_a 	& 0.651 	& 0.660 	& 0.650 	& 0.640 	& 0.056 	& 0.933 	 \\ \hline
@@ -313,11 +313,11 @@ With reference to \cref{app:tab:generated_datasets}, dataset $ 00\_00\_40\_a $ (
 }
 \end{table}
 
-The following \cref{fig:amter_cm_nn} illustrates a confusion matrix (see \cref{ssec:evaluation_measures}) for classification on the reference deterministic dataset ($ 00\_00\_40\_a $). The recall rate for all terrains is shown on the diagonal. Additionally, we can see that $ 15\% $ of carpet samples was mistakenly labeled as grass and $ 10\% $ of grass samples as carpet. Similarly, the network had difficulties to distuinguish rock from grass and wood or foam from swamp. However, in general, the classification on the deterministic dataset was successful.
+The following \cref{fig:amter_cm_nn} illustrates a confusion matrix (see \cref{ssec:evaluation_measures}) for classification on the reference deterministic dataset ($ 00\_00\_40\_a $). The recall rate for all terrains is shown on the diagonal. Additionally, we can see that $ 15\% $ of carpet samples was mistakenly labeled as grass and $ 10\% $ of grass samples as carpet. Similarly, the network had difficulties to distinguish rock from grass and wood or foam from swamp. However, in general, the classification on the deterministic dataset was successful.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{amter_classification_nn_cm}
+  \includegraphics[width=0.75\textwidth]{amter_classification_nn_cm}
   \caption{Confusion matrix of classification results on a deterministic dataset.}
   \label{fig:amter_cm_nn}
 \end{figure}
@@ -326,14 +326,14 @@ The following \cref{fig:amter_cm_nn} illustrates a confusion matrix (see \cref{s
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{amter_classification_noisy_cm}
+  \includegraphics[width=0.75\textwidth]{amter_classification_noisy_cm}
   \caption{Confusion matrix of classification results on a noisy dataset.}
   \label{fig:amter_cm_noisy}
 \end{figure}
 
-A complete analysis of the relation between noise level and classification performance is presented in \cref{ssec:influence_of_noise_on_classification}. However, assuming that the chosen noise level simulates a real environment, \cref{fig:amter_cm_noisy} predicts results of the method on the real platform.
+A complete analysis of the relation between a noise level and classification performance is presented in \cref{ssec:influence_of_noise_on_classification}. However, assuming that the chosen noise level simulates a real environment, \cref{fig:amter_cm_noisy} predicts results of the method on the real platform.
 
-In this case, grass ($ 44\% $) and rubber ($ 49\% $) result with the worst recall. On the other hand, samples of mud, plastic or sand are classified very well. A complete classification report comparing the deterministic results to noisy results is shown in \cref{tab:amter_classification_report}.
+In this case, grass ($ 44\% $) and rubber ($ 49\% $) result with the worst recall. On the other hand, samples of mud, plastic or sand are classified very well. A complete classification report comparing the deterministic results to the noisy results is shown in \cref{tab:amter_classification_report}.
 
 \begin{table}[H]
 \centering
@@ -365,11 +365,11 @@ avg / total &      0.92 &      0.92 &     0.74  &      0.72 & 		1400\\
 \end{table}
 
 \subsubsection{Comparison to Other Classification Methods}
-Using the noisy dataset $ 03\_03\_40\_a $, the classification performance of the developed framework \textit{KITTNN} was compared to other classification approaches presented in \cref{sec:soa_other_classifiers} (\cref{tab:tc_comparison_to_other_classification_methods}).
+Using the noisy dataset $ 03\_03\_40\_a $, the classification performance of the developed framework \textit{KITTNN} was compared to other classification approaches presented in \cref{sec:soa} (\cref{tab:tc_comparison_to_other_classification_methods}).
 
 \begin{table}[H]
 \centering
-\caption{Comparison to other classification methods (presented in \cref{sec:soa_other_classifiers})}
+\caption{Comparison to other classification methods implemented by \citep{article:scikit-learn}}
 \label{tab:tc_comparison_to_other_classification_methods}
 \begin{tabular}{|l|l|c|c|c|c|} 
 \hline
@@ -413,7 +413,7 @@ In \cref{fig:lr_analysis}, the training process (progress of accuracy over itera
   \label{fig:st_analysis}
 \end{figure}
 
-It was determined to use one hidden layer. The accuracy progress over training epochs for six networks differing in the number of hidden neurons is shown in \cref{fig:st_analysis}. An overall analysis for these two parameters (learning rate and hidden structure) is performed in \cref{fig:acc_st_lr_mat}.
+It was determined to use one hidden layer. The accuracy progress over training epochs for six networks differing in the number of hidden neurons is shown in \cref{fig:st_analysis}. An overall analysis for these two parameters (learning rate and network structure) is performed in \cref{fig:acc_st_lr_mat}.
 
 \begin{figure}[H]
   \centering
@@ -422,15 +422,15 @@ It was determined to use one hidden layer. The accuracy progress over training e
   \label{fig:acc_st_lr_mat}
 \end{figure}
 
-Based on the results, $ 20 $ neurons in one layer were chosen to form the hidden structure of the network. The learning rate was set to $ 0.5 $. The number of training epochs (based on \cref{fig:lr_analysis} and \cref{fig:st_analysis}) was set to $ 500 $.
+Based on the results, $ 20 $ neurons in one layer were chosen to form the hidden structure of the network. The learning rate was set to $ 0.5 $. The number of training epochs (based on \cref{fig:lr_analysis} and \cref{fig:st_analysis}) were set to $ 500 $.
 
 \subsection{Influence of Noise on Classification} \label{ssec:influence_of_noise_on_classification}
-Two types of noise were added to the deterministic data during the process: a terrain noise (described in \cref{ssec:terrain_noise}) and a signal noise (\cref{ssec:signal_noise}). Both were parametrized by a standard deviation value. \cref{fig:acc_tn_sn_mat} shows the influence of these values on classification performance.
+Two types of noise were added to the deterministic data during the process: a terrain noise (described in \cref{ssec:terrain_noise}) and a signal noise (\cref{ssec:signal_noise}). Both were parametrized by a standard deviation value. \cref{fig:acc_tn_sn_mat} shows the influence of these values on the classification performance.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{cl_acc_tn_sn_mat}
-  \caption{Additive terrain and signal noise: influence on the accuracy}
+  \caption{Additive terrain and signal noise: influence on the accuracy (10 observations).}
   \label{fig:acc_tn_sn_mat}
 \end{figure}
 
@@ -440,7 +440,7 @@ As discussed in \cref{sec:data_acquisition}, the assumption is that the robot ne
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.75\textwidth]{cl_ts_acc_boxplot}
-  \caption{Analysis of time needed for proper classification.}
+  \caption{Analysis of time needed for proper classification (10 observations).}
   \label{fig:ts_acc_boxplot}
 \end{figure}
 
@@ -449,11 +449,11 @@ Surprisingly, the classification result based on a single timestep is not bad. I
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{cl_ts_time_boxplot}
-  \caption{Average epoch time (10 observations) with respect to number of simulation timesteps.}
+  \caption{Average epoch time (10 observations) depending on the number of simulation timesteps.}
   \label{fig:ts_time_boxplot}
 \end{figure}
 
-However, the equally good results for $ 40 $ and $ 80 $ timesteps indicates, that one period of the tripod gait will be enough (see the periodic sensory signals in \cref{app:sec:complete_sensory_data}). Moreover, with the increasing number of timesteps, also the feature vector size and network dimensionality increase, and, as shown in \cref{fig:ts_time_boxplot}, also the processing time. Based on this analysis, $ 40 $ was chosen as the default number of timesteps in this study. 
+However, the equally good results for $ 40 $ and $ 80 $ timesteps indicate, that one period of the tripod gait will be enough (see the periodic sensory signals in \cref{app:sec:complete_sensory_data}). Moreover, with the increasing number of timesteps, also the feature vector size and network dimensionality increase, and, as shown in \cref{fig:ts_time_boxplot}, the processing time as well. Based on this analysis, $ 40 $ was chosen as the default number of timesteps in this study. 
 
 \subsection{Analysis of Used Sensor Types} \label{ssec:analysis_of_used_sensor_types}
 Two types of sensors are used for terrain classification for the hexapod robot AMOS II:
@@ -472,9 +472,9 @@ The results presented so far are obtained using both of these two types together
   \label{fig:sen_vs_epoch}
 \end{figure}
 
-\cref{fig:sen_vs_epoch} shows that the combination of the two types results with the highest classification accuracy, namely even with $ 10 $ simulation steps (1 second of real time) compared to $ 40 $ (4 seconds), resp. $ 80 $ (8 seconds), for only one of the sensor types. Having more time for classification ($ 4 $ or $ 8 $ seconds), the six tactile sensors are more successful than proprioceptive, however, they fail when the classification needs to be fast ($ 1 $ second). Complete classification results for all of these configurations can be found in \cref{tab:classification_results}.
+\cref{fig:sen_vs_epoch} shows that the combination of the two types performs with the highest classification accuracy, namely even with $ 10 $ simulation steps (1 second of real time) compared to $ 40 $ (4 seconds), resp. $ 80 $ (8 seconds), for only one of the sensor types. Having more time for classification ($ 4 $ or $ 8 $ seconds), the six tactile sensors are more successful than the proprioceptive ones, however, they fail when the classification needs to be fast ($ 1 $ second). Complete classification results for all of these configurations can be found in \cref{tab:classification_results}.
 
-Number of used sensors affects the size of the feature vector and hence also the size of the network input layer. The dimensionality of the network mattrices influence the processing time. An average epoch time out of 10 observations is shown for the two sensor types in \cref{fig:sen_time}. 
+The number of used sensors affect the size of the feature vector and hence also the size of the network input layer. The dimensionality of the network mattrices influences the processing time. An average epoch time out of 10 observations is shown for the two sensor types in \cref{fig:sen_time}. 
 
 \begin{figure}[H]
   \centering
@@ -483,10 +483,6 @@ Number of used sensors affects the size of the feature vector and hence also the
   \label{fig:sen_time}
 \end{figure}
 
-\subsection{Comparison to SOA Methods} \label{ssec:terrain_classification_vs_soa}
-TODO: brief comparison to results of the vison-based method (maybe just in discussion)
-
-\newpage
 \section[Terrain Classification Using Network Pruning]{Terrain Classification Using Network Pruning} \label{sec:pa_amter}
 In this section, the developed pruning algorithm (\cref{sec:network_pruning_algorithm}) is applied on the terrain classification problem (\cref{chap:terrain_classification}). The datasets containing the terrain data are listed in \cref{app:tab:generated_datasets}. On each of them, a neural network was trained, evaluated and saved (classification results in \cref{tab:classification_results}). These trained nets were used as the input of the pruning algorithm to obtain the following results.
 
@@ -517,7 +513,7 @@ The result of the pruning algorithm applied on the default configuration (A) is 
   \label{fig:pa_result_amter}
 \end{figure}
 
-The number of synapses was reduced from $ 19400 $ to $ 516 $. Complete results for all the listed configurations from \cref{tab:configurations_for_pa} are presented in \cref{tab:amter_pa_results}.
+The number of synapses were reduced from $ 19400 $ to $ 516 $. Complete results for all the listed configurations from \cref{tab:configurations_for_pa} are presented in \cref{tab:amter_pa_results}.
 
 \begin{table}[H]
 \centering
@@ -528,7 +524,7 @@ The number of synapses was reduced from $ 19400 $ to $ 516 $. Complete results f
 \hline
            & \textit{\begin{tabular}[c]{@{}c@{}}required\\ accuracy\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}structure\\ before\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}synapses\\ before\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}structure\\ after\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}synapses\\ after\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}accuracy on\\ testing set\end{tabular}} & \textit{\begin{tabular}[c]{@{}c@{}}pruning\\ steps\end{tabular}} \\ \hline
 \textbf{A} & 0.9                                                                  & {[}960, 20, 14{]}                                                   & 19400                                                              & {[}330, 16, 14{]}                                                  & 516                                                               & 0.8807                                                                     & 123                                                              \\ \hline
-\textbf{A*} & 0.75                                                                  & {[}960, 20, 14{]}                                                   & 19400                                                              & {[}69, 10, 13{]}                                                  & 123                                                               & 0.6437                                                                     & 27                                                              \\ \hline
+\textbf{A'} & 0.75                                                                  & {[}960, 20, 14{]}                                                   & 19400                                                              & {[}69, 10, 13{]}                                                  & 123                                                               & 0.6437                                                                     & 27                                                              \\ \hline
 \textbf{B} & 0.9                                                                  & {[}1920, 20, 14{]}                                                  & 38680                                                              & {[}399, 16, 14{]}                                                  & 531                                                               & 0.8859                                                                     & 363                                                              \\ \hline
 \textbf{C} & 0.65                                                                 & {[}960, 100, 14{]}                                                  & 97400                                                              & {[}136, 33, 14{]}                                                  & 204                                                               & 0.7384                                                                     & 28                                                               \\ \hline
 \textbf{D} & 0.7                                                                  & {[}960, 20, 14{]}                                                   & 19400                                                              & {[}331, 17, 14{]}                                                  & 534                                                               & 0.6787                                                                     & 76                                                               \\ \hline
@@ -537,27 +533,27 @@ The number of synapses was reduced from $ 19400 $ to $ 516 $. Complete results f
 \end{tabular}}
 \end{table}
 
-As we can see, the network \textit{D}, trained on noisy the noisy dataset, ends with very similar results as the reference \textit{A} configuration. The structural and synaptic reduction of configuration \textit{B} (using 80 timesteps) takes more pruning steps, but also ends up with comparable results. As \textit{A}, \textit{B} requires the same accuracy, we can compare their synaptic pruning process in a graph (\cref{fig:pa_amter_synapses_90}). Additionally, configuration \textit{D} is included, as its pruning progress is also comparable.
+As we can see, the network \textit{D}, trained on the noisy dataset, ends with very similar results as the reference \textit{A} configuration. The structural and synaptic reduction of configuration \textit{B} (using 80 timesteps) takes more pruning steps, but also ends up with comparable results. As \textit{A}, \textit{B} requires the same accuracy, we can compare their synaptic pruning process in a graph (\cref{fig:pa_amter_synapses_90}). Additionally, configuration \textit{D} is included, as its pruning progress is also comparable.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{pa_amter_synapses_acc90.png}
+  \includegraphics[width=0.8\textwidth]{pa_amter_synapses_acc90.png}
   \caption{Synaptic pruning of configurations A (reference), B (80 timesteps) and D (noisy data).}
   \label{fig:pa_amter_synapses_90}
 \end{figure}
 
-Similarly, we can compare the remaining configurations (\textit{C}, \textit{E}, and \textit{F}), as all of them requires the accuracy of $ 0.65 $ (\cref{fig:pa_amter_synapses_65}. Additionally, the \textit{A} (default) configuration is pruned with the same required accuracy as \textit{C} ($ 0.75 $) and added for comparison (liste as \textit{A*}). Ideally, \textit{A*} would end up with the same result as the huge network (\textit{C}).
+Similarly, we can compare the remaining configurations (\textit{C}, \textit{E}, and \textit{F}), as all of them require the accuracy of $ 0.65 $ (\cref{fig:pa_amter_synapses_65}. Additionally, the \textit{A} (default) configuration is pruned with the same required accuracy as \textit{C} ($ 0.75 $) and added for comparison (listed as \textit{A'}). Ideally, \textit{A'} would end up with the same result as the huge network (\textit{C}).
 
 Interestingly, when pruning \textit{E} and \textit{F} configurations, the PA decided to omit some of the terrains completely (see \cref{tab:amter_pa_results} and \cref{fig:pa_amter_used_neurons_65}), which is allowed since only $ 65\% $ of accuracy was required. 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{pa_amter_synapses_acc65.png}
-  \caption{Synaptic pruning of configurations A* (reference), C (100 hidden neurons), E (proprioceptive sensors) and F (tactile sensors).}
+  \includegraphics[width=0.8\textwidth]{pa_amter_synapses_acc65.png}
+  \caption{Synaptic pruning of configurations A' (reference), C (100 hidden neurons), E (proprioceptive sensors) and F (tactile sensors).}
   \label{fig:pa_amter_synapses_65}
 \end{figure}
 
-The following \cref{fig:pa_amter_used_neurons_90} shows a relative amount of active neurons after pruning for configurations \textit{A}, \textit{B} and \textit{D}. Each configuration is also labeled by the required accuracy and the initial number of neurons per layer.
+The following \cref{fig:pa_amter_used_neurons_90} shows a relative amount of active neurons after pruning for configurations \textit{A}, \textit{B} and \textit{D}. Each configuration is also labeled by the required accuracy and the initial number of neurons per a layer.
 
 \begin{figure}[H]
   \centering
@@ -566,19 +562,19 @@ The following \cref{fig:pa_amter_used_neurons_90} shows a relative amount of act
   \label{fig:pa_amter_used_neurons_90}
 \end{figure}
 
-In \cref{fig:pa_amter_used_neurons_65}, the same statistics for configurations \textit{C}, \textit{E} and \textit{F}, completed by \textit{A*}, is shown. In general, input layers are reducted the most. The results also indicate that proprioceptive sensing does not need that many hidden units compared to tactile sensing.
+In \cref{fig:pa_amter_used_neurons_65}, the same statistics for configurations \textit{C}, \textit{E} and \textit{F}, completed by \textit{A'}, is shown. In general, input layers are reducted the most. The results also indicate that proprioceptive sensing does not need so many hidden units compared to tactile sensing.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{pa_result_amter_used_neurons_65.png}
-  \caption{Active neurons in the network after pruning [\%]: configurations A*, C, E, F (10 observations)}
+  \caption{Active neurons in the network after pruning [\%]: configurations A', C, E, F (10 observations)}
   \label{fig:pa_amter_used_neurons_65}
 \end{figure}
 
 \subsection{Feature Selection for Terrain Classification} \label{ssec:pa_amter_feature_selection}
-Section \ref{ssec:minimal_structure_util} presents an idea of using minimal structures for feature selection. The idea is based on tracking paths from input neurons representing individual features to output neurons (classes). This approach was applied on the minimal structure of the \textit{A} configuration from \cref{tab:amter_pa_results}, hence tha analysis is performed on a network of structure $ [330, 16, 14] $ with $ 516 $ synapses.
+Section \ref{ssec:minimal_structure_util} presents an idea of using minimal structures for a feature selection. The idea is based on tracking paths from input neurons representing individual features to output neurons (classes). This approach was applied on the minimal structure of the \textit{A} configuration from \cref{tab:amter_pa_results}, hence the analysis is performed on a network of structure $ [330, 16, 14] $ with $ 516 $ synapses.
 
-\cref{fig:pa_amter_n_paths_to_output} shows three sample examples (right y-axis). On the left y-axis, number of paths (see \cref{img:path_explanation}) to the output layer is counted for each feature.
+\cref{fig:pa_amter_n_paths_to_output} shows three sample examples (right y-axis). On the left y-axis, the number of paths (see \cref{img:path_explanation}) to the output layer is counted for each feature.
 
 \begin{figure}[H]
   \centering
@@ -596,27 +592,25 @@ Section \ref{ssec:minimal_structure_util} presents an idea of using minimal stru
   \label{img:path_explanation}
 \end{figure}
 
-Having these paths, we can distinguish features important for individual classes. In \cref{fig:pa_amter_used_features_thoraco}, the analysis is done for every feature of the Thoraco-Coxa joint angle sensors. Red dots means that the feature has a path to the corresponding class (terrain).
+Having these paths, we can distinguish features important for individual classes. In \cref{fig:pa_amter_used_features_thoraco}, the analysis is done for every feature of the Thoraco-Coxa joint angle sensors. Red dots mean that the feature has a path to the corresponding class (terrain). The same analysis for tactile sensors is shown in \cref{fig:pa_amter_used_features_tactile}. Similar figures for \textit{coxa} and \textit{femur} joint angle sensors can be found in \cref{app:sec:supplementary_figures_for_feature_analysis}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{fs_used_features_thoraco}
+  \includegraphics[width=0.8\textwidth]{fs_used_features_thoraco}
   \caption{Used features of thoraco-coxa proprioceptive sensors for individual classes.}
   \label{fig:pa_amter_used_features_thoraco}
 \end{figure}
 
-The same analysis for tactile sensors is shown in \cref{fig:pa_amter_used_features_tactile}. Similar figures for \textit{coxa} and \textit{femur} joint angle sensors can be found in \cref{app:sec:complete_feature_analysis_for_terrains}.
-
-Using this analysis, one might find the redundant parts of the feature vector, as some of the features are unimportant for any of the classes. Moreover, we can make statements about single features based on the classes it is connected to. For instance, if a feature, belonging to the foot contact sensor on the right front leg, fires for foam and does not fire for the other classes, we might assume that this sensor is important if we want to classify foam properly.
-
-To go even further with this analysis, also weights of the minimal network structure can be used. \cref{fig:pa_amter_io_power_tactile} shows \textit{powers}, which a single feature contributes with, to forming values on individual classes. 
+Using this analysis, one might find the redundant parts of the feature vector, as some of the features are unimportant for any of the classes. Moreover, we can make statements about single features based on the classes they are connected to. For instance, if a feature, belonging to the foot contact sensor on the right front leg, fires for foam and does not fire for the other classes, we might assume that this sensor is important if we want to classify foam properly.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{fs_used_features_tactile}
+  \includegraphics[width=0.8\textwidth]{fs_used_features_tactile}
   \caption{Used features of tactile sensors for individual classes.}
   \label{fig:pa_amter_used_features_tactile}
 \end{figure}
+
+To go even further with this analysis, also weights of the minimal network structure can be used. For every feature and every class, the \cref{fig:pa_amter_io_power_tactile} shows the sum of weights of the path from the feature to the class. 
 
 The \textit{power} of feature \textit{f}, corresponding to input neuron $ i_r $, and class \textit{c}, represented by output neuron $ o_q $, is computed as given in \cref{eq:io_power}; (assuming one hidden layer).
 \noindent
@@ -626,11 +620,19 @@ power_{r,q} = \displaystyle{\sum_{k=1}^{N_{hidden}} w_{r, k} + w_{k, q}}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{fs_amter_io_power_tactile}
-  \caption{Influence power of single features on classes: tactile sensors}
-  \label{fig:pa_amter_io_power_tactile}
+  \includegraphics[width=0.8\textwidth]{fs_amter_io_power_coxa}
+  \caption{Influence power of single features on classes: coxa sensors}
+  \label{fig:pa_amter_io_power_coxa}
 \end{figure}
 
 Based on the results in \cref{fig:pa_amter_io_power_tactile}, besides the knowledge if a feature affects a particular class, we can also see the direction (positive/negative) and a power of this influence. For instance, we can find a feature affecting plastic or concrete positively and snow or mud negatively at the same time. 
 
-Results for the proprioceptive sensors were generated in the same manner and can be found in \cref{app:sec:supplementary_figures_for_feature_analysis}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fs_amter_io_power_tactile}
+  \caption{Influence power of single features on classes: tactile sensors}
+  \label{fig:pa_amter_io_power_tactile}
+\end{figure}
+
+The results for the thoraco and femur sensors were generated in the same manner and can be found in \cref{app:sec:supplementary_figures_for_feature_analysis}.

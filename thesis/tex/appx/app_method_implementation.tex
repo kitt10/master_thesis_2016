@@ -142,10 +142,14 @@ In this manner, \textit{.txt} files for all terrains and all mentioned $ \sigma_
 Right after the data generation, a script called \textit{clean\_txt\_data.py} (\ref{app:code_documentation}) is used to check the created \textit{.txt} files. As it takes a long time to generate all the data, sometimes the simulation fails and the files are incomplete. Hence the script checks whether there are enough timesteps (at least more than 95) and also if the steps are not messed. Files that fail during the inspection are removed.
 
 \subsection*{Datasets Storing} \label{ssec:app:datasets_storing}
-During the overall process description in previous sections, some global process parameters have been collected. These configurations are now passed as arguments to the script called \textit{create\_terrains\_dataset.py} and therefore several datasets of various properties can be generated.
+During the overall process description in \cref{sec:dataset_creation}, some global process parameters have been collected. These configurations are now passed as arguments to the script called \textit{create\_terrains\_dataset.py} and therefore several datasets of various properties can be generated. The workflow of this script is illustrated in \cref{app:img_create_dataset}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{create_dataset}
+  \caption{Workflow of generating a dataset}
+  \label{app:img:create_dataset}
+\end{figure}
 
 The datasets files are saved in directory \path{root/py/cache/datasets/amos_terrains_sim/} (see \ref{app:code_documentation}). Their structure is based on a powerful serializing and de-serializing Python algorithm implemented under a package called \textit{pickle (cPickle)}. On the same basis a package called \textit{shelve} is used to represent a dataset as a dictionary-link object. The files are saved with the \textit{.ds} suffix.
-
-\subsection*{Trained Network Storing} \label{ssec:app:network_storing}
-Finally, the trained network needs a file name, as it is saved the same way as the datasets (see \cref{sec:dataset_creation}) - using the \textit{pickle (cPickle)} package, just with the \textit{.net} suffix.
 
