@@ -1,8 +1,42 @@
 \chapter{Discussion} \label{chap:discussion}
-page 1 discussion
+The objectives of this thesis consisted of four subtasks:
 
-The most efficient gaits were mapped to the corresponnding terrain surfaces in [1]
-\newpage
-page2 discussion
-\newpage
-page3 discussion
+\begin{enumerate}
+\item implementation of the classification method;
+\item developement of the new pruning algorithm;
+\item generation of datasets for virtual terrains;
+\item terrain classification.
+\end{enumerate}
+
+\section{Methods Recapitulation} \label{sec:dis:methods_recap}
+Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As an extention of the framework, a graphical user interface was created to visualize the training process of smaller networks.
+
+The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress had been observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained.
+
+Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weigths of unimportant synapses do not evolve during the training has been experimentally prooven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was sucessfully found.
+
+Then the algorithm was used to prune a network for MNIST classification. In this case the number of synapses was reducted from $ 11910 $ to $ 835 $, which is a reduction of almost $ 93\% $, while the classification accuracy of the pruned network was kept on $ 90\% $. Pruning the synapses, many of the neurons lost all of their inputs and became inactive. The minimal structure regarding the active neurons for the MNIST dataset is $ [495, 15, 10] $ (initially $ [784, 15, 10] $). 
+
+
+
+\section{Comparison of Results} \label{sec:dis:results_comp}
+\begin{table}[H]
+\centering
+\caption{Studies of terrain classification for legged robots.}
+\label{tab:studies_summary}
+\resizebox{\textwidth}{!} {
+\begin{tabular}{|M|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{\textit{source}} & \textit{sensors}                                                   & \textit{terrains} & \textit{accuracy} & \textit{platform}                                         & \textit{environment} \\ \hline
+\citep{article:01:visual}                               & vision                                                             & 8                 & 0.900             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & reality              \\ \hline
+\citep{article:02:laser}                               & laser                                                              & 3                 & X                 & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & reality              \\ \hline
+\citep{article:03:motorsignals}                                & tactile                                                            & 6                 & 0.89              & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & reality              \\ \hline
+\citep{article:04:onlinelearning}                              & \begin{tabular}[c]{@{}c@{}}vision\\ laser\\ vibration\end{tabular} & 5                 & 0.96              & \begin{tabular}[c]{@{}c@{}}Matilda\\ Robot\end{tabular}   & reality              \\ \hline
+\citep{article:06:haptic}                                & tactile                                                            & 4/4               & 0.94/0.73         & \begin{tabular}[c]{@{}c@{}}tetrapod\\ ALoF\end{tabular}   & reality              \\ \hline
+this study                           & \begin{tabular}[c]{@{}c@{}}proprioceptive\\ tactile\end{tabular}   & 14                & 0.923             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
+this study                          & proprioceptive                                                     & 14                & 0.696             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
+this study                           & tactile                                                            & 14                & 0.701             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
+\end{tabular}}
+\end{table}
+
+\section{Theories for Future Work} \label{sec:dis:theories}

@@ -115,3 +115,7 @@ hidelinks,
 \usepackage{enumitem}
 
 \usepackage{forest}
+
+\usepackage{array} % for defining a new column type
+\usepackage{varwidth} %for the varwidth minipage environment
+\newcolumntype{M}{>{\begin{varwidth}{4cm}}l<{\end{varwidth}}}

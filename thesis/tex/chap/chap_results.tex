@@ -2,7 +2,7 @@
 In this chapter the methods introduced in the previous sections are evaluated and results are presented. In \cref{sec:verification_of_nn} the implemented classification framework called \textit{KITTNN} (see \cref{chap:kitt_nn} and API in \cref{app:sec:api_kitt_nn}) is verified by comparing to a publicly provided framework. The results of the developed pruning algorithm are shown in \cref{sec:pruning_algorithm_results}. Then, the overall terrain classification process is gradually evaluated in \cref{sec:terrain_processing_results}.
 
 \section{Verification of the Network Implementation} \label{sec:verification_of_nn}
-Classification performance of the implemented method \textit{KITTNN} is compared to a \textit{Scikit-neuralnetwork} classifier (\citep{misc:sknn}) presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
+Classification performance of the implemented method \textit{KITTNN} is compared to a \textit{Scikit-NeuralNetwork} (\textit{SKNN}) classifier \citep{misc:sknn} presented in \cref{ssec:sknn}. The evaluation is performed on two datasets introduced in \cref{ssec:testing_datasets}.
 
 The following \cref{fig:kitt_verify_acc} shows the progress of classification accuracy within learning epochs. For each dataset/framework combination, $ 10 $ observations were performed and mean values with standard deviation ranges are shown.
 
@@ -378,7 +378,7 @@ method & method param & \textit{accuracy} & \textit{precision} & \textit{recall}
    KITTNN 	&  hidden neurons: 20 	 &     0.719 &      0.740 &      0.720 &   0.720\\ \hline
    SKNN     &  hidden neurons: 20 	 &     0.812 &      0.820 &      0.810 &   0.810\\ \hline
    RF       &  estimators: 10		 &     0.647 &      0.650 &      0.650 &   0.640\\ \hline
-   SVMs     &  penalty: 1.0			 &     0.545 &      0.570 &      0.550 &   0.500\\ \hline
+   SVMs     &  kernel: 'rbf'			 &     0.545 &      0.570 &      0.550 &   0.500\\ \hline
    k-NN     &  neighbours: 10	 	 &     0.733 &      0.740 &      0.730 &   0.720\\ \hline
 \hline
 \end{tabular}

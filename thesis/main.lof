@@ -71,30 +71,30 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco proprioceptive sensors, front legs\relax }}{71}{figure.caption.229}
-\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa proprioceptive sensors, front legs\relax }}{71}{figure.caption.230}
-\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur proprioceptive sensors, front legs\relax }}{71}{figure.caption.231}
-\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco proprioceptive sensors, middle legs\relax }}{72}{figure.caption.232}
-\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa proprioceptive sensors, middle legs\relax }}{72}{figure.caption.233}
-\contentsline {figure}{\numberline {A1.6}{\ignorespaces Femur proprioceptive sensors, middle legs\relax }}{72}{figure.caption.234}
-\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco proprioceptive sensors, hint legs\relax }}{72}{figure.caption.235}
-\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa proprioceptive sensors, hint legs\relax }}{72}{figure.caption.236}
-\contentsline {figure}{\numberline {A1.9}{\ignorespaces Femur proprioceptive sensors, hint legs\relax }}{73}{figure.caption.237}
-\contentsline {figure}{\numberline {A1.10}{\ignorespaces Tactile sensors, front legs\relax }}{73}{figure.caption.238}
-\contentsline {figure}{\numberline {A1.11}{\ignorespaces Tactile sensors, middle legs\relax }}{73}{figure.caption.239}
-\contentsline {figure}{\numberline {A1.12}{\ignorespaces Tactile sensors, hint legs\relax }}{73}{figure.caption.240}
-\contentsline {figure}{\numberline {A1.13}{\ignorespaces Used features of coxa-trochanteral proprioceptive sensors for individual classes.\relax }}{75}{figure.caption.244}
-\contentsline {figure}{\numberline {A1.14}{\ignorespaces Used features of femur-tibia proprioceptive sensors for individual classes.\relax }}{75}{figure.caption.245}
-\contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{76}{figure.caption.246}
-\contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{76}{figure.caption.247}
+\contentsline {figure}{\numberline {A1.1}{\ignorespaces Thoraco proprioceptive sensors, front legs\relax }}{70}{figure.caption.237}
+\contentsline {figure}{\numberline {A1.2}{\ignorespaces Coxa proprioceptive sensors, front legs\relax }}{70}{figure.caption.238}
+\contentsline {figure}{\numberline {A1.3}{\ignorespaces Femur proprioceptive sensors, front legs\relax }}{70}{figure.caption.239}
+\contentsline {figure}{\numberline {A1.4}{\ignorespaces Thoraco proprioceptive sensors, middle legs\relax }}{71}{figure.caption.240}
+\contentsline {figure}{\numberline {A1.5}{\ignorespaces Coxa proprioceptive sensors, middle legs\relax }}{71}{figure.caption.241}
+\contentsline {figure}{\numberline {A1.6}{\ignorespaces Femur proprioceptive sensors, middle legs\relax }}{71}{figure.caption.242}
+\contentsline {figure}{\numberline {A1.7}{\ignorespaces Thoraco proprioceptive sensors, hint legs\relax }}{71}{figure.caption.243}
+\contentsline {figure}{\numberline {A1.8}{\ignorespaces Coxa proprioceptive sensors, hint legs\relax }}{71}{figure.caption.244}
+\contentsline {figure}{\numberline {A1.9}{\ignorespaces Femur proprioceptive sensors, hint legs\relax }}{72}{figure.caption.245}
+\contentsline {figure}{\numberline {A1.10}{\ignorespaces Tactile sensors, front legs\relax }}{72}{figure.caption.246}
+\contentsline {figure}{\numberline {A1.11}{\ignorespaces Tactile sensors, middle legs\relax }}{72}{figure.caption.247}
+\contentsline {figure}{\numberline {A1.12}{\ignorespaces Tactile sensors, hint legs\relax }}{72}{figure.caption.248}
+\contentsline {figure}{\numberline {A1.13}{\ignorespaces Used features of coxa-trochanteral proprioceptive sensors for individual classes.\relax }}{74}{figure.caption.252}
+\contentsline {figure}{\numberline {A1.14}{\ignorespaces Used features of femur-tibia proprioceptive sensors for individual classes.\relax }}{74}{figure.caption.253}
+\contentsline {figure}{\numberline {A1.15}{\ignorespaces Influence power of single features on classes: thoraco-coxa sensors\relax }}{75}{figure.caption.254}
+\contentsline {figure}{\numberline {A1.16}{\ignorespaces Influence power of single features on classes: femur-tibia sensors\relax }}{75}{figure.caption.255}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A2.1}{\ignorespaces \textit {KITTNN} package : Implemented neural network framework\relax }}{77}{figure.caption.250}
-\contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{78}{figure.caption.252}
-\contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{79}{figure.caption.255}
-\contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{80}{figure.caption.265}
-\contentsline {figure}{\numberline {A2.5}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{81}{figure.caption.267}
-\contentsline {figure}{\numberline {A2.6}{\ignorespaces The process of data acquisition from the simulation.\relax }}{82}{figure.caption.282}
-\contentsline {figure}{\numberline {A2.7}{\ignorespaces The structure of rough data directory.\relax }}{82}{figure.caption.283}
-\contentsline {figure}{\numberline {A2.8}{\ignorespaces Workflow of generating a dataset\relax }}{83}{figure.caption.285}
+\contentsline {figure}{\numberline {A2.1}{\ignorespaces \textit {KITTNN} package : Implemented neural network framework\relax }}{76}{figure.caption.258}
+\contentsline {figure}{\numberline {A2.2}{\ignorespaces kitt\_neuron.py : Neuron class inheritance\relax }}{77}{figure.caption.260}
+\contentsline {figure}{\numberline {A2.3}{\ignorespaces kitt\_net.py : Neural Network Initialization\relax }}{78}{figure.caption.263}
+\contentsline {figure}{\numberline {A2.4}{\ignorespaces Terrain classification process - overall diagram.\relax }}{79}{figure.caption.273}
+\contentsline {figure}{\numberline {A2.5}{\ignorespaces Software architecture for LPZRobots and GoRobots. \citep {misc:lpzrobots}\relax }}{80}{figure.caption.275}
+\contentsline {figure}{\numberline {A2.6}{\ignorespaces The process of data acquisition from the simulation.\relax }}{81}{figure.caption.290}
+\contentsline {figure}{\numberline {A2.7}{\ignorespaces The structure of rough data directory.\relax }}{81}{figure.caption.291}
+\contentsline {figure}{\numberline {A2.8}{\ignorespaces Workflow of generating a dataset\relax }}{82}{figure.caption.293}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
