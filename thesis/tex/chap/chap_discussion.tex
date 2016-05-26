@@ -9,17 +9,52 @@ The objectives of this thesis consisted of four subtasks:
 \end{enumerate}
 
 \section{Methods Recapitulation} \label{sec:dis:methods_recap}
-Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As an extention of the framework, a graphical user interface was created to visualize the training process of smaller networks.
+Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As a framework extention, a graphical user interface was created to visualize the training process of smaller networks.
 
-The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress had been observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained.
+The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress was observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained.
 
-Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weigths of unimportant synapses do not evolve during the training has been experimentally prooven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was sucessfully found.
+Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weigths of unimportant synapses do not evolve during the training has been experimentally proven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was sucessfully found.
 
-Then the algorithm was used to prune a network for MNIST classification. In this case the number of synapses was reducted from $ 11910 $ to $ 835 $, which is a reduction of almost $ 93\% $, while the classification accuracy of the pruned network was kept on $ 90\% $. Pruning the synapses, many of the neurons lost all of their inputs and became inactive. The minimal structure regarding the active neurons for the MNIST dataset is $ [495, 15, 10] $ (initially $ [784, 15, 10] $). 
+Then the algorithm was used to prune a network for MNIST classification. In this case the number of synapses were reducted from $ 11910 $ to $ 835 $, which is a reduction of almost $ 93\% $, while the classification accuracy of the pruned network was kept on $ 90\% $. Pruning the synapses, many of the neurons lost all of their inputs and became inactive. The minimal structure regarding the active neurons for the MNIST dataset is $ [495, 15, 10] $ (initially $ [784, 15, 10] $). 
 
+The obtained structure showed that many of the input neurons (pixels of the MNIST examples) were unimportant for classification, which lead to the analysis of features for individual classes. In \cref{fig:mnist_analysis}, features important for particular digits are shown.
 
+Regarding the third objective, a framework provided by \citep{misc:lpzrobots} was used to simulate the hexapod robot AMOS II walking on different terrains. It was selected to generate $ 14 $ terrains in total, where each of them was defined by 5 features: roughness, slipperiness, hardness, elasticity and height (see \cref{tab:terrains_parameters}). These parameters were influenced by a terrain noise to generate more variability for samples of one class.
+
+In total $ 24 $ sensors were used ($ 18 $ proprioceptive and $ 6 $ tactile sensors). The signals of these sensors were influenced by an additive signal noise to simulate the real world environment. Finally, feature vectors were built by concatenating sensors one after each other and datasets were generated (a complete list in \cref{app:tab:generated_datasets}).
+
+The generated datasets are parametrized by:
+
+\begin{enumerate}
+\item terrain noise standard deviation;
+\item signal noise standard deviation;
+\item number of simulation timesteps (lenght of the sensory signal);
+\item used sensors.
+\end{enumerate}
+
+Each of the datasets was used for training of a \textit{KITTNN} network, where the trained networks were parametrized by \textit{learning rate}, \textit{network structure}, \textit{number of training epochs}.
+
+The classification results were saved for all of these configurations, which enabled to make a statistical analysis of the parameters. 
+
+Here are some observations:
+
+\begin{enumerate}
+\item Using deterministic simulation proprioceptive and tactile sensory data gathered in a period of $ 4 $ seconds, we get $ 92\% $ of classification accuracy for $ 14 $ different terrain types.
+\item Using a more realistic configuration with $ 3\% $ of relative terrain noise and $ 3\% $ of relative signal noise, the classification accuracy drops to $ 72\% $ (complete analysis in \cref{fig:acc_tn_sn_mat}).
+\item Compared to 1, when only $ 2 $ seconds are used to gather the sensory data, the accuracy drops to $ 85\% $. Then, for $ 1 $ second the accuracy is $ 80\% $ and if we want to classify real-time data, we get $ 64\% $ (analysis in \cref{fig:ts_acc_boxplot}).
+\item The combination of both sensor types provides the best classification results (hypothesis proved). Using the propriceptors only, the accuracy drops from $ 92\% $ to $69.6\%$. Using only tactile sensors provides the accuracy of $ 70.1\% $ (see \cref{fig:sen_vs_epoch}).
+\item The optimal number of hidden neurons in the fully-connected network is $ 20 $, a suitable learning rate can be $ 0.1 $ or $ 0.5 $ (see \cref{ssec:selection_of_learning_parameters}).
+\end{enumerate}
+
+Finally, the pruning algorithm was used to find a minimal network structure for the terrain classification task. Regarding the reference configuration \textit{A} (deterministic dataset, 20 hidden neurons - see \ref{tab:configurations_for_pa}), the number of synapses in the network were reduced from $ 19400 $ to $ 516 $ ($ 97.35\% $) and the structure changed from $ [960, 20, 14] $ to $ [330, 16, 14] $. The classification accuracy of the pruned network is $ 88.07\% $ (see \cref{tab:amter_pa_results} for more detailed results).
+
+Based on the change in the network structure, we know that at least $ 65\% $ of the features are unimportant and we can even locate them. Furthemore, we can separate features important for individual classes and see the correlations among the classes. Additionaly, as shown in \cref{fig:pa_amter_io_power_tactile}, we can see the influence power of single features on the classes.
+
+A proper analysis of network minimal structures is definitely a subject for future work.
 
 \section{Comparison of Results} \label{sec:dis:results_comp}
+Based on the literature, this approach is compared to results of $ 5 $ terrain classification studies in \cref{tab:studies_summary}. The comparison of the classification accuracy must be done with respect to the number of classified terrain types. In this work, we distinguish far more terrains than in the others works.
+
 \begin{table}[H]
 \centering
 \caption{Studies of terrain classification for legged robots.}
@@ -33,10 +68,14 @@ Then the algorithm was used to prune a network for MNIST classification. In this
 \citep{article:03:motorsignals}                                & tactile                                                            & 6                 & 0.89              & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & reality              \\ \hline
 \citep{article:04:onlinelearning}                              & \begin{tabular}[c]{@{}c@{}}vision\\ laser\\ vibration\end{tabular} & 5                 & 0.96              & \begin{tabular}[c]{@{}c@{}}Matilda\\ Robot\end{tabular}   & reality              \\ \hline
 \citep{article:06:haptic}                                & tactile                                                            & 4/4               & 0.94/0.73         & \begin{tabular}[c]{@{}c@{}}tetrapod\\ ALoF\end{tabular}   & reality              \\ \hline
-this study                           & \begin{tabular}[c]{@{}c@{}}proprioceptive\\ tactile\end{tabular}   & 14                & 0.923             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
-this study                          & proprioceptive                                                     & 14                & 0.696             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
-this study                           & tactile                                                            & 14                & 0.701             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & simulation           \\ \hline
+this study                           & \begin{tabular}[c]{@{}c@{}}proprioceptive\\ tactile\end{tabular}   & 14                & 0.923             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ deterministic\end{tabular}           \\ \hline
+this study                          & proprioceptive                                                     & 14                & 0.696             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ deterministic\end{tabular}           \\ \hline
+this study                           & tactile                                                            & 14                & 0.701             & 
+\begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ deterministic\end{tabular}           \\ \hline
+this study                           & \begin{tabular}[c]{@{}c@{}}proprioceptive\\ tactile\end{tabular}   & 14                & 0.719             & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ noisy\end{tabular}            \\ \hline
+this study                           & proprioceptive                                                     & 14                & 0.426                  & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ noisy\end{tabular}            \\ \hline
+this study                           & tactile                                                            & 14                & 0.362                  & \begin{tabular}[c]{@{}c@{}}hexapod\\ AMOS II\end{tabular} & \begin{tabular}[c]{@{}c@{}}simulation\\ noisy\end{tabular}            \\ \hline
 \end{tabular}}
 \end{table}
 
-\section{Theories for Future Work} \label{sec:dis:theories}
+Considering the high number of detected terrains, our results seem to be very positive. However, we must take into account that these results are based on the simulation data. To make a fair comparison, the method should be impelemented on the real platform. 

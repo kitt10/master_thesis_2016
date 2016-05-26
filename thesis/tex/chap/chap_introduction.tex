@@ -1,17 +1,19 @@
 \chapter{Introduction} \label{chap:introduction}
 The question of how information about the physical world is sensed motivated Frank Rosenblatt in 1958, when he presented his perceptron, a model capable of learning and pattern recognition. 
 
-His invention has been evolved over half a century in the field of machine learning, resulting in different kinds of artifical neural networks and deep learning methods. Out of the broad array of applications, we can mention the face recognition helping to find criminals, weather forecasting, searching engines or self-driving cars. People from the Cornell University in New York used deep learning to locate whales in the ocean so that ships can avoid hitting them \citep{misc:whales}.    
+His invention has been evolved over half a century in the field of machine learning, resulting in different kinds of artifical neural networks and deep learning methods. Out of the broad array of applications, we can mention the face recognition helping to find criminals, weather forecasting, searching engines or self-driving cars. Scientists from Cornell University in New York used deep learning to locate whales in the ocean so that ships could avoid hitting them \citep{misc:whales}.    
 
 In this thesis, I focus on classification, a widely used area of machine learning, using feedforward neural networks. The first part of the study is devoted to developing a working classification framework, based on a fully-connected network structure, which is commonly being used nowadays. 
 
-The novelty of the work consists of invention of a network pruning algorithm that will find a minimal network structure needed for classification. The hypothesis is that some of the synapses are unimportant in the fully-connected network and hence the classification accuracy will not drop significantly after their removal.
+The novelty of the work consists of inventing a network pruning algorithm, which is able to find a minimal network structure needed for classification. The hypothesis is that some of the synapses are unimportant in the fully-connected network and hence the classification accuracy will not drop significantly after their removal.
 
 In the second part of the study, the developed neural network framework is used for terrain classification for a hexapod robot AMOS II \citep{misc:amosii}. The classification is based on proprioceptive (joint angles) and tactile (ground contacts) sensors of the hexapod and the classification data is virtually generated using the \textit{LpzRobots} simulator \citep{misc:lpzrobots}.
 
-The hypothesis is that using proprioceptive and tactile sensors, sensory data, gathered in a period of time, will be needed for terrain classification, however, then, the prediction will be performed instantly, as no further data processing is required. In general, the combination of both sensor types is presumed to give the best classification performance, compared to using each of them separately.
+The hypothesis is that using proprioceptive and tactile sensors, sensory data, gathered in a period of time, will be needed for terrain classification, however, then, the prediction will be performed instantly, as no further data processing is required.
 
-Finally, the invented pruning algorithm is used to find a minimal network structure for the terrain classification problem. Additionally, based on the found minimal structure, features of the input vector are analysed in terms of their contribution to classification.
+The invented pruning algorithm is used to find a minimal network structure for the terrain classification problem. Additionally, based on the minimal structure, the input vector features are analysed in terms of their contribution to classification.
+
+Having the information about the terrain, the hexapod can adapt its gait accordingly to save some energy and/or to be even able to traverse the surface.
 
 \section{State of the Art} \label{sec:soa}
 The idea of classification is based on training a model on a set of data by setting some model parameters. A wide range of classification methods, differing one from each other in their mathematical backgrounds, are provided nowadays, however, the classification procedure follows a conventional line:
