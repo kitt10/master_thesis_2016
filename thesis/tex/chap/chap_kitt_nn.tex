@@ -57,7 +57,7 @@ The sigmoid function given as in \cref{eq:nn_transfer_function} is used as the t
 f(z) = \frac{1}{1 + e^{-z}}
 \end{align}
 
-The sigmoid function maps neuron activations into $ [0.0, 1.0] $ interval. This approach is used by default in this work. Additionaly, the \textit{tanh(z)} function is implemented (compared to \textit{sigmoid(z)} in \cref{fig:transfer_functions}), in order to test one of the pruning methods based on weights sensitivity (evaluated in \cref{ssec:comparison_to_other_pa}). The \textit{tanh(z)} function maps the input \textit{z} into $ [-1.0, 1.0] $ interval.
+The sigmoid function maps neuron activations into $ [0.0, 1.0] $ interval. This approach is used by default in this work. Additionally, the \textit{tanh(z)} function is implemented (compared to \textit{sigmoid(z)} in \cref{fig:transfer_functions}), in order to test one of the pruning methods based on weights sensitivity (evaluated in \cref{ssec:comparison_to_other_pa}). The \textit{tanh(z)} function maps the input \textit{z} into $ [-1.0, 1.0] $ interval.
 
 \begin{figure}[H]
   \centering
@@ -88,7 +88,7 @@ The training procedure of multilayer perceptrons (see \cref{eq:perceptron}) is b
 This group of samples is called \textit{a mini-batch}. Using mini-batches can speed up the process, however, it can bring some problems with finding the right solution by the \textit{Gradient Descent} method (evident from \cref{eq:batch_gd}). Usually, the mini-batch size is left as a training parameter. In this work, it is set to \textit{10}.
 
 \subsection{Matrix Notations} \label{ssec:matrix_notation}
-Assuming feedforward neural networks and reffering to \cref{img:model_neuron}, the following notation is used for processing multiple samples.
+Assuming feedforward neural networks and referring to \cref{img:model_neuron}, the following notation is used for processing multiple samples.
 
 \begin{description}
 \item[$ X $] : network input: $ m $-by-$ n $ matrix, where $ m $ is the number of samples and $ n $ is the size of one sample
@@ -140,7 +140,7 @@ Partial derivatives $ \frac{dJ}{dw} $ for all weights $ w $ of chosen weight mat
 \frac{dJ}{dW^{(i)}} =  \displaystyle{\sum_{k=1}^m} (\frac{dJ}{dw})_k
 \end{align}
 
-Having several layers of a network results in several weight (and bias) mattrices, while the goal is to find optimal parameters of overall network. In order to compute optimal parameters in all of the mattrices, the sum rule in differentation (\cref{eq:sum_rule}) followed by the chain rule (\cref{eq:chain_rule}) are applied.
+Having several layers of a network results in several weight (and bias) matrices, while the goal is to find optimal parameters of overall network. In order to compute optimal parameters in all of the matrices, the sum rule in differentiation (\cref{eq:sum_rule}) followed by the chain rule (\cref{eq:chain_rule}) are applied.
 
 \begin{align} \label{eq:sum_rule}
 \frac{\delta}{\delta x} (u+v) = \frac{\delta u}{\delta x} + \frac{\delta v}{\delta x}
@@ -223,7 +223,7 @@ Once the initialization is done, the network is trained with some optimal learni
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{pruning_algorithm.png}
-  \caption{The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref{img:cut_synapses} and \ref{img:accuracy_kept} respectively}
+  \caption{The Pruning Algorithm: initialized variables are in bold, red marked functions refer to \ref{img:cut_synapses} and \ref{img:accuracy_kept} respectively}
   \label{img:pruning_algorithm}
 \end{figure}
 
@@ -276,7 +276,7 @@ Two datasets were used for verification of the pruning algorithm: XOR and MNIST.
 The pruning algorithm was also applied on the terrain classification problem (evaluated in \cref{sec:pa_amter}).
 
 \subsubsection*{XOR Dataset}
-This dataset relates to the well-known XOR problem defined by a thruth table (\cref{tab:xor}).
+This dataset relates to the well-known XOR problem defined by a truth table (\cref{tab:xor}).
 
 \begin{table}[H]
 \centering

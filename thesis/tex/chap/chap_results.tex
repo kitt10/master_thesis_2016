@@ -38,7 +38,7 @@ In \cref{tab:kitt_verify_f1}, the \textit{f1-score} (see \cref{eq:f1_score} in \
 }
 \end{table}
 
-In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown. The \textit{SKNN} library provides an option to use \textit{gpu} in order to decrease the training time, hence also this training variant is included to the comparison.
+In \cref{fig:kitt_verify_time}, a comparison of average epoch processing time is shown.
 
 This evaluation is done on the MNIST dataset only, as the training is quite fast on XOR for both implementations due to the smaller amount and size of samples. The average is computed out of $ 1000 $ samples, as we train $ 100 $ epochs in $ 10 $ observations.
 
@@ -54,7 +54,7 @@ The implemented \textit{KITTNN} framework cannot compete in speed with the optim
 \section[Performance Evaluation of the Pruning Algorithm]{Performance Evaluation of the Pruning \\Algorithm} \label{sec:pruning_algorithm_results}
 This section presents results of the implemented pruning algorithm (introduced in \cref{sec:network_pruning_algorithm}). The input of the algorithm is given by a dataset and an obviously oversized neural network with a fully-connected structure. On the output, a pruned network of a minimal structure, but keeping a required classification accuracy, is expected.
 
-The evalutaion of the algorithm is performed on the two datasets, XOR and MNIST, described in \cref{ssec:testing_datasets}.
+The evaluation of the algorithm is performed on the two datasets, XOR and MNIST, described in \cref{ssec:testing_datasets}.
 
 \subsection{Evaluation on XOR Dataset} \label{ssec:evaluation_on_xor}
 The XOR dataset is essential for testing the functionality of the algorithm, as we know the minimal network structure for this problem ($ [2, 2, 1] $). Initially, a network with one hidden layer of $ 100 $ neurons is constructed as the algorithm input (\cref{img:pa_xor_start}). The desired structure is shown in \cref{img:pa_xor_final}.
@@ -373,7 +373,7 @@ Using the noisy dataset $ 03\_03\_40\_a $, the classification performance of the
 \label{tab:tc_comparison_to_other_classification_methods}
 \begin{tabular}{|l|l|c|c|c|c|} 
 \hline
-method & method param & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} \\
+method & method param. & \textit{accuracy} & \textit{precision} & \textit{recall} & \textit{f1-score} \\
 \hline \hline
    KITTNN 	&  hidden neurons: 20 	 &     0.719 &      0.740 &      0.720 &   0.720\\ \hline
    SKNN     &  hidden neurons: 20 	 &     0.812 &      0.820 &      0.810 &   0.810\\ \hline
@@ -384,7 +384,7 @@ method & method param & \textit{accuracy} & \textit{precision} & \textit{recall}
 \end{tabular}
 \end{table}
 
-The comparison to \textit{SKNN} indicates that the \textit{KITTNN} implementation might be optimizable. However, in general, the results prooved the suitability of using neural networks.
+The comparison to \textit{SKNN} indicates that the \textit{KITTNN} implementation might be optimizable. However, in general, the results proved the suitability of using neural networks.
 
 \subsection{Selection of Learning Parameters} \label{ssec:selection_of_learning_parameters}
 This section is devoted to an analysis of parameters belonging to the network and the learning process. The goal was to determine:
@@ -474,7 +474,7 @@ The results presented so far are obtained using both of these two types together
 
 \cref{fig:sen_vs_epoch} shows that the combination of the two types performs with the highest classification accuracy, namely even with $ 10 $ simulation steps (1 second of real time) compared to $ 40 $ (4 seconds), resp. $ 80 $ (8 seconds), for only one of the sensor types. Having more time for classification ($ 4 $ or $ 8 $ seconds), the six tactile sensors are more successful than the proprioceptive ones, however, they fail when the classification needs to be fast ($ 1 $ second). Complete classification results for all of these configurations can be found in \cref{tab:classification_results}.
 
-The number of used sensors affect the size of the feature vector and hence also the size of the network input layer. The dimensionality of the network mattrices influences the processing time. An average epoch time out of 10 observations is shown for the two sensor types in \cref{fig:sen_time}. 
+The number of used sensors affect the size of the feature vector and hence also the size of the network input layer. The dimensionality of the network matrices influences the processing time. An average epoch time out of 10 observations is shown for the two sensor types in \cref{fig:sen_time}. 
 
 \begin{figure}[H]
   \centering
@@ -562,7 +562,7 @@ The following \cref{fig:pa_amter_used_neurons_90} shows a relative amount of act
   \label{fig:pa_amter_used_neurons_90}
 \end{figure}
 
-In \cref{fig:pa_amter_used_neurons_65}, the same statistics for configurations \textit{C}, \textit{E} and \textit{F}, completed by \textit{A'}, is shown. In general, input layers are reducted the most. The results also indicate that proprioceptive sensing does not need so many hidden units compared to tactile sensing.
+In \cref{fig:pa_amter_used_neurons_65}, the same statistics for configurations \textit{C}, \textit{E} and \textit{F}, completed by \textit{A'}, is shown. In general, input layers are reduced the most. The results also indicate that proprioceptive sensing does not need so many hidden units compared to tactile sensing.
 
 \begin{figure}[H]
   \centering

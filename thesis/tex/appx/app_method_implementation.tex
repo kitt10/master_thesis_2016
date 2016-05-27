@@ -18,7 +18,7 @@ The \textit{KITTNN} implementation is based on some general knowledge gained at 
 The overall idea is based on the object-oriented programming. There are three fundamental files containing the main classes corresponding to structural elements - a network, a neuron and a synapse (a connection).
 
 \subsubsection*{kitt\_neuron.py} \label{ssec:kitt_neuron}
-The very basic units of a neural net are called neurons. In case of artificial systems, these units are responsible for transfering all their inputs into one output. The behavior is moreless the same for all of the units, therefore a class called \textit{Neuron} implements some basic common functions.
+The very basic units of a neural net are called neurons. In case of artificial systems, these units are responsible for transferring all their inputs into one output. The behaviour is moreless the same for all of the units, therefore a class called \textit{Neuron} implements some basic common functions.
 
 \begin{figure}[H]
   \centering
@@ -32,7 +32,7 @@ Then, as \cref{img:kitt_neuron} shows, three classes are inherited from the \tex
 \subsubsection*{kitt\_synapse.py} \label{ssec:kitt_synapse}
 Next, there is a class representing a neural connection - a synapse. An instance of this class takes care of the corresponding weight and remembers the two connected neurons. 
 
-Additionally, a function called \textbf{remove\_self()} is implemented, which sets the weight to zero and removes the synapse from a database of the corresponding neural net. Then it also checks the two connected neurons, if they have some other connections remaining. If not, they are labeled as \textit{dead}, as they are not a part of the network anymore.
+Additionally, a function called \textbf{remove\_self()} is implemented, which sets the weight to zero and removes the synapse from a database of the corresponding neural net. Then it also checks the two connected neurons, if they have some other connections remaining. If not, they are labeled as \textit{dead}, as they are not a part of the network any more.
 
 \subsubsection*{kitt\_net.py} \label{ssec:kitt_net}
 The network is initialized by creating an instance of \textit{NeuralNetwork()} class from \textit{kitt\_net.py}. The initialization process is illustrated in \cref{img:kitt_net}. Basically, the only parameter is the network structure, which is expected as a \textit{.py iterable} type. 
@@ -94,7 +94,7 @@ The project is implemented in \textit{C++} and needs a Unix system to be run. It
   \label{img:lpzrobots_architecture}
 \end{figure}
 
-To introduce the elements in \cref{img:lpzrobots_architecture}, \textit{ThisSim} is an inherited class of another class called \textit{Simulation} and is initialized everytime the simulation is launched. It integrates all elements together, controls the environment as well as the robot and sets up initial parameters. An instance of the \textit{Agent} class integrates all components of the agent (robot) by using the shown classes.
+To introduce the elements in \cref{img:lpzrobots_architecture}, \textit{ThisSim} is an inherited class of another class called \textit{Simulation} and is initialized every time the simulation is launched. It integrates all elements together, controls the environment as well as the robot and sets up initial parameters. An instance of the \textit{Agent} class integrates all components of the agent (robot) by using the shown classes.
 
 \subsection*{Terrain Construction in main.cpp} \label{ssec:app:terrain_construction_in_main.cpp}
 The \textbf{LpzRobots} AMOS II simulator supports some terrain setting. In the main simulation file (\textit{main.cpp} - see \ref{app:code_documentation}), a \textit{'rough terrain'} substance is being initialized and passed through a handle to a \textit{TerrainGround} constructor.
@@ -110,7 +110,7 @@ TerrainGround* terrainground = new TerrainGround(oodeHandle,
 
 \newpage
 \subsection*{Data Storing} \label{ssec:app:data_storing}
-It is always recommended to store rough data before some processing, hence the simulator creates \textit{.txt} files of structure symbolized in \cref{txt:rough_data} (with the reference to sensors shortcuts in \cref{tab:proprioceptors}). 
+It is always recommended to store rough data before some processing, hence the simulator creates \textit{.txt} files of structure symbolized in \cref{txt:rough_data} (with the reference to sensors abbreviations in \cref{tab:proprioceptors}). 
 
 \begin{lstlisting}[language=XML, caption={Rough sensory data files structure}, label=txt:rough_data]
 timestep_001;ATRf;ATRm;ATRh;ATLf;...;FRh;FLf;FLm;FLh

@@ -10,7 +10,7 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Training process flowchart. $ T_1 $: Threshold for a terminating condition based on a learning error. If the error is reduced to be lower than this threshold, the learning process is stopped. $ T_2 $: Threshold for a terminating condition based on the number of iterations (epochs). The learning process is stopped after a specified number of epochs, no matter how successful the training has been.\relax }}{10}{figure.caption.43}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Pruning Algorithm: hypothesis formulation\relax }}{14}{figure.caption.63}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Overall flowchart of the pruning process\relax }}{15}{figure.caption.68}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions reffer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{15}{figure.caption.69}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The Pruning Algorithm: initialized variables are in bold, red marked functions refer to \ref {img:cut_synapses} and \ref {img:accuracy_kept} respectively\relax }}{15}{figure.caption.69}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Synaptic pruning based on weight changes and current percentile value\relax }}{16}{figure.caption.70}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Evaluation of the classification accuracy after pruning\relax }}{16}{figure.caption.72}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces 2D XOR Data illustration\relax }}{18}{figure.caption.78}

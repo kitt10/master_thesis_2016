@@ -44,12 +44,12 @@ The commonly known \textit{k-Nearest Neighbours} (\textit{k-NN}) algorithm uses 
 
 The \textit{Random Forest} (\textit{RF}) approach \citep{article:rf} is based on decision trees, which learn simple decision rules inferred from the data features. Decision trees are known for having troubles with over-fitting, therefore the Random Forest uses many decision trees and finds a classification result by averaging their outputs (bagging).
 
-Each of those methods has some adventages and disadvantages on a particular type of data and its distribution. For instance, \textit{SVMs} are a powerful tool for binary problems with an outlier free distribution. For a multiclass data, where many outliers are expected, one might want to choose Random Forest, however, the decision trees usually take a longer time in classification.
+Each of those methods has some advantages and disadvantages on a particular type of data and its distribution. For instance, \textit{SVMs} are a powerful tool for binary problems with an outlier free distribution. For a multiclass data, where many outliers are expected, one might want to choose Random Forest, however, the decision trees usually take a longer time in classification.
 
-To summarize, the best classification method has not been prooved yet. However, \textit{neural networks} (\textit{NN}) are being used in more and more fields nowadays.  
+To summarize, the best classification method has not been proved yet. However, \textit{neural networks} (\textit{NN}) are being used in more and more fields nowadays.  
 
 \subsubsection*{Feedforward Neural Networks} \label{ssec:intro_to_nn}
-Classification algorithms are often considered to behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human's behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most accurate imitation of a human brain out of the proposed methods.
+Classification algorithms are often considered to behave intelligently while successfully accomplishing a particular task. To measure the intelligence of an artificial system, a comparison to the human behaviour is often used. If the goal is to model the human behaviour artificially, neural networks are certainly the most accurate imitation of a human brain out of the proposed methods.
 
 The perceptron \citep{article:perceptron} is a binary classifier mapping an input vector $ X = [x_1, x_2, ..., x_n] $ to an output $ f_p(X) $; (\cref{eq:perceptron}).
 \noindent
@@ -65,10 +65,10 @@ where $ W = [w_1, w_2, ..., w_n]^T $ is a vector of weights and $ b $ is a bias,
 
 These parameters ($ W $ and $ b $) are considered as perceptron's memory. Finding their optimal values, a single perceptron is capable of classifying linearly separable samples of two classes. This searching for the parameter values, based on some labeled data, is considered as learning.
 
-To avoid the requirment of linear separability, multiple perceptrons are connected into a directed graph, which forms a multilayer perceptron. Then, replacing the $ f_p() $ by another function, so-called transfer function (e.g. \textit{sigmoid} or \textit{tanh} - see \cref{fig:transfer_functions}), every unit generates a continuous output. The resulting structure is then called a \textit{feedforward neural network} (see \cref{img:neural_net}), which is generally capable of multiclass classification of linearly inseparable classes.
+To avoid the requirement of linear separability, multiple perceptrons are connected into a directed graph, which forms a multilayer perceptron. Then, replacing the $ f_p() $ by another function, so-called transfer function (e.g. \textit{sigmoid} or \textit{tanh} - see \cref{fig:transfer_functions}), every unit generates a continuous output. The resulting structure is then called a \textit{feedforward neural network} (see \cref{img:neural_net}), which is generally capable of multiclass classification of linearly inseparable classes.
 
 \subsection*{Network Pruning Algorithms} \label{sec:soa_pruning_algorithms}
-In general, increasing number of neurons in the network helps to deal with outliers and improves the classification. On the other hand, to obtain generalization in systems trained by examples, the smallest system that will fit the data should be used. Moreover, increasing number of synapses increases the dimensionality of weight mattrices and so slows down the training process as well as the prediction. The aim of a network designer should be to find a minimal structure, where only connections important for classification remain, while the classification accuracy requirement is met. Two basic approaches of getting such structure are available:
+In general, increasing number of neurons in the network helps to deal with outliers and improves the classification. On the other hand, to obtain generalization in systems trained by examples, the smallest system that will fit the data should be used. Moreover, increasing number of synapses increases the dimensionality of weight matrices and so slows down the training process as well as the prediction. The aim of a network designer should be to find a minimal structure, where only connections important for classification remain, while the classification accuracy requirement is met. Two basic approaches of getting such structure are available:
 
 \begin{enumerate}
 \item train a network that is larger than necessary and then remove the parts that are not needed;
@@ -93,11 +93,11 @@ A performance evaluation of the brute force algorithm and an algorithm presuming
 Moreover, having the minimal network structure, features important for classification can be effectively selected and analysed (see \cref{ssec:minimal_structure_util}). 
 
 \subsection*{Terrain Classification for Legged Robots} \label{sec:soa_terrain_classification}
-Multilegged autonomous robots have become popular for their ability to deal with various terrain types, which might be impassable for wheeled robots. Terrain classification helps to adapt their gait and so to optimize the walking performance. In general, legged robots are equipped by a broad range of sensors. Several studies have been done on the terrain classification topic, where each of them is based on a specific sensor type:
+Multi-legged autonomous robots have become popular for their ability to deal with various terrain types, which might be impassable for wheeled robots. Terrain classification helps to adapt their gait and so to optimize the walking performance. In general, legged robots are equipped by a broad range of sensors. Several studies have been done on the terrain classification topic, where each of them is based on a specific sensor type:
 
 Starting with the \textit{vision-based classification} methods, in \citep{article:01:visual}, the authors present an online terrain classification system based on a monocular camera. The classification algorithm is based on extracting features from images using either \textit{SIFT} \citep{article:sift} or \textit{SURF} \citep{article:surf} and the classification is performed by \textit{SVMs}. The performance is evaluated on $ 8 $ terrain types with the accuracy of $ 90\% $. This approach is currently used on the hexapod robot AMOS II, which is also the target platform of this study.
 
-In spite of the fact that the Matilda platform in \citep{article:04:onlinelearning} uses belts, not leggs, the topic is similar. Vision is used in combination with laser and vibration readings to classify terrain for online adapting robot velocities. The final classification result is provided as a combination of single classifiers. The final classifier is robust towards changing illumination and able to recognize $ 5 $ different terrains with an accuracy rate close to $ 100\% $.
+In spite of the fact that the Matilda platform in \citep{article:04:onlinelearning} uses belts, not legs, the topic is similar. Vision is used in combination with laser and vibration readings to classify terrain for online adapting robot velocities. The final classification result is provided as a combination of single classifiers. The final classifier is robust towards changing illumination and able to recognize $ 5 $ different terrains with an accuracy rate close to $ 100\% $.
 
 Regarding a \textit{classification based on laser sensors}, the laser range finder in \citep{article:02:laser} provides some information about terrain roughness. In this case, it is not a terrain what is actually classified, but just a roughness factor is computed and a proper gait with corresponding behaviour (also on the AMOS II platform) is selected, based on the roughness estimation.
 
@@ -129,7 +129,7 @@ The terrain classification will be evaluated on the simulation data. As a refere
 The target platform, hexapod robot AMOS II (see \cref{ssec:amosii}), is equipped with a wide range of sensor types. However, in this study, we use only proprioceptive and tactile sensing for the terrain classification and in the following lines the reasons for this choice are listed: 
 
 \begin{enumerate}
-\item \textit{Biological inspiration}. Based on \citep{article:insect}, in insects, the cell bodies of the sensory neurons are located in the pheriphery, close to the site of stimulus reception. It is presumed that these neurons help the insect to sense the position of its legs and so to perceive the shape of the surface. Proprioceptive sensors simulated as joint angles exploit the same idea.
+\item \textit{Biological inspiration}. Based on \citep{article:insect}, in insects, the cell bodies of the sensory neurons are located in the periphery, close to the site of stimulus reception. It is presumed that these neurons help the insect to sense the position of its legs and so to perceive the shape of the surface. Proprioceptive sensors simulated as joint angles exploit the same idea.
 
 Tactile sensors are considered as a channel of communication for many insects, as they have poor vision and sound perception \citep{misc:insect_tactile}. 
 
@@ -140,7 +140,7 @@ Tactile sensors are considered as a channel of communication for many insects, a
 \item \textit{Fast processing}. The sensory data evaluation is presumed to be incomparably faster to the vision method, as no further processing, but a direct classification, is performed on the data.
 \end{enumerate}
 
-Secondly, a feedforward neural network was chosen as a classification method. Besides a biological inspiration, neural networks were chosen as the most mysterical approach, which still contains many research questions to be answered. 
+Secondly, a feedforward neural network was chosen as a classification method. Besides a biological inspiration, neural networks were chosen as the most mysterious approach, which still contains many research questions to be answered. 
 
 One of them relates to searching and utilization of network minimal structures. Using a powerful pruning algorithm may contribute to optimization of the network in terms of size and prediction time. As we want to classify the terrain online on a real platform, a minimal model fitting the data will be a great benefit. Using neural networks, the minimal model might be later combined with the central neural controller \citep{misc:amosii}, which drives the target platform, AMOS II, and manages its behaviour.
 

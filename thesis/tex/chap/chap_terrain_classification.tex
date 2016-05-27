@@ -18,7 +18,7 @@ Next, AMOS II (its simulation alternative) is forced to walk on every defined te
 
 Having the clean simulation data from all sensors, a feature vector structure is determined. Then a Gaussian signal noise is added. 
 
-Next, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:app:terrain_classification_process}, several datesets are generated and several networks trained during the process. 
+Next, a dataset is created by splitting all the data into training, validation and testing sets. As it is indicated in \cref{img:app:terrain_classification_process}, several datasets are generated and several networks trained during the process. 
 
 The dataset packages may differ in these parameters:
 
@@ -73,9 +73,9 @@ As shown in \cref{img:amosii} and \cref{img:amosii_leg}, the robot has \textit{6
 
 There are three joints on each of the robot's legs. The thoraco-coxal (TC-) joint is responsible for forward/backward movements. The coxa-trochanteral (CTr-) joint enables elevation and depression of the leg and the last one, femur-tibia (FTi-) joint is used for extension and flexion of the tibia.
 
-These joints are physically actuated by standard servo motors. Angles of the joints are measured by the servo motors and are considered as propriceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textit{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:app:lpzrobots_sim}), it is omitted in this work.
+These joints are physically actuated by standard servo motors. Angles of the joints are measured by the servo motors and are considered as proprioceptive sensors. As AMOS II has six legs and there are three joints on each leg, there are \textit{18 angle sensors} in total. There is also one backbone joint angle, however, as this one is not implemented in the simulation (see \cref{ssec:app:lpzrobots_sim}), it is omitted in this work.
 
-In \cref{tab:proprioceptors} all the propriceptive sensors, their abbreviations and original ranges are listed. The ranges are based on the individual servo motors locations and are manually set to avoid collisions. In \cref{sec:feature_vector_compilation} a normalization of these ranges is discussed.
+In \cref{tab:proprioceptors} all the proprioceptive sensors, their abbreviations and original ranges are listed. The ranges are based on the individual servo motors locations and are manually set to avoid collisions. In \cref{sec:feature_vector_compilation} a normalization of these ranges is discussed.
 
 Robot actuators (servo motors) can generate movements of variable compliance by utilizing a virtual muscle model (see \cite{misc:amosii} for details). 
 
@@ -118,7 +118,7 @@ It is possible to generate various gaits using joint actuators and robot's neura
 \subsection{AMOS II Simulation} \label{ssec:amosii_sim}
 The \textit{lpzrobots} project, developed by a research group at the University of Leipzig \citep{misc:lpzrobots} under GPL license, is used for AMOS II virtual representation. Some implementation details are discussed in \cref{ssec:app:lpzrobots_sim}. The project modules important for this study are shown in \cref{img:lpzrobots_repos}.
 
-With reference to \cref{app:code_documentation}, the \textit{main.cpp} file from \path{root/simulation/mbulinai22015-gorobots_edu-fork/practices/amosii} directory can be called as the main simulation file for purposes of the thesis. It sets up the environment with initial parameters:
+The simulation environment is set up with these initial parameters:
 
 \begin{itemize}
 \item $ controlinterval = 10 $
@@ -134,7 +134,7 @@ This results in setting the simulation sensitivity to \textit{10 steps} per seco
   \label{img:lpzrobots_repos}
 \end{figure}
 
-The initial robot position in the map is chosen randomly in order to generate a different route everytime the simulation is launched. The robot fixator, which is originally implemented for AMOS II, is removed, so the robot starts walking right after the simulation is launched.
+The initial robot position in the map is chosen randomly in order to generate a different route every time the simulation is launched. The robot fixator, which is originally implemented for AMOS II, is removed, so the robot starts walking right after the simulation is launched.
 
 The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{ssec:features_determination}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. 
 
@@ -152,7 +152,7 @@ The virtual vizualization of AMOS II is illustrated in \cref{img:amosii_sim}.
 Besides the backbone joint, all AMOS II actuators, proprioceptive and tactile sensors are modeled in the simulation and \textit{LpzRobots} framework is considered to provide an accurate simulated model of AMOS II.
 
 \subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
-The main motivation for the terrain classification is to adjust the current robot's gait accordingly and this way save some energy. In this work a \textit{tripod} gait (three legsg touching ground when walking) is used for classification. The tripod pattern is the fastest and most common gait for hexapods.
+The main motivation for the terrain classification is to adjust the current robot's gait accordingly and this way save some energy. In this work a \textit{tripod} gait (three legs touching ground when walking) is used for classification. The tripod pattern is the fastest and most common gait for hexapods.
 
 To generate the tripod gait, a central pattern generator (CPG) is used \citep{unpub:ai3_lec3}. It is implemented as a 2-neuron neural network as shown in \cref{img:two_neuron_network}.
 
@@ -305,7 +305,7 @@ In general simulations are widely used coming with many benefits and being usual
 
 In this work, 14 terrain types have been simulated based on five features (\cref{tab:terrain_features}). The parameters in \cref{tab:terrains_parameters} have been set up manually by an intuition. Therefore, one should take into account that the real terrains might be different from the virtual ones in some ways.
 
-Secondly, if, for instance, there is a terrain defined as grass, this definition cannot be unique, since there are many types of grass and those differ from each other at least in the reffered features.
+Secondly, if, for instance, there is a terrain defined as grass, this definition cannot be unique, since there are many types of grass and those differ from each other at least in the referred features.
 
 Consequently, the terrain parameters shown in \cref{tab:terrains_parameters} are noised. Regarding individual features and their upper limits from \cref{tab:terrain_features}, the following \cref{eq:terrain_noise_generation} shows, how the noise is added.
 
@@ -347,16 +347,16 @@ Based on the explanation of adding the terrain noise, single samples representin
   \label{fig:tn_influence_samples_rock}
 \end{figure}
 
-The purpose of adding the terrain noise is to generate a variability among samples of one terrain, which makes the terrain definition more flexible. As shown in \cref{fig:tn_influence_samples_rock}, the sample representing the $ 20\%-noise $ class fluctuates more in comparison to the others, expecially for the femur-tibia sensors. This might indicate a generation of an unusual rocky terrain.
+The purpose of adding the terrain noise is to generate a variability among samples of one terrain, which makes the terrain definition more flexible. As shown in \cref{fig:tn_influence_samples_rock}, the sample representing the $ 20\%-noise $ class fluctuates more in comparison to the others, especially for the femur-tibia sensors. This might indicate a generation of an unusual rocky terrain.
 
 \section{Data Acquisition} \label{sec:data_acquisition}
 The data comes from the 18 proprioceptive and 6 tactile sensors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
 
-As it is later described in more detail, several sensors values in time need to be used to obtain the robot's dynamics on various terrains. Therefore, to generate a single data sample candidate, the simulation must be run for a period of time. We use the 'candidate' significaiton as the optimal duration of one sample is not known. Samples are then formed out of sample candidates.
+As it is later described in more detail, several sensors values in time need to be used to obtain the robot's dynamics on various terrains. Therefore, to generate a single data sample candidate, the simulation must be run for a period of time. We use the 'candidate' signification as the optimal duration of one sample is not known. Samples are then formed out of sample candidates.
 
 To gather the data sample candidates, the simulator is launched several times in order to generate several candidates for every terrain type. It has been chosen to let the robot walk for $ 10 $ seconds each time, which leads to $ 100 $ values per sensor for one run (see simulation settings in \cref{ssec:app:lpzrobots_sim}).
 
-As showin in \cref{img:amosii_leg}, the robot has $ 3 $ proprioceptive and $ 1 $ tactile sensor on each leg. In the following figures (\cref{fig:sensor_atr_f_no_noise} - \cref{fig:sensor_fr_f_no_noise}), examples for each of these sensor types are shown for all reffered terrains.
+As shown in \cref{img:amosii_leg}, the robot has $ 3 $ proprioceptive and $ 1 $ tactile sensor on each leg. In the following figures (\cref{fig:sensor_atr_f_no_noise} - \cref{fig:sensor_fr_f_no_noise}), examples for each of these sensor types are shown for all referred terrains.
 
 In \cref{fig:sensor_atr_f_no_noise}, outputs of the \textit{Thoraco-Coxal} joint angle sensor on the right front leg are shown. \textit{Thoraco} sensors produce similar outputs for all terrain types, however little variances (mostly for grass and carpet) can be seen.
 
@@ -407,7 +407,7 @@ As an optimal standard deviation value of the additive terrain noise is not know
 \item $ \sigma_p = 0.2 $ (20\% relative noise).
 \end{itemize}
 
-The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analyzed in \cref{sssec:terrain_noise_influence}.
+The $ \sigma_p $ corresponds to the $ std_p $ parameter used in \cref{eq:terrain_noise_generation}. The influence of additive terrain noise is analysed in \cref{sssec:terrain_noise_influence}.
 
 The approach of storing the gathered data is described in \cref{ssec:app:data_storing}. As \cref{img:data_dir_structure} shows, $ 500 $ sample candidates are generated for every \textit{noise/terrain} configuration. This allows creating datasets of $ 500 $ samples per class.
 
@@ -463,7 +463,7 @@ The following figure (\ref{fig:sample_example_normed}) shows normalised feature 
 \end{figure}
 
 \subsection{Signal Noise} \label{ssec:signal_noise}
-In \cref{ssec:terrain_noise} a few general reasons for adding a noise to simulation data were disscused. In that case an additive Gaussian noise is used to generate variability in the data and to make the terrain types definitions (from \cref{tab:proprioceptors}) more general.
+In \cref{ssec:terrain_noise} a few general reasons for adding a noise to simulation data were discussed. In that case an additive Gaussian noise is used to generate variability in the data and to make the terrain types definitions (from \cref{tab:proprioceptors}) more general.
 
 For similar reasons a signal noise is also added to the sensory data. In reality the data obtained from mechanical sensors are noisy (environmental conditions, failures of electrical devices, etc.), while the data coming from the simulated sensors are always deterministic.
 
@@ -530,12 +530,12 @@ Once there are two ordered lists - a list of samples and a corresponding list of
 The workflow of data generation procedure is illustrated in \cref{app:img:create_dataset}. 
 
 \section{Training and Classification} \label{sec:training_and_classification}
-Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behavior on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
+Having a dataset enables to train a classifier, a machine learning tool that is able to learn some behaviour on one part of some data (training and validation) and then perform similarly on another "never seen" part of the data (testing) - as shown in \cref{img:three_sets}.
 
-There are many classification methods differing in mathematical backgrounds and each of them has some adventages and disadvantages on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two procedures that every classifier should be capable of:
+There are many classification methods differing in mathematical backgrounds and each of them has some advantages and disadvantages on various types of data. However, all of them have some general functionalities that comply with some kind of convention. For instance, there are at least two procedures that every classifier should be capable of:
 
 \begin{description}
-\item[model fitting] : In this procedure, an initialized classifier is usually given training samples and their corresponding targets. Additiionally, it can take some validation data and/or learning parameters. Then a model is trained using some math behind the selected classification method.
+\item[model fitting] : In this procedure, an initialized classifier is usually given training samples and their corresponding targets. Additionally, it can take some validation data and/or learning parameters. Then a model is trained using some math behind the selected classification method.
 \item[unlabeled observation prediction] : Once the model is trained, it is capable of predicting classes of unlabeled samples. It takes one or more samples of testing data and returns the predicted target(s).
 \end{description}
 
@@ -550,7 +550,7 @@ In the overall process diagram (\cref{img:terrain_overall_simple}) there is a bo
   \label{img:train_and_test_network}
 \end{figure}
 
-This workflow is performed by the implemented framework \textit{KITTNN} (\cref{chap:kitt_nn}, as well as by other classification methods (discussed in \cref{sec:soa}) for comparison. It is adventageous, that each of these tools can use the same workflow and so the comparison is fair.
+This workflow is performed by the implemented framework \textit{KITTNN} (\cref{chap:kitt_nn}, as well as by other classification methods (discussed in \cref{sec:soa}) for comparison. It is advantageous, that each of these tools can use the same workflow and so the comparison is fair.
 
 There are several arguments (firstly listed in \cref{sec:overall_process_summary}) that differentiate the final trained networks and their performances. The first one is the dataset that the network is trained on. This parameter brings its own configuration (see its input parameters in \cref{app:img:create_dataset}) and so its setting parametrizes the classifier as well.
 

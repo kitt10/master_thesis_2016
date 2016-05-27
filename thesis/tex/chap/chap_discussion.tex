@@ -3,19 +3,19 @@ The objectives of this thesis consisted of four subtasks:
 
 \begin{enumerate}
 \item implementation of the classification method;
-\item developement of the new pruning algorithm;
+\item development of the new pruning algorithm;
 \item generation of datasets for virtual terrains;
 \item terrain classification.
 \end{enumerate}
 
 \section{Methods Recapitulation} \label{sec:dis:methods_recap}
-Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As a framework extention, a graphical user interface was created to visualize the training process of smaller networks.
+Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As a framework extension, a graphical user interface was created to visualize the training process of smaller networks.
 
 The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress was observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained.
 
-Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weigths of unimportant synapses do not evolve during the training has been experimentally proven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was sucessfully found.
+Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weights of unimportant synapses do not evolve during the training has been experimentally proven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was successfully found.
 
-Then the algorithm was used to prune a network for MNIST classification. In this case the number of synapses were reducted from $ 11910 $ to $ 835 $, which is a reduction of almost $ 93\% $, while the classification accuracy of the pruned network was kept on $ 90\% $. Pruning the synapses, many of the neurons lost all of their inputs and became inactive. The minimal structure regarding the active neurons for the MNIST dataset is $ [495, 15, 10] $ (initially $ [784, 15, 10] $). 
+Then the algorithm was used to prune a network for MNIST classification. In this case the number of synapses were reduced from $ 11910 $ to $ 835 $, which is a reduction of almost $ 93\% $, while the classification accuracy of the pruned network was kept on $ 90\% $. Pruning the synapses, many of the neurons lost all of their inputs and became inactive. The minimal structure regarding the active neurons for the MNIST dataset is $ [495, 15, 10] $ (initially $ [784, 15, 10] $). 
 
 The obtained structure showed that many of the input neurons (pixels of the MNIST examples) were unimportant for classification, which lead to the analysis of features for individual classes. In \cref{fig:mnist_analysis}, features important for particular digits are shown.
 
@@ -28,7 +28,7 @@ The generated datasets are parametrized by:
 \begin{enumerate}
 \item terrain noise standard deviation;
 \item signal noise standard deviation;
-\item number of simulation timesteps (lenght of the sensory signal);
+\item number of simulation timesteps (length of the sensory signal);
 \item used sensors.
 \end{enumerate}
 
@@ -48,7 +48,7 @@ Here are some observations:
 
 Finally, the pruning algorithm was used to find a minimal network structure for the terrain classification task. Regarding the reference configuration \textit{A} (deterministic dataset, 20 hidden neurons - see \ref{tab:configurations_for_pa}), the number of synapses in the network were reduced from $ 19400 $ to $ 516 $ ($ 97.35\% $) and the structure changed from $ [960, 20, 14] $ to $ [330, 16, 14] $. The classification accuracy of the pruned network is $ 88.07\% $ (see \cref{tab:amter_pa_results} for more detailed results).
 
-Based on the change in the network structure, we know that at least $ 65\% $ of the features are unimportant and we can even locate them. Furthemore, we can separate features important for individual classes and see the correlations among the classes. Additionaly, as shown in \cref{fig:pa_amter_io_power_tactile}, we can see the influence power of single features on the classes.
+Based on the change in the network structure, we know that at least $ 65\% $ of the features are unimportant and we can even locate them. Furthermore, we can separate features important for individual classes and see the correlations among the classes. Additionally, as shown in \cref{fig:pa_amter_io_power_tactile}, we can see the influence power of single features on the classes.
 
 A proper analysis of network minimal structures is definitely a subject for future work.
 
@@ -78,4 +78,4 @@ this study                           & tactile                                  
 \end{tabular}}
 \end{table}
 
-Considering the high number of detected terrains, our results seem to be very positive. However, we must take into account that these results are based on the simulation data. To make a fair comparison, the method should be impelemented on the real platform. 
+Considering the high number of detected terrains, our results seem to be very positive. However, we must take into account that these results are based on the simulation data. To make a fair comparison, the method should be implemented on the real platform. 
