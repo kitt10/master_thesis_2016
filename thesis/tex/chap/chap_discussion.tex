@@ -11,7 +11,7 @@ The objectives of this thesis consisted of four subtasks:
 \section{Methods Recapitulation} \label{sec:dis:methods_recap}
 Firstly, I have implemented a neural network framework capable of classification and I called it \textit{KITTNN} (\cref{chap:kitt_nn}). The network is of the \textit{feedforward} type and the \textit{Backpropagation} learning algorithm is used for network training. As a framework extension, a graphical user interface was created to visualize the training process of smaller networks.
 
-The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress was observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained.
+The functionality of the \textit{KITTNN} framework was verified in \cref{sec:verification_of_nn} by comparing to a public implementation (\textit{SKNN}). Two datasets, XOR and MNIST, were used for training and the learning progress was observed over training epochs. The results showed that KITTNN is slower than SKNN in training, however, it is capable of learning and performs with the same classification accuracy once it is trained (\cref{sec:verification_of_nn}).
 
 Next, a new network pruning algorithm has been invented. The fundamental idea is to use weight changes during network training for selection of the unimportant synapses. The hypothesis saying that weights of unimportant synapses do not evolve during the training has been experimentally proven. The algorithm was firstly tested on the XOR dataset, where the known minimal network structure $ [2, 2, 1] $ was successfully found.
 
@@ -39,10 +39,10 @@ The classification results were saved for all of these configurations, which ena
 Here are some observations:
 
 \begin{enumerate}
-\item Using deterministic simulation proprioceptive and tactile sensory data gathered in a period of $ 4 $ seconds, we get $ 92\% $ of classification accuracy for $ 14 $ different terrain types.
+\item Using deterministic proprioceptive and tactile sensory data gathered in a period of $ 4 $ seconds, we get $ 92\% $ of classification accuracy for $ 14 $ different terrain types.
 \item Using a more realistic configuration with $ 3\% $ of relative terrain noise and $ 3\% $ of relative signal noise, the classification accuracy drops to $ 72\% $ (complete analysis in \cref{fig:acc_tn_sn_mat}).
 \item Compared to 1, when only $ 2 $ seconds are used to gather the sensory data, the accuracy drops to $ 85\% $. Then, for $ 1 $ second the accuracy is $ 80\% $ and if we want to classify real-time data, we get $ 64\% $ (analysis in \cref{fig:ts_acc_boxplot}).
-\item The combination of both sensor types provides the best classification results (hypothesis proved). Using the propriceptors only, the accuracy drops from $ 92\% $ to $69.6\%$. Using only tactile sensors provides the accuracy of $ 70.1\% $ (see \cref{fig:sen_vs_epoch}).
+\item The combination of both sensor types provides the best classification results (hypothesis proved). Using the propriceptors only, the accuracy drops from $ 92\% $ to $69.6\%$. Using only tactile sensors ends with the accuracy of $ 70.1\% $ (see \cref{fig:sen_vs_epoch}).
 \item The optimal number of hidden neurons in the fully-connected network is $ 20 $, a suitable learning rate can be $ 0.1 $ or $ 0.5 $ (see \cref{ssec:selection_of_learning_parameters}).
 \end{enumerate}
 
@@ -53,7 +53,7 @@ Based on the change in the network structure, we know that at least $ 65\% $ of 
 A proper analysis of network minimal structures is definitely a subject for future work.
 
 \section{Comparison of Results} \label{sec:dis:results_comp}
-Based on the literature, this approach is compared to results of $ 5 $ terrain classification studies in \cref{tab:studies_summary}. The comparison of the classification accuracy must be done with respect to the number of classified terrain types. In this work, we distinguish far more terrains than in the others works.
+Based on the literature, this approach is compared to results of $ 5 $ terrain classification studies in \cref{tab:studies_summary}. The comparison of the classification accuracy must be done with respect to the number of classified terrain types. In this work, we distinguish far more terrain types than the other researchers.
 
 \begin{table}[H]
 \centering

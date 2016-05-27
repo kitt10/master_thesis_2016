@@ -134,23 +134,22 @@ This results in setting the simulation sensitivity to \textit{10 steps} per seco
   \label{img:lpzrobots_repos}
 \end{figure}
 
-The initial robot position in the map is chosen randomly in order to generate a different route every time the simulation is launched. The robot fixator, which is originally implemented for AMOS II, is removed, so the robot starts walking right after the simulation is launched.
+The initial robot position in the map is chosen randomly in order to generate a different route every time the simulation is launched. The required terrain to be simulated is passed to the simulation as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. 
 
-The \textit{main.cpp} file contains all terrain types parameters introduced in \cref{ssec:features_determination}. The required terrain to be simulated is then passed to this file as an argument. Additionally, the standard deviation value of Gaussian terrain noise (details in \cref{ssec:terrain_noise}) is set as another argument. 
+The simulation is made to take one more argument, which is a simulation noise represented by a float number. In this study it is fixed to zero though and only the terrain noise combined with a signal noise is used.
 
-Finally, the file is ready to take one more argument, which is a simulation noise represented by a float number. In this study it is fixed to zero though and only the terrain noise combined with a signal noise is used.
-
-The virtual vizualization of AMOS II is illustrated in \cref{img:amosii_sim}.
+The virtual visualization of AMOS II is illustrated in \cref{img:amosii_sim}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{amosii_sim}
+  \includegraphics[width=0.9\textwidth]{amosii_sim}
   \caption{Virtual alternative for AMOS II.}
   \label{img:amosii_sim}
 \end{figure}
 
-Besides the backbone joint, all AMOS II actuators, proprioceptive and tactile sensors are modeled in the simulation and \textit{LpzRobots} framework is considered to provide an accurate simulated model of AMOS II.
+Besides the backbone joint, all AMOS II actuators, proprioceptive and tactile sensors are modelled in the simulation and \textit{LpzRobots} framework is considered to provide an accurate simulated model of AMOS II.
 
+\newpage
 \subsection{Tripod Gait Controller} \label{ssec:tripod_gait_controller}
 The main motivation for the terrain classification is to adjust the current robot's gait accordingly and this way save some energy. In this work a \textit{tripod} gait (three legs touching ground when walking) is used for classification. The tripod pattern is the fastest and most common gait for hexapods.
 
@@ -298,7 +297,7 @@ The following \cref{fig:terrain_similarity_measures} shows the similarity measur
   \label{fig:terrain_similarity_measures}
 \end{figure}
 
-The surfaces have been generated virtually and their similarity to real world terrains has not been verified. However, the results demonstrate that foam is very different from ice or, for instance, sand is quite similar to mud. A low similarity measure can be seen among concrete, carpet and rubber as all of them are moreless flat. Rubber seems to be very different from swamp or snow, which is also a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
+The figure demonstrates that foam is very different from ice or, for instance, sand is quite similar to mud. A low similarity measure can be seen among concrete, carpet and rubber as all of them are moreless flat. Rubber seems to be very different from swamp or snow, which is also a positive outcome. Also the high grass-ice or rock-snow similarity measures make sense. 
 
 \subsection{Terrain Noise} \label{ssec:terrain_noise}
 In general simulations are widely used coming with many benefits and being usually the right way to start, however, the real world is always different from the simulated one and these differences may influence the results significantly.
@@ -331,14 +330,15 @@ Once the noise is generated, it is added to an original feature value (before no
 feature\_value \pluseq feature\_noise
 \end{align}
 
-Additionally, there is some limits checking as the parameters cannot take negative values. The final form is set as shown in \cref{eq:terrain_noise_limit}.
+Additionally, there is a limit checking as the parameters cannot take negative values. The final form is set as shown in \cref{eq:terrain_noise_limit}.
 
 \begin{align} \label{eq:terrain_noise_limit}
 feature\_value = max(feature\_value, 0)
 \end{align}
 
+\newpage
 \subsubsection*{Influence of Terrain Noise} \label{sssec:terrain_noise_influence}
-Based on the explanation of adding the terrain noise, single samples representing various volumes of the additive terrain noise may vary, but not necessarily. For illustration, three noisy terrain examples (of different noise level) for \textit{rock} are shown in \cref{fig:tn_influence_samples_rock}.
+Based on the explanation of adding the terrain noise, single samples representing various levels of the additive terrain noise may vary, but not necessarily. For illustration, three noisy terrain examples (of different noise level) for \textit{rock} are shown in \cref{fig:tn_influence_samples_rock}.
 
 \begin{figure}[H]
   \centering
@@ -352,13 +352,13 @@ The purpose of adding the terrain noise is to generate a variability among sampl
 \section{Data Acquisition} \label{sec:data_acquisition}
 The data comes from the 18 proprioceptive and 6 tactile sensors and one needs to find a way how to form feature vectors (classification samples) out of it (\cref{sec:feature_vector_compilation}), which is one of the most essential parts of the process.
 
-As it is later described in more detail, several sensors values in time need to be used to obtain the robot's dynamics on various terrains. Therefore, to generate a single data sample candidate, the simulation must be run for a period of time. We use the 'candidate' signification as the optimal duration of one sample is not known. Samples are then formed out of sample candidates.
+As it is later described in more detail, several sensor values in time need to be used to obtain the robot's dynamics on various terrains. Therefore, to generate a single sample candidate, the simulation must be run for a period of time. We use the 'sample candidate' term for data obtained from one simulation run. Samples are then formed out of sample candidates.
 
-To gather the data sample candidates, the simulator is launched several times in order to generate several candidates for every terrain type. It has been chosen to let the robot walk for $ 10 $ seconds each time, which leads to $ 100 $ values per sensor for one run (see simulation settings in \cref{ssec:app:lpzrobots_sim}).
+To gather the data sample candidates, the simulator is launched several times in order to generate several candidates for every terrain type. It was set to let the robot walk for $ 10 $ seconds each time, which leads to $ 100 $ values per sensor for one run (see simulation settings in \cref{ssec:app:lpzrobots_sim}).
 
 As shown in \cref{img:amosii_leg}, the robot has $ 3 $ proprioceptive and $ 1 $ tactile sensor on each leg. In the following figures (\cref{fig:sensor_atr_f_no_noise} - \cref{fig:sensor_fr_f_no_noise}), examples for each of these sensor types are shown for all referred terrains.
 
-In \cref{fig:sensor_atr_f_no_noise}, outputs of the \textit{Thoraco-Coxal} joint angle sensor on the right front leg are shown. \textit{Thoraco} sensors produce similar outputs for all terrain types, however little variances (mostly for grass and carpet) can be seen.
+In \cref{fig:sensor_atr_f_no_noise}, outputs of the \textit{Thoraco-Coxal} joint angle sensor on the right front leg are shown. \textit{Thoraco} sensors produce similar outputs for all terrain types, however little variances (mostly for grass) can be seen.
 
 \begin{figure}[H]
   \centering
@@ -376,7 +376,7 @@ In \cref{fig:sensor_atr_f_no_noise}, outputs of the \textit{Thoraco-Coxal} joint
   \label{fig:sensor_acr_m_no_noise}
 \end{figure}
 
-The \textit{Femur-Tibia} sensor outputs, for the joint sensor on the right hint leg, are illustrated in \ref{fig:sensor_afr_h_no_noise}. The signals indicate that this joint is not much used compared to previous ones. This makes sense as there is no active movement of this joint generated by the tripod gait controller (\cref{ssec:tripod_gait_controller}). The signals fluctuations must be caused by passive movements of the \textit{Femur-Tibia} joint, but still might be essential for classification.
+The \textit{Femur-Tibia} sensor outputs, for the joint sensor on the right hint leg, are illustrated in \ref{fig:sensor_afr_h_no_noise}. The signals indicate that this joint is not much used compared to previous ones. This makes sense as there is no active movement of this joint generated by the tripod gait controller (\cref{ssec:tripod_gait_controller}). The signal fluctuations must be caused by passive movements of the \textit{Femur-Tibia} joint, but still might be essential for classification.
 
 \begin{figure}[H]
   \centering
@@ -385,7 +385,7 @@ The \textit{Femur-Tibia} sensor outputs, for the joint sensor on the right hint 
   \label{fig:sensor_afr_h_no_noise}
 \end{figure}
 
-The biggest variance among signals for various terrains is obtained from the foot contact sensors (example from the sensor on the right front leg in \cref{fig:sensor_fr_f_no_noise}). If the value of the foot contact sensor is $ 1 $, the robot stays on the foot with its full weight, and vice versa.
+The biggest variance among signals for various terrains is obtained from the foot contact sensors (example from the sensor on the right front leg in \cref{fig:sensor_fr_f_no_noise}). If the value of the foot contact sensor is $ 1 $, the robot stays on the foot with its full weight, $ 0 $ indicates a leg in the air.
 
 \begin{figure}[H]
   \centering
@@ -396,7 +396,7 @@ The biggest variance among signals for various terrains is obtained from the foo
 
 Examples of signals for all 24 sensors can be found in \cref{app:sec:complete_sensory_data}.
 
-As an optimal standard deviation value of the additive terrain noise is not known, some data for several values of this parameter were generated. The simulation was gradually run for:
+As an optimal standard deviation value of the additive terrain noise is not known, data for several values of this parameter were generated. The simulation was gradually run for:
 
 \begin{itemize}
 \item $ \sigma_p = 0.0 $ (no noise);
