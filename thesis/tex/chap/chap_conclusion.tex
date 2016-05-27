@@ -1,7 +1,7 @@
 \chapter{Conclusion and Outlook} \label{chap:conclusion}
 A feedforward neural network framework capable of learning and classification, additionally equipped with a new pruning algorithm, has been developed. The hypothesis regarding the network pruning has been proven, as there are many synapses (generally over $ 90\% $) in the fully-connected networks, which are unimportant for classification. Furthermore, the resulting minimal structures seem to be useful for feature selection.
 
-The developed framework has been used for terrain classification using $ 18 $ proprioception and $ 6 $ tactile sensors of a hexapod robot. Fourteen different virtual terrain types have been generated. 
+The developed framework has been used for terrain classification using $ 18 $ proprioception and $ 6 $ tactile sensors of a hexapod robot. Using $ 5 $ terrain features, $ 14 $ different virtual terrain types have been generated. 
 
 We achieved over $ 92\% $ accuracy on deterministic simulation data and $ 72\% $ on data that was manually noised. Regarding the mentioned sensor types, the sensory data had to be gathered over one period of the tripod walking pattern. Using data of one moment in time only, the accuracy drops to $ 64\% $ on the deterministic simulation data.
 
@@ -9,8 +9,10 @@ Application of the pruning algorithm for terrain classification showed that the 
 
 To make a final evaluation of the overall study, the main objectives were met and on top of that, some interesting results were obtained. 
 
-Regarding the terrain classification process, the implementation on the real platform should be the next step. The proprioception and tactile sensing proved to work well together on the simulation data.
+Regarding the terrain classification process, the implementation on the real platform should be the next step. The proprioception and tactile sensing was proved to work well together on the simulation data.
 
-The field of neural networks provides a wide range of interesting questions to be researched, especially in case of minimal network structures. The feature selection idea has been outlined in this study. Next, the synapses are removed from the network by setting weights to zero, however, the dimension of mattrices remains unchanged. Therefore, a network shrinking algorithm might be suggested for the future work.
+The field of neural networks provides a wide range of interesting questions to be researched, especially in case of minimal network structures. The feature selection idea has been outlined in this study. 
 
-Application of proposed methods on specific types of data might lead to understanding previously insolvable problems.
+Moreover, the synapses are removed from the network by setting weights to zero, however, the dimension of mattrices remains unchanged. Therefore, a network shrinking algorithm might be proposed in the future work.
+
+Application of the developed methods on specific types of data might lead to understanding previously insolvable problems.

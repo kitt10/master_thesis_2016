@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  26 MAY 2016 23:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.3.6)  27 MAY 2016 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2252,7 +2252,7 @@ Chapter 1.
 
 
 ]
-<img/classification_problem_formulation.png, id=712, 189.70876pt x 166.6225pt>
+<img/classification_problem_formulation.png, id=713, 189.70876pt x 166.6225pt>
 File: img/classification_problem_formulation.png Graphic file (type png)
 
 <use img/classification_problem_formulation.png>
@@ -4342,7 +4342,7 @@ s/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb>
 1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (99 pages, 6158367 bytes).
+Output written on main.pdf (99 pages, 6159994 bytes).
 PDF statistics:
  3858 PDF objects out of 4296 (max. 8388607)
  1947 compressed objects within 20 object streams
